@@ -14,8 +14,8 @@ export const KofiOverlay: React.FC = () => {
             (window as any).kofiWidgetOverlay.draw('nikhilkhanpara', {
               'type': 'floating-chat',
               'floating-chat.donateButton.text': 'Support me',
-              'floating-chat.donateButton.background-color': '#5cb85c',
-              'floating-chat.donateButton.text-color': '#fff',
+              'floating-chat.donateButton.background-color': '#fcbf47',
+              'floating-chat.donateButton.text-color': '#323842',
             });
           } catch (err) {
             console.error('Ko-fi widget initialization error:', err);
