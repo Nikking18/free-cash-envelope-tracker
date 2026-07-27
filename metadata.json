@@ -1,0 +1,6 @@
+{
+  "name": "Free Cash Envelope Tracker",
+  "description": "A free, private, single-page cash-stuffing envelope budgeting web application with local storage persistence, PDF export, and Excel import/export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

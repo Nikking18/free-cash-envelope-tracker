@@ -1,0 +1,16 @@
+# Free Cash Envelope Tracker
+> Private, zero-login digital cash stuffing application.
+
+## Overview
+Free Cash Envelope Tracker is a browser-based personal finance app for cash envelope budgeting and cash stuffing. It runs entirely client-side using browser local storage, with zero accounts, zero cloud databases, and zero tracking.
+
+## Core Features
+- Digital Cash Stuffing: Create, edit, and categorize cash envelopes (Essential, Discretionary, Savings, Debt).
+- Expense Logging: Record transactions with dates and notes, updating envelope and total budget balances in real time.
+- Visual Budget Tracking: Real-time progress bars and over-budget warnings.
+- PDF Export: Choose between Classic Minimal (color-coded cards and transaction ledger) and Minimal B&W (print-friendly ruled lines).
+- Excel Import/Export: Export budget states or import spreadsheets formatted via two sheets ('Envelopes' and 'Expenses').
+- Privacy First: 100% browser local storage (`localStorage`). No sign-ups or bank connections.
+
+## Access
+- Website: https://freecashtracker.online
