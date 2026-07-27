@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Heart, ShieldCheck, ExternalLink, Github, Twitter } from 'lucide-react';
+import { Heart, ShieldCheck, ExternalLink, Github, Twitter, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Social Links in Brand Column */}
-            <div className="pt-2 flex items-center gap-2.5">
+            <div className="pt-2 flex items-center gap-2.5 flex-wrap">
               <span className="text-xs font-bold uppercase tracking-wider text-[#141414]/70">Connect:</span>
               <a
                 href="https://github.com/Nikking18"
@@ -43,6 +43,16 @@ export const Footer: React.FC = () => {
               >
                 <Twitter className="w-3.5 h-3.5" />
                 <span>X / Twitter</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/nikhilkhanpara/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1.5 bg-white neo-border hover:bg-[#141414] hover:text-white text-[#141414] text-xs font-bold inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                <span>LinkedIn</span>
               </a>
             </div>
           </div>
@@ -104,6 +114,16 @@ export const Footer: React.FC = () => {
                 aria-label="X (Twitter)"
               >
                 <Twitter className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/nikhilkhanpara/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#141414]/80 hover:text-[#141414] p-1 transition-colors"
+                title="LinkedIn"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
