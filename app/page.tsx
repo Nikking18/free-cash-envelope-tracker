@@ -390,16 +390,17 @@ export default function CashEnvelopeTrackerPage() {
         {/* Hero Section */}
         <HeroSection
           onStartBudgeting={scrollToTracker}
+          language={language}
         />
 
         {/* How It Works Section */}
-        <HowItWorksSection />
+        <HowItWorksSection language={language} />
 
         {/* Web View Showcase Section */}
         <WebViewShowcase />
 
         {/* Budget Guide & SEO Keywords Section */}
-        <BudgetGuideSection />
+        <BudgetGuideSection language={language} />
 
         {/* Main Budget Tracker App Workspace */}
         <section id="tracker" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10 border-t-4 border-[#141414] pt-12">
@@ -413,6 +414,7 @@ export default function CashEnvelopeTrackerPage() {
             backupReminderInterval={backupReminderInterval}
             onChangeBackupReminderInterval={handleChangeBackupReminderInterval}
             mainCurrency={mainCurrency}
+            language={language}
             onAddEnvelope={() => {
               setEditingEnvelope(null);
               setIsEnvelopeModalOpen(true);
