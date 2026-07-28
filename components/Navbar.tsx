@@ -154,8 +154,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   📌 <strong className="uppercase">{t('noteWord', language)}:</strong> {t('exchangeRateNoticeDesc', language)}
                 </div>
 
-                <div className="p-2.5 bg-red-50 border-2 border-[#D15F47] text-[11px] font-bold text-[#D15F47] leading-snug">
-                  ⚠️ {t('currencyWarningNote', language)}
+                <div className="p-2.5 bg-red-50 border-2 border-red-600 text-red-700 text-[11px] font-bold leading-snug">
+                  {t('currencyChangeWarning', language)}
                 </div>
               </div>
             )}

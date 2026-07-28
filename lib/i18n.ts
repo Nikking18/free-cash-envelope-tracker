@@ -14,7 +14,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Live Rate Synced',
     noteWord: 'Note',
     exchangeRateNoticeDesc: 'Exchange rates update automatically when you refresh the page.',
-    currencyWarningNote: 'Note: It is recommended to manage your budget in a single currency due to frequent live exchange rate changes.',
     downloadSampleTemplateBtn: 'Download Sample Excel Template',
 
     // Excel Export Column Headers & Sheet Names
@@ -228,6 +227,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     vendorNotePlaceholder: 'e.g. Walmart, Whole Foods, Gas Station',
     expenseDateLabel: 'Transaction Date',
     autoConversionNotice: 'Auto-converted to target envelope currency at current live rates.',
+    mixedCurrencyWarning: '⚠️ Warning: For best accuracy, it is strongly recommended to log all expenses in your main budget currency. Using multiple currencies may cause inaccurate totals due to fluctuating exchange rates.',
+    currencyChangeWarning: '⚠️ Warning: Changing your main currency is not recommended if you already have envelopes or expenses logged. Totals may become inaccurate due to constantly changing exchange rates. For best results, stick to one currency.',
     saveExpenseBtn: 'Record Expense',
 
     selectPdfTemplateTitle: 'Export PDF Statement',
@@ -284,7 +285,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Tasa Sincronizada en Vivo',
     noteWord: 'Nota',
     exchangeRateNoticeDesc: 'Las tasas de cambio se actualizan automáticamente al recargar la página.',
-    currencyWarningNote: 'Nota: Se recomienda gestionar su presupuesto en una sola moneda debido a los cambios frecuentes en las tasas de cambio.',
     downloadSampleTemplateBtn: 'Descargar Plantilla Excel de Ejemplo',
 
     excelColEnvName: 'Nombre del Sobre',
@@ -485,6 +485,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     vendorNotePlaceholder: 'ej. Supermercado, Gasolinera',
     expenseDateLabel: 'Fecha de Transacción',
     autoConversionNotice: 'Convertido automáticamente a la moneda del sobre según tasas en vivo.',
+    mixedCurrencyWarning: '⚠️ Advertencia: Para mayor precisión, se recomienda registrar todos los gastos en tu moneda principal. Usar varias monedas puede causar totales inexactos por la fluctuación de los tipos de cambio.',
+    currencyChangeWarning: '⚠️ Advertencia: Cambiar tu moneda principal no es recomendable si ya tienes sobres o gastos registrados. Los totales pueden volverse inexactos debido a los cambios constantes en las tasas de cambio. Para mejores resultados, usa una sola moneda.',
     saveExpenseBtn: 'Guardar Gasto',
 
     selectPdfTemplateTitle: 'Exportar Extracto PDF',
@@ -539,7 +541,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Taux Synchronisé en Direct',
     noteWord: 'Remarque',
     exchangeRateNoticeDesc: 'Les taux de change se mettent à jour automatiquement lorsque vous rafraîchissez la page.',
-    currencyWarningNote: 'Remarque : Il est recommandé de gérer votre budget dans une seule devise en raison des variations fréquentes des taux de change.',
     downloadSampleTemplateBtn: 'Télécharger le Modèle Excel d\'Exemple',
 
     excelColEnvName: 'Nom de l\'Enveloppe',
@@ -740,6 +741,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     vendorNotePlaceholder: 'ex. Supermarché, Essence',
     expenseDateLabel: 'Date de Transaction',
     autoConversionNotice: 'Converti automatiquement dans la devise de l’enveloppe au taux actuel.',
+    mixedCurrencyWarning: '⚠️ Avertissement : Pour plus de précision, il est fortement recommandé d\'enregistrer toutes les dépenses dans votre devise principale. Utiliser plusieurs devises peut fausser les totaux en raison des variations des taux de change.',
+    currencyChangeWarning: '⚠️ Avertissement : Modifier votre devise principale est déconseillé si vous avez déjà des enveloppes ou des dépenses enregistrées. Les totaux risquent de devenir inexacts en raison des variations constantes des taux de change. Pour de meilleurs résultats, utilisez une seule devise.',
     saveExpenseBtn: 'Valider la Dépense',
 
     selectPdfTemplateTitle: 'Exporter le Relevé PDF',
@@ -794,7 +797,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Live-Kurs Synchronisiert',
     noteWord: 'Hinweis',
     exchangeRateNoticeDesc: 'Die Wechselkurse werden beim Aktualisieren der Seite automatisch aktualisiert.',
-    currencyWarningNote: 'Hinweis: Es wird empfohlen, Ihr Budget in einer einzigen Währung zu verwalten, da sich die Wechselkurse häufig ändern.',
     downloadSampleTemplateBtn: 'Muster-Excel-Vorlage Herunterladen',
 
     excelColEnvName: 'Umschlagname',
@@ -995,6 +997,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     vendorNotePlaceholder: 'z.B. Supermarkt, Tankstelle',
     expenseDateLabel: 'Datum',
     autoConversionNotice: 'Automatisch in die Umschlagwährung umgerechnet.',
+    mixedCurrencyWarning: '⚠️ Warnung: Für beste Genauigkeit wird empfohlen, alle Ausgaben in Ihrer Hauptwährung zu erfassen. Die Verwendung mehrerer Währungen kann aufgrund schwankender Wechselkurse zu ungenauen Summen führen.',
+    currencyChangeWarning: '⚠️ Warnung: Es wird nicht empfohlen, Ihre Hauptwährung zu ändern, wenn bereits Umschläge oder Ausgaben vorhanden sind. Die Gesamtsummen können aufgrund ständig wechselnder Wechselkurse ungenau werden. Verwenden Sie für beste Ergebnisse nur eine Währung.',
     saveExpenseBtn: 'Ausgabe Buchen',
 
     selectPdfTemplateTitle: 'PDF-Bericht Exportieren',
