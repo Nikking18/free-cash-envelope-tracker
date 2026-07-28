@@ -398,7 +398,7 @@ export default function CashEnvelopeTrackerPage() {
         <HowItWorksSection language={language} />
 
         {/* Web View Showcase Section */}
-        <WebViewShowcase />
+        <WebViewShowcase language={language} />
 
         {/* Budget Guide & SEO Keywords Section */}
         <BudgetGuideSection language={language} />

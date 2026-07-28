@@ -2,67 +2,45 @@
 
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown } from 'lucide-react';
-
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export const FAQ_ITEMS: FAQItem[] = [
-  {
-    question: 'Is Free Cash Envelope Tracker 100% free with no hidden fees?',
-    answer: 'Yes! Free Cash Envelope Tracker is 100% free forever. There are no premium subscriptions, no paywalled features, no ads, and no hidden charges. All envelope management, expense logging, PDF exports, and Excel imports/exports are completely free to use.',
-  },
-  {
-    question: 'How does digital cash stuffing work?',
-    answer: 'Digital cash stuffing adapts the traditional physical cash envelope budgeting system into a convenient browser app. Instead of withdrawing physical paper cash into paper envelopes, you create virtual digital envelopes (e.g. Groceries, Rent, Dining Out, Savings), assign target budget amounts, and log transactions as you spend. Live progress bars visually alert you if an envelope is approaching or exceeding its limit.',
-  },
-  {
-    question: 'Is my financial budget data safe and private?',
-    answer: 'Absolutely. Your privacy is guaranteed because 100% of your budget data is stored exclusively inside your browser\'s local storage (localStorage). We do not operate remote databases, we do not require account sign-ups or email addresses, and we never link to bank credentials. Your data never leaves your device.',
-  },
-  {
-    question: 'Can I export my cash envelope budget to PDF or Excel?',
-    answer: 'Yes! You can export your complete budget summary anytime. We support two customizable PDF export templates: Classic Minimal (color-coded cards and itemized ledger) and Minimal B&W (print-friendly ruled lines). You can also export your budget into a 2-sheet Excel (.xlsx) spreadsheet or import existing Excel budget files.',
-  },
-  {
-    question: 'What happens if I clear my browser history or switch devices?',
-    answer: 'Because all budget data lives locally in your browser\'s storage, clearing browser cache or switching to a new phone/computer will start a fresh session. We recommend regularly exporting a PDF or Excel backup file so you can restore or reference your budget records whenever needed.',
-  },
-  {
-    question: 'Do I need to connect a bank account or credit card?',
-    answer: 'No! Free Cash Envelope Tracker requires zero bank credentials, zero credit cards, and zero account creation. It is a completely manual, privacy-focused zero-login budgeting tool designed for total financial autonomy.',
-  },
-];
+import { t } from '../lib/i18n';
 
 interface FaqSectionProps {
   language?: string;
 }
 
-export const FaqSection: React.FC<FaqSectionProps> = () => {
+export const FaqSection: React.FC<FaqSectionProps> = ({ language = 'en' }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleIndex = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 
+  const faqList = [
+    { question: t('faqQ1', language), answer: t('faqA1', language) },
+    { question: t('faqQ2', language), answer: t('faqA2', language) },
+    { question: t('faqQ3', language), answer: t('faqA3', language) },
+    { question: t('faqQ4', language), answer: t('faqA4', language) },
+    { question: t('faqQ5', language), answer: t('faqA5', language) },
+    { question: t('faqQ6', language), answer: t('faqA6', language) },
+  ];
+
   return (
     <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t-4 border-[#141414]">
       <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#8A9A5B] text-white font-bold text-xs uppercase tracking-widest border-2 border-[#141414]">
           <HelpCircle className="w-4 h-4" />
-          Frequently Asked Questions &amp; Guide
+          {t('faqBadge', language)}
         </div>
         <h2 className="font-serif font-black text-3xl sm:text-4xl text-[#141414] uppercase tracking-tighter">
-          Everything You Need to Know About <span className="underline decoration-[#8A9A5B] decoration-8 underline-offset-4">Digital Cash Stuffing</span>
+          {t('faqTitleLine1', language)} <span className="underline decoration-[#8A9A5B] decoration-8 underline-offset-4">{t('faqTitleHighlight', language)}</span>
         </h2>
         <p className="text-sm sm:text-base text-[#141414]/80 font-bold max-w-2xl mx-auto">
-          Get quick answers about privacy, zero-login cash envelope tracking, PDF/Excel backups, and digital budget management.
+          {t('faqSubtitle', language)}
         </p>
       </div>
 
       <div className="space-y-4">
-        {FAQ_ITEMS.map((item, idx) => {
+        {faqList.map((item, idx) => {
           const isOpen = openIndex === idx;
           return (
             <div

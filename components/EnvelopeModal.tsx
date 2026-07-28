@@ -159,7 +159,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             >
               {CATEGORIES.map((cat) => (
                 <option key={cat} value={cat}>
-                  {cat}
+                  {t(`cat${cat}`, language).toUpperCase()}
                 </option>
               ))}
             </select>

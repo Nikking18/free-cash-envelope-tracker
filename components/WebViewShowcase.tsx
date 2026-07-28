@@ -1,9 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Monitor, Smartphone, FileSpreadsheet, FileText, CheckCircle2, Wallet, Plus, ArrowUpRight, ShieldCheck, Download, AlertTriangle } from 'lucide-react';
+import { Monitor, Smartphone, FileSpreadsheet, FileText, ShieldCheck } from 'lucide-react';
+import { t } from '../lib/i18n';
 
-export const WebViewShowcase: React.FC = () => {
+interface WebViewShowcaseProps {
+  language?: string;
+}
+
+export const WebViewShowcase: React.FC<WebViewShowcaseProps> = ({ language = 'en' }) => {
   const [activeTab, setActiveTab] = useState<'desktop' | 'mobile' | 'export'>('desktop');
 
   return (
@@ -12,13 +17,13 @@ export const WebViewShowcase: React.FC = () => {
       <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] text-[#FCFAF7] font-bold text-xs uppercase tracking-widest neo-border">
           <Monitor className="w-3.5 h-3.5 text-[#8A9A5B]" />
-          Visual Interface Showcase
+          {t('showcaseBadge', language)}
         </div>
         <h2 className="font-serif font-black text-3xl sm:text-4xl text-[#141414] uppercase tracking-tighter">
-          How It Looks in <span className="underline decoration-[#8A9A5B] decoration-8 underline-offset-4">Web View</span>
+          {t('showcaseTitleLine1', language)} <span className="underline decoration-[#8A9A5B] decoration-8 underline-offset-4">{t('showcaseTitleLine2', language)}</span>
         </h2>
         <p className="text-sm sm:text-base text-[#141414]/80 font-bold max-w-2xl mx-auto">
-          Explore the clean, high-contrast dashboard layout designed for seamless cash envelope management on desktop, tablet, and mobile browsers.
+          {t('showcaseSubtitle', language)}
         </p>
 
         {/* View Switcher Tabs */}
@@ -33,7 +38,7 @@ export const WebViewShowcase: React.FC = () => {
             }`}
           >
             <Monitor className="w-4 h-4 text-[#8A9A5B]" />
-            Desktop Web View
+            {t('tabDesktop', language)}
           </button>
           <button
             type="button"
@@ -45,7 +50,7 @@ export const WebViewShowcase: React.FC = () => {
             }`}
           >
             <Smartphone className="w-4 h-4 text-[#D15F47]" />
-            Mobile Web View
+            {t('tabMobile', language)}
           </button>
           <button
             type="button"
@@ -57,7 +62,7 @@ export const WebViewShowcase: React.FC = () => {
             }`}
           >
             <FileSpreadsheet className="w-4 h-4 text-[#5C768D]" />
-            PDF &amp; Excel Reports
+            {t('tabReports', language)}
           </button>
         </div>
       </div>
@@ -86,17 +91,17 @@ export const WebViewShowcase: React.FC = () => {
             {/* Top Metric Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white border-3 border-[#141414] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-4 space-y-1">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-[#141414]/70">Total Allocated</div>
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#141414]/70">{t('totalAllocated', language)}</div>
                 <div className="font-serif font-black text-2xl sm:text-3xl text-[#141414]">$2,000.00</div>
                 <div className="text-[10px] font-bold text-[#8A9A5B] uppercase tracking-wider">4 Active Envelopes</div>
               </div>
               <div className="bg-white border-3 border-[#141414] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-4 space-y-1">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-[#141414]/70">Total Spent</div>
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#141414]/70">{t('totalSpent', language)}</div>
                 <div className="font-serif font-black text-2xl sm:text-3xl text-[#D15F47]">$425.50</div>
                 <div className="text-[10px] font-bold text-[#D15F47] uppercase tracking-wider">21.3% of Total Budget</div>
               </div>
               <div className="bg-white border-3 border-[#141414] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-4 space-y-1">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-[#141414]/70">Total Remaining</div>
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#141414]/70">{t('totalRemaining', language)}</div>
                 <div className="font-serif font-black text-2xl sm:text-3xl text-[#059669]">$1,574.50</div>
                 <div className="text-[10px] font-bold text-[#059669] uppercase tracking-wider">78.7% Safe Remaining</div>
               </div>
@@ -105,8 +110,8 @@ export const WebViewShowcase: React.FC = () => {
             {/* Mock Envelopes Grid */}
             <div className="space-y-3">
               <div className="flex items-center justify-between border-b-2 border-[#141414] pb-2">
-                <h3 className="font-serif font-black text-base uppercase text-[#141414]">Cash Envelopes Preview</h3>
-                <span className="text-xs font-bold text-[#8A9A5B] uppercase tracking-wider">+ Log Expense</span>
+                <h3 className="font-serif font-black text-base uppercase text-[#141414]">{t('cashEnvelopes', language)} Preview</h3>
+                <span className="text-xs font-bold text-[#8A9A5B] uppercase tracking-wider">{t('addExpenseBtn', language)}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Envelope 1 */}
@@ -114,7 +119,7 @@ export const WebViewShowcase: React.FC = () => {
                   <div className="h-1.5 w-full bg-[#8A9A5B] absolute top-0 left-0" />
                   <div className="flex items-center justify-between pt-1">
                     <span className="font-serif font-black text-sm text-[#141414]">Groceries</span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#8A9A5B]/20 text-[#141414] neo-border">Essential</span>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#8A9A5B]/20 text-[#141414] neo-border">{t('catEssential', language)}</span>
                   </div>
                   <div className="flex items-baseline justify-between">
                     <span className="text-xl font-serif font-black text-[#141414]">$321.60</span>
@@ -124,7 +129,7 @@ export const WebViewShowcase: React.FC = () => {
                     <div className="h-full bg-[#8A9A5B] w-[28.5%]" />
                   </div>
                   <div className="flex items-center justify-between text-[10px] font-bold text-[#141414]/70">
-                    <span>Spent: $128.40</span>
+                    <span>{t('totalSpent', language)}: $128.40</span>
                     <span className="text-[#8A9A5B]">71.5% Left</span>
                   </div>
                 </div>
@@ -134,7 +139,7 @@ export const WebViewShowcase: React.FC = () => {
                   <div className="h-1.5 w-full bg-[#D15F47] absolute top-0 left-0" />
                   <div className="flex items-center justify-between pt-1">
                     <span className="font-serif font-black text-sm text-[#141414]">Dining &amp; Takeout</span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#D15F47]/20 text-[#141414] neo-border">Discretionary</span>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#D15F47]/20 text-[#141414] neo-border">{t('catDiscretionary', language)}</span>
                   </div>
                   <div className="flex items-baseline justify-between">
                     <span className="text-xl font-serif font-black text-[#141414]">$52.90</span>
@@ -144,7 +149,7 @@ export const WebViewShowcase: React.FC = () => {
                     <div className="h-full bg-[#D15F47] w-[64.7%]" />
                   </div>
                   <div className="flex items-center justify-between text-[10px] font-bold text-[#141414]/70">
-                    <span>Spent: $97.10</span>
+                    <span>{t('totalSpent', language)}: $97.10</span>
                     <span className="text-[#D15F47]">35.3% Left</span>
                   </div>
                 </div>
@@ -154,7 +159,7 @@ export const WebViewShowcase: React.FC = () => {
                   <div className="h-1.5 w-full bg-[#5C768D] absolute top-0 left-0" />
                   <div className="flex items-center justify-between pt-1">
                     <span className="font-serif font-black text-sm text-[#141414]">Rent &amp; Utilities</span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#5C768D]/20 text-[#141414] neo-border">Essential</span>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#5C768D]/20 text-[#141414] neo-border">{t('catEssential', language)}</span>
                   </div>
                   <div className="flex items-baseline justify-between">
                     <span className="text-xl font-serif font-black text-[#141414]">$1,000.00</span>
@@ -164,7 +169,7 @@ export const WebViewShowcase: React.FC = () => {
                     <div className="h-full bg-[#5C768D] w-[0%]" />
                   </div>
                   <div className="flex items-center justify-between text-[10px] font-bold text-[#141414]/70">
-                    <span>Spent: $0.00</span>
+                    <span>{t('totalSpent', language)}: $0.00</span>
                     <span className="text-[#059669]">100% Left</span>
                   </div>
                 </div>
@@ -174,7 +179,7 @@ export const WebViewShowcase: React.FC = () => {
                   <div className="h-1.5 w-full bg-[#059669] absolute top-0 left-0" />
                   <div className="flex items-center justify-between pt-1">
                     <span className="font-serif font-black text-sm text-[#141414]">Emergency Savings</span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#059669]/20 text-[#141414] neo-border">Savings</span>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 bg-[#059669]/20 text-[#141414] neo-border">{t('catSavings', language)}</span>
                   </div>
                   <div className="flex items-baseline justify-between">
                     <span className="text-xl font-serif font-black text-[#141414]">$200.00</span>
@@ -184,7 +189,7 @@ export const WebViewShowcase: React.FC = () => {
                     <div className="h-full bg-[#059669] w-[50%]" />
                   </div>
                   <div className="flex items-center justify-between text-[10px] font-bold text-[#141414]/70">
-                    <span>Spent: $200.00</span>
+                    <span>{t('totalSpent', language)}: $200.00</span>
                     <span className="text-[#059669]">50% Left</span>
                   </div>
                 </div>
@@ -210,14 +215,14 @@ export const WebViewShowcase: React.FC = () => {
               {/* Mobile App Header */}
               <div className="px-4 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-serif font-black text-lg text-[#141414] uppercase">Envelope Budget</span>
+                  <span className="font-serif font-black text-lg text-[#141414] uppercase">{t('budgetOverview', language)}</span>
                   <span className="px-2 py-0.5 bg-[#8A9A5B] text-white text-[10px] font-bold rounded">Live</span>
                 </div>
 
                 {/* Mobile Overview Card */}
                 <div className="bg-white border-2 border-[#141414] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-3 space-y-2">
                   <div className="flex items-center justify-between text-xs font-bold text-[#141414]">
-                    <span>Remaining Balance</span>
+                    <span>{t('totalRemaining', language)}</span>
                     <span className="text-[#059669]">$1,240.00</span>
                   </div>
                   <div className="w-full h-2 bg-gray-100 neo-border overflow-hidden">
@@ -228,10 +233,10 @@ export const WebViewShowcase: React.FC = () => {
                 {/* Mobile Action Buttons */}
                 <div className="grid grid-cols-2 gap-2">
                   <button className="py-2 bg-[#8A9A5B] text-white text-xs font-bold uppercase neo-button flex items-center justify-center gap-1">
-                    + Envelope
+                    + {t('newEnvelope', language)}
                   </button>
                   <button className="py-2 bg-[#D15F47] text-white text-xs font-bold uppercase neo-button flex items-center justify-center gap-1">
-                    + Expense
+                    + {t('logExpense', language)}
                   </button>
                 </div>
 
@@ -271,20 +276,20 @@ export const WebViewShowcase: React.FC = () => {
             <div className="flex items-center justify-between border-b-2 border-[#141414] pb-3">
               <div className="flex items-center gap-2">
                 <FileText className="w-5 h-5 text-[#D15F47]" />
-                <h3 className="font-serif font-black text-lg text-[#141414] uppercase">PDF Export Styles</h3>
+                <h3 className="font-serif font-black text-lg text-[#141414] uppercase">{t('cardPdfTitle', language)}</h3>
               </div>
               <span className="px-2 py-0.5 bg-[#8A9A5B] text-white text-[10px] font-bold uppercase neo-border">
-                Instant PDF
+                {t('cardPdfBadge', language)}
               </span>
             </div>
             <p className="text-xs text-[#141414]/80 font-bold leading-relaxed">
-              Generate print-ready financial statements in two distinct templates: <strong>Classic Minimal</strong> (color-coded ledger cards) or <strong>Minimal B&amp;W</strong> (ruled lines for manual home printing).
+              {t('cardPdfDesc', language)}
             </p>
             <div className="bg-[#FCFAF7] border-2 border-[#141414] p-4 font-mono text-[11px] text-[#141414] space-y-2">
-              <div className="font-bold uppercase tracking-wider text-[#8A9A5B]">[PDF Preview]</div>
-              <div>• Total Budget Summary &amp; Category Breakdown</div>
-              <div>• Itemized Transaction History by Date</div>
-              <div>• Custom Notes &amp; Hand-writing Ruled Lines</div>
+              <div className="font-bold uppercase tracking-wider text-[#8A9A5B]">{t('pdfPreviewTag', language)}</div>
+              <div>• {t('pdfBullet1', language)}</div>
+              <div>• {t('pdfBullet2', language)}</div>
+              <div>• {t('pdfBullet3', language)}</div>
             </div>
           </div>
 
@@ -293,20 +298,20 @@ export const WebViewShowcase: React.FC = () => {
             <div className="flex items-center justify-between border-b-2 border-[#141414] pb-3">
               <div className="flex items-center gap-2">
                 <FileSpreadsheet className="w-5 h-5 text-[#059669]" />
-                <h3 className="font-serif font-black text-lg text-[#141414] uppercase">Excel Import &amp; Export</h3>
+                <h3 className="font-serif font-black text-lg text-[#141414] uppercase">{t('cardExcelTitle', language)}</h3>
               </div>
               <span className="px-2 py-0.5 bg-[#5C768D] text-white text-[10px] font-bold uppercase neo-border">
-                2-Sheet XLSX
+                {t('cardExcelBadge', language)}
               </span>
             </div>
             <p className="text-xs text-[#141414]/80 font-bold leading-relaxed">
-              Export full budget data to standard `.xlsx` spreadsheets or upload previously saved Excel files formatted into <strong>Envelopes</strong> and <strong>Expenses</strong> sheets with built-in formula-injection sanitization.
+              {t('cardExcelDesc', language)}
             </p>
             <div className="bg-[#FCFAF7] border-2 border-[#141414] p-4 font-mono text-[11px] text-[#141414] space-y-2">
-              <div className="font-bold uppercase tracking-wider text-[#059669]">[SheetJS / Excel Preview]</div>
-              <div>• Sheet 1: Envelopes (Name, Allocated Amount, Category)</div>
-              <div>• Sheet 2: Expenses (Envelope Name, Amount, Note, Date)</div>
-              <div>• Automatic validation &amp; formula sanitization</div>
+              <div className="font-bold uppercase tracking-wider text-[#059669]">{t('excelPreviewTag', language)}</div>
+              <div>• {t('excelBullet1', language)}</div>
+              <div>• {t('excelBullet2', language)}</div>
+              <div>• {t('excelBullet3', language)}</div>
             </div>
           </div>
         </div>

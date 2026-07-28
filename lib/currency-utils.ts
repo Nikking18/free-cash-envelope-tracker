@@ -52,7 +52,6 @@ export const SUPPORTED_LANGUAGES: LanguageInfo[] = [
   { code: 'es', name: 'Español', flag: '🇪🇸' },
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
 ];
 
 /**
@@ -76,7 +75,6 @@ export async function fetchLiveExchangeRates(): Promise<boolean> {
       }
     }
   } catch (e) {
-    // Fallback to secondary API
     try {
       const res2 = await fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' });
       if (res2.ok) {
@@ -121,9 +119,6 @@ export function getPdfCurrencySymbol(code: string = 'USD'): string {
   return currency ? currency.pdfSymbol : `${code} `;
 }
 
-/**
- * Converts an amount from one currency to another currency using real-time rates
- */
 export function convertCurrency(
   amount: number,
   fromCode: string = 'USD',
@@ -140,9 +135,6 @@ export function convertCurrency(
   return Math.round(converted * 100) / 100;
 }
 
-/**
- * Formats a currency amount for Web UI display
- */
 export function formatCurrency(amount: number, currencyCode: string = 'USD'): string {
   const symbol = getCurrencySymbol(currencyCode);
   const formattedNumber = Math.abs(amount).toLocaleString('en-US', {
@@ -153,9 +145,6 @@ export function formatCurrency(amount: number, currencyCode: string = 'USD'): st
   return `${sign}${symbol}${formattedNumber}`;
 }
 
-/**
- * Formats a currency amount for PDF export without Unicode glyph errors
- */
 export function formatPdfCurrency(amount: number, currencyCode: string = 'USD'): string {
   const symbol = getPdfCurrencySymbol(currencyCode);
   const formattedNumber = Math.abs(amount).toLocaleString('en-US', {

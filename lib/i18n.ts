@@ -1,4 +1,4 @@
-export type LanguageCode = 'en' | 'es' | 'fr' | 'de' | 'hi';
+export type LanguageCode = 'en' | 'es' | 'fr' | 'de';
 
 export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   en: {
@@ -43,6 +43,32 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     step3Desc:
       'Download print-ready PDF summaries or export clean 2-sheet Excel files for tax prep or archiving. Your data stays 100% private in your browser.',
 
+    // Showcase (How it looks in web view)
+    showcaseBadge: 'VISUAL INTERFACE SHOWCASE',
+    showcaseTitleLine1: 'HOW IT LOOKS IN',
+    showcaseTitleLine2: 'WEB VIEW',
+    showcaseSubtitle:
+      'Explore the clean, high-contrast dashboard layout designed for seamless cash envelope management on desktop, tablet, and mobile browsers.',
+    tabDesktop: 'DESKTOP WEB VIEW',
+    tabMobile: 'MOBILE WEB VIEW',
+    tabReports: 'PDF & EXCEL REPORTS',
+    cardPdfTitle: 'PDF EXPORT STYLES',
+    cardPdfBadge: 'INSTANT PDF',
+    cardPdfDesc:
+      'Generate print-ready financial statements in two distinct templates: Classic Minimal (color-coded ledger cards) or Minimal B&W (ruled lines for manual home printing).',
+    pdfPreviewTag: '[PDF PREVIEW]',
+    pdfBullet1: 'Total Budget Summary & Category Breakdown',
+    pdfBullet2: 'Itemized Transaction History by Date',
+    pdfBullet3: 'Custom Notes & Hand-writing Ruled Lines',
+    cardExcelTitle: 'EXCEL IMPORT & EXPORT',
+    cardExcelBadge: '2-SHEET XLSX',
+    cardExcelDesc:
+      'Export full budget data to standard `.xlsx` spreadsheets or upload previously saved Excel files formatted into Envelopes and Expenses sheets with built-in formula-injection sanitization.',
+    excelPreviewTag: '[SHEETJS / EXCEL PREVIEW]',
+    excelBullet1: 'Sheet 1: Envelopes (Name, Allocated Amount, Category)',
+    excelBullet2: 'Sheet 2: Expenses (Envelope Name, Amount, Note, Date)',
+    excelBullet3: 'Automatic validation & formula sanitization',
+
     // Guide
     guideBadge: 'Cash Stuffing Guide & Resources',
     guideTitleLine1: 'The Ultimate',
@@ -71,6 +97,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
 
     // Tracker Summary & Overview
     budgetOverview: 'Budget Overview',
+    realTimeCalcSubtitle: 'Real-time calculation across all active envelopes and expenses',
     overBudget: 'Over Budget',
     newEnvelope: 'New Envelope',
     logExpense: 'Log Expense',
@@ -106,6 +133,12 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     addExpenseBtn: '+ ADD EXPENSE',
     noEnvelopesFound: 'No envelopes found.',
 
+    // Categories
+    catEssential: 'Essential',
+    catDiscretionary: 'Discretionary',
+    catSavings: 'Savings',
+    catDebt: 'Debt',
+
     // Ledger
     recentLedger: 'Recent Ledger',
     ledgerSubtitle: 'Search, filter, and audit all expense logs',
@@ -122,8 +155,25 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     lowestFirst: 'LOWEST AMOUNT',
     logsCount: 'LOGS',
 
+    // FAQ Section
+    faqBadge: 'FREQUENTLY ASKED QUESTIONS & GUIDE',
+    faqTitleLine1: 'EVERYTHING YOU NEED TO KNOW ABOUT',
+    faqTitleHighlight: 'DIGITAL CASH STUFFING',
+    faqSubtitle: 'Get quick answers about privacy, zero-login cash envelope tracking, PDF/Excel backups, and digital budget management.',
+    faqQ1: 'Is Free Cash Envelope Tracker 100% free with no hidden fees?',
+    faqA1: 'Yes! Free Cash Envelope Tracker is 100% free forever. There are no premium subscriptions, no paywalled features, no ads, and no hidden charges. All envelope management, expense logging, PDF exports, and Excel imports/exports are completely free to use.',
+    faqQ2: 'How does digital cash stuffing work?',
+    faqA2: 'Digital cash stuffing adapts the traditional physical cash envelope budgeting system into a convenient browser app. Instead of withdrawing physical paper cash into paper envelopes, you create virtual digital envelopes (e.g. Groceries, Rent, Dining Out, Savings), assign target budget amounts, and log transactions as you spend. Live progress bars visually alert you if an envelope is approaching or exceeding its limit.',
+    faqQ3: 'Is my financial budget data safe and private?',
+    faqA3: 'Absolutely. Your privacy is guaranteed because 100% of your budget data is stored exclusively inside your browser\'s local storage (localStorage). We do not operate remote databases, we do not require account sign-ups or email addresses, and we never link to bank credentials. Your data never leaves your device.',
+    faqQ4: 'Can I export my cash envelope budget to PDF or Excel?',
+    faqA4: 'Yes! You can export your complete budget summary anytime. We support two customizable PDF export templates: Classic Minimal (color-coded cards and itemized ledger) and Minimal B&W (print-friendly ruled lines). You can also export your budget into a 2-sheet Excel (.xlsx) spreadsheet or import existing Excel budget files.',
+    faqQ5: 'What happens if I clear my browser history or switch devices?',
+    faqA5: 'Because all budget data lives locally in your browser\'s storage, clearing browser cache or switching to a new phone/computer will start a fresh session. We recommend regularly exporting a PDF or Excel backup file so you can restore or reference your budget records whenever needed.',
+    faqQ6: 'Do I need to connect a bank account or credit card?',
+    faqA6: 'No! Free Cash Envelope Tracker requires zero bank credentials, zero credit cards, and zero account creation. It is a completely manual, privacy-focused zero-login budgeting tool designed for total financial autonomy.',
+
     // Modals
-    // Envelope Modal
     createEnvelopeTitle: 'Create Cash Envelope',
     editEnvelopeTitle: 'Edit Cash Envelope',
     envNameLabel: 'Envelope Name',
@@ -136,7 +186,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     saveChangesBtn: 'Save Changes',
     cancelBtn: 'Cancel',
 
-    // Expense Modal
     logExpenseTitle: 'Log Envelope Expense',
     editExpenseTitle: 'Edit Expense Log',
     selectEnvelopeLabel: 'Select Envelope',
@@ -148,7 +197,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     autoConversionNotice: 'Auto-converted to target envelope currency at current live rates.',
     saveExpenseBtn: 'Record Expense',
 
-    // PDF Template Modal
     selectPdfTemplateTitle: 'Export PDF Statement',
     selectPdfTemplateSubtitle: 'Choose a print-ready PDF statement card layout',
     classicTemplateTitle: 'Classic Minimal (Color Accent)',
@@ -157,14 +205,20 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     bwTemplateDesc: 'Pure black & white bordered layout designed to save printer ink for paper binders.',
     generatePdfBtn: 'Generate PDF Report',
 
-    // Reset Modal
     confirmResetTitle: 'Confirm Reset All Data',
     confirmResetDesc: 'This will permanently delete all envelopes, logged expenses, and budget settings stored in your browser.',
     confirmResetBtn: 'Yes, Delete & Reset All',
 
     // Footer
     footerCopyright: 'Free Cash Envelope Tracker. 100% Free & Open Source Personal Finance Tool.',
-    footerTagline: 'Built with privacy in mind. Data lives only in your browser.',
+    footerTagline: 'A free, single-page, private web app for digital cash stuffing. Built for people who want simple, transparent envelope budgeting without ads, forced accounts, or bank integrations.',
+    privacyBadge: '100% Client-Side Local Storage Privacy',
+    supportTitle: 'Support This Free Project',
+    supportDesc: 'Free Cash Envelope Tracker is completely free and ad-free. If this tool helped you manage your budget, consider supporting server hosting and maintenance.',
+    supportBtn: 'Support me',
+    poweredByKofi: 'Powered by Ko-fi',
+    connect: 'Connect:',
+    createdWithLove: 'Created with ❤️ by Nikhil',
 
     // PDF Exports Specific Text
     pdfDocTitle: 'CASH ENVELOPE',
@@ -228,6 +282,32 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     step3Desc:
       'Descarga resúmenes en PDF o archivos Excel de 2 hojas para tus impuestos o archivos.',
 
+    // Showcase (How it looks in web view)
+    showcaseBadge: 'MUESTRA DE INTERFAZ VISUAL',
+    showcaseTitleLine1: 'CÓMO SE VE EN',
+    showcaseTitleLine2: 'VISTA WEB',
+    showcaseSubtitle:
+      'Explora el diseño del panel de control de alto contraste pensado para una gestión fluida en navegadores de escritorio, tabletas y móviles.',
+    tabDesktop: 'VISTA WEB ESCRITORIO',
+    tabMobile: 'VISTA WEB MÓVIL',
+    tabReports: 'INFORMES PDF Y EXCEL',
+    cardPdfTitle: 'ESTILOS DE EXPORTACIÓN PDF',
+    cardPdfBadge: 'PDF AL INSTANTE',
+    cardPdfDesc:
+      'Genera informes financieros listos para imprimir en dos plantillas: Clásico Minimalista (tarjetas a color) o Blanco y Negro (líneas para imprimir).',
+    pdfPreviewTag: '[VISTA PREVIA PDF]',
+    pdfBullet1: 'Resumen de Presupuesto y Desglose por Categoría',
+    pdfBullet2: 'Historial de Transacciones Detallado por Fecha',
+    pdfBullet3: 'Notas Personalizadas y Líneas Imprimibles',
+    cardExcelTitle: 'IMPORTACIÓN Y EXPORTACIÓN EXCEL',
+    cardExcelBadge: 'EXCEL 2 HOJAS',
+    cardExcelDesc:
+      'Exporta tus datos completos de presupuesto a hojas `.xlsx` o carga archivos formateados en hojas de Sobres y Gastos.',
+    excelPreviewTag: '[VISTA PREVIA EXCEL]',
+    excelBullet1: 'Hoja 1: Sobres (Nombre, Monto Asignado, Categoría)',
+    excelBullet2: 'Hoja 2: Gastos (Nombre de Sobre, Monto, Nota, Fecha)',
+    excelBullet3: 'Validación automática y desinfección de fórmulas',
+
     // Guide
     guideBadge: 'Guía y Recursos de Sobres de Efectivo',
     guideTitleLine1: 'El Sistema Definitivo de',
@@ -256,6 +336,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
 
     // Tracker Summary & Overview
     budgetOverview: 'Resumen del Presupuesto',
+    realTimeCalcSubtitle: 'Cálculo en tiempo real de todos los sobres y gastos activos',
     overBudget: 'Sobre Presupuesto',
     newEnvelope: 'Nuevo Sobre',
     logExpense: 'Registrar Gasto',
@@ -291,6 +372,12 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     addExpenseBtn: '+ AÑADIR GASTO',
     noEnvelopesFound: 'No se encontraron sobres.',
 
+    // Categories
+    catEssential: 'Esencial',
+    catDiscretionary: 'Discrecional',
+    catSavings: 'Ahorro',
+    catDebt: 'Deuda',
+
     // Ledger
     recentLedger: 'Libro de Registro Reciente',
     ledgerSubtitle: 'Busca, filtra y audita todos tus registros',
@@ -306,6 +393,24 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     highestFirst: 'MAYOR MONTO',
     lowestFirst: 'MENOR MONTO',
     logsCount: 'REGISTROS',
+
+    // FAQ Section
+    faqBadge: 'PREGUNTAS FRECUENTES Y GUÍA',
+    faqTitleLine1: 'TODO LO QUE NECESITAS SABER SOBRE',
+    faqTitleHighlight: 'SOBRES DE EFECTIVO DIGITALES',
+    faqSubtitle: 'Respuestas rápidas sobre privacidad, seguimiento sin cuenta, respaldos PDF/Excel y gestión de presupuesto.',
+    faqQ1: '¿Free Cash Envelope Tracker es 100% gratuito y sin comisiones ocultas?',
+    faqA1: '¡Sí! Free Cash Envelope Tracker es 100% gratuito para siempre. Sin suscripciones premium, sin publicidad y sin costos ocultos. Todas las funciones de sobres, registro de gastos y exportación son totalmente libres.',
+    faqQ2: '¿Cómo funciona el presupuesto por sobres digital?',
+    faqA2: 'Adapta el método tradicional de sobres a una práctica aplicación web. En lugar de retirar efectivo en billetes, creas sobres digitales virtuales (ej. Comestibles, Alquiler, Salidas), asignas montos y registras tus gastos en tiempo real.',
+    faqQ3: '¿Mis datos financieros están seguros y privados?',
+    faqA3: 'Absolutamente. Tu privacidad está garantizada porque el 100% de tus datos se guarda únicamente en el localStorage de tu navegador. Sin servidores ni vinculación de cuentas bancarias.',
+    faqQ4: '¿Puedo exportar mi presupuesto a PDF o Excel?',
+    faqA4: '¡Sí! Puedes exportar tu resumen completo en cualquier momento a través de plantillas PDF imprimibles o descargando un archivo Excel (.xlsx) estructurado.',
+    faqQ5: '¿Qué sucede si borro el historial de mi navegador o cambio de dispositivo?',
+    faqA5: 'Como todos los datos viven localmente en tu navegador, limpiar la memoria o cambiar de equipo iniciará una sesión limpia. Recomendamos exportar regularmente un respaldo PDF o Excel.',
+    faqQ6: '¿Necesito conectar una cuenta bancaria o tarjeta de crédito?',
+    faqA6: '¡No! Requieres cero datos bancarios, cero tarjetas y cero cuentas. Es una herramienta de presupuesto 100% manual centrada en tu autonomía financiera.',
 
     // Modals
     createEnvelopeTitle: 'Crear Sobre de Efectivo',
@@ -343,8 +448,16 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     confirmResetDesc: 'Esto eliminará permanentemente todos tus sobres, gastos y configuraciones.',
     confirmResetBtn: 'Sí, Eliminar y Restablecer',
 
+    // Footer
     footerCopyright: 'Free Cash Envelope Tracker. Herramienta Financiera 100% Gratuita.',
-    footerTagline: 'Construido pensando en la privacidad. Tus datos permanecen en tu navegador.',
+    footerTagline: 'Una aplicación web gratuita, de una sola página y privada para presupuesto por sobres de efectivo digitales. Diseñada para quienes desean un presupuesto claro sin anuncios ni registros obligatorios.',
+    privacyBadge: '100% Privacidad en Almacenamiento Local',
+    supportTitle: 'Apoya Este Proyecto Gratuito',
+    supportDesc: 'Free Cash Envelope Tracker es 100% gratuito y sin anuncios. Si esta herramienta te ayudó a organizar tu presupuesto, considera apoyar el mantenimiento del servidor.',
+    supportBtn: 'Apoyar proyecto',
+    poweredByKofi: 'Con tecnología de Ko-fi',
+    connect: 'Conectar:',
+    createdWithLove: 'Creado con ❤️ por Nikhil',
 
     // PDF Exports
     pdfDocTitle: 'SOBRES DE EFECTIVO',
@@ -405,6 +518,31 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     step3Desc:
       'Téléchargez des résumés PDF ou exportez des fichiers Excel à 2 feuilles pour vos archives.',
 
+    showcaseBadge: 'DÉMONSTRATION DE L\'INTERFACE',
+    showcaseTitleLine1: 'APERÇU DE L\'AFFICHAGE',
+    showcaseTitleLine2: 'WEB',
+    showcaseSubtitle:
+      'Découvrez une interface moderne et fluide conçue pour une gestion intuitive des enveloppes sur ordinateur, tablette et smartphone.',
+    tabDesktop: 'APERÇU ORDINATEUR',
+    tabMobile: 'APERÇU MOBILE',
+    tabReports: 'RAPPORTS PDF & EXCEL',
+    cardPdfTitle: 'MODÈLES D\'EXPORT PDF',
+    cardPdfBadge: 'PDF INSTANTANÉ',
+    cardPdfDesc:
+      'Générez des rapports financiers prêts à imprimer selon deux modèles : Classique Minimaliste (cartes en couleur) ou Noir & Blanc (lignes guidées).',
+    pdfPreviewTag: '[APERÇU PDF]',
+    pdfBullet1: 'Résumé du Budget & Répartition par Catégorie',
+    pdfBullet2: 'Historique des Transactions Détaillé par Date',
+    pdfBullet3: 'Notes Personnalisées et Lignes à Annoter',
+    cardExcelTitle: 'IMPORT & EXPORT EXCEL',
+    cardExcelBadge: 'EXCEL 2 FEUILLES',
+    cardExcelDesc:
+      'Exportez toutes vos données budgétaires dans un fichier Excel `.xlsx` structuré avec feuilles d\'Enveloppes et de Dépenses.',
+    excelPreviewTag: '[APERÇU EXCEL]',
+    excelBullet1: 'Feuille 1: Enveloppes (Nom, Budget Alloué, Catégorie)',
+    excelBullet2: 'Feuille 2: Dépenses (Nom d\'Enveloppe, Montant, Note, Date)',
+    excelBullet3: 'Validation automatique et sécurité des formules',
+
     guideBadge: 'Guide & Ressources des Enveloppes Budgétaires',
     guideTitleLine1: 'Le Système Ultime d’',
     guideTitleLine2: 'Enveloppes Budgétaires Digitales',
@@ -431,6 +569,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     card3Check3: 'Import & Export Excel',
 
     budgetOverview: 'Aperçu du Budget',
+    realTimeCalcSubtitle: 'Calcul en temps réel de toutes les enveloppes et dépenses actives',
     overBudget: 'Budget Dépassé',
     newEnvelope: 'Nouvelle Enveloppe',
     logExpense: 'Ajouter une Dépense',
@@ -465,6 +604,11 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     addExpenseBtn: '+ AJOUTER DÉPENSE',
     noEnvelopesFound: 'Aucune enveloppe trouvée.',
 
+    catEssential: 'Essentiel',
+    catDiscretionary: 'Loisirs',
+    catSavings: 'Épargne',
+    catDebt: 'Dette',
+
     recentLedger: 'Registre des Dépenses',
     ledgerSubtitle: 'Recherchez, filtrez et vérifiez vos dépenses',
     date: 'Date',
@@ -479,6 +623,23 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     highestFirst: 'MONTANT LE PLUS ÉLEVÉ',
     lowestFirst: 'MONTANT LE PLUS BAS',
     logsCount: 'DÉPENSES',
+
+    faqBadge: 'FOIRE AUX QUESTIONS & GUIDE',
+    faqTitleLine1: 'TOUT CE QUE VOUS DEVEZ SAVOIR SUR LE',
+    faqTitleHighlight: 'BUDGET PAR ENVELOPPES DIGITALES',
+    faqSubtitle: 'Réponses rapides sur la confidentialité, le suivi sans compte, les sauvegardes PDF/Excel et la gestion budgétaire.',
+    faqQ1: 'Est-ce que Free Cash Envelope Tracker est 100% gratuit sans frais cachés ?',
+    faqA1: 'Oui ! Free Cash Envelope Tracker est 100% gratuit pour toujours. Aucune souscription premium, aucune publicité et aucun frais caché. Toutes les fonctionnalités sont entièrement accessibles.',
+    faqQ2: 'Comment fonctionne la méthode des enveloppes digitales ?',
+    faqA2: 'Elle adapte la méthode traditionnelle en une application web pratique. Au lieu de retirer des billets, vous créez des enveloppes digitales (ex: Courses, Loyer, Sorties), allouez un budget et suivez vos dépenses en temps réel.',
+    faqQ3: 'Mes données financières sont-elles en sécurité ?',
+    faqA3: 'Absolument. Vos données sont conservées exclusivement dans le localStorage de votre navigateur. Pas de serveurs distants ni de connexion bancaire.',
+    faqQ4: 'Puis-je exporter mon budget au format PDF ou Excel ?',
+    faqA4: 'Oui ! Vous pouvez exporter vos rapports au format PDF imprimable ou sous forme de fichier Excel (.xlsx) structuré à tout moment.',
+    faqQ5: 'Que se passe-t-il si j’efface mon historique de navigation ?',
+    faqA5: 'Puisque vos données sont stockées localement, vider votre cache démarrera une nouvelle session. Nous vous recommandons d’exporter régulièrement une sauvegarde PDF ou Excel.',
+    faqQ6: 'Dois-je connecter une carte bancaire ou un compte ?',
+    faqA6: 'Non ! Aucun identifiant bancaire ni création de compte ne sont requis. C’est un outil autonome axé sur la confidentialité.',
 
     createEnvelopeTitle: 'Créer une Enveloppe',
     editEnvelopeTitle: 'Modifier l’Enveloppe',
@@ -516,9 +677,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     confirmResetBtn: 'Oui, Tout Effacer',
 
     footerCopyright: 'Free Cash Envelope Tracker. Outil Financier 100% Gratuit.',
-    footerTagline: 'Conçu dans le respect de votre vie privée. Données conservées uniquement dans votre navigateur.',
+    footerTagline: 'Une application web gratuite et privée pour la gestion de budget par enveloppes. Conçue pour ceux qui recherchent la simplicité sans publicité ni compte obligatoire.',
+    privacyBadge: '100% Confidentialité en Stockage Local',
+    supportTitle: 'Soutenir ce Projet Gratuit',
+    supportDesc: 'Free Cash Envelope Tracker est entièrement gratuit et sans publicité. Si cet outil vous aide, pensez à soutenir l\'hébergement du serveur.',
+    supportBtn: 'Faire un don',
+    poweredByKofi: 'Propulsé par Ko-fi',
+    connect: 'Réseaux :',
+    createdWithLove: 'Créé avec ❤️ par Nikhil',
 
-    // PDF Exports
     pdfDocTitle: 'ENVELOPPES BUDGÉTAIRES',
     pdfDocSubtitle: 'Suivi',
     pdfDateLabel: 'Date',
@@ -577,6 +744,31 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     step3Desc:
       'Laden Sie druckfertige PDF-Zusammenfassungen herunter oder exportieren Sie saubere Excel-Dateien.',
 
+    showcaseBadge: 'VISUELLE OBERFLÄCHENSCHAU',
+    showcaseTitleLine1: 'SO SIEHT ES IN DER',
+    showcaseTitleLine2: 'WEB-ANSICHT AUS',
+    showcaseSubtitle:
+      'Entdecken Sie das moderne, kontrastreiche Dashboard-Layout für eine einfache Budgetverwaltung auf PC, Tablet und Smartphone.',
+    tabDesktop: 'DESKTOP WEB-ANSICHT',
+    tabMobile: 'MOBILE WEB-ANSICHT',
+    tabReports: 'PDF & EXCEL BERICHTE',
+    cardPdfTitle: 'PDF EXPORT-STILE',
+    cardPdfBadge: 'SOFORT-PDF',
+    cardPdfDesc:
+      'Erstellen Sie druckfertige Finanzberichte in zwei Vorlagen: Klassisch Minimalistisch (Farbe) oder Schwarz-Weiß (druckerfreundlich).',
+    pdfPreviewTag: '[PDF VORSCHAU]',
+    pdfBullet1: 'Gesamtbudget-Zusammenfassung & Kategorie-Aufschlüsselung',
+    pdfBullet2: 'Detaillierter Transaktionsverlauf nach Datum',
+    pdfBullet3: 'Benutzerdefinierte Notizen & linierte Druckzeilen',
+    cardExcelTitle: 'EXCEL IMPORT & EXPORT',
+    cardExcelBadge: 'EXCEL 2 BLÄTTER',
+    cardExcelDesc:
+      'Exportieren Sie Ihre Daten in ein strukturierte `.xlsx` Tabellen mit Umschlag- und Ausgabenblättern.',
+    excelPreviewTag: '[EXCEL VORSCHAU]',
+    excelBullet1: 'Blatt 1: Umschläge (Name, Zielbudget, Kategorie)',
+    excelBullet2: 'Blatt 2: Ausgaben (Umschlagname, Betrag, Notiz, Datum)',
+    excelBullet3: 'Automatische Validierung & Formelsicherheit',
+
     guideBadge: 'Umschlag-Budgeting Leitfaden',
     guideTitleLine1: 'Das Ultimative',
     guideTitleLine2: 'Digitale Umschlag-System',
@@ -603,6 +795,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     card3Check3: 'Excel Import & Export',
 
     budgetOverview: 'Budget-Übersicht',
+    realTimeCalcSubtitle: 'Echtzeit-Berechnung über alle aktiven Umschläge und Ausgaben',
     overBudget: 'Budget Überschritten',
     newEnvelope: 'Neuer Umschlag',
     logExpense: 'Ausgabe Buchen',
@@ -637,6 +830,11 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     addExpenseBtn: '+ AUSGABE BUCHEN',
     noEnvelopesFound: 'Keine Umschläge gefunden.',
 
+    catEssential: 'Essentiell',
+    catDiscretionary: 'Freizeit',
+    catSavings: 'Sparen',
+    catDebt: 'Schulden',
+
     recentLedger: 'Kassenbuch',
     ledgerSubtitle: 'Durchsuchen und prüfen Sie Ihre Ausgaben',
     date: 'Datum',
@@ -651,6 +849,23 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     highestFirst: 'HÖCHSTER BETRAG',
     lowestFirst: 'NIEDRIGSTER BETRAG',
     logsCount: 'EINTRÄGE',
+
+    faqBadge: 'HÄUFIG GESTELLTE FRAGEN & LEITFADEN',
+    faqTitleLine1: 'ALLES, WAS SIE WISSEN MÜSSEN ÜBER',
+    faqTitleHighlight: 'DIGITALES UMSCHLAG-BUDGETING',
+    faqSubtitle: 'Schnelle Antworten zu Datenschutz, kontofreier Verwaltung, PDF/Excel-Backups und Budgetkontrolle.',
+    faqQ1: 'Ist Free Cash Envelope Tracker 100% kostenlos ohne versteckte Gebühren?',
+    faqA1: 'Ja! Free Cash Envelope Tracker ist für immer 100% kostenlos. Keine Premium-Abos, keine Werbung und keine versteckten Kosten.',
+    faqQ2: 'Wie funktioniert digitales Umschlag-Budgeting?',
+    faqA2: 'Es überträgt das traditionelle Umschlag-System in den Browser. Statt Bargeld abzuheben, erstellen Sie virtuelle Umschläge (z.B. Lebensmittel, Miete), weisen Ziele zu und buchen Ausgaben.',
+    faqQ3: 'Sind meine Finanzdaten sicher und privat?',
+    faqA3: 'Absolut. Ihre Daten werden ausschließlich im localStorage Ihres Browsers gespeichert. Keine Server, keine Bankverknüpfungen.',
+    faqQ4: 'Kann ich mein Budget als PDF oder Excel exportieren?',
+    faqA4: 'Ja! Sie können Ihre Budgetübersichten jederzeit als druckbare PDF-Dateien oder als strukturierte Excel-Tabelle (.xlsx) herunterladen.',
+    faqQ5: 'Was passiert, wenn ich meinen Browserverlauf lösche?',
+    faqA5: 'Da alle Daten lokal gespeichert sind, startet das Löschen des Caches eine frische Sitzung. Wir empfehlen regelmäßige PDF- oder Excel-Exports.',
+    faqQ6: 'Muss ich ein Bankkonto oder eine Kreditkarte verknüpfen?',
+    faqA6: 'Nein! Es werden keinerlei Bankdaten oder Konten benötigt. Es ist ein 100% manuelles Budget-Tool für volle finanzielle Unabhängigkeit.',
 
     createEnvelopeTitle: 'Umschlag Erstellen',
     editEnvelopeTitle: 'Umschlag Bearbeiten',
@@ -688,9 +903,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     confirmResetBtn: 'Ja, Alles Löschen',
 
     footerCopyright: 'Free Cash Envelope Tracker. 100% Kostenloses Finanz-Tool.',
-    footerTagline: 'Entwickelt mit Fokus auf Privatsphäre. Daten bleiben nur in Ihrem Browser.',
+    footerTagline: 'Eine kostenlose, private Web-App für digitales Umschlag-Budgeting. Entwickelt für transparente Budgetkontrolle ohne Werbung oder Kontozwang.',
+    privacyBadge: '100% Lokaler Datenschutz im Browser',
+    supportTitle: 'Dieses kostenlose Projekt unterstützen',
+    supportDesc: 'Free Cash Envelope Tracker ist völlig kostenlos und werbefrei. Wenn Ihnen das Tool hilft, unterstützen Sie gerne den Serverbetrieb.',
+    supportBtn: 'Projekt unterstützen',
+    poweredByKofi: 'Unterstützt von Ko-fi',
+    connect: 'Verbinden:',
+    createdWithLove: 'Erstellt mit ❤️ von Nikhil',
 
-    // PDF Exports
     pdfDocTitle: 'BARGELD-UMSCHLÄGE',
     pdfDocSubtitle: 'Tracker',
     pdfDateLabel: 'Datum',
@@ -709,178 +930,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     pdfAmountHeader: 'BETRAG (-)',
     pdfNotesSection: 'NOTIZEN & ERINNERUNGEN',
     pdfHandwritingText: 'Sie können diese Seite ausdrucken und Ihre eigenen Notizen handschriftlich eintragen.',
-  },
-  hi: {
-    brandName: 'फ्री कैश एनवेलप ट्रैकर',
-    brandTagline: 'डिजिटल कैश लिफाफा बजट प्रणाली',
-    navGoToTracker: 'ट्रैकर पर जाएं',
-    navTracker: 'ट्रैकर',
-
-    heroBadge: '100% निजी — केवल ब्राउज़र में सुरक्षित',
-    heroTitleLine1: 'अपने पैसों को संभालें',
-    heroTitleLine2: 'डिजिटल कैश लिफाफे के साथ',
-    heroSubtitle:
-      'डिजिटल लिफाफा बजट प्रणाली के साथ समझदारी से बजट बनाएं। वर्चुअल लिफाफों में आय आवंटित करें, दैनिक खर्च दर्ज करें और रिपोर्ट डाउनलोड करें।',
-    heroBullet1: 'बिना किसी खाते के',
-    heroBullet2: 'पूर्ण ब्राउज़र गोपनीयता',
-    heroBullet3: 'पीडीएफ और एक्सेल एक्सपोर्ट',
-    heroStartButton: 'बजट बनाना शुरू करें',
-    heroWhyTitle: 'डिजिटल कैश लिफाफा क्यों?',
-    heroFreeBadge: '100% मुफ्त',
-    heroFeature1Title: 'डेटा पर आपका पूरा अधिकार',
-    heroFeature1Desc:
-      'आपका बजट डेटा केवल आपके ब्राउज़र के localStorage में सुरक्षित रहता है। कोई सर्वर नहीं, कोई ट्रैकिंग नहीं।',
-    heroFeature2Title: 'आसान इम्पोर्ट और बैकअप',
-    heroFeature2Desc:
-      'अपने डेटा का बैकअप रखने के लिए पीडीएफ या 2-शीट एक्सेल फाइल (.xlsx) आसानी से डाउनलोड करें।',
-    heroQuote:
-      '"आपका डेटा केवल इस ब्राउज़र में रहता है। यदि आप ब्राउज़र डेटा साफ़ करते हैं, तो यह मिट जाएगा — बैकअप के लिए पीडीएफ डाउनलोड कर लें।"',
-
-    howItWorksTitle: 'कैश लिफाफा बजट कैसे काम करता है',
-    howItWorksSubtitle:
-      'एक सरल और व्यावहारिक तरीका जो आपके हर रुपये को एक खास उद्देश्य देता है।',
-    step1Title: 'नाम के साथ लिफाफे बनाएं',
-    step1Desc:
-      'अपनी आय को राशन, किराया, खाना-पीना या इमरजेंसी फंड जैसे अलग-अलग लिफाफों में बांटें।',
-    step2Title: 'रियल-टाइम में खर्च दर्ज करें',
-    step2Desc:
-      'खर्च करते समय तुरंत संबंधित लिफाफे में दर्ज करें। प्रोग्रेस बार देखें और ओवर-बजट अलर्ट पाएं।',
-    step3Title: 'एक्सपोर्ट और बैकअप लें',
-    step3Desc:
-      'प्रिंट-रेडी पीडीएफ समरी डाउनलोड करें या एक्सेल फाइल एक्सपोर्ट करें।',
-
-    guideBadge: 'कैश बजटिंग गाइड और संसाधन',
-    guideTitleLine1: 'आपके पैसों के लिए',
-    guideTitleLine2: 'डिजिटल कैश लिफाफा',
-    guideTitleLine3: 'बजट प्रणाली',
-    guideSubtitle:
-      'जानें कि डिजिटल कैश लिफाफा सिस्टम आपको व्यक्तिगत वित्त और बचत पर पूरा नियंत्रण पाने में कैसे मदद करता है।',
-    card1Title: 'कैश स्टफिंग क्या है?',
-    card1Desc:
-      'कैश स्टफिंग एक जीरो-बेस्ड बजटिंग तरीका है जहाँ आप अपनी कमाई के हर रुपये को राशन, पेट्रोल और बचत जैसे लिफाफों में आवंटित करते हैं।',
-    card1Check1: 'अनावश्यक खर्चों को रोकता है',
-    card1Check2: 'रियल-टाइम प्रोग्रेस बार',
-    card1Check3: '100% मुफ्त और बिना खाता बनाए',
-    card2Title: 'कागज के बजाय डिजिटल क्यों चुनें?',
-    card2Desc:
-      'जेब में ज्यादा कैश लेकर घूमना जोखिम भरा है। फ्री कैश एनवेलप ट्रैकर आपको बिना कैश निकाले डिजिटल लिफाफा बजटिंग की सुविधा देता है।',
-    card2Check1: 'कैश खोने का कोई डर नहीं',
-    card2Check2: 'ब्राउज़र में पूर्ण गोपनीयता',
-    card2Check3: 'तेज़ लेनदेन प्रविष्टि',
-    card3Title: 'प्रिंट-रेडी पीडीएफ और एक्सेल रिपोर्ट',
-    card3Desc:
-      'कागज़ी रिकॉर्ड चाहिए? स्पष्ट पीडीएफ रिपोर्ट कार्ड या 2-शीट एक्सेल फाइल (.xlsx) डाउनलोड करें।',
-    card3Check1: 'क्लासिक पीडीएफ कार्ड्स',
-    card3Check2: 'प्रिंट-फ्रेंडली B&W डिजाइन',
-    card3Check3: 'एक्सेल इम्पोर्ट और एक्सपोर्ट',
-
-    budgetOverview: 'बजट अवलोकन',
-    overBudget: 'बजट से अधिक',
-    newEnvelope: 'नया लिफाफा',
-    logExpense: 'खर्च दर्ज करें',
-    import: 'इम्पोर्ट',
-    export: 'एक्सपोर्ट',
-    exportPdf: 'पीडीएफ एक्सपोर्ट करें',
-    exportExcel: 'एक्सेल एक्सपोर्ट करें',
-    reset: 'रीसेट करें',
-    totalAllocated: 'कुल आवंटित बजट',
-    totalSpent: 'कुल खर्च',
-    totalRemaining: 'कुल शेष राशि',
-    sumAllocated: 'कुल लिफाफा लक्ष्य',
-    sumSpent: 'कुल दर्ज किए गए खर्च',
-    availCash: 'उपलब्ध शेष राशि',
-    overAllocated: 'आवंटित लक्ष्य से अधिक',
-    budgetUtilization: 'बजट का उपयोग',
-    used: 'उपयोग हुआ',
-    budgetPeriodLabel: 'बजट अवधि:',
-    budgetPeriodPlaceholder: 'जैसे अगस्त 2026 या 26 जुलाई – 9 अगस्त',
-    remindLabel: 'बैकअप के लिए याद दिलाएं:',
-    every3days: 'हर 3 दिन में',
-    weeklyDefault: 'साप्ताहिक (साधारण)',
-    every2weeks: 'हर 2 सप्ताह में',
-    monthly: 'मासिक',
-    never: 'कभी नहीं',
-
-    cashEnvelopes: 'कैश लिफाफे',
-    allCategories: 'सभी श्रेणी',
-    searchEnvelopes: 'लिफाफा खोजें...',
-    remainingLabel: 'शेष राशि:',
-    progressLabel: 'प्रगति:',
-    addExpenseBtn: '+ खर्च जोड़ें',
-    noEnvelopesFound: 'कोई लिफाफा नहीं मिला।',
-
-    recentLedger: 'हाल का लेनदेन रजिस्टर',
-    ledgerSubtitle: 'अपने सभी खर्चों की जांच और खोज करें',
-    date: 'तारीख',
-    envelope: 'लिफाफा',
-    noteVendor: 'विवरण / दुकानदार',
-    amount: 'राशि',
-    actions: 'कार्रवाई',
-    searchNotePlaceholder: 'विवरण, दुकानदार, लिफाफा खोजें...',
-    allEnvelopesFilter: 'सभी लिफाफे',
-    newestFirst: 'नवीनतम पहले',
-    oldestFirst: 'पुराने पहले',
-    highestFirst: 'अधिकतम राशि',
-    lowestFirst: 'न्यूनतम राशि',
-    logsCount: 'लेनदेन',
-
-    createEnvelopeTitle: 'कैश लिफाफा बनाएं',
-    editEnvelopeTitle: 'लिफाफे में बदलाव करें',
-    envNameLabel: 'लिफाफे का नाम',
-    envNamePlaceholder: 'जैसे राशन, किराया, इमरजेंसी',
-    allocatedLabel: 'लक्ष्य बजट राशि',
-    currencyLabel: 'मुद्रा (Currency)',
-    categoryLabel: 'खर्च की श्रेणी',
-    colorLabel: 'रंग',
-    saveEnvelopeBtn: 'लिफाफा बनाएं',
-    saveChangesBtn: 'बदलाव सुरक्षित करें',
-    cancelBtn: 'रद्द करें',
-
-    logExpenseTitle: 'खर्च दर्ज करें',
-    editExpenseTitle: 'खर्च में बदलाव करें',
-    selectEnvelopeLabel: 'लिफाफा चुनें',
-    expenseAmountLabel: 'खर्च की राशि',
-    expenseCurrencyLabel: 'खर्च की मुद्रा',
-    vendorNoteLabel: 'दुकानदार / विवरण (वैकल्पिक)',
-    vendorNotePlaceholder: 'जैसे सुपरमार्केट, पेट्रोल पंप',
-    expenseDateLabel: 'लेनदेन की तारीख',
-    autoConversionNotice: 'लाइव दरों के आधार पर लिफाफे की मुद्रा में स्वतः परिवर्तित।',
-    saveExpenseBtn: 'खर्च सुरक्षित करें',
-
-    selectPdfTemplateTitle: 'पीडीएफ एक्सपोर्ट करें',
-    selectPdfTemplateSubtitle: 'प्रिंट-रेडी पीडीएफ कार्ड डिजाइन चुनें',
-    classicTemplateTitle: 'क्लासिक मिनिमल (रंगीन)',
-    classicTemplateDesc: 'रंगीन समरी कार्ड और स्पष्ट तालिका।',
-    bwTemplateTitle: 'मिनिमल ब्लैक एंड वाइट (प्रिंट-फ्रेंडली)',
-    bwTemplateDesc: 'प्रिंटर की स्याही बचाने के लिए ब्लैक एंड वाइट डिजाइन।',
-    generatePdfBtn: 'पीडीएफ रिपोर्ट डाउनलोड करें',
-
-    confirmResetTitle: 'रीसेट की पुष्टि करें',
-    confirmResetDesc: 'यह आपके सभी लिफाफे और खर्चों को स्थायी रूप से मिटा देगा।',
-    confirmResetBtn: 'हां, सब मिटाएं',
-
-    footerCopyright: 'फ्री कैश एनवेलप ट्रैकर। 100% मुफ्त पर्सनल फाइनेंस टूल।',
-    footerTagline: 'पूरी गोपनीयता के साथ निर्मित। डेटा केवल आपके ब्राउज़र में रहता है।',
-
-    // PDF Exports
-    pdfDocTitle: 'कैश लिफाफा',
-    pdfDocSubtitle: 'ट्रैकर',
-    pdfDateLabel: 'तारीख',
-    pdfPeriodLabel: 'बजट अवधि',
-    pdfAllocatedCard: 'कुल आवंटित बजट',
-    pdfSpentCard: 'कुल खर्च',
-    pdfRemainingCard: 'कुल शेष राशि',
-    pdfEnvelopesSection: 'लिफाफा विवरण',
-    pdfEnvNameHeader: 'लिफाफे का नाम',
-    pdfCategoryHeader: 'श्रेणी',
-    pdfAllocatedHeader: 'आवंटित',
-    pdfSpentHeader: 'खर्च',
-    pdfRemainingHeader: 'शेष',
-    pdfTxSection: 'लेनदेन का इतिहास',
-    pdfDescHeader: 'विवरण / दुकानदार',
-    pdfAmountHeader: 'राशि (-)',
-    pdfNotesSection: 'नोट्स और रिमाइंडर',
-    pdfHandwritingText: 'आप इस पेज को प्रिंट करके अपने हाथ से नोट्स लिख सकते हैं।',
   },
 };
 

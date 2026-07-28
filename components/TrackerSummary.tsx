@@ -124,7 +124,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
               )}
             </h2>
             <p className="text-xs sm:text-sm text-[#141414]/80 font-bold tracking-wide mt-1">
-              Real-time calculation across all active envelopes and expenses
+              {t('realTimeCalcSubtitle', language)}
             </p>
           </div>
 
