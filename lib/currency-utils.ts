@@ -6,7 +6,7 @@ export interface CurrencyInfo {
   rateToUSD: number; // 1 USD = X Currency
 }
 
-export const SUPPORTED_CURRENCIES: CurrencyInfo[] = [
+export const DEFAULT_CURRENCIES: CurrencyInfo[] = [
   { code: 'USD', symbol: '$', pdfSymbol: '$', name: 'US Dollar (USD)', rateToUSD: 1.0 },
   { code: 'EUR', symbol: '€', pdfSymbol: '€', name: 'Euro (EUR)', rateToUSD: 0.92 },
   { code: 'GBP', symbol: '£', pdfSymbol: '£', name: 'British Pound (GBP)', rateToUSD: 0.78 },
@@ -25,6 +25,8 @@ export const SUPPORTED_CURRENCIES: CurrencyInfo[] = [
   { code: 'AED', symbol: 'AED', pdfSymbol: 'AED ', name: 'UAE Dirham (AED)', rateToUSD: 3.67 },
 ];
 
+export let SUPPORTED_CURRENCIES: CurrencyInfo[] = [...DEFAULT_CURRENCIES];
+
 export interface LanguageInfo {
   code: string;
   name: string;
@@ -37,24 +39,83 @@ export const SUPPORTED_LANGUAGES: LanguageInfo[] = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+  { code: 'zh-CN', name: '中文 (简体)', flag: '🇨🇳' },
+  { code: 'ja', name: '日本語', flag: '🇯🇵' },
+  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+  { code: 'ko', name: '한국어', flag: '🇰🇷' },
+  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+  { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
+  { code: 'pl', name: 'Polski', flag: '🇵🇱' },
 ];
 
-const CURRENCY_MAP = new Map<string, CurrencyInfo>(
+let currencyMap = new Map<string, CurrencyInfo>(
   SUPPORTED_CURRENCIES.map((c) => [c.code, c])
 );
 
+/**
+ * Fetches real-time live exchange rates from open exchange rate API with 1-hour local caching
+ */
+export async function fetchLiveExchangeRates(): Promise<boolean> {
+  if (typeof window === 'undefined') return false;
+
+  const CACHE_KEY = 'cash_tracker_live_rates_v1';
+  const CACHE_TIME_KEY = 'cash_tracker_live_rates_time';
+  const ONE_HOUR_MS = 60 * 60 * 1000;
+
+  try {
+    const cachedRatesStr = localStorage.getItem(CACHE_KEY);
+    const cachedTimeStr = localStorage.getItem(CACHE_TIME_KEY);
+    const now = Date.now();
+
+    if (cachedRatesStr && cachedTimeStr && now - parseInt(cachedTimeStr, 10) < ONE_HOUR_MS) {
+      const rates = JSON.parse(cachedRatesStr);
+      updateRatesMap(rates);
+      return true;
+    }
+
+    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    if (!res.ok) return false;
+
+    const data = await res.json();
+    if (data && data.rates) {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(data.rates));
+      localStorage.setItem(CACHE_TIME_KEY, now.toString());
+      updateRatesMap(data.rates);
+      return true;
+    }
+  } catch (err) {
+    console.warn('Real-time exchange rate fetch fallback:', err);
+  }
+  return false;
+}
+
+function updateRatesMap(rates: Record<string, number>) {
+  SUPPORTED_CURRENCIES = SUPPORTED_CURRENCIES.map((c) => {
+    if (rates[c.code]) {
+      return { ...c, rateToUSD: rates[c.code] };
+    }
+    return c;
+  });
+  currencyMap = new Map<string, CurrencyInfo>(
+    SUPPORTED_CURRENCIES.map((c) => [c.code, c])
+  );
+}
+
 export function getCurrencySymbol(code: string = 'USD'): string {
-  const currency = CURRENCY_MAP.get(code.toUpperCase());
+  const currency = currencyMap.get(code.toUpperCase());
   return currency ? currency.symbol : '$';
 }
 
 export function getPdfCurrencySymbol(code: string = 'USD'): string {
-  const currency = CURRENCY_MAP.get(code.toUpperCase());
+  const currency = currencyMap.get(code.toUpperCase());
   return currency ? currency.pdfSymbol : `${code} `;
 }
 
 /**
- * Converts an amount from one currency to another currency
+ * Converts an amount from one currency to another currency using real-time or cached exchange rates
  */
 export function convertCurrency(
   amount: number,
@@ -62,8 +123,8 @@ export function convertCurrency(
   toCode: string = 'USD'
 ): number {
   if (isNaN(amount) || amount === 0) return 0;
-  const from = CURRENCY_MAP.get(fromCode.toUpperCase()) || CURRENCY_MAP.get('USD')!;
-  const to = CURRENCY_MAP.get(toCode.toUpperCase()) || CURRENCY_MAP.get('USD')!;
+  const from = currencyMap.get(fromCode.toUpperCase()) || currencyMap.get('USD')!;
+  const to = currencyMap.get(toCode.toUpperCase()) || currencyMap.get('USD')!;
 
   if (from.code === to.code) return amount;
 

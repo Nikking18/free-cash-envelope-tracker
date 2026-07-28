@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Envelope, Expense, TrackerData, Category, CATEGORIES, INITIAL_STORAGE_KEY, DEFAULT_INITIAL_DATA } from '../lib/tracker-types';
 import { generatePDFSummary, PDFTemplateStyle } from '../lib/pdf-utils';
 import { exportToExcel } from '../lib/excel-utils';
-import { convertCurrency } from '../lib/currency-utils';
+import { convertCurrency, fetchLiveExchangeRates } from '../lib/currency-utils';
 
 import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
@@ -85,6 +85,12 @@ export default function CashEnvelopeTrackerPage() {
         setLastExportedAt(savedExportTime);
         setBackupReminderInterval(savedInterval);
         setIsReminderDismissed(sessionDismissed);
+
+        // Fetch real-time live exchange rates
+        fetchLiveExchangeRates().then(() => {
+          // Force a state refresh so conversions recalculate with live market rates
+          setData((prev) => ({ ...prev }));
+        });
       });
     }
   }, []);

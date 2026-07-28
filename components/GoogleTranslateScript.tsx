@@ -18,7 +18,7 @@ export const GoogleTranslateScript: React.FC = () => {
         new window.google.translate.TranslateElement(
           {
             pageLanguage: 'en',
-            includedLanguages: 'en,es,fr,de,hi,it,pt,ru,zh-CN,ja,ar',
+            includedLanguages: 'en,es,fr,de,hi,it,pt,ru,zh-CN,ja,ar,ko,tr,nl,pl',
             autoDisplay: false,
           },
           'google_translate_element'
