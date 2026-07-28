@@ -25,8 +25,8 @@ const nextConfig: NextConfig = {
     const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
 
     const cspValue = isProduction
-      ? "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://picsum.photos; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self';"
-      : "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://picsum.photos; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'self' https://ai.studio https://*.google.com https://*.googleusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self';";
+      ? "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.ko-fi.com https://ko-fi.com; style-src 'self' 'unsafe-inline' https://storage.ko-fi.com https://fonts.googleapis.com; img-src 'self' data: blob: https://picsum.photos https://storage.ko-fi.com https://ko-fi.com; font-src 'self' data: https://fonts.gstatic.com https://storage.ko-fi.com; connect-src 'self' https://ko-fi.com https://storage.ko-fi.com; frame-src 'self' https://ko-fi.com https://storage.ko-fi.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self';"
+      : "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.ko-fi.com https://ko-fi.com; style-src 'self' 'unsafe-inline' https://storage.ko-fi.com https://fonts.googleapis.com; img-src 'self' data: blob: https://picsum.photos https://storage.ko-fi.com https://ko-fi.com; font-src 'self' data: https://fonts.gstatic.com https://storage.ko-fi.com; connect-src 'self' https://ko-fi.com https://storage.ko-fi.com; frame-src 'self' https://ko-fi.com https://storage.ko-fi.com; frame-ancestors 'self' https://ai.studio https://*.google.com https://*.googleusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self';";
 
     const xFrameValue = isProduction ? 'DENY' : 'SAMEORIGIN';
 
