@@ -145,6 +145,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
               />
             </div>
+            {currency !== mainCurrency && (
+              <div className="p-2 bg-red-50 border-2 border-[#D15F47] text-xs font-bold text-[#D15F47] leading-tight mt-1.5">
+                ⚠️ {t('currencyWarningNote', language)}
+              </div>
+            )}
           </div>
 
           {/* Category */}

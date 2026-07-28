@@ -161,9 +161,14 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
               />
             </div>
             {isForeignCurrency && (
-              <p className="text-[11px] font-bold text-[#5C768D] pt-1">
-                ℹ️ {t('autoConversionNotice', language)} ({targetEnvelopeCurrency})
-              </p>
+              <div className="space-y-1.5 pt-1">
+                <p className="text-[11px] font-bold text-[#5C768D]">
+                  ℹ️ {t('autoConversionNotice', language)} ({targetEnvelopeCurrency})
+                </p>
+                <div className="p-2.5 bg-red-50 border-2 border-[#D15F47] text-xs font-bold text-[#D15F47] leading-tight">
+                  ⚠️ {t('currencyWarningNote', language)}
+                </div>
+              </div>
             )}
           </div>
 

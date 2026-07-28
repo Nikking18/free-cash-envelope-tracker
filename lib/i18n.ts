@@ -14,6 +14,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Live Rate Synced',
     noteWord: 'Note',
     exchangeRateNoticeDesc: 'Exchange rates update automatically when you refresh the page.',
+    currencyWarningNote: 'Note: It is recommended to manage your budget in a single currency due to frequent live exchange rate changes.',
     downloadSampleTemplateBtn: 'Download Sample Excel Template',
 
     // Excel Export Column Headers & Sheet Names
@@ -283,6 +284,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Tasa Sincronizada en Vivo',
     noteWord: 'Nota',
     exchangeRateNoticeDesc: 'Las tasas de cambio se actualizan automáticamente al recargar la página.',
+    currencyWarningNote: 'Nota: Se recomienda gestionar su presupuesto en una sola moneda debido a los cambios frecuentes en las tasas de cambio.',
     downloadSampleTemplateBtn: 'Descargar Plantilla Excel de Ejemplo',
 
     excelColEnvName: 'Nombre del Sobre',
@@ -537,6 +539,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Taux Synchronisé en Direct',
     noteWord: 'Remarque',
     exchangeRateNoticeDesc: 'Les taux de change se mettent à jour automatiquement lorsque vous rafraîchissez la page.',
+    currencyWarningNote: 'Remarque : Il est recommandé de gérer votre budget dans une seule devise en raison des variations fréquentes des taux de change.',
     downloadSampleTemplateBtn: 'Télécharger le Modèle Excel d\'Exemple',
 
     excelColEnvName: 'Nom de l\'Enveloppe',
@@ -791,6 +794,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveRateSyncedLabel: 'Live-Kurs Synchronisiert',
     noteWord: 'Hinweis',
     exchangeRateNoticeDesc: 'Die Wechselkurse werden beim Aktualisieren der Seite automatisch aktualisiert.',
+    currencyWarningNote: 'Hinweis: Es wird empfohlen, Ihr Budget in einer einzigen Währung zu verwalten, da sich die Wechselkurse häufig ändern.',
     downloadSampleTemplateBtn: 'Muster-Excel-Vorlage Herunterladen',
 
     excelColEnvName: 'Umschlagname',
