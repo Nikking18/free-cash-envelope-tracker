@@ -221,11 +221,10 @@ export default function CashEnvelopeTrackerPage() {
   }, [data.envelopes, mainCurrency]);
 
   const totalSpent = useMemo(() => {
-    return data.envelopes.reduce((acc, env) => {
-      const spentInEnvCurr = envelopeSpentMap.get(env.id) || 0;
-      return acc + convertCurrency(spentInEnvCurr, env.currency || mainCurrency, mainCurrency);
+    return data.expenses.reduce((acc, exp) => {
+      return acc + convertCurrency(exp.amount, exp.currency || mainCurrency, mainCurrency);
     }, 0);
-  }, [data.envelopes, envelopeSpentMap, mainCurrency]);
+  }, [data.expenses, mainCurrency]);
 
   const totalRemaining = totalAllocated - totalSpent;
 

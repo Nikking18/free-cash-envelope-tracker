@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Wallet, Globe, DollarSign } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Wallet, Globe, DollarSign, Info, X, RefreshCw } from 'lucide-react';
 import { SUPPORTED_CURRENCIES, SUPPORTED_LANGUAGES } from '../lib/currency-utils';
 import { t, LanguageCode } from '../lib/i18n';
 
@@ -20,6 +20,34 @@ export const Navbar: React.FC<NavbarProps> = ({
   language,
   onChangeLanguage,
 }) => {
+  const [showRateInfo, setShowRateInfo] = useState(false);
+  const [syncedTimeStr, setSyncedTimeStr] = useState<string>('');
+  const rateInfoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setSyncedTimeStr(
+      new Date().toLocaleString('en-US', {
+        dateStyle: 'medium',
+        timeStyle: 'medium',
+      })
+    );
+  }, [mainCurrency]);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (rateInfoRef.current && !rateInfoRef.current.contains(e.target as Node)) {
+        setShowRateInfo(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, []);
+
+  const handleCurrencySelect = (currencyCode: string) => {
+    onChangeMainCurrency(currencyCode);
+    setShowRateInfo(true);
+  };
+
   const handleLanguageChange = (langCode: string) => {
     onChangeLanguage(langCode);
 
@@ -29,7 +57,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         gtCombo.value = langCode;
         gtCombo.dispatchEvent(new Event('change'));
       } else {
-        // Set Google Translate cookie and reload for seamless translation
         const host = window.location.hostname;
         document.cookie = `googtrans=/en/${langCode}; path=/; domain=${host}`;
         document.cookie = `googtrans=/en/${langCode}; path=/`;
@@ -38,6 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
+  const selectedCurrencyObj = SUPPORTED_CURRENCIES.find((c) => c.code === mainCurrency) || SUPPORTED_CURRENCIES[0];
   const langKey = (language || 'en') as LanguageCode;
 
   return (
@@ -60,26 +88,73 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Currency, Language & Quick Actions */}
         <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          {/* Main Currency Selector */}
-          <div className="relative flex items-center">
-            <DollarSign className="w-3.5 h-3.5 text-[#141414]/70 absolute left-2 pointer-events-none hidden xs:block" />
-            <select
-              value={mainCurrency}
-              onChange={(e) => onChangeMainCurrency(e.target.value)}
-              className="pl-2 xs:pl-6 pr-2 py-1.5 bg-white neo-border text-xs font-bold text-[#141414] focus:outline-hidden cursor-pointer hover:bg-gray-50"
-              title="Select Main Budget Currency"
-              aria-label="Select Main Budget Currency"
+          {/* Main Currency Selector with Live Rate Info Popover */}
+          <div className="relative flex items-center shrink-0" ref={rateInfoRef}>
+            <div className="relative flex items-center">
+              <DollarSign className="w-3.5 h-3.5 text-[#141414]/70 absolute left-2 pointer-events-none hidden xs:block" />
+              <select
+                value={mainCurrency}
+                onChange={(e) => handleCurrencySelect(e.target.value)}
+                className="pl-2 xs:pl-6 pr-2 py-1.5 bg-white neo-border text-xs font-bold text-[#141414] focus:outline-hidden cursor-pointer hover:bg-gray-50"
+                title="Select Main Budget Currency"
+                aria-label="Select Main Budget Currency"
+              >
+                {SUPPORTED_CURRENCIES.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.symbol} {c.code}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setShowRateInfo((prev) => !prev)}
+              className="p-1.5 ml-1 bg-white hover:bg-gray-100 text-[#141414] neo-border cursor-pointer flex items-center justify-center"
+              title="View Live Exchange Rate & Info"
+              aria-label="View Live Exchange Rate & Info"
             >
-              {SUPPORTED_CURRENCIES.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.symbol} {c.code}
-                </option>
-              ))}
-            </select>
+              <Info className="w-3.5 h-3.5 text-[#5C768D]" />
+            </button>
+
+            {/* Exchange Rate Notice Popover */}
+            {showRateInfo && (
+              <div className="absolute right-0 top-full mt-2 w-72 sm:w-80 p-4 bg-[#FCFAF7] border-3 border-[#141414] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] z-50 text-xs text-[#141414] space-y-3">
+                <div className="font-bold text-sm uppercase tracking-tight border-b-2 border-[#141414] pb-1.5 flex items-center justify-between">
+                  <span className="flex items-center gap-1.5">
+                    <RefreshCw className="w-4 h-4 text-[#8A9A5B]" />
+                    Live Exchange Rate Notice
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowRateInfo(false)}
+                    className="text-[#141414] hover:text-red-600 font-bold p-0.5 cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="p-3 bg-white border-2 border-[#141414] space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#5C768D]">
+                    Selected Currency: <strong className="text-[#141414]">{selectedCurrencyObj.name}</strong>
+                  </div>
+                  <div className="text-sm font-serif font-black text-[#8A9A5B]">
+                    1 USD = {selectedCurrencyObj.rateToUSD.toFixed(4)} {selectedCurrencyObj.code}
+                  </div>
+                  <div className="text-[10px] font-bold text-[#141414]/70">
+                    Last Synced: {syncedTimeStr || new Date().toLocaleString()}
+                  </div>
+                </div>
+
+                <div className="p-2.5 bg-[#FFFBEB] border-2 border-amber-500 text-[11px] font-bold text-[#141414] leading-snug">
+                  📌 <strong className="uppercase">Note:</strong> Exchange rates update automatically when you refresh the page.
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Language Selector */}
-          <div className="relative flex items-center">
+          <div className="relative flex items-center shrink-0">
             <Globe className="w-3.5 h-3.5 text-[#141414]/70 absolute left-2 pointer-events-none hidden xs:block" />
             <select
               value={language}

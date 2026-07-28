@@ -148,9 +148,8 @@ async function generateClassicPDF(
     envelopeSpentMap.set(exp.envelopeId, current + convertedAmt);
   });
 
-  const totalSpent = envelopes.reduce((acc, env) => {
-    const spentInEnvCurr = envelopeSpentMap.get(env.id) || 0;
-    return acc + convertCurrency(spentInEnvCurr, env.currency || mainCurrency, mainCurrency);
+  const totalSpent = expenses.reduce((acc, exp) => {
+    return acc + convertCurrency(exp.amount, exp.currency || mainCurrency, mainCurrency);
   }, 0);
 
   const totalRemaining = totalAllocated - totalSpent;
@@ -517,9 +516,8 @@ async function generateMinimalBwPDF(
     envelopeSpentMap.set(exp.envelopeId, current + convertedAmt);
   });
 
-  const totalSpent = envelopes.reduce((acc, env) => {
-    const spentInEnvCurr = envelopeSpentMap.get(env.id) || 0;
-    return acc + convertCurrency(spentInEnvCurr, env.currency || mainCurrency, mainCurrency);
+  const totalSpent = expenses.reduce((acc, exp) => {
+    return acc + convertCurrency(exp.amount, exp.currency || mainCurrency, mainCurrency);
   }, 0);
 
   const totalRemaining = totalAllocated - totalSpent;
