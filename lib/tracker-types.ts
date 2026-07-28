@@ -46,14 +46,6 @@ export const PRESET_COLORS = [
 export const INITIAL_STORAGE_KEY = 'cash_envelope_tracker_data';
 
 export const DEFAULT_INITIAL_DATA: TrackerData = {
-  envelopes: [
-    { id: 'env_1', name: 'Groceries & Household', allocated: 450, category: 'Essential', color: '#8A9A5B' },
-    { id: 'env_2', name: 'Dining & Takeout', allocated: 150, category: 'Discretionary', color: '#D15F47' },
-    { id: 'env_3', name: 'Rent & Utilities', allocated: 1200, category: 'Essential', color: '#5C768D' },
-    { id: 'env_4', name: 'Emergency Fund', allocated: 200, category: 'Savings', color: '#059669' },
-  ],
-  expenses: [
-    { id: 'exp_1', envelopeId: 'env_1', amount: 68.40, note: "Weekly Grocery Run", date: '2026-07-27' },
-    { id: 'exp_2', envelopeId: 'env_2', amount: 24.50, note: 'Coffee & Lunch', date: '2026-07-27' },
-  ],
+  envelopes: [],
+  expenses: [],
 };

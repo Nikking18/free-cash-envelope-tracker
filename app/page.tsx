@@ -8,6 +8,7 @@ import { exportToExcel } from '../lib/excel-utils';
 import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
+import { WebViewShowcase } from '../components/WebViewShowcase';
 import { TrackerSummary } from '../components/TrackerSummary';
 import { EnvelopeCard } from '../components/EnvelopeCard';
 import { EnvelopeModal } from '../components/EnvelopeModal';
@@ -348,6 +349,9 @@ export default function CashEnvelopeTrackerPage() {
 
         {/* How It Works Section */}
         <HowItWorksSection />
+
+        {/* Web View Showcase Section */}
+        <WebViewShowcase />
 
         {/* Main Budget Tracker App Workspace */}
         <section id="tracker" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10 border-t-4 border-[#141414] pt-12">
