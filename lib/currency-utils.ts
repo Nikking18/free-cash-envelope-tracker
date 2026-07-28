@@ -6,29 +6,18 @@ export interface CurrencyInfo {
   rateToUSD: number; // 1 USD = X Currency
 }
 
-export const INITIAL_CURRENCIES: CurrencyInfo[] = [
+export const TOP_5_CURRENCIES: CurrencyInfo[] = [
   { code: 'USD', symbol: '$', pdfSymbol: '$', name: 'US Dollar (USD)', rateToUSD: 1.0 },
   { code: 'EUR', symbol: '€', pdfSymbol: '€', name: 'Euro (EUR)', rateToUSD: 0.8788 },
   { code: 'GBP', symbol: '£', pdfSymbol: '£', name: 'British Pound (GBP)', rateToUSD: 0.7519 },
   { code: 'INR', symbol: '₹', pdfSymbol: 'Rs.', name: 'Indian Rupee (INR)', rateToUSD: 95.94 },
   { code: 'CAD', symbol: 'CA$', pdfSymbol: 'CA$', name: 'Canadian Dollar (CAD)', rateToUSD: 1.4115 },
-  { code: 'AUD', symbol: 'A$', pdfSymbol: 'A$', name: 'Australian Dollar (AUD)', rateToUSD: 1.52 },
-  { code: 'JPY', symbol: '¥', pdfSymbol: '¥', name: 'Japanese Yen (JPY)', rateToUSD: 155.0 },
-  { code: 'BRL', symbol: 'R$', pdfSymbol: 'R$', name: 'Brazilian Real (BRL)', rateToUSD: 5.45 },
-  { code: 'MXN', symbol: 'Mex$', pdfSymbol: 'Mex$', name: 'Mexican Peso (MXN)', rateToUSD: 18.2 },
-  { code: 'CHF', symbol: 'CHF', pdfSymbol: 'CHF ', name: 'Swiss Franc (CHF)', rateToUSD: 0.89 },
-  { code: 'SEK', symbol: 'kr', pdfSymbol: 'kr ', name: 'Swedish Krona (SEK)', rateToUSD: 10.6 },
-  { code: 'NZD', symbol: 'NZ$', pdfSymbol: 'NZ$', name: 'New Zealand Dollar (NZD)', rateToUSD: 1.65 },
-  { code: 'SGD', symbol: 'SG$', pdfSymbol: 'SG$', name: 'Singapore Dollar (SGD)', rateToUSD: 1.35 },
-  { code: 'HKD', symbol: 'HK$', pdfSymbol: 'HK$', name: 'Hong Kong Dollar (HKD)', rateToUSD: 7.81 },
-  { code: 'ZAR', symbol: 'R', pdfSymbol: 'R ', name: 'South African Rand (ZAR)', rateToUSD: 18.1 },
-  { code: 'AED', symbol: 'AED', pdfSymbol: 'AED ', name: 'UAE Dirham (AED)', rateToUSD: 3.67 },
 ];
 
-export const SUPPORTED_CURRENCIES: CurrencyInfo[] = INITIAL_CURRENCIES;
+export const SUPPORTED_CURRENCIES = TOP_5_CURRENCIES;
 
 let currencyMap = new Map<string, CurrencyInfo>(
-  INITIAL_CURRENCIES.map((c) => [c.code, c])
+  TOP_5_CURRENCIES.map((c) => [c.code, c])
 );
 
 export let lastRateFetchTime: string = new Date().toLocaleString('en-US', {
@@ -64,46 +53,53 @@ export const SUPPORTED_LANGUAGES: LanguageInfo[] = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-  { code: 'pt', name: 'Português', flag: '🇵🇹' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'zh-CN', name: '中文 (简体)', flag: '🇨🇳' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
-  { code: 'ko', name: '한국어', flag: '🇰🇷' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-  { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
-  { code: 'pl', name: 'Polski', flag: '🇵🇱' },
 ];
 
 /**
- * Fetches real-time exchange rates on visitor entry and updates rate matrix dynamically
+ * Fetches real-time exchange rates on visitor entry for Top 5 Currencies
  */
 export async function fetchLiveExchangeRates(): Promise<boolean> {
   if (typeof window === 'undefined') return false;
 
   try {
-    const res = await fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' });
-    if (!res.ok) return false;
-
-    const data = await res.json();
-    if (data && data.rates) {
-      updateRatesMap(data.rates);
-      lastRateFetchTime = new Date().toLocaleString('en-US', {
-        dateStyle: 'medium',
-        timeStyle: 'medium',
-      });
-      listeners.forEach((cb) => cb());
-      return true;
+    const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD', { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.rates) {
+        updateRatesMap(data.rates);
+        lastRateFetchTime = new Date().toLocaleString('en-US', {
+          dateStyle: 'medium',
+          timeStyle: 'medium',
+        });
+        listeners.forEach((cb) => cb());
+        return true;
+      }
     }
-  } catch (err) {
-    console.warn('Real-time exchange rate fetch fallback:', err);
+  } catch (e) {
+    // Fallback to secondary API
+    try {
+      const res2 = await fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' });
+      if (res2.ok) {
+        const data2 = await res2.json();
+        if (data2 && data2.rates) {
+          updateRatesMap(data2.rates);
+          lastRateFetchTime = new Date().toLocaleString('en-US', {
+            dateStyle: 'medium',
+            timeStyle: 'medium',
+          });
+          listeners.forEach((cb) => cb());
+          return true;
+        }
+      }
+    } catch (err) {
+      console.warn('Live rates fetch fallback:', err);
+    }
   }
   return false;
 }
 
 function updateRatesMap(rates: Record<string, number>) {
-  INITIAL_CURRENCIES.forEach((c) => {
+  TOP_5_CURRENCIES.forEach((c) => {
     if (rates[c.code]) {
       currencyMap.set(c.code, { ...c, rateToUSD: rates[c.code] });
     }

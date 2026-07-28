@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { Envelope, Category, CATEGORIES, PRESET_COLORS } from '../lib/tracker-types';
-import { SUPPORTED_CURRENCIES } from '../lib/currency-utils';
+import { getSupportedCurrencies } from '../lib/currency-utils';
 import { X, FolderPlus } from 'lucide-react';
+import { t } from '../lib/i18n';
 
 interface EnvelopeModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface EnvelopeModalProps {
   onSave: (envelopeData: { name: string; allocated: number; category: Category; color: string; currency?: string; id?: string }) => void;
   editingEnvelope?: Envelope | null;
   mainCurrency?: string;
+  language?: string;
 }
 
 export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
@@ -19,6 +21,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   onSave,
   editingEnvelope,
   mainCurrency = 'USD',
+  language = 'en',
 }) => {
   const [name, setName] = useState('');
   const [allocated, setAllocated] = useState('');
@@ -54,39 +57,38 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) {
-      setError('Envelope name is required.');
+      setError('Envelope name is required');
       return;
     }
-
-    const allocNum = parseFloat(allocated);
-    if (isNaN(allocNum) || allocNum < 0) {
-      setError('Allocated amount must be a non-negative number.');
+    const numAllocated = parseFloat(allocated);
+    if (isNaN(numAllocated) || numAllocated < 0) {
+      setError('Allocated amount must be a non-negative number');
       return;
     }
 
     onSave({
-      id: editingEnvelope?.id,
       name: name.trim(),
-      allocated: allocNum,
-      currency,
+      allocated: numAllocated,
       category,
       color,
+      currency,
+      id: editingEnvelope ? editingEnvelope.id : undefined,
     });
     onClose();
   };
 
+  const supportedCurrencies = getSupportedCurrencies();
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-      <div className="bg-[#FCFAF7] neo-border-thick neo-shadow-lg w-full max-w-md p-6 space-y-5 relative">
-        {/* Header */}
-        <div className="flex items-center justify-between border-b-2 border-[#141414] pb-3">
-          <div className="flex items-center gap-2">
+      <div className="bg-[#FCFAF7] neo-border-thick neo-shadow-lg w-full max-w-md p-6 space-y-4 relative">
+        <div className="flex items-center justify-between border-b-4 border-[#141414] pb-3">
+          <div className="flex items-center gap-2 text-[#141414] font-serif font-black text-xl uppercase tracking-tight">
             <FolderPlus className="w-5 h-5 text-[#8A9A5B]" />
-            <h2 className="font-serif font-black text-xl text-[#141414] uppercase tracking-tight">
-              {editingEnvelope ? 'Edit Envelope' : 'Create New Envelope'}
-            </h2>
+            <span>{editingEnvelope ? t('editEnvelopeTitle', language) : t('createEnvelopeTitle', language)}</span>
           </div>
           <button
+            type="button"
             onClick={onClose}
             className="p-1 hover:bg-[#F2EFE9] neo-border cursor-pointer"
           >
@@ -104,13 +106,13 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           {/* Name */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Envelope Name *
+              {t('envNameLabel', language)} *
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g., Groceries, Rent, Vacation"
+              placeholder={t('envNamePlaceholder', language)}
               className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
               autoFocus
             />
@@ -119,7 +121,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           {/* Allocated Amount & Currency */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Target Allocated Amount &amp; Currency *
+              {t('allocatedLabel', language)} &amp; {t('currencyLabel', language)} *
             </label>
             <div className="flex items-center gap-2">
               <select
@@ -127,7 +129,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 onChange={(e) => setCurrency(e.target.value)}
                 className="w-28 px-2 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden cursor-pointer"
               >
-                {SUPPORTED_CURRENCIES.map((c) => (
+                {supportedCurrencies.map((c) => (
                   <option key={c.code} value={c.code}>
                     {c.symbol} {c.code}
                   </option>
@@ -148,7 +150,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           {/* Category */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Category Tag
+              {t('categoryLabel', language)}
             </label>
             <select
               value={category}
@@ -166,7 +168,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           {/* Color Swatch Selector */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Color Accent
+              {t('colorLabel', language)}
             </label>
             <div className="flex items-center gap-2 pt-1">
               {PRESET_COLORS.map((c) => (
@@ -188,13 +190,13 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
               onClick={onClose}
               className="px-4 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
-              Cancel
+              {t('cancelBtn', language)}
             </button>
             <button
               type="submit"
               className="px-5 py-2 bg-[#8A9A5B] text-white neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
-              {editingEnvelope ? 'Save Changes' : 'Create Envelope'}
+              {editingEnvelope ? t('saveChangesBtn', language) : t('saveEnvelopeBtn', language)}
             </button>
           </div>
         </form>

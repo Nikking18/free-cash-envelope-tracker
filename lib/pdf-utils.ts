@@ -109,17 +109,19 @@ async function generateClassicPDF(
   doc.setLineWidth(0.3);
   doc.rect(margin + 1.2, y + 1.2, contentWidth - 2.4, 19.6, 'S');
 
-  // Title: "CASH ENVELOPE" in Times Bold + " Tracker" in Times Italic
+  // Title
+  const titlePart1 = t('pdfDocTitle', language).toUpperCase();
+  const titlePart2 = ` ${t('pdfDocSubtitle', language)}`;
   doc.setFont('times', 'bold');
   doc.setFontSize(16);
   doc.setTextColor(20, 20, 20);
-  doc.text('CASH ENVELOPE', margin + 6, y + 10);
+  doc.text(titlePart1, margin + 6, y + 10);
 
-  const titleWidth = doc.getTextWidth('CASH ENVELOPE');
+  const titleWidth = doc.getTextWidth(titlePart1);
   doc.setFont('times', 'italic');
   doc.setFontSize(16);
   doc.setTextColor(209, 95, 71); // Terracotta accent
-  doc.text(' Tracker', margin + 6 + titleWidth, y + 10);
+  doc.text(titlePart2, margin + 6 + titleWidth, y + 10);
 
   // Subtitle / Date & Budget Period
   doc.setFont('helvetica', 'normal');
@@ -131,7 +133,7 @@ async function generateClassicPDF(
     day: 'numeric',
   });
   const periodStr = budgetPeriod && budgetPeriod.trim().length > 0 ? budgetPeriod.trim() : '___________________';
-  doc.text(`Date: ${todayStr}   |   Budget Period: ${periodStr}`, margin + 6, y + 16.5);
+  doc.text(`${t('pdfDateLabel', language)}: ${todayStr}   |   ${t('pdfPeriodLabel', language)}: ${periodStr}`, margin + 6, y + 16.5);
 
   y += 22 + 7; // Header height + gap
 
@@ -172,7 +174,7 @@ async function generateClassicPDF(
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(7.5);
   doc.setTextColor(20, 20, 20);
-  doc.text('TOTAL ALLOCATED', margin + 4, y + 7);
+  doc.text(t('pdfAllocatedCard', language), margin + 4, y + 7);
   doc.setFontSize(11);
   doc.text(formatPdfCurrency(totalAllocated, mainCurrency), margin + 4, y + 14);
 
@@ -187,7 +189,7 @@ async function generateClassicPDF(
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(7.5);
   doc.setTextColor(20, 20, 20);
-  doc.text('TOTAL SPENT', card2X + 4, y + 7);
+  doc.text(t('pdfSpentCard', language), card2X + 4, y + 7);
   doc.setFontSize(11);
   doc.setTextColor(209, 95, 71);
   doc.text(formatPdfCurrency(totalSpent, mainCurrency), card2X + 4, y + 14);
@@ -204,7 +206,7 @@ async function generateClassicPDF(
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(7.5);
   doc.setTextColor(20, 20, 20);
-  doc.text('REMAINING BALANCE', card3X + 4, y + 7);
+  doc.text(t('pdfRemainingCard', language), card3X + 4, y + 7);
   doc.setFontSize(11);
   doc.setTextColor(remColorRGB[0], remColorRGB[1], remColorRGB[2]);
   doc.text(formatPdfCurrency(totalRemaining, mainCurrency), card3X + 4, y + 14);
@@ -220,11 +222,11 @@ async function generateClassicPDF(
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8);
     doc.setTextColor(255, 255, 255);
-    doc.text('ENVELOPE NAME', envColX[0] + 3, startY + 4.5);
-    doc.text('CATEGORY', envColX[1] + 3, startY + 4.5);
-    doc.text('ALLOCATED', envColX[2] + 3, startY + 4.5);
-    doc.text('SPENT', envColX[3] + 3, startY + 4.5);
-    doc.text('REMAINING', envColX[4] + 3, startY + 4.5);
+    doc.text(t('pdfEnvNameHeader', language), envColX[0] + 3, startY + 4.5);
+    doc.text(t('pdfCategoryHeader', language), envColX[1] + 3, startY + 4.5);
+    doc.text(t('pdfAllocatedHeader', language), envColX[2] + 3, startY + 4.5);
+    doc.text(t('pdfSpentHeader', language), envColX[3] + 3, startY + 4.5);
+    doc.text(t('pdfRemainingHeader', language), envColX[4] + 3, startY + 4.5);
   };
 
   // Dynamic height check before section start
@@ -236,7 +238,7 @@ async function generateClassicPDF(
   doc.setFont('times', 'bold');
   doc.setFontSize(12);
   doc.setTextColor(20, 20, 20);
-  doc.text('ENVELOPES BREAKDOWN', margin, y);
+  doc.text(t('pdfEnvelopesSection', language), margin, y);
   y += 5;
 
   drawEnvTableHeader(y);
@@ -305,10 +307,10 @@ async function generateClassicPDF(
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8);
     doc.setTextColor(255, 255, 255);
-    doc.text('DATE', txColX[0] + 3, startY + 4.5);
-    doc.text('ENVELOPE', txColX[1] + 3, startY + 4.5);
-    doc.text('NOTE / DESCRIPTION', txColX[2] + 3, startY + 4.5);
-    doc.text('AMOUNT', txColX[3] + 3, startY + 4.5);
+    doc.text(t('pdfDateLabel', language).toUpperCase(), txColX[0] + 3, startY + 4.5);
+    doc.text(t('envelope', language).toUpperCase(), txColX[1] + 3, startY + 4.5);
+    doc.text(t('pdfDescHeader', language), txColX[2] + 3, startY + 4.5);
+    doc.text(t('pdfAmountHeader', language), txColX[3] + 3, startY + 4.5);
   };
 
   if (y + 20 > 270) {
@@ -319,7 +321,7 @@ async function generateClassicPDF(
   doc.setFont('times', 'bold');
   doc.setFontSize(12);
   doc.setTextColor(20, 20, 20);
-  doc.text('TRANSACTION HISTORY', margin, y);
+  doc.text(t('pdfTxSection', language), margin, y);
   y += 5;
 
   drawTxTableHeader(y);
@@ -402,13 +404,13 @@ async function generateClassicPDF(
   doc.setFont('times', 'bold');
   doc.setFontSize(12);
   doc.setTextColor(20, 20, 20);
-  doc.text('NOTES & BUDGET REMINDERS', margin, y);
+  doc.text(t('pdfNotesSection', language), margin, y);
 
   if (!hasNotes) {
     doc.setFont('helvetica', 'italic');
     doc.setFontSize(7.5);
     doc.setTextColor(100, 100, 100);
-    doc.text('You can print this page and write in your own notes and reminders by hand.', margin, y + 4.5);
+    doc.text(t('pdfHandwritingText', language), margin, y + 4.5);
     y += 8;
   } else {
     y += 5;

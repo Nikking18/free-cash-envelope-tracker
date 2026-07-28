@@ -1,26 +1,14 @@
-export type LanguageCode =
-  | 'en'
-  | 'es'
-  | 'fr'
-  | 'de'
-  | 'hi'
-  | 'it'
-  | 'pt'
-  | 'ru'
-  | 'zh-CN'
-  | 'ja'
-  | 'ar'
-  | 'ko'
-  | 'tr'
-  | 'nl'
-  | 'pl';
+export type LanguageCode = 'en' | 'es' | 'fr' | 'de' | 'hi';
 
-export const TRANSLATIONS: Record<string, Record<string, string>> = {
+export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   en: {
+    // Brand & Nav
     brandName: 'Free Cash Envelope Tracker',
     brandTagline: 'Digital Cash Stuffing & Budgeting',
     navGoToTracker: 'Go to Tracker',
     navTracker: 'Tracker',
+
+    // Hero
     heroBadge: '100% Private — Browser-Only Cash Stuffing',
     heroTitleLine1: 'Master Your Money with',
     heroTitleLine2: 'Digital Cash Envelopes',
@@ -40,6 +28,8 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
       'Easily download formatted PDF budget summaries or 2-sheet Excel files to keep external backups.',
     heroQuote:
       '"Your data lives only in this browser. Clear your browsing data or switch devices, and it\'s gone — download a PDF if you want a backup."',
+
+    // How It Works
     howItWorksTitle: 'How Cash Envelope Budgeting Works',
     howItWorksSubtitle:
       'A simple, visual, discipline-building method that gives every dollar a specific purpose.',
@@ -52,6 +42,8 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     step3Title: 'Export & Back Up',
     step3Desc:
       'Download print-ready PDF summaries or export clean 2-sheet Excel files for tax prep or archiving. Your data stays 100% private in your browser.',
+
+    // Guide
     guideBadge: 'Cash Stuffing Guide & Resources',
     guideTitleLine1: 'The Ultimate',
     guideTitleLine2: 'Digital Cash Envelope',
@@ -76,6 +68,8 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     card3Check1: 'Classic Minimal PDF Cards',
     card3Check2: 'Print-Friendly Minimal B&W',
     card3Check3: '2-Sheet Excel Import & Export',
+
+    // Tracker Summary & Overview
     budgetOverview: 'Budget Overview',
     overBudget: 'Over Budget',
     newEnvelope: 'New Envelope',
@@ -94,21 +88,6 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     overAllocated: 'Over allocated target',
     budgetUtilization: 'Overall Budget Utilization',
     used: 'Used',
-    cashEnvelopes: 'Cash Envelopes',
-    allCategories: 'All',
-    searchEnvelopes: 'Search envelopes...',
-    recentLedger: 'Recent Ledger',
-    ledgerSubtitle: 'Search, filter, and audit all expense logs',
-    date: 'Date',
-    envelope: 'Envelope',
-    noteVendor: 'Note / Vendor',
-    amount: 'Amount',
-    actions: 'Actions',
-    noEnvelopesFound: 'No envelopes found.',
-    createEnvelope: 'Create Envelope',
-    saveChanges: 'Save Changes',
-    recordExpense: 'Record Expense',
-    cancel: 'Cancel',
     budgetPeriodLabel: 'Budget Period:',
     budgetPeriodPlaceholder: 'e.g. August 2026 or Jul 26 – Aug 9',
     remindLabel: 'Remind me to back up:',
@@ -117,14 +96,104 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     every2weeks: 'Every 2 weeks',
     monthly: 'Monthly',
     never: 'Never',
+
+    // Envelopes & Cards
+    cashEnvelopes: 'Cash Envelopes',
+    allCategories: 'All',
+    searchEnvelopes: 'Search envelopes...',
+    remainingLabel: 'REMAINING:',
+    progressLabel: 'PROGRESS:',
+    addExpenseBtn: '+ ADD EXPENSE',
+    noEnvelopesFound: 'No envelopes found.',
+
+    // Ledger
+    recentLedger: 'Recent Ledger',
+    ledgerSubtitle: 'Search, filter, and audit all expense logs',
+    date: 'Date',
+    envelope: 'Envelope',
+    noteVendor: 'Note / Vendor',
+    amount: 'Amount',
+    actions: 'Actions',
+    searchNotePlaceholder: 'Search note, vendor, envelope...',
+    allEnvelopesFilter: 'ALL ENVELOPES',
+    newestFirst: 'NEWEST FIRST',
+    oldestFirst: 'OLDEST FIRST',
+    highestFirst: 'HIGHEST AMOUNT',
+    lowestFirst: 'LOWEST AMOUNT',
+    logsCount: 'LOGS',
+
+    // Modals
+    // Envelope Modal
+    createEnvelopeTitle: 'Create Cash Envelope',
+    editEnvelopeTitle: 'Edit Cash Envelope',
+    envNameLabel: 'Envelope Name',
+    envNamePlaceholder: 'e.g. Groceries, Rent, Emergency Fund',
+    allocatedLabel: 'Target Allocated Budget Amount',
+    currencyLabel: 'Target Allocation Currency',
+    categoryLabel: 'Spending Category',
+    colorLabel: 'Envelope Color Badge',
+    saveEnvelopeBtn: 'Create Envelope',
+    saveChangesBtn: 'Save Changes',
+    cancelBtn: 'Cancel',
+
+    // Expense Modal
+    logExpenseTitle: 'Log Envelope Expense',
+    editExpenseTitle: 'Edit Expense Log',
+    selectEnvelopeLabel: 'Select Envelope',
+    expenseAmountLabel: 'Expense Price / Amount',
+    expenseCurrencyLabel: 'Expense Currency',
+    vendorNoteLabel: 'Vendor / Note (Optional)',
+    vendorNotePlaceholder: 'e.g. Walmart, Whole Foods, Gas Station',
+    expenseDateLabel: 'Transaction Date',
+    autoConversionNotice: 'Auto-converted to target envelope currency at current live rates.',
+    saveExpenseBtn: 'Record Expense',
+
+    // PDF Template Modal
+    selectPdfTemplateTitle: 'Export PDF Statement',
+    selectPdfTemplateSubtitle: 'Choose a print-ready PDF statement card layout',
+    classicTemplateTitle: 'Classic Minimal (Color Accent)',
+    classicTemplateDesc: 'Color-coded summary cards with solid envelope badges and high-contrast table borders.',
+    bwTemplateTitle: 'Minimal B&W (Print Friendly)',
+    bwTemplateDesc: 'Pure black & white bordered layout designed to save printer ink for paper binders.',
+    generatePdfBtn: 'Generate PDF Report',
+
+    // Reset Modal
+    confirmResetTitle: 'Confirm Reset All Data',
+    confirmResetDesc: 'This will permanently delete all envelopes, logged expenses, and budget settings stored in your browser.',
+    confirmResetBtn: 'Yes, Delete & Reset All',
+
+    // Footer
     footerCopyright: 'Free Cash Envelope Tracker. 100% Free & Open Source Personal Finance Tool.',
     footerTagline: 'Built with privacy in mind. Data lives only in your browser.',
+
+    // PDF Exports Specific Text
+    pdfDocTitle: 'CASH ENVELOPE',
+    pdfDocSubtitle: 'Tracker',
+    pdfDateLabel: 'Date',
+    pdfPeriodLabel: 'Budget Period',
+    pdfAllocatedCard: 'TOTAL ALLOCATED',
+    pdfSpentCard: 'TOTAL SPENT',
+    pdfRemainingCard: 'REMAINING BALANCE',
+    pdfEnvelopesSection: 'ENVELOPES BREAKDOWN',
+    pdfEnvNameHeader: 'ENVELOPE NAME',
+    pdfCategoryHeader: 'CATEGORY',
+    pdfAllocatedHeader: 'ALLOCATED',
+    pdfSpentHeader: 'SPENT',
+    pdfRemainingHeader: 'REMAINING',
+    pdfTxSection: 'TRANSACTION HISTORY',
+    pdfDescHeader: 'DESCRIPTION / NOTE',
+    pdfAmountHeader: 'AMOUNT (-)',
+    pdfNotesSection: 'NOTES & BUDGET REMINDERS',
+    pdfHandwritingText: 'You can print this page and write in your own notes and reminders by hand.',
   },
   es: {
+    // Brand & Nav
     brandName: 'Free Cash Envelope Tracker',
     brandTagline: 'Presupuesto Digital por Sobres de Efectivo',
     navGoToTracker: 'Ir al Rastreador',
     navTracker: 'Rastreador',
+
+    // Hero
     heroBadge: '100% Privado — Presupuesto Solo en Navegador',
     heroTitleLine1: 'Domina tu Dinero con',
     heroTitleLine2: 'Sobres de Efectivo Digitales',
@@ -144,6 +213,8 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
       'Descarga fácilmente resúmenes PDF o archivos de Excel de 2 hojas como respaldo externo.',
     heroQuote:
       '"Tus datos viven solo en este navegador. Si borras tu historial o cambias de dispositivo, se perderán: descarga un PDF como respaldo."',
+
+    // How It Works
     howItWorksTitle: 'Cómo Funciona el Presupuesto por Sobres',
     howItWorksSubtitle:
       'Un método visual y disciplinado que asigna un propósito a cada dólar.',
@@ -152,10 +223,12 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
       'Divide tus ingresos en sobres por categorías como Comestibles, Alquiler, Salidas o Fondo de Emergencia.',
     step2Title: 'Registra Gastos en Tiempo Real',
     step2Desc:
-      'Registra tus gastos en sobres específicos. Observa las barras de progreso y recibe alertas.',
+      'Registra tus gastos en sobres específicos. Observa las barras de progreso y recibe alertas de sobrepresupuesto.',
     step3Title: 'Exporta y Haz Copias de Seguridad',
     step3Desc:
       'Descarga resúmenes en PDF o archivos Excel de 2 hojas para tus impuestos o archivos.',
+
+    // Guide
     guideBadge: 'Guía y Recursos de Sobres de Efectivo',
     guideTitleLine1: 'El Sistema Definitivo de',
     guideTitleLine2: 'Sobres de Efectivo Digitales',
@@ -180,6 +253,8 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     card3Check1: 'Tarjetas PDF Clásicas',
     card3Check2: 'Diseño B&N Imprimible',
     card3Check3: 'Importación y Exportación Excel',
+
+    // Tracker Summary & Overview
     budgetOverview: 'Resumen del Presupuesto',
     overBudget: 'Sobre Presupuesto',
     newEnvelope: 'Nuevo Sobre',
@@ -194,25 +269,10 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     totalRemaining: 'Total Restante',
     sumAllocated: 'Suma de objetivos de sobres',
     sumSpent: 'Suma de gastos registrados',
-    availCash: 'Saldo de efectivo disponible',
+    availCash: 'Saldo disponible',
     overAllocated: 'Excedió el objetivo asignado',
     budgetUtilization: 'Utilización del Presupuesto',
     used: 'Usado',
-    cashEnvelopes: 'Sobres de Efectivo',
-    allCategories: 'Todos',
-    searchEnvelopes: 'Buscar sobres...',
-    recentLedger: 'Libro de Registro Reciente',
-    ledgerSubtitle: 'Busca, filtra y audita todos tus registros',
-    date: 'Fecha',
-    envelope: 'Sobre',
-    noteVendor: 'Nota / Proveedor',
-    amount: 'Monto',
-    actions: 'Acciones',
-    noEnvelopesFound: 'No se encontraron sobres.',
-    createEnvelope: 'Crear Sobre',
-    saveChanges: 'Guardar Cambios',
-    recordExpense: 'Registrar Gasto',
-    cancel: 'Cancelar',
     budgetPeriodLabel: 'Período del Presupuesto:',
     budgetPeriodPlaceholder: 'ej. Agosto 2026 o Jul 26 – Ago 9',
     remindLabel: 'Recordarme hacer copia:',
@@ -221,14 +281,97 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     every2weeks: 'Cada 2 semanas',
     monthly: 'Mensual',
     never: 'Nunca',
+
+    // Envelopes & Cards
+    cashEnvelopes: 'Sobres de Efectivo',
+    allCategories: 'Todos',
+    searchEnvelopes: 'Buscar sobres...',
+    remainingLabel: 'RESTANTE:',
+    progressLabel: 'PROGRESO:',
+    addExpenseBtn: '+ AÑADIR GASTO',
+    noEnvelopesFound: 'No se encontraron sobres.',
+
+    // Ledger
+    recentLedger: 'Libro de Registro Reciente',
+    ledgerSubtitle: 'Busca, filtra y audita todos tus registros',
+    date: 'Fecha',
+    envelope: 'Sobre',
+    noteVendor: 'Nota / Proveedor',
+    amount: 'Monto',
+    actions: 'Acciones',
+    searchNotePlaceholder: 'Buscar nota, proveedor, sobre...',
+    allEnvelopesFilter: 'TODOS LOS SOBRES',
+    newestFirst: 'MÁS RECIENTES PRIMERO',
+    oldestFirst: 'MÁS ANTIGUOS PRIMERO',
+    highestFirst: 'MAYOR MONTO',
+    lowestFirst: 'MENOR MONTO',
+    logsCount: 'REGISTROS',
+
+    // Modals
+    createEnvelopeTitle: 'Crear Sobre de Efectivo',
+    editEnvelopeTitle: 'Editar Sobre de Efectivo',
+    envNameLabel: 'Nombre del Sobre',
+    envNamePlaceholder: 'ej. Comestibles, Alquiler, Emergencias',
+    allocatedLabel: 'Monto de Presupuesto Objetivo',
+    currencyLabel: 'Moneda de Asignación',
+    categoryLabel: 'Categoría de Gasto',
+    colorLabel: 'Color de Identificación',
+    saveEnvelopeBtn: 'Crear Sobre',
+    saveChangesBtn: 'Guardar Cambios',
+    cancelBtn: 'Cancelar',
+
+    logExpenseTitle: 'Registrar Gasto de Sobre',
+    editExpenseTitle: 'Editar Registro de Gasto',
+    selectEnvelopeLabel: 'Seleccionar Sobre',
+    expenseAmountLabel: 'Monto del Gasto',
+    expenseCurrencyLabel: 'Moneda del Gasto',
+    vendorNoteLabel: 'Proveedor / Nota (Opcional)',
+    vendorNotePlaceholder: 'ej. Supermercado, Gasolinera',
+    expenseDateLabel: 'Fecha de Transacción',
+    autoConversionNotice: 'Convertido automáticamente a la moneda del sobre según tasas en vivo.',
+    saveExpenseBtn: 'Guardar Gasto',
+
+    selectPdfTemplateTitle: 'Exportar Extracto PDF',
+    selectPdfTemplateSubtitle: 'Elige un diseño de tarjeta de extracto PDF listo para imprimir',
+    classicTemplateTitle: 'Clásico Minimal (Con Color)',
+    classicTemplateDesc: 'Tarjetas de resumen a color con bordes de alto contraste.',
+    bwTemplateTitle: 'Minimal Blanco y Negro (Ahorra Tinta)',
+    bwTemplateDesc: 'Diseño en blanco y negro puro diseñado para ahorrar tinta de impresora.',
+    generatePdfBtn: 'Generar Informe PDF',
+
+    confirmResetTitle: 'Confirmar Restablecimiento',
+    confirmResetDesc: 'Esto eliminará permanentemente todos tus sobres, gastos y configuraciones.',
+    confirmResetBtn: 'Sí, Eliminar y Restablecer',
+
     footerCopyright: 'Free Cash Envelope Tracker. Herramienta Financiera 100% Gratuita.',
     footerTagline: 'Construido pensando en la privacidad. Tus datos permanecen en tu navegador.',
+
+    // PDF Exports
+    pdfDocTitle: 'SOBRES DE EFECTIVO',
+    pdfDocSubtitle: 'Rastreador',
+    pdfDateLabel: 'Fecha',
+    pdfPeriodLabel: 'Período',
+    pdfAllocatedCard: 'TOTAL ASIGNADO',
+    pdfSpentCard: 'TOTAL GASTADO',
+    pdfRemainingCard: 'SALDO RESTANTE',
+    pdfEnvelopesSection: 'DESGLOSE DE SOBRES',
+    pdfEnvNameHeader: 'NOMBRE DEL SOBRE',
+    pdfCategoryHeader: 'CATEGORÍA',
+    pdfAllocatedHeader: 'ASIGNADO',
+    pdfSpentHeader: 'GASTADO',
+    pdfRemainingHeader: 'RESTANTE',
+    pdfTxSection: 'HISTORIAL DE TRANSACCIONES',
+    pdfDescHeader: 'DESCRIPCIÓN / NOTA',
+    pdfAmountHeader: 'MONTO (-)',
+    pdfNotesSection: 'NOTAS Y RECORDATORIOS',
+    pdfHandwritingText: 'Puedes imprimir esta página y escribir tus propias notas a mano.',
   },
   fr: {
     brandName: 'Free Cash Envelope Tracker',
     brandTagline: 'Gestion Budgétaire par Enveloppes Digitales',
     navGoToTracker: 'Aller au Suivi',
     navTracker: 'Suivi',
+
     heroBadge: '100% Privé — Gestion Budgétaire Locale',
     heroTitleLine1: 'Maîtrisez votre Argent avec les',
     heroTitleLine2: 'Enveloppes Budgétaires Digitales',
@@ -248,6 +391,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
       'Téléchargez facilement des résumés PDF ou des fichiers Excel à 2 feuilles pour conserver une sauvegarde.',
     heroQuote:
       '"Vos données restent uniquement dans ce navigateur. Si vous effacez votre historique, elles seront perdues : téléchargez un PDF de sauvegarde."',
+
     howItWorksTitle: 'Comment Fonctionne le Budget par Enveloppes',
     howItWorksSubtitle:
       'Une méthode simple et visuelle qui attribue un rôle à chaque euro.',
@@ -260,6 +404,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     step3Title: 'Exportez vos Données',
     step3Desc:
       'Téléchargez des résumés PDF ou exportez des fichiers Excel à 2 feuilles pour vos archives.',
+
     guideBadge: 'Guide & Ressources des Enveloppes Budgétaires',
     guideTitleLine1: 'Le Système Ultime d’',
     guideTitleLine2: 'Enveloppes Budgétaires Digitales',
@@ -284,6 +429,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     card3Check1: 'Fiches PDF Classiques',
     card3Check2: 'Format N&B Imprimable',
     card3Check3: 'Import & Export Excel',
+
     budgetOverview: 'Aperçu du Budget',
     overBudget: 'Budget Dépassé',
     newEnvelope: 'Nouvelle Enveloppe',
@@ -302,21 +448,6 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     overAllocated: 'Dépassement de l’objectif alloué',
     budgetUtilization: 'Utilisation du Budget',
     used: 'Utilisé',
-    cashEnvelopes: 'Enveloppes Budgétaires',
-    allCategories: 'Toutes',
-    searchEnvelopes: 'Rechercher une enveloppe...',
-    recentLedger: 'Registre des Dépenses',
-    ledgerSubtitle: 'Recherchez, filtrez et vérifiez vos dépenses',
-    date: 'Date',
-    envelope: 'Enveloppe',
-    noteVendor: 'Note / Commerçant',
-    amount: 'Montant',
-    actions: 'Actions',
-    noEnvelopesFound: 'Aucune enveloppe trouvée.',
-    createEnvelope: 'Créer l’Enveloppe',
-    saveChanges: 'Enregistrer',
-    recordExpense: 'Valider la Dépense',
-    cancel: 'Annuler',
     budgetPeriodLabel: 'Période Budgétaire :',
     budgetPeriodPlaceholder: 'ex. Août 2026 ou 26 Juil – 9 Août',
     remindLabel: 'Rappel de sauvegarde :',
@@ -325,14 +456,94 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     every2weeks: 'Toutes les 2 semaines',
     monthly: 'Mensuel',
     never: 'Jamais',
+
+    cashEnvelopes: 'Enveloppes Budgétaires',
+    allCategories: 'Toutes',
+    searchEnvelopes: 'Rechercher une enveloppe...',
+    remainingLabel: 'RESTANT :',
+    progressLabel: 'PROGRESSION :',
+    addExpenseBtn: '+ AJOUTER DÉPENSE',
+    noEnvelopesFound: 'Aucune enveloppe trouvée.',
+
+    recentLedger: 'Registre des Dépenses',
+    ledgerSubtitle: 'Recherchez, filtrez et vérifiez vos dépenses',
+    date: 'Date',
+    envelope: 'Enveloppe',
+    noteVendor: 'Note / Commerçant',
+    amount: 'Montant',
+    actions: 'Actions',
+    searchNotePlaceholder: 'Rechercher note, commerçant, enveloppe...',
+    allEnvelopesFilter: 'TOUTES LES ENVELOPPES',
+    newestFirst: 'PLUS RÉCENTS EN PREMIER',
+    oldestFirst: 'PLUS ANCIENS EN PREMIER',
+    highestFirst: 'MONTANT LE PLUS ÉLEVÉ',
+    lowestFirst: 'MONTANT LE PLUS BAS',
+    logsCount: 'DÉPENSES',
+
+    createEnvelopeTitle: 'Créer une Enveloppe',
+    editEnvelopeTitle: 'Modifier l’Enveloppe',
+    envNameLabel: 'Nom de l’Enveloppe',
+    envNamePlaceholder: 'ex. Courses, Loyer, Épargne',
+    allocatedLabel: 'Budget Objectif',
+    currencyLabel: 'Devise d’Allocation',
+    categoryLabel: 'Catégorie de Dépense',
+    colorLabel: 'Couleur de l’Enveloppe',
+    saveEnvelopeBtn: 'Créer l’Enveloppe',
+    saveChangesBtn: 'Enregistrer',
+    cancelBtn: 'Annuler',
+
+    logExpenseTitle: 'Enregistrer une Dépense',
+    editExpenseTitle: 'Modifier la Dépense',
+    selectEnvelopeLabel: 'Sélectionner l’Enveloppe',
+    expenseAmountLabel: 'Montant de la Dépense',
+    expenseCurrencyLabel: 'Devise de la Dépense',
+    vendorNoteLabel: 'Commerçant / Note (Optionnel)',
+    vendorNotePlaceholder: 'ex. Supermarché, Essence',
+    expenseDateLabel: 'Date de Transaction',
+    autoConversionNotice: 'Converti automatiquement dans la devise de l’enveloppe au taux actuel.',
+    saveExpenseBtn: 'Valider la Dépense',
+
+    selectPdfTemplateTitle: 'Exporter le Relevé PDF',
+    selectPdfTemplateSubtitle: 'Choisissez un modèle de relevé PDF prêt à imprimer',
+    classicTemplateTitle: 'Classique Minimal (Couleur)',
+    classicTemplateDesc: 'Cartes de résumé en couleur et tableau à fort contraste.',
+    bwTemplateTitle: 'Minimal Noir & Blanc (Impression)',
+    bwTemplateDesc: 'Conçu en noir et blanc pur pour économiser l’encre de votre imprimante.',
+    generatePdfBtn: 'Générer le Rapport PDF',
+
+    confirmResetTitle: 'Confirmer la Réinitialisation',
+    confirmResetDesc: 'Cette action supprimera définitivement toutes vos enveloppes et dépenses.',
+    confirmResetBtn: 'Oui, Tout Effacer',
+
     footerCopyright: 'Free Cash Envelope Tracker. Outil Financier 100% Gratuit.',
     footerTagline: 'Conçu dans le respect de votre vie privée. Données conservées uniquement dans votre navigateur.',
+
+    // PDF Exports
+    pdfDocTitle: 'ENVELOPPES BUDGÉTAIRES',
+    pdfDocSubtitle: 'Suivi',
+    pdfDateLabel: 'Date',
+    pdfPeriodLabel: 'Période',
+    pdfAllocatedCard: 'TOTAL ALLOUÉ',
+    pdfSpentCard: 'TOTAL DÉPENSÉ',
+    pdfRemainingCard: 'SOLDE RESTANT',
+    pdfEnvelopesSection: 'DÉTAIL DES ENVELOPPES',
+    pdfEnvNameHeader: 'NOM DE L’ENVELOPPE',
+    pdfCategoryHeader: 'CATÉGORIE',
+    pdfAllocatedHeader: 'ALLOUÉ',
+    pdfSpentHeader: 'DÉPENSÉ',
+    pdfRemainingHeader: 'RESTANT',
+    pdfTxSection: 'HISTORIQUE DES TRANSACTIONS',
+    pdfDescHeader: 'DESCRIPTION / NOTE',
+    pdfAmountHeader: 'MONTANT (-)',
+    pdfNotesSection: 'NOTES & RAPPELS',
+    pdfHandwritingText: 'Vous pouvez imprimer cette page et inscrire vos notes à la main.',
   },
   de: {
     brandName: 'Free Cash Envelope Tracker',
     brandTagline: 'Digitales Umschlag-Budgeting System',
     navGoToTracker: 'Zum Tracker',
     navTracker: 'Tracker',
+
     heroBadge: '100% Privat — Browser-Lokales Budgeting',
     heroTitleLine1: 'Meistern Sie Ihr Geld mit',
     heroTitleLine2: 'Digitalen Bargeld-Umschlägen',
@@ -352,6 +563,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
       'Laden Sie einfach formatierte PDF-Zusammenfassungen oder Excel-Dateien als externes Backup herunter.',
     heroQuote:
       '"Ihre Daten bleiben nur in diesem Browser. Wenn Sie den Speicher leeren, gehen sie verloren — laden Sie vorher ein PDF herunter."',
+
     howItWorksTitle: 'So Funktioniert Umschlag-Budgeting',
     howItWorksSubtitle:
       'Eine einfache, visuelle Methode, die jedem Euro eine genaue Aufgabe zuweist.',
@@ -364,6 +576,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     step3Title: 'Exportieren & Sichern',
     step3Desc:
       'Laden Sie druckfertige PDF-Zusammenfassungen herunter oder exportieren Sie saubere Excel-Dateien.',
+
     guideBadge: 'Umschlag-Budgeting Leitfaden',
     guideTitleLine1: 'Das Ultimative',
     guideTitleLine2: 'Digitale Umschlag-System',
@@ -388,6 +601,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     card3Check1: 'Klassische PDF-Karten',
     card3Check2: 'Druckfreundliches S/W Design',
     card3Check3: 'Excel Import & Export',
+
     budgetOverview: 'Budget-Übersicht',
     overBudget: 'Budget Überschritten',
     newEnvelope: 'Neuer Umschlag',
@@ -406,21 +620,6 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     overAllocated: 'Zielbudget überschritten',
     budgetUtilization: 'Budget-Auslastung',
     used: 'Genutzt',
-    cashEnvelopes: 'Bargeld-Umschläge',
-    allCategories: 'Alle',
-    searchEnvelopes: 'Umschläge suchen...',
-    recentLedger: 'Kassenbuch',
-    ledgerSubtitle: 'Durchsuchen und prüfen Sie Ihre Ausgaben',
-    date: 'Datum',
-    envelope: 'Umschlag',
-    noteVendor: 'Notiz / Händler',
-    amount: 'Betrag',
-    actions: 'Aktionen',
-    noEnvelopesFound: 'Keine Umschläge gefunden.',
-    createEnvelope: 'Umschlag Erstellen',
-    saveChanges: 'Speichern',
-    recordExpense: 'Ausgabe Buchen',
-    cancel: 'Abbrechen',
     budgetPeriodLabel: 'Budget-Zeitraum:',
     budgetPeriodPlaceholder: 'z.B. August 2026 oder 26. Juli – 9. Aug',
     remindLabel: 'Erinnere mich an Backup:',
@@ -429,14 +628,94 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     every2weeks: 'Alle 2 Wochen',
     monthly: 'Monatlich',
     never: 'Nie',
+
+    cashEnvelopes: 'Bargeld-Umschläge',
+    allCategories: 'Alle',
+    searchEnvelopes: 'Umschläge suchen...',
+    remainingLabel: 'VERBLEIBEND:',
+    progressLabel: 'FORTSCHRITT:',
+    addExpenseBtn: '+ AUSGABE BUCHEN',
+    noEnvelopesFound: 'Keine Umschläge gefunden.',
+
+    recentLedger: 'Kassenbuch',
+    ledgerSubtitle: 'Durchsuchen und prüfen Sie Ihre Ausgaben',
+    date: 'Datum',
+    envelope: 'Umschlag',
+    noteVendor: 'Notiz / Händler',
+    amount: 'Betrag',
+    actions: 'Aktionen',
+    searchNotePlaceholder: 'Notiz, Händler, Umschlag suchen...',
+    allEnvelopesFilter: 'ALLE UMSCHLÄGE',
+    newestFirst: 'NEUESTE ZUERST',
+    oldestFirst: 'ÄLTESTE ZUERST',
+    highestFirst: 'HÖCHSTER BETRAG',
+    lowestFirst: 'NIEDRIGSTER BETRAG',
+    logsCount: 'EINTRÄGE',
+
+    createEnvelopeTitle: 'Umschlag Erstellen',
+    editEnvelopeTitle: 'Umschlag Bearbeiten',
+    envNameLabel: 'Name des Umschlags',
+    envNamePlaceholder: 'z.B. Lebensmittel, Miete, Notfall',
+    allocatedLabel: 'Zielbudget Betrag',
+    currencyLabel: 'Währung',
+    categoryLabel: 'Kategorie',
+    colorLabel: 'Farbe',
+    saveEnvelopeBtn: 'Umschlag Erstellen',
+    saveChangesBtn: 'Speichern',
+    cancelBtn: 'Abbrechen',
+
+    logExpenseTitle: 'Ausgabe Buchen',
+    editExpenseTitle: 'Ausgabe Bearbeiten',
+    selectEnvelopeLabel: 'Umschlag Auswählen',
+    expenseAmountLabel: 'Ausgabenbetrag',
+    expenseCurrencyLabel: 'Währung der Ausgabe',
+    vendorNoteLabel: 'Händler / Notiz (Optional)',
+    vendorNotePlaceholder: 'z.B. Supermarkt, Tankstelle',
+    expenseDateLabel: 'Datum',
+    autoConversionNotice: 'Automatisch in die Umschlagwährung umgerechnet.',
+    saveExpenseBtn: 'Ausgabe Buchen',
+
+    selectPdfTemplateTitle: 'PDF-Bericht Exportieren',
+    selectPdfTemplateSubtitle: 'Wählen Sie ein Layout für Ihren Ausdruck',
+    classicTemplateTitle: 'Klassisch Minimal (Farbig)',
+    classicTemplateDesc: 'Farbige Übersichtskarten und kontrastreiche Tabellen.',
+    bwTemplateTitle: 'Minimal Schwarz-Weiß (Sparsammus)',
+    bwTemplateDesc: 'Reines Schwarz-Weiß-Design zur Einsparung von Druckertinte.',
+    generatePdfBtn: 'PDF-Bericht Erstellen',
+
+    confirmResetTitle: 'Zurücksetzen Bestätigen',
+    confirmResetDesc: 'Dadurch werden alle Umschläge und Ausgaben dauerhaft gelöscht.',
+    confirmResetBtn: 'Ja, Alles Löschen',
+
     footerCopyright: 'Free Cash Envelope Tracker. 100% Kostenloses Finanz-Tool.',
     footerTagline: 'Entwickelt mit Fokus auf Privatsphäre. Daten bleiben nur in Ihrem Browser.',
+
+    // PDF Exports
+    pdfDocTitle: 'BARGELD-UMSCHLÄGE',
+    pdfDocSubtitle: 'Tracker',
+    pdfDateLabel: 'Datum',
+    pdfPeriodLabel: 'Zeitraum',
+    pdfAllocatedCard: 'GESAMT ZUGEWIESEN',
+    pdfSpentCard: 'GESAMT AUSGEGEBEN',
+    pdfRemainingCard: 'RESTTEHGUTHABEN',
+    pdfEnvelopesSection: 'UMSCHLAG-ÜBERSICHT',
+    pdfEnvNameHeader: 'UMSCHLAGNAME',
+    pdfCategoryHeader: 'KATEGORIE',
+    pdfAllocatedHeader: 'ZUGEWIESEN',
+    pdfSpentHeader: 'AUSGEGEBEN',
+    pdfRemainingHeader: 'VERBLEIBEND',
+    pdfTxSection: 'TRANSAKTIONSHISTORIE',
+    pdfDescHeader: 'BESCHREIBUNG / NOTIZ',
+    pdfAmountHeader: 'BETRAG (-)',
+    pdfNotesSection: 'NOTIZEN & ERINNERUNGEN',
+    pdfHandwritingText: 'Sie können diese Seite ausdrucken und Ihre eigenen Notizen handschriftlich eintragen.',
   },
   hi: {
     brandName: 'फ्री कैश एनवेलप ट्रैकर',
     brandTagline: 'डिजिटल कैश लिफाफा बजट प्रणाली',
     navGoToTracker: 'ट्रैकर पर जाएं',
     navTracker: 'ट्रैकर',
+
     heroBadge: '100% निजी — केवल ब्राउज़र में सुरक्षित',
     heroTitleLine1: 'अपने पैसों को संभालें',
     heroTitleLine2: 'डिजिटल कैश लिफाफे के साथ',
@@ -456,6 +735,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
       'अपने डेटा का बैकअप रखने के लिए पीडीएफ या 2-शीट एक्सेल फाइल (.xlsx) आसानी से डाउनलोड करें।',
     heroQuote:
       '"आपका डेटा केवल इस ब्राउज़र में रहता है। यदि आप ब्राउज़र डेटा साफ़ करते हैं, तो यह मिट जाएगा — बैकअप के लिए पीडीएफ डाउनलोड कर लें।"',
+
     howItWorksTitle: 'कैश लिफाफा बजट कैसे काम करता है',
     howItWorksSubtitle:
       'एक सरल और व्यावहारिक तरीका जो आपके हर रुपये को एक खास उद्देश्य देता है।',
@@ -468,6 +748,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     step3Title: 'एक्सपोर्ट और बैकअप लें',
     step3Desc:
       'प्रिंट-रेडी पीडीएफ समरी डाउनलोड करें या एक्सेल फाइल एक्सपोर्ट करें।',
+
     guideBadge: 'कैश बजटिंग गाइड और संसाधन',
     guideTitleLine1: 'आपके पैसों के लिए',
     guideTitleLine2: 'डिजिटल कैश लिफाफा',
@@ -492,6 +773,7 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     card3Check1: 'क्लासिक पीडीएफ कार्ड्स',
     card3Check2: 'प्रिंट-फ्रेंडली B&W डिजाइन',
     card3Check3: 'एक्सेल इम्पोर्ट और एक्सपोर्ट',
+
     budgetOverview: 'बजट अवलोकन',
     overBudget: 'बजट से अधिक',
     newEnvelope: 'नया लिफाफा',
@@ -510,21 +792,6 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     overAllocated: 'आवंटित लक्ष्य से अधिक',
     budgetUtilization: 'बजट का उपयोग',
     used: 'उपयोग हुआ',
-    cashEnvelopes: 'कैश लिफाफे',
-    allCategories: 'सभी श्रेणी',
-    searchEnvelopes: 'लिफाफा खोजें...',
-    recentLedger: 'हाल का लेनदेन रजिस्टर',
-    ledgerSubtitle: 'अपने सभी खर्चों की जांच और खोज करें',
-    date: 'तारीख',
-    envelope: 'लिफाफा',
-    noteVendor: 'विवरण / दुकानदार',
-    amount: 'राशि',
-    actions: 'कार्रवाई',
-    noEnvelopesFound: 'कोई लिफाफा नहीं मिला।',
-    createEnvelope: 'लिफाफा बनाएं',
-    saveChanges: 'बदलाव सुरक्षित करें',
-    recordExpense: 'खर्च सहेजें',
-    cancel: 'रद्द करें',
     budgetPeriodLabel: 'बजट अवधि:',
     budgetPeriodPlaceholder: 'जैसे अगस्त 2026 या 26 जुलाई – 9 अगस्त',
     remindLabel: 'बैकअप के लिए याद दिलाएं:',
@@ -533,12 +800,92 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
     every2weeks: 'हर 2 सप्ताह में',
     monthly: 'मासिक',
     never: 'कभी नहीं',
+
+    cashEnvelopes: 'कैश लिफाफे',
+    allCategories: 'सभी श्रेणी',
+    searchEnvelopes: 'लिफाफा खोजें...',
+    remainingLabel: 'शेष राशि:',
+    progressLabel: 'प्रगति:',
+    addExpenseBtn: '+ खर्च जोड़ें',
+    noEnvelopesFound: 'कोई लिफाफा नहीं मिला।',
+
+    recentLedger: 'हाल का लेनदेन रजिस्टर',
+    ledgerSubtitle: 'अपने सभी खर्चों की जांच और खोज करें',
+    date: 'तारीख',
+    envelope: 'लिफाफा',
+    noteVendor: 'विवरण / दुकानदार',
+    amount: 'राशि',
+    actions: 'कार्रवाई',
+    searchNotePlaceholder: 'विवरण, दुकानदार, लिफाफा खोजें...',
+    allEnvelopesFilter: 'सभी लिफाफे',
+    newestFirst: 'नवीनतम पहले',
+    oldestFirst: 'पुराने पहले',
+    highestFirst: 'अधिकतम राशि',
+    lowestFirst: 'न्यूनतम राशि',
+    logsCount: 'लेनदेन',
+
+    createEnvelopeTitle: 'कैश लिफाफा बनाएं',
+    editEnvelopeTitle: 'लिफाफे में बदलाव करें',
+    envNameLabel: 'लिफाफे का नाम',
+    envNamePlaceholder: 'जैसे राशन, किराया, इमरजेंसी',
+    allocatedLabel: 'लक्ष्य बजट राशि',
+    currencyLabel: 'मुद्रा (Currency)',
+    categoryLabel: 'खर्च की श्रेणी',
+    colorLabel: 'रंग',
+    saveEnvelopeBtn: 'लिफाफा बनाएं',
+    saveChangesBtn: 'बदलाव सुरक्षित करें',
+    cancelBtn: 'रद्द करें',
+
+    logExpenseTitle: 'खर्च दर्ज करें',
+    editExpenseTitle: 'खर्च में बदलाव करें',
+    selectEnvelopeLabel: 'लिफाफा चुनें',
+    expenseAmountLabel: 'खर्च की राशि',
+    expenseCurrencyLabel: 'खर्च की मुद्रा',
+    vendorNoteLabel: 'दुकानदार / विवरण (वैकल्पिक)',
+    vendorNotePlaceholder: 'जैसे सुपरमार्केट, पेट्रोल पंप',
+    expenseDateLabel: 'लेनदेन की तारीख',
+    autoConversionNotice: 'लाइव दरों के आधार पर लिफाफे की मुद्रा में स्वतः परिवर्तित।',
+    saveExpenseBtn: 'खर्च सुरक्षित करें',
+
+    selectPdfTemplateTitle: 'पीडीएफ एक्सपोर्ट करें',
+    selectPdfTemplateSubtitle: 'प्रिंट-रेडी पीडीएफ कार्ड डिजाइन चुनें',
+    classicTemplateTitle: 'क्लासिक मिनिमल (रंगीन)',
+    classicTemplateDesc: 'रंगीन समरी कार्ड और स्पष्ट तालिका।',
+    bwTemplateTitle: 'मिनिमल ब्लैक एंड वाइट (प्रिंट-फ्रेंडली)',
+    bwTemplateDesc: 'प्रिंटर की स्याही बचाने के लिए ब्लैक एंड वाइट डिजाइन।',
+    generatePdfBtn: 'पीडीएफ रिपोर्ट डाउनलोड करें',
+
+    confirmResetTitle: 'रीसेट की पुष्टि करें',
+    confirmResetDesc: 'यह आपके सभी लिफाफे और खर्चों को स्थायी रूप से मिटा देगा।',
+    confirmResetBtn: 'हां, सब मिटाएं',
+
     footerCopyright: 'फ्री कैश एनवेलप ट्रैकर। 100% मुफ्त पर्सनल फाइनेंस टूल।',
     footerTagline: 'पूरी गोपनीयता के साथ निर्मित। डेटा केवल आपके ब्राउज़र में रहता है।',
+
+    // PDF Exports
+    pdfDocTitle: 'कैश लिफाफा',
+    pdfDocSubtitle: 'ट्रैकर',
+    pdfDateLabel: 'तारीख',
+    pdfPeriodLabel: 'बजट अवधि',
+    pdfAllocatedCard: 'कुल आवंटित बजट',
+    pdfSpentCard: 'कुल खर्च',
+    pdfRemainingCard: 'कुल शेष राशि',
+    pdfEnvelopesSection: 'लिफाफा विवरण',
+    pdfEnvNameHeader: 'लिफाफे का नाम',
+    pdfCategoryHeader: 'श्रेणी',
+    pdfAllocatedHeader: 'आवंटित',
+    pdfSpentHeader: 'खर्च',
+    pdfRemainingHeader: 'शेष',
+    pdfTxSection: 'लेनदेन का इतिहास',
+    pdfDescHeader: 'विवरण / दुकानदार',
+    pdfAmountHeader: 'राशि (-)',
+    pdfNotesSection: 'नोट्स और रिमाइंडर',
+    pdfHandwritingText: 'आप इस पेज को प्रिंट करके अपने हाथ से नोट्स लिख सकते हैं।',
   },
 };
 
 export function t(key: string, lang: string = 'en'): string {
-  const dictionary = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const langKey = (lang || 'en') as LanguageCode;
+  const dictionary = TRANSLATIONS[langKey] || TRANSLATIONS.en;
   return dictionary[key] || TRANSLATIONS.en[key] || key;
 }

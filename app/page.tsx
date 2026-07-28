@@ -579,6 +579,7 @@ export default function CashEnvelopeTrackerPage() {
         onSave={handleSaveEnvelope}
         editingEnvelope={editingEnvelope}
         mainCurrency={mainCurrency}
+        language={language}
       />
 
       <ExpenseModal
@@ -592,12 +593,14 @@ export default function CashEnvelopeTrackerPage() {
         selectedEnvelopeId={selectedEnvelopeForExpense}
         editingExpense={editingExpense}
         mainCurrency={mainCurrency}
+        language={language}
       />
 
       <ResetModal
         isOpen={isResetModalOpen}
         onClose={() => setIsResetModalOpen(false)}
         onConfirmReset={handleConfirmReset}
+        language={language}
       />
 
       <DataLossWarningModal
@@ -609,6 +612,7 @@ export default function CashEnvelopeTrackerPage() {
         isOpen={isPdfModalOpen}
         onClose={() => setIsPdfModalOpen(false)}
         onSelectTemplate={handleSelectPdfTemplate}
+        language={language}
       />
     </div>
   );

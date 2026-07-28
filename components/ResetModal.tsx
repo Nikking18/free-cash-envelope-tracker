@@ -2,17 +2,20 @@
 
 import React from 'react';
 import { AlertTriangle, X } from 'lucide-react';
+import { t } from '../lib/i18n';
 
 interface ResetModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirmReset: () => void;
+  language?: string;
 }
 
 export const ResetModal: React.FC<ResetModalProps> = ({
   isOpen,
   onClose,
   onConfirmReset,
+  language = 'en',
 }) => {
   if (!isOpen) return null;
 
@@ -24,7 +27,7 @@ export const ResetModal: React.FC<ResetModalProps> = ({
           <div className="flex items-center gap-2 text-red-600">
             <AlertTriangle className="w-5 h-5" />
             <h2 className="font-serif font-black text-xl uppercase tracking-tight">
-              Reset Budget Data
+              {t('confirmResetTitle', language)}
             </h2>
           </div>
           <button
@@ -37,10 +40,7 @@ export const ResetModal: React.FC<ResetModalProps> = ({
 
         <div className="space-y-3">
           <p className="text-sm font-bold text-[#141414] leading-relaxed">
-            Are you sure you want to reset all budget data?
-          </p>
-          <p className="text-xs text-red-800 font-bold bg-red-100 p-3 border-2 border-red-600 uppercase tracking-wide">
-            This will permanently delete all envelopes, allocations, and transaction history from your browser. This action cannot be undone.
+            {t('confirmResetDesc', language)}
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export const ResetModal: React.FC<ResetModalProps> = ({
             onClick={onClose}
             className="px-4 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
           >
-            Cancel
+            {t('cancelBtn', language)}
           </button>
           <button
             onClick={() => {
@@ -59,7 +59,7 @@ export const ResetModal: React.FC<ResetModalProps> = ({
             }}
             className="px-5 py-2 bg-red-600 text-white font-bold text-xs uppercase tracking-wider neo-border hover:bg-red-700 cursor-pointer"
           >
-            Yes, Permanently Delete All Data
+            {t('confirmResetBtn', language)}
           </button>
         </div>
       </div>

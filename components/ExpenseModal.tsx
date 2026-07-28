@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { Envelope, Expense } from '../lib/tracker-types';
-import { SUPPORTED_CURRENCIES, getCurrencySymbol } from '../lib/currency-utils';
+import { getSupportedCurrencies } from '../lib/currency-utils';
 import { X, Receipt } from 'lucide-react';
+import { t } from '../lib/i18n';
 
 interface ExpenseModalProps {
   isOpen: boolean;
@@ -13,6 +14,7 @@ interface ExpenseModalProps {
   selectedEnvelopeId?: string;
   editingExpense?: Expense | null;
   mainCurrency?: string;
+  language?: string;
 }
 
 export const ExpenseModal: React.FC<ExpenseModalProps> = ({
@@ -23,6 +25,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
   selectedEnvelopeId,
   editingExpense,
   mainCurrency = 'USD',
+  language = 'en',
 }) => {
   const [envelopeId, setEnvelopeId] = useState('');
   const [amount, setAmount] = useState('');
@@ -61,44 +64,42 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!envelopeId) {
-      setError('Please select an envelope.');
+      setError('Please select an envelope');
       return;
     }
-
-    const amtNum = parseFloat(amount);
-    if (isNaN(amtNum) || amtNum <= 0) {
-      setError('Expense amount must be a positive number.');
-      return;
-    }
-
-    if (!date) {
-      setError('Date is required.');
+    const numAmount = parseFloat(amount);
+    if (isNaN(numAmount) || numAmount <= 0) {
+      setError('Expense amount must be greater than 0');
       return;
     }
 
     onSave({
-      id: editingExpense?.id,
       envelopeId,
-      amount: amtNum,
+      amount: numAmount,
       currency,
       note: note.trim(),
       date,
+      id: editingExpense ? editingExpense.id : undefined,
     });
     onClose();
   };
 
+  const selectedEnvelopeObj = envelopes.find((e) => e.id === envelopeId);
+  const targetEnvelopeCurrency = selectedEnvelopeObj?.currency || mainCurrency;
+  const isForeignCurrency = currency !== targetEnvelopeCurrency;
+
+  const supportedCurrencies = getSupportedCurrencies();
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-      <div className="bg-[#FCFAF7] neo-border-thick neo-shadow-lg w-full max-w-md p-6 space-y-5 relative">
-        {/* Header */}
-        <div className="flex items-center justify-between border-b-2 border-[#141414] pb-3">
-          <div className="flex items-center gap-2">
+      <div className="bg-[#FCFAF7] neo-border-thick neo-shadow-lg w-full max-w-md p-6 space-y-4 relative">
+        <div className="flex items-center justify-between border-b-4 border-[#141414] pb-3">
+          <div className="flex items-center gap-2 text-[#141414] font-serif font-black text-xl uppercase tracking-tight">
             <Receipt className="w-5 h-5 text-[#D15F47]" />
-            <h2 className="font-serif font-black text-xl text-[#141414] uppercase tracking-tight">
-              {editingExpense ? 'Edit Expense' : 'Log Expense'}
-            </h2>
+            <span>{editingExpense ? t('editExpenseTitle', language) : t('logExpenseTitle', language)}</span>
           </div>
           <button
+            type="button"
             onClick={onClose}
             className="p-1 hover:bg-[#F2EFE9] neo-border cursor-pointer"
           >
@@ -113,28 +114,28 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Target Envelope */}
+          {/* Target Envelope Selector */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Target Envelope *
+              {t('selectEnvelopeLabel', language)} *
             </label>
             <select
               value={envelopeId}
               onChange={(e) => setEnvelopeId(e.target.value)}
-              className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden uppercase tracking-wider"
+              className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
             >
               {envelopes.map((env) => (
                 <option key={env.id} value={env.id}>
-                  {env.name} ({getCurrencySymbol(env.currency || mainCurrency)}{env.allocated.toFixed(2)} target)
+                  {env.name} ({env.category}) — [{env.currency || mainCurrency}]
                 </option>
               ))}
             </select>
           </div>
 
-          {/* Amount & Currency */}
+          {/* Expense Amount & Currency */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Spent Amount &amp; Currency *
+              {t('expenseAmountLabel', language)} &amp; {t('expenseCurrencyLabel', language)} *
             </label>
             <div className="flex items-center gap-2">
               <select
@@ -142,7 +143,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
                 onChange={(e) => setCurrency(e.target.value)}
                 className="w-28 px-2 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden cursor-pointer"
               >
-                {SUPPORTED_CURRENCIES.map((c) => (
+                {supportedCurrencies.map((c) => (
                   <option key={c.code} value={c.code}>
                     {c.symbol} {c.code}
                   </option>
@@ -154,28 +155,28 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
                 min="0.01"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder="e.g., 42.50"
+                placeholder="e.g., 45.50"
                 className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
                 autoFocus
               />
             </div>
-            {currency !== mainCurrency && (
-              <p className="text-[11px] font-bold text-[#D15F47] tracking-wider pt-0.5">
-                Note: Spent amount in {currency} will be auto-converted to {mainCurrency} for envelope balance calculations.
+            {isForeignCurrency && (
+              <p className="text-[11px] font-bold text-[#5C768D] pt-1">
+                ℹ️ {t('autoConversionNotice', language)} ({targetEnvelopeCurrency})
               </p>
             )}
           </div>
 
-          {/* Note */}
+          {/* Note / Vendor */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Note / Vendor (Optional)
+              {t('vendorNoteLabel', language)}
             </label>
             <input
               type="text"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              placeholder="e.g., Trader Joe's, Gas station, Dinner"
+              placeholder={t('vendorNotePlaceholder', language)}
               className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
             />
           </div>
@@ -183,7 +184,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
           {/* Date */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Transaction Date *
+              {t('expenseDateLabel', language)}
             </label>
             <input
               type="date"
@@ -200,13 +201,13 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
               onClick={onClose}
               className="px-4 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
-              Cancel
+              {t('cancelBtn', language)}
             </button>
             <button
               type="submit"
               className="px-5 py-2 bg-[#D15F47] text-white neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
-              {editingExpense ? 'Save Changes' : 'Record Expense'}
+              {editingExpense ? t('saveChangesBtn', language) : t('saveExpenseBtn', language)}
             </button>
           </div>
         </form>
