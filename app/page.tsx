@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Envelope, Expense, TrackerData, Category, CATEGORIES, INITIAL_STORAGE_KEY, DEFAULT_INITIAL_DATA } from '../lib/tracker-types';
 import { generatePDFSummary, PDFTemplateStyle } from '../lib/pdf-utils';
 import { exportToExcel } from '../lib/excel-utils';
+import { convertCurrency } from '../lib/currency-utils';
 
 import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
@@ -26,6 +27,10 @@ import { Search, Plus, Filter, Wallet, FileText, Download } from 'lucide-react';
 export default function CashEnvelopeTrackerPage() {
   const [data, setData] = useState<TrackerData>(DEFAULT_INITIAL_DATA);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  // Currency & Language State
+  const [mainCurrency, setMainCurrency] = useState<string>('USD');
+  const [language, setLanguage] = useState<string>('en');
 
   // Filters & State
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -58,6 +63,8 @@ export default function CashEnvelopeTrackerPage() {
             const parsed = JSON.parse(saved);
             if (Array.isArray(parsed.envelopes) && Array.isArray(parsed.expenses)) {
               setData(parsed);
+              if (parsed.mainCurrency) setMainCurrency(parsed.mainCurrency);
+              if (parsed.language) setLanguage(parsed.language);
             }
           }
         } catch (e) {
@@ -161,34 +168,57 @@ export default function CashEnvelopeTrackerPage() {
 
   // Save to localStorage
   const saveToStorage = useCallback((newData: TrackerData) => {
-    setData(newData);
+    const updatedData: TrackerData = {
+      ...newData,
+      mainCurrency: newData.mainCurrency || mainCurrency,
+      language: newData.language || language,
+    };
+    setData(updatedData);
     try {
-      localStorage.setItem(INITIAL_STORAGE_KEY, JSON.stringify(newData));
+      localStorage.setItem(INITIAL_STORAGE_KEY, JSON.stringify(updatedData));
     } catch (e) {
       console.error('Failed to write to localStorage:', e);
     }
-  }, []);
+  }, [mainCurrency, language]);
 
-  // Spent calculations
+  const handleChangeMainCurrency = (newCurrency: string) => {
+    setMainCurrency(newCurrency);
+    saveToStorage({ ...data, mainCurrency: newCurrency });
+  };
+
+  const handleChangeLanguage = (newLang: string) => {
+    setLanguage(newLang);
+    saveToStorage({ ...data, language: newLang });
+  };
+
+  // Spent calculations (converting foreign expenses to target envelope currency & main currency)
   const envelopeSpentMap = useMemo(() => {
     const map = new Map<string, number>();
     data.envelopes.forEach((env) => map.set(env.id, 0));
 
     data.expenses.forEach((exp) => {
       const current = map.get(exp.envelopeId) || 0;
-      map.set(exp.envelopeId, current + exp.amount);
+      const env = data.envelopes.find((e) => e.id === exp.envelopeId);
+      const envCurrency = env?.currency || mainCurrency;
+      const convertedAmt = convertCurrency(exp.amount, exp.currency || mainCurrency, envCurrency);
+      map.set(exp.envelopeId, current + convertedAmt);
     });
 
     return map;
-  }, [data.envelopes, data.expenses]);
+  }, [data.envelopes, data.expenses, mainCurrency]);
 
   const totalAllocated = useMemo(() => {
-    return data.envelopes.reduce((acc, e) => acc + e.allocated, 0);
-  }, [data.envelopes]);
+    return data.envelopes.reduce((acc, e) => {
+      return acc + convertCurrency(e.allocated, e.currency || mainCurrency, mainCurrency);
+    }, 0);
+  }, [data.envelopes, mainCurrency]);
 
   const totalSpent = useMemo(() => {
-    return data.expenses.reduce((acc, e) => acc + e.amount, 0);
-  }, [data.expenses]);
+    return data.envelopes.reduce((acc, env) => {
+      const spentInEnvCurr = envelopeSpentMap.get(env.id) || 0;
+      return acc + convertCurrency(spentInEnvCurr, env.currency || mainCurrency, mainCurrency);
+    }, 0);
+  }, [data.envelopes, envelopeSpentMap, mainCurrency]);
 
   const totalRemaining = totalAllocated - totalSpent;
 
@@ -209,7 +239,7 @@ export default function CashEnvelopeTrackerPage() {
     }
   };
 
-  const handleSaveEnvelope = (envelopeInput: { name: string; allocated: number; category: Category; color: string; id?: string }) => {
+  const handleSaveEnvelope = (envelopeInput: { name: string; allocated: number; category: Category; color: string; currency?: string; id?: string }) => {
     if (envelopeInput.id) {
       // Edit
       const updated = data.envelopes.map((env) => (env.id === envelopeInput.id ? { ...env, ...envelopeInput } : env));
@@ -222,6 +252,7 @@ export default function CashEnvelopeTrackerPage() {
         allocated: envelopeInput.allocated,
         category: envelopeInput.category,
         color: envelopeInput.color,
+        currency: envelopeInput.currency || mainCurrency,
       };
       saveToStorage({ ...data, envelopes: [...data.envelopes, newEnv] });
     }
@@ -239,7 +270,7 @@ export default function CashEnvelopeTrackerPage() {
     }
   };
 
-  const handleSaveExpense = (expenseInput: { envelopeId: string; amount: number; note: string; date: string; id?: string }) => {
+  const handleSaveExpense = (expenseInput: { envelopeId: string; amount: number; note: string; date: string; currency?: string; id?: string }) => {
     if (expenseInput.id) {
       // Edit
       const updated = data.expenses.map((exp) => (exp.id === expenseInput.id ? { ...exp, ...expenseInput } : exp));
@@ -252,6 +283,7 @@ export default function CashEnvelopeTrackerPage() {
         amount: expenseInput.amount,
         note: expenseInput.note,
         date: expenseInput.date,
+        currency: expenseInput.currency || mainCurrency,
       };
       saveToStorage({ ...data, expenses: [newExp, ...data.expenses] });
     }
@@ -285,7 +317,8 @@ export default function CashEnvelopeTrackerPage() {
         data.expenses,
         style,
         data.budgetPeriod || '',
-        data.notes || ''
+        data.notes || '',
+        mainCurrency
       );
       recordExportTimestamp();
     } catch (err: any) {
@@ -308,6 +341,10 @@ export default function CashEnvelopeTrackerPage() {
         {/* Navigation Bar */}
         <Navbar
           onScrollToTracker={scrollToTracker}
+          mainCurrency={mainCurrency}
+          onChangeMainCurrency={handleChangeMainCurrency}
+          language={language}
+          onChangeLanguage={handleChangeLanguage}
         />
 
         {/* Backup Reminder Banner */}
@@ -369,6 +406,7 @@ export default function CashEnvelopeTrackerPage() {
             onChangeBudgetPeriod={(val) => saveToStorage({ ...data, budgetPeriod: val })}
             backupReminderInterval={backupReminderInterval}
             onChangeBackupReminderInterval={handleChangeBackupReminderInterval}
+            mainCurrency={mainCurrency}
             onAddEnvelope={() => {
               setEditingEnvelope(null);
               setIsEnvelopeModalOpen(true);
@@ -390,7 +428,7 @@ export default function CashEnvelopeTrackerPage() {
           <div className="space-y-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
-                <h2 className="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight flex items-center gap-2">
+                <h2 className="font-serif font-[#141414] text-2xl uppercase tracking-tight flex items-center gap-2 font-black">
                   <Wallet className="w-6 h-6 text-[#8A9A5B]" />
                   Cash Envelopes ({data.envelopes.length})
                 </h2>
@@ -462,6 +500,7 @@ export default function CashEnvelopeTrackerPage() {
                     key={env.id}
                     envelope={env}
                     spent={envelopeSpentMap.get(env.id) || 0}
+                    mainCurrency={mainCurrency}
                     onAddExpense={(envId) => {
                       setEditingExpense(null);
                       setSelectedEnvelopeForExpense(envId);
@@ -482,6 +521,7 @@ export default function CashEnvelopeTrackerPage() {
           <TransactionLedger
             expenses={data.expenses}
             envelopes={data.envelopes}
+            mainCurrency={mainCurrency}
             onEditExpense={(expToEdit) => {
               setEditingExpense(expToEdit);
               setIsExpenseModalOpen(true);
@@ -526,6 +566,7 @@ export default function CashEnvelopeTrackerPage() {
         }}
         onSave={handleSaveEnvelope}
         editingEnvelope={editingEnvelope}
+        mainCurrency={mainCurrency}
       />
 
       <ExpenseModal
@@ -538,6 +579,7 @@ export default function CashEnvelopeTrackerPage() {
         envelopes={data.envelopes}
         selectedEnvelopeId={selectedEnvelopeForExpense}
         editingExpense={editingExpense}
+        mainCurrency={mainCurrency}
       />
 
       <ResetModal

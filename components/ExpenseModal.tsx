@@ -2,15 +2,17 @@
 
 import React, { useState } from 'react';
 import { Envelope, Expense } from '../lib/tracker-types';
+import { SUPPORTED_CURRENCIES, getCurrencySymbol } from '../lib/currency-utils';
 import { X, Receipt } from 'lucide-react';
 
 interface ExpenseModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (expenseData: { envelopeId: string; amount: number; note: string; date: string; id?: string }) => void;
+  onSave: (expenseData: { envelopeId: string; amount: number; note: string; date: string; currency?: string; id?: string }) => void;
   envelopes: Envelope[];
   selectedEnvelopeId?: string;
   editingExpense?: Expense | null;
+  mainCurrency?: string;
 }
 
 export const ExpenseModal: React.FC<ExpenseModalProps> = ({
@@ -20,9 +22,11 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
   envelopes,
   selectedEnvelopeId,
   editingExpense,
+  mainCurrency = 'USD',
 }) => {
   const [envelopeId, setEnvelopeId] = useState('');
   const [amount, setAmount] = useState('');
+  const [currency, setCurrency] = useState('USD');
   const [note, setNote] = useState('');
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [error, setError] = useState('');
@@ -39,11 +43,13 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
     if (editingExpense) {
       setEnvelopeId(editingExpense.envelopeId);
       setAmount(editingExpense.amount.toString());
+      setCurrency(editingExpense.currency || mainCurrency);
       setNote(editingExpense.note);
       setDate(editingExpense.date);
     } else {
       setEnvelopeId(selectedEnvelopeId || (envelopes.length > 0 ? envelopes[0].id : ''));
       setAmount('');
+      setCurrency(mainCurrency);
       setNote('');
       setDate(new Date().toISOString().split('T')[0]);
     }
@@ -74,6 +80,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
       id: editingExpense?.id,
       envelopeId,
       amount: amtNum,
+      currency,
       note: note.trim(),
       date,
     });
@@ -118,27 +125,45 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
             >
               {envelopes.map((env) => (
                 <option key={env.id} value={env.id}>
-                  {env.name} (${env.allocated.toFixed(2)} target)
+                  {env.name} ({getCurrencySymbol(env.currency || mainCurrency)}{env.allocated.toFixed(2)} target)
                 </option>
               ))}
             </select>
           </div>
 
-          {/* Amount */}
+          {/* Amount & Currency */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Spent Amount ($) *
+              Spent Amount &amp; Currency *
             </label>
-            <input
-              type="number"
-              step="0.01"
-              min="0.01"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="e.g., 42.50"
-              className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
-              autoFocus
-            />
+            <div className="flex items-center gap-2">
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="w-28 px-2 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden cursor-pointer"
+              >
+                {SUPPORTED_CURRENCIES.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.symbol} {c.code}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="number"
+                step="0.01"
+                min="0.01"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="e.g., 42.50"
+                className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
+                autoFocus
+              />
+            </div>
+            {currency !== mainCurrency && (
+              <p className="text-[11px] font-bold text-[#D15F47] tracking-wider pt-0.5">
+                Note: Spent amount in {currency} will be auto-converted to {mainCurrency} for envelope balance calculations.
+              </p>
+            )}
           </div>
 
           {/* Note */}

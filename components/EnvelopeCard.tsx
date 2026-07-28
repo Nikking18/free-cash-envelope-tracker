@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Envelope, CATEGORY_COLORS } from '../lib/tracker-types';
+import { formatCurrency } from '../lib/currency-utils';
 import { Plus, Edit2, Trash2, AlertCircle } from 'lucide-react';
 
 interface EnvelopeCardProps {
@@ -10,6 +11,7 @@ interface EnvelopeCardProps {
   onAddExpense: (envelopeId: string) => void;
   onEditEnvelope: (envelope: Envelope) => void;
   onDeleteEnvelope: (envelopeId: string) => void;
+  mainCurrency?: string;
 }
 
 export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
@@ -18,7 +20,9 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
   onAddExpense,
   onEditEnvelope,
   onDeleteEnvelope,
+  mainCurrency = 'USD',
 }) => {
+  const envCurrency = envelope.currency || mainCurrency;
   const remaining = envelope.allocated - spent;
   const isOverBudget = spent > envelope.allocated;
   const percentUsed = envelope.allocated > 0 ? Math.min(Math.round((spent / envelope.allocated) * 100), 100) : 0;
@@ -41,7 +45,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
           </span>
 
           <span className="font-serif font-bold text-xs sm:text-sm text-[#141414] bg-[#FCFAF7] px-2 py-0.5 border-2 border-[#141414] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] shrink-0 truncate max-w-[60%] text-right">
-            ${spent.toFixed(2)} / ${envelope.allocated.toFixed(2)}
+            {formatCurrency(spent, envCurrency)} / {formatCurrency(envelope.allocated, envCurrency)}
           </span>
         </div>
 
@@ -64,7 +68,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
               Alert: Over budget
             </span>
             <span className="font-serif font-bold text-sm text-[#D15F47]">
-              -${overageAmount.toFixed(2)}
+              -{formatCurrency(overageAmount, envCurrency)}
             </span>
           </div>
         ) : (
@@ -73,7 +77,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
               Remaining:
             </span>
             <span className="font-serif font-bold text-sm text-[#8A9A5B]">
-              ${remaining.toFixed(2)}
+              {formatCurrency(remaining, envCurrency)}
             </span>
           </div>
         )}

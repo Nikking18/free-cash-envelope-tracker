@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Envelope, Expense } from '../lib/tracker-types';
+import { formatCurrency, convertCurrency } from '../lib/currency-utils';
 import { Search, Filter, ArrowUpDown, Trash2, Edit2, Receipt } from 'lucide-react';
 
 interface TransactionLedgerProps {
@@ -9,6 +10,7 @@ interface TransactionLedgerProps {
   envelopes: Envelope[];
   onEditExpense: (expense: Expense) => void;
   onDeleteExpense: (expenseId: string) => void;
+  mainCurrency?: string;
 }
 
 export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
@@ -16,6 +18,7 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
   envelopes,
   onEditExpense,
   onDeleteExpense,
+  mainCurrency = 'USD',
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEnvelopeFilter, setSelectedEnvelopeFilter] = useState('all');
@@ -57,8 +60,11 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
   }, [expenses, envelopeMap, searchTerm, selectedEnvelopeFilter, sortBy]);
 
   const totalFilteredAmount = useMemo(() => {
-    return filteredExpenses.reduce((acc, curr) => acc + curr.amount, 0);
-  }, [filteredExpenses]);
+    return filteredExpenses.reduce((acc, curr) => {
+      const converted = convertCurrency(curr.amount, curr.currency || mainCurrency, mainCurrency);
+      return acc + converted;
+    }, 0);
+  }, [filteredExpenses, mainCurrency]);
 
   return (
     <div className="bg-white border-4 border-[#141414] p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] space-y-6">
@@ -75,7 +81,7 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
         </div>
 
         <div className="px-3 py-1.5 bg-[#5C768D] text-white border-2 border-[#141414] text-xs font-bold uppercase tracking-wider">
-          {filteredExpenses.length} Logs (${totalFilteredAmount.toFixed(2)})
+          {filteredExpenses.length} Logs ({formatCurrency(totalFilteredAmount, mainCurrency)})
         </div>
       </div>
 
@@ -166,7 +172,12 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
                     </td>
                     <td className="p-3 text-[#141414]/80 italic">{exp.note || '—'}</td>
                     <td className="p-3 text-right font-serif font-black text-[#D15F47] text-base">
-                      ${exp.amount.toFixed(2)}
+                      {formatCurrency(exp.amount, exp.currency || mainCurrency)}
+                      {exp.currency && exp.currency !== mainCurrency && (
+                        <div className="text-[10px] font-sans font-bold text-[#141414]/60">
+                          (~{formatCurrency(convertCurrency(exp.amount, exp.currency, mainCurrency), mainCurrency)})
+                        </div>
+                      )}
                     </td>
                     <td className="p-3 text-center">
                       <div className="flex items-center justify-center gap-1">

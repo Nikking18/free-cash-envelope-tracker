@@ -11,8 +11,8 @@ export const BudgetGuideSection: React.FC = () => {
           <BookOpen className="w-3.5 h-3.5" />
           Cash Stuffing Guide &amp; Resources
         </div>
-        <h2 className="font-serif font-black text-3xl sm:text-4xl text-[#141414] uppercase tracking-tighter">
-          The Ultimate <span className="underline decoration-[#5C768D] decoration-8 underline-offset-4">Digital Cash Envelope</span> System
+        <h2 className="font-serif font-black text-2xl sm:text-3xl lg:text-4xl text-[#141414] uppercase tracking-tighter leading-snug sm:leading-tight">
+          The Ultimate <span className="inline-block border-b-4 border-[#5C768D] pb-1">Digital Cash Envelope</span> System
         </h2>
         <p className="text-sm sm:text-base text-[#141414]/80 font-bold max-w-2xl mx-auto">
           Learn how digital cash stuffing helps you take full control of your personal finances, sinking funds, and monthly spending.

@@ -2,13 +2,15 @@
 
 import React, { useState } from 'react';
 import { Envelope, Category, CATEGORIES, PRESET_COLORS } from '../lib/tracker-types';
+import { SUPPORTED_CURRENCIES } from '../lib/currency-utils';
 import { X, FolderPlus } from 'lucide-react';
 
 interface EnvelopeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (envelopeData: { name: string; allocated: number; category: Category; color: string; id?: string }) => void;
+  onSave: (envelopeData: { name: string; allocated: number; category: Category; color: string; currency?: string; id?: string }) => void;
   editingEnvelope?: Envelope | null;
+  mainCurrency?: string;
 }
 
 export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
@@ -16,9 +18,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   onClose,
   onSave,
   editingEnvelope,
+  mainCurrency = 'USD',
 }) => {
   const [name, setName] = useState('');
   const [allocated, setAllocated] = useState('');
+  const [currency, setCurrency] = useState('USD');
   const [category, setCategory] = useState<Category>('Essential');
   const [color, setColor] = useState(PRESET_COLORS[0]);
   const [error, setError] = useState('');
@@ -32,11 +36,13 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
     if (editingEnvelope) {
       setName(editingEnvelope.name);
       setAllocated(editingEnvelope.allocated.toString());
+      setCurrency(editingEnvelope.currency || mainCurrency);
       setCategory(editingEnvelope.category);
       setColor(editingEnvelope.color || PRESET_COLORS[0]);
     } else {
       setName('');
       setAllocated('');
+      setCurrency(mainCurrency);
       setCategory('Essential');
       setColor(PRESET_COLORS[0]);
     }
@@ -62,6 +68,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
       id: editingEnvelope?.id,
       name: name.trim(),
       allocated: allocNum,
+      currency,
       category,
       color,
     });
@@ -109,20 +116,33 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             />
           </div>
 
-          {/* Allocated Amount */}
+          {/* Allocated Amount & Currency */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
-              Allocated Target Amount ($) *
+              Target Allocated Amount &amp; Currency *
             </label>
-            <input
-              type="number"
-              step="0.01"
-              min="0"
-              value={allocated}
-              onChange={(e) => setAllocated(e.target.value)}
-              placeholder="e.g., 400.00"
-              className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
-            />
+            <div className="flex items-center gap-2">
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="w-28 px-2 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden cursor-pointer"
+              >
+                {SUPPORTED_CURRENCIES.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.symbol} {c.code}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="number"
+                step="0.01"
+                min="0"
+                value={allocated}
+                onChange={(e) => setAllocated(e.target.value)}
+                placeholder="e.g., 400.00"
+                className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
+              />
+            </div>
           </div>
 
           {/* Category */}

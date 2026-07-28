@@ -6,6 +6,7 @@ export interface Envelope {
   allocated: number;
   category: Category;
   color: string;
+  currency?: string;
 }
 
 export interface Expense {
@@ -14,6 +15,7 @@ export interface Expense {
   amount: number;
   note: string;
   date: string; // YYYY-MM-DD
+  currency?: string;
 }
 
 export interface TrackerData {
@@ -21,6 +23,8 @@ export interface TrackerData {
   expenses: Expense[];
   budgetPeriod?: string;
   notes?: string;
+  mainCurrency?: string;
+  language?: string;
 }
 
 export const CATEGORIES: Category[] = ['Essential', 'Discretionary', 'Savings', 'Debt'];

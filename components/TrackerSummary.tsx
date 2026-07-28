@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Plus, Receipt, Upload, Download, RotateCcw, ChevronDown, FileSpreadsheet, FileText, Info, X, AlertTriangle, Calendar } from 'lucide-react';
 import { TrackerData } from '../lib/tracker-types';
 import { downloadExcelTemplate, parseAndValidateExcel } from '../lib/excel-utils';
+import { formatCurrency } from '../lib/currency-utils';
 
 interface TrackerSummaryProps {
   totalAllocated: number;
@@ -21,6 +22,7 @@ interface TrackerSummaryProps {
   onChangeBudgetPeriod?: (val: string) => void;
   backupReminderInterval?: string;
   onChangeBackupReminderInterval?: (val: string) => void;
+  mainCurrency?: string;
 }
 
 export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
@@ -39,6 +41,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
   onChangeBudgetPeriod,
   backupReminderInterval = '7',
   onChangeBackupReminderInterval,
+  mainCurrency = 'USD',
 }) => {
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [showFormatInfo, setShowFormatInfo] = useState(false);
@@ -407,7 +410,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
             Total Allocated
           </span>
           <span className="text-2xl sm:text-3xl font-serif font-black">
-            ${totalAllocated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {formatCurrency(totalAllocated, mainCurrency)}
           </span>
           <span className="text-[11px] font-bold opacity-80 mt-1">
             Sum of envelope targets
@@ -420,7 +423,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
             Total Spent
           </span>
           <span className="text-2xl sm:text-3xl font-serif font-black">
-            ${totalSpent.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {formatCurrency(totalSpent, mainCurrency)}
           </span>
           <span className="text-[11px] font-bold opacity-80 mt-1">
             Sum of recorded expenses
@@ -433,7 +436,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
             Total Remaining
           </span>
           <span className="text-2xl sm:text-3xl font-serif font-black">
-            {isOverBudget ? '-' : ''}${Math.abs(totalRemaining).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {formatCurrency(totalRemaining, mainCurrency)}
           </span>
           <span className="text-[11px] font-bold opacity-80 mt-1">
             {isOverBudget ? 'Over allocated target' : 'Available cash balance'}
@@ -445,7 +448,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
       <div className="space-y-2 pt-2">
         <div className="flex items-center justify-between text-xs font-bold text-[#141414] uppercase tracking-wider">
           <span>Overall Budget Utilization</span>
-          <span>{percentSpent}% Used (${totalSpent.toFixed(2)} / ${totalAllocated.toFixed(2)})</span>
+          <span>{percentSpent}% Used ({formatCurrency(totalSpent, mainCurrency)} / {formatCurrency(totalAllocated, mainCurrency)})</span>
         </div>
         <div className="w-full h-8 bg-[#E4E3E0] border-4 border-[#141414]">
           <div
