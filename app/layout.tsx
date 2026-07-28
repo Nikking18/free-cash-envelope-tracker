@@ -77,6 +77,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: 'b4HpIWI9uc6KOVQntu_E91w3SEAqZjS-BG9rV75wuHw',
+  },
 };
 
 export default function RootLayout({
@@ -146,6 +149,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${libreBaskerville.variable} ${plusJakartaSans.variable}`}>
       <head>
+        <meta name="google-site-verification" content="b4HpIWI9uc6KOVQntu_E91w3SEAqZjS-BG9rV75wuHw" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
