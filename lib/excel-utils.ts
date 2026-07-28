@@ -1,4 +1,5 @@
 import { Envelope, Expense, Category, CATEGORIES, PRESET_COLORS } from './tracker-types';
+import { t } from './i18n';
 
 /**
  * Sanitizes cell text to prevent CSV / Excel Formula Injection (DDE attacks).
@@ -30,18 +31,35 @@ export function desanitizeFormulaInjection(val: any): any {
   return val;
 }
 
-export async function downloadExcelTemplate() {
+export async function downloadExcelTemplate(language: string = 'en') {
   const XLSX = await import('xlsx');
 
+  const colEnvName = t('excelColEnvName', language);
+  const colAllocated = t('excelColAllocated', language);
+  const colCategory = t('excelColCategory', language);
+  const colAmount = t('excelColAmount', language);
+  const colNote = t('excelColNote', language);
+  const colDate = t('excelColDate', language);
+
+  const catEssential = t('catEssential', language);
+  const catDiscretionary = t('catDiscretionary', language);
+  const catSavings = t('catSavings', language);
+
+  const sampleGroceries = language === 'es' ? 'Comestibles' : language === 'fr' ? 'Courses' : language === 'de' ? 'Lebensmittel' : 'Groceries';
+  const sampleDining = language === 'es' ? 'Restaurantes' : language === 'fr' ? 'Restos' : language === 'de' ? 'Restaurant' : 'Dining Out';
+  const sampleSavings = language === 'es' ? 'Ahorro de Emergencia' : language === 'fr' ? 'Épargne de Secours' : language === 'de' ? 'Notfall-Sparen' : 'Emergency Savings';
+  const sampleNote1 = language === 'es' ? 'Supermercado' : language === 'fr' ? 'Supermarché' : language === 'de' ? 'Supermarkt' : 'Supermarket run';
+  const sampleNote2 = language === 'es' ? 'Almuerzo con amigo' : language === 'fr' ? 'Déjeuner ami' : language === 'de' ? 'Mittagessen' : 'Lunch with friend';
+
   const envelopesData = [
-    { 'Envelope Name': 'Groceries', 'Allocated Amount': 400, 'Category': 'Essential' },
-    { 'Envelope Name': 'Dining Out', 'Allocated Amount': 150, 'Category': 'Discretionary' },
-    { 'Envelope Name': 'Emergency Savings', 'Allocated Amount': 200, 'Category': 'Savings' }
+    { [colEnvName]: sampleGroceries, [colAllocated]: 400, [colCategory]: catEssential },
+    { [colEnvName]: sampleDining, [colAllocated]: 150, [colCategory]: catDiscretionary },
+    { [colEnvName]: sampleSavings, [colAllocated]: 200, [colCategory]: catSavings }
   ];
 
   const expensesData = [
-    { 'Envelope Name': 'Groceries', 'Amount': 52.30, 'Note': 'Supermarket run', 'Date': new Date().toISOString().split('T')[0] },
-    { 'Envelope Name': 'Dining Out', 'Amount': 18.50, 'Note': 'Lunch with friend', 'Date': new Date().toISOString().split('T')[0] }
+    { [colEnvName]: sampleGroceries, [colAmount]: 52.30, [colNote]: sampleNote1, [colDate]: new Date().toISOString().split('T')[0] },
+    { [colEnvName]: sampleDining, [colAmount]: 18.50, [colNote]: sampleNote2, [colDate]: new Date().toISOString().split('T')[0] }
   ];
 
   const wb = XLSX.utils.book_new();
@@ -53,29 +71,39 @@ export async function downloadExcelTemplate() {
   wsEnvelopes['!cols'] = [{ wch: 25 }, { wch: 18 }, { wch: 18 }];
   wsExpenses['!cols'] = [{ wch: 25 }, { wch: 12 }, { wch: 25 }, { wch: 15 }];
 
-  XLSX.utils.book_append_sheet(wb, wsEnvelopes, 'Envelopes');
-  XLSX.utils.book_append_sheet(wb, wsExpenses, 'Expenses');
+  const sheetEnvelopesName = t('excelSheetEnvelopes', language);
+  const sheetExpensesName = t('excelSheetExpenses', language);
 
-  XLSX.writeFile(wb, 'cash_envelope_budget_template.xlsx');
+  XLSX.utils.book_append_sheet(wb, wsEnvelopes, sheetEnvelopesName);
+  XLSX.utils.book_append_sheet(wb, wsExpenses, sheetExpensesName);
+
+  XLSX.writeFile(wb, `cash_envelope_budget_template_${language}.xlsx`);
 }
 
-export async function exportToExcel(envelopes: Envelope[], expenses: Expense[]) {
+export async function exportToExcel(envelopes: Envelope[], expenses: Expense[], language: string = 'en') {
   const XLSX = await import('xlsx');
 
   const envelopeMap = new Map<string, string>();
   envelopes.forEach(e => envelopeMap.set(e.id, e.name));
 
+  const colEnvName = t('excelColEnvName', language);
+  const colAllocated = t('excelColAllocated', language);
+  const colCategory = t('excelColCategory', language);
+  const colAmount = t('excelColAmount', language);
+  const colNote = t('excelColNote', language);
+  const colDate = t('excelColDate', language);
+
   const envelopesExport = envelopes.map(e => ({
-    'Envelope Name': sanitizeFormulaInjection(e.name),
-    'Allocated Amount': e.allocated,
-    'Category': sanitizeFormulaInjection(e.category)
+    [colEnvName]: sanitizeFormulaInjection(e.name),
+    [colAllocated]: e.allocated,
+    [colCategory]: sanitizeFormulaInjection(t(`cat${e.category}`, language))
   }));
 
   const expensesExport = expenses.map(e => ({
-    'Envelope Name': sanitizeFormulaInjection(envelopeMap.get(e.envelopeId) || 'Unknown Envelope'),
-    'Amount': e.amount,
-    'Note': sanitizeFormulaInjection(e.note || ''),
-    'Date': e.date
+    [colEnvName]: sanitizeFormulaInjection(envelopeMap.get(e.envelopeId) || 'Unknown Envelope'),
+    [colAmount]: e.amount,
+    [colNote]: sanitizeFormulaInjection(e.note || ''),
+    [colDate]: e.date
   }));
 
   const wb = XLSX.utils.book_new();
@@ -86,11 +114,14 @@ export async function exportToExcel(envelopes: Envelope[], expenses: Expense[]) 
   wsEnvelopes['!cols'] = [{ wch: 25 }, { wch: 18 }, { wch: 18 }];
   wsExpenses['!cols'] = [{ wch: 25 }, { wch: 12 }, { wch: 25 }, { wch: 15 }];
 
-  XLSX.utils.book_append_sheet(wb, wsEnvelopes, 'Envelopes');
-  XLSX.utils.book_append_sheet(wb, wsExpenses, 'Expenses');
+  const sheetEnvelopesName = t('excelSheetEnvelopes', language);
+  const sheetExpensesName = t('excelSheetExpenses', language);
+
+  XLSX.utils.book_append_sheet(wb, wsEnvelopes, sheetEnvelopesName);
+  XLSX.utils.book_append_sheet(wb, wsExpenses, sheetExpensesName);
 
   const todayStr = new Date().toISOString().split('T')[0];
-  XLSX.writeFile(wb, `cash_envelope_budget_${todayStr}.xlsx`);
+  XLSX.writeFile(wb, `cash_envelope_budget_${todayStr}_${language}.xlsx`);
 }
 
 export async function parseAndValidateExcel(file: File): Promise<{
@@ -105,14 +136,17 @@ export async function parseAndValidateExcel(file: File): Promise<{
     const arrayBuffer = await file.arrayBuffer();
     const wb = XLSX.read(arrayBuffer, { type: 'array' });
 
-    if (!wb.SheetNames.includes('Envelopes')) {
+    // Look for Envelopes sheet in any supported language
+    const envSheetName = wb.SheetNames.find(s => ['Envelopes', 'Sobres', 'Enveloppes', 'Umschläge'].some(valid => s.toLowerCase().includes(valid.toLowerCase()))) || wb.SheetNames[0];
+
+    if (!envSheetName || !wb.Sheets[envSheetName]) {
       return {
         success: false,
         errors: ['Invalid Excel format: Missing "Envelopes" sheet. Please use the official template.']
       };
     }
 
-    const wsEnvelopes = wb.Sheets['Envelopes'];
+    const wsEnvelopes = wb.Sheets[envSheetName];
     const envelopesRaw: any[] = XLSX.utils.sheet_to_json(wsEnvelopes);
 
     if (!envelopesRaw || envelopesRaw.length === 0) {
@@ -125,9 +159,9 @@ export async function parseAndValidateExcel(file: File): Promise<{
 
     envelopesRaw.forEach((row, idx) => {
       const rowNum = idx + 2; // header is row 1
-      const rawName = row['Envelope Name'] || row['envelope name'] || row['Name'] || row['name'];
-      const rawAllocated = row['Allocated Amount'] || row['allocated amount'] || row['Allocated'] || row['allocated'];
-      const rawCategory = row['Category'] || row['category'];
+      const rawName = row['Envelope Name'] || row['Nombre del Sobre'] || row['Nom de l\'Enveloppe'] || row['Umschlagname'] || row['envelope name'] || row['Name'] || row['name'];
+      const rawAllocated = row['Allocated Amount'] || row['Monto Asignado'] || row['Budget Alloué'] || row['Zielbudget'] || row['allocated amount'] || row['Allocated'] || row['allocated'];
+      const rawCategory = row['Category'] || row['Categoría'] || row['Catégorie'] || row['Kategorie'] || row['category'];
 
       if (!rawName || String(rawName).trim() === '') {
         errors.push(`Row ${rowNum} in Envelopes sheet: Envelope Name cannot be empty.`);
@@ -158,11 +192,11 @@ export async function parseAndValidateExcel(file: File): Promise<{
 
       let category: Category = 'Essential';
       if (rawCategory && typeof rawCategory === 'string') {
-        const catClean = desanitizeFormulaInjection(rawCategory.trim());
-        const matched = CATEGORIES.find(c => c.toLowerCase() === catClean.toLowerCase());
-        if (matched) {
-          category = matched;
-        }
+        const catClean = desanitizeFormulaInjection(rawCategory.trim()).toLowerCase();
+        if (['essential', 'esencial', 'essentiel', 'essentiell'].includes(catClean)) category = 'Essential';
+        else if (['discretionary', 'discrecional', 'loisirs', 'freizeit'].includes(catClean)) category = 'Discretionary';
+        else if (['savings', 'ahorro', 'épargne', 'sparen'].includes(catClean)) category = 'Savings';
+        else if (['debt', 'deuda', 'dette', 'schulden'].includes(catClean)) category = 'Debt';
       }
 
       const envId = `env_imp_${Date.now()}_${idx}`;
@@ -181,16 +215,19 @@ export async function parseAndValidateExcel(file: File): Promise<{
 
     const newExpenses: Expense[] = [];
 
-    if (wb.SheetNames.includes('Expenses')) {
-      const wsExpenses = wb.Sheets['Expenses'];
+    // Look for Expenses sheet in any supported language
+    const expSheetName = wb.SheetNames.find(s => ['Expenses', 'Gastos', 'Dépenses', 'Ausgaben'].some(valid => s.toLowerCase().includes(valid.toLowerCase())));
+
+    if (expSheetName && wb.Sheets[expSheetName]) {
+      const wsExpenses = wb.Sheets[expSheetName];
       const expensesRaw: any[] = XLSX.utils.sheet_to_json(wsExpenses);
 
       expensesRaw.forEach((row, idx) => {
         const rowNum = idx + 2;
-        const rawEnvName = row['Envelope Name'] || row['envelope name'] || row['Envelope'] || row['envelope'];
-        const rawAmount = row['Amount'] || row['amount'];
-        const rawNote = row['Note'] || row['note'] || '';
-        const rawDate = row['Date'] || row['date'];
+        const rawEnvName = row['Envelope Name'] || row['Nombre del Sobre'] || row['Nom de l\'Enveloppe'] || row['Umschlagname'] || row['envelope name'] || row['Envelope'] || row['envelope'];
+        const rawAmount = row['Amount'] || row['Monto'] || row['Montant'] || row['Betrag'] || row['amount'];
+        const rawNote = row['Note / Vendor'] || row['Nota / Proveedor'] || row['Note / Commerçant'] || row['Notiz / Händler'] || row['Note'] || row['Nota'] || row['note'] || '';
+        const rawDate = row['Date'] || row['Fecha'] || row['Datum'] || row['date'];
 
         if (!rawEnvName || String(rawEnvName).trim() === '') {
           errors.push(`Row ${rowNum} in Expenses sheet: Envelope Name is required.`);
@@ -223,7 +260,6 @@ export async function parseAndValidateExcel(file: File): Promise<{
           if (typeof rawDate === 'string' && rawDate.trim() !== '') {
             dateStr = rawDate.trim();
           } else if (typeof rawDate === 'number') {
-            // Excel serial date number
             const dateObj = XLSX.SSF.parse_date_code(rawDate);
             if (dateObj) {
               const yyyy = dateObj.y;

@@ -8,6 +8,24 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     navGoToTracker: 'Go to Tracker',
     navTracker: 'Tracker',
 
+    // Exchange Rate Navbar Notice
+    exchangeRateNoticeTitle: 'Real-Time Exchange Rate Notice',
+    selectedCurrencyLabel: 'Selected Currency',
+    liveRateSyncedLabel: 'Live Rate Synced',
+    noteWord: 'Note',
+    exchangeRateNoticeDesc: 'Exchange rates update automatically when you refresh the page.',
+    downloadSampleTemplateBtn: 'Download Sample Excel Template',
+
+    // Excel Export Column Headers & Sheet Names
+    excelColEnvName: 'Envelope Name',
+    excelColAllocated: 'Allocated Amount',
+    excelColCategory: 'Category',
+    excelColAmount: 'Amount',
+    excelColNote: 'Note / Vendor',
+    excelColDate: 'Date',
+    excelSheetEnvelopes: 'Envelopes',
+    excelSheetExpenses: 'Expenses',
+
     // Hero
     heroBadge: '100% Private — Browser-Only Cash Stuffing',
     heroTitleLine1: 'Master Your Money with',
@@ -255,13 +273,27 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     pdfHandwritingText: 'You can print this page and write in your own notes and reminders by hand.',
   },
   es: {
-    // Brand & Nav
     brandName: 'Free Cash Envelope Tracker',
     brandTagline: 'Presupuesto Digital por Sobres de Efectivo',
     navGoToTracker: 'Ir al Rastreador',
     navTracker: 'Rastreador',
 
-    // Hero
+    exchangeRateNoticeTitle: 'Aviso de Tasa de Cambio en Tiempo Real',
+    selectedCurrencyLabel: 'Moneda Seleccionada',
+    liveRateSyncedLabel: 'Tasa Sincronizada en Vivo',
+    noteWord: 'Nota',
+    exchangeRateNoticeDesc: 'Las tasas de cambio se actualizan automáticamente al recargar la página.',
+    downloadSampleTemplateBtn: 'Descargar Plantilla Excel de Ejemplo',
+
+    excelColEnvName: 'Nombre del Sobre',
+    excelColAllocated: 'Monto Asignado',
+    excelColCategory: 'Categoría',
+    excelColAmount: 'Monto',
+    excelColNote: 'Nota / Proveedor',
+    excelColDate: 'Fecha',
+    excelSheetEnvelopes: 'Sobres',
+    excelSheetExpenses: 'Gastos',
+
     heroBadge: '100% Privado — Presupuesto Solo en Navegador',
     heroTitleLine1: 'Domina tu Dinero con',
     heroTitleLine2: 'Sobres de Efectivo Digitales',
@@ -282,7 +314,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     heroQuote:
       '"Tus datos viven solo en este navegador. Si borras tu historial o cambias de dispositivo, se perderán: descarga un PDF como respaldo."',
 
-    // How It Works
     howItWorksTitle: 'Cómo Funciona el Presupuesto por Sobres',
     howItWorksSubtitle:
       'Un método visual y disciplinado que asigna un propósito a cada dólar.',
@@ -296,7 +327,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     step3Desc:
       'Descarga resúmenes en PDF o archivos Excel de 2 hojas para tus impuestos o archivos.',
 
-    // Showcase
     showcaseBadge: 'MUESTRA DE INTERFAZ VISUAL',
     showcaseTitleLine1: 'CÓMO SE VE EN',
     showcaseTitleLine2: 'VISTA WEB',
@@ -322,7 +352,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     excelBullet2: 'Hoja 2: Gastos (Nombre de Sobre, Monto, Nota, Fecha)',
     excelBullet3: 'Validación automática y desinfección de fórmulas',
 
-    // Guide
     guideBadge: 'Guía y Recursos de Sobres de Efectivo',
     guideTitleLine1: 'El Sistema Definitivo de',
     guideTitleLine2: 'Sobres de Efectivo Digitales',
@@ -348,7 +377,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     card3Check2: 'Diseño B&N Imprimible',
     card3Check3: 'Importación y Exportación Excel',
 
-    // Tracker Summary & Overview
     budgetOverview: 'Resumen del Presupuesto',
     realTimeCalcSubtitle: 'Cálculo en tiempo real de todos los sobres y gastos activos',
     overBudget: 'Sobre Presupuesto',
@@ -379,7 +407,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     excelFormatNoticeTitle: 'Formato de Importación Excel Aceptado',
     excelFormatNoticeDesc: 'Tu archivo de Excel (.xlsx) debe contener 2 hojas:',
 
-    // Envelopes & Cards
     cashEnvelopes: 'SOBRES DE EFECTIVO',
     envelopesSubtitle: 'ASIGNA FONDOS, REGISTRA COMPRAS Y EVITA EL SOBREGASTO',
     allCategories: 'TODOS',
@@ -389,13 +416,11 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     addExpenseBtn: '+ AÑADIR GASTO',
     noEnvelopesFound: 'No se encontraron sobres.',
 
-    // Categories
     catEssential: 'ESENCIAL',
-    catDiscretionary: 'DISCRECIONAL',
+    catDiscretionary: 'DISCRETIONARY',
     catSavings: 'AHORRO',
     catDebt: 'DEUDA',
 
-    // Ledger
     recentLedger: 'LIBRO DE REGISTRO RECIENTE',
     ledgerSubtitle: 'Busca, filtra y audita todos tus registros',
     date: 'FECHA',
@@ -411,18 +436,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     lowestFirst: 'MENOR MONTO',
     logsCount: 'REGISTROS',
 
-    // Notes Section
     notesRemindersTitle: 'NOTAS Y RECORDATORIOS',
     optionalLabel: '(opcional)',
     notesRemindersDesc: 'Añade notas personalizadas o recordatorios. Las notas ingresadas aparecerán directamente en tu PDF exportado. Si se deja en blanco, tu PDF incluirá líneas en blanco.',
     notesRemindersPlaceholder: 'ej. Pagar alquiler el día 1. Transferir $200 a ahorro de emergencia.',
 
-    // Data Loss Warning Modal
     dataLossModalTitle: 'ANTES DE COMENZAR',
     dataLossModalDesc: 'Esta aplicación guarda todo exclusivamente en tu navegador. Si borras los datos de tu navegador o cambias de dispositivo, tus sobres se perderán. Exporta una copia en PDF o Excel en cualquier momento.',
     dataLossModalBtn: '✓ ENTENDIDO, CONTINUAR',
 
-    // FAQ Section
     faqBadge: 'PREGUNTAS FRECUENTES Y GUÍA',
     faqTitleLine1: 'TODO LO QUE NECESITAS SABER SOBRE',
     faqTitleHighlight: 'SOBRES DE EFECTIVO DIGITALES',
@@ -440,7 +462,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     faqQ6: '¿Necesito conectar una cuenta bancaria o tarjeta de crédito?',
     faqA6: '¡No! Requieres cero datos bancarios, cero tarjetas y cero cuentas. Es una herramienta 100% manual.',
 
-    // Modals
     createEnvelopeTitle: 'Crear Sobre de Efectivo',
     editEnvelopeTitle: 'Editar Sobre de Efectivo',
     envNameLabel: 'Nombre del Sobre',
@@ -476,7 +497,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     confirmResetDesc: 'Esto eliminará permanentemente todos tus sobres, gastos y configuraciones.',
     confirmResetBtn: 'Sí, Eliminar y Restablecer',
 
-    // Footer
     footerCopyright: 'Free Cash Envelope Tracker. Herramienta Financiera 100% Gratuita.',
     footerTagline: 'Una aplicación web gratuita y privada para presupuesto por sobres de efectivo digitales.',
     privacyBadge: '100% Privacidad en Almacenamiento Local',
@@ -487,7 +507,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     connect: 'Conectar:',
     createdWithLove: 'Creado con ❤️ por Nikhil',
 
-    // PDF Exports
     pdfDocTitle: 'SOBRES DE EFECTIVO',
     pdfDocSubtitle: 'Rastreador',
     pdfDateLabel: 'Fecha',
@@ -512,6 +531,22 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     brandTagline: 'Gestion Budgétaire par Enveloppes Digitales',
     navGoToTracker: 'Aller au Suivi',
     navTracker: 'Suivi',
+
+    exchangeRateNoticeTitle: 'Avis de Taux de Change en Temps Réel',
+    selectedCurrencyLabel: 'Devise Sélectionnée',
+    liveRateSyncedLabel: 'Taux Synchronisé en Direct',
+    noteWord: 'Remarque',
+    exchangeRateNoticeDesc: 'Les taux de change se mettent à jour automatiquement lorsque vous rafraîchissez la page.',
+    downloadSampleTemplateBtn: 'Télécharger le Modèle Excel d\'Exemple',
+
+    excelColEnvName: 'Nom de l\'Enveloppe',
+    excelColAllocated: 'Budget Alloué',
+    excelColCategory: 'Catégorie',
+    excelColAmount: 'Montant',
+    excelColNote: 'Note / Commerçant',
+    excelColDate: 'Date',
+    excelSheetEnvelopes: 'Enveloppes',
+    excelSheetExpenses: 'Dépenses',
 
     heroBadge: '100% Privé — Gestion Budgétaire Locale',
     heroTitleLine1: 'Maîtrisez votre Argent avec les',
@@ -750,6 +785,22 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     brandTagline: 'Digitales Umschlag-Budgeting System',
     navGoToTracker: 'Zum Tracker',
     navTracker: 'Tracker',
+
+    exchangeRateNoticeTitle: 'Hinweis zum Echtzeit-Wechselkurs',
+    selectedCurrencyLabel: 'Ausgewählte Währung',
+    liveRateSyncedLabel: 'Live-Kurs Synchronisiert',
+    noteWord: 'Hinweis',
+    exchangeRateNoticeDesc: 'Die Wechselkurse werden beim Aktualisieren der Seite automatisch aktualisiert.',
+    downloadSampleTemplateBtn: 'Muster-Excel-Vorlage Herunterladen',
+
+    excelColEnvName: 'Umschlagname',
+    excelColAllocated: 'Zielbudget',
+    excelColCategory: 'Kategorie',
+    excelColAmount: 'Betrag',
+    excelColNote: 'Notiz / Händler',
+    excelColDate: 'Datum',
+    excelSheetEnvelopes: 'Umschläge',
+    excelSheetExpenses: 'Ausgaben',
 
     heroBadge: '100% Privat — Browser-Lokales Budgeting',
     heroTitleLine1: 'Meistern Sie Ihr Geld mit',

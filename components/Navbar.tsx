@@ -127,7 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="font-bold text-sm uppercase tracking-tight border-b-2 border-[#141414] pb-1.5 flex items-center justify-between">
                   <span className="flex items-center gap-1.5">
                     <RefreshCw className="w-4 h-4 text-[#8A9A5B]" />
-                    Real-Time Exchange Rate Notice
+                    {t('exchangeRateNoticeTitle', language)}
                   </span>
                   <button
                     type="button"
@@ -140,18 +140,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 <div className="p-3 bg-white border-2 border-[#141414] space-y-2">
                   <div className="text-xs font-bold uppercase tracking-wider text-[#5C768D]">
-                    Selected Currency: <strong className="text-[#141414]">{selectedCurrencyObj.name}</strong>
+                    {t('selectedCurrencyLabel', language)}: <strong className="text-[#141414]">{selectedCurrencyObj.name}</strong>
                   </div>
                   <div className="text-sm font-serif font-black text-[#8A9A5B]">
                     1 USD = {selectedCurrencyObj.rateToUSD.toFixed(4)} {selectedCurrencyObj.code}
                   </div>
                   <div className="text-[10px] font-bold text-[#141414]/70">
-                    Live Rate Synced: {lastRateFetchTime}
+                    {t('liveRateSyncedLabel', language)}: {lastRateFetchTime}
                   </div>
                 </div>
 
                 <div className="p-2.5 bg-[#FFFBEB] border-2 border-amber-500 text-[11px] font-bold text-[#141414] leading-snug">
-                  📌 <strong className="uppercase">Note:</strong> Exchange rates update automatically when you refresh the page.
+                  📌 <strong className="uppercase">{t('noteWord', language)}:</strong> {t('exchangeRateNoticeDesc', language)}
                 </div>
               </div>
             )}

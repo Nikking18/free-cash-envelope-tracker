@@ -202,9 +202,18 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                     {t('excelFormatNoticeDesc', language)}
                   </p>
                   <div className="p-2 bg-white border-2 border-[#141414] font-mono text-[11px] space-y-1">
-                    <div>• <strong>Sheet 1: Envelopes</strong> (Name, Allocated, Category)</div>
-                    <div>• <strong>Sheet 2: Expenses</strong> (Envelope Name, Amount, Note, Date)</div>
+                    <div>• <strong>Sheet 1: {t('excelSheetEnvelopes', language)}</strong> ({t('excelColEnvName', language)}, {t('excelColAllocated', language)}, {t('excelColCategory', language)})</div>
+                    <div>• <strong>Sheet 2: {t('excelSheetExpenses', language)}</strong> ({t('excelColEnvName', language)}, {t('excelColAmount', language)}, {t('excelColNote', language)}, {t('excelColDate', language)})</div>
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={() => downloadExcelTemplate(language)}
+                    className="w-full py-2 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer mt-2"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>{t('downloadSampleTemplateBtn', language)}</span>
+                  </button>
                 </div>
               )}
             </div>
