@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ShieldCheck, FileSpreadsheet, Lock, Sparkles } from 'lucide-react';
+import { HelpCircle, ChevronDown } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -35,7 +35,11 @@ export const FAQ_ITEMS: FAQItem[] = [
   },
 ];
 
-export const FaqSection: React.FC = () => {
+interface FaqSectionProps {
+  language?: string;
+}
+
+export const FaqSection: React.FC<FaqSectionProps> = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleIndex = (idx: number) => {
