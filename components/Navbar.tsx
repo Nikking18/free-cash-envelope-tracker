@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Wallet, Globe, DollarSign, Info, X, RefreshCw } from 'lucide-react';
-import { SUPPORTED_CURRENCIES, SUPPORTED_LANGUAGES } from '../lib/currency-utils';
+import { SUPPORTED_CURRENCIES, SUPPORTED_LANGUAGES, lastRateFetchTime } from '../lib/currency-utils';
 import { t, LanguageCode } from '../lib/i18n';
 
 interface NavbarProps {
@@ -21,17 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onChangeLanguage,
 }) => {
   const [showRateInfo, setShowRateInfo] = useState(false);
-  const [syncedTimeStr, setSyncedTimeStr] = useState<string>('');
   const rateInfoRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setSyncedTimeStr(
-      new Date().toLocaleString('en-US', {
-        dateStyle: 'medium',
-        timeStyle: 'medium',
-      })
-    );
-  }, [mainCurrency]);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
@@ -52,14 +42,15 @@ export const Navbar: React.FC<NavbarProps> = ({
     onChangeLanguage(langCode);
 
     if (typeof window !== 'undefined') {
+      const host = window.location.hostname;
+      document.cookie = `googtrans=/en/${langCode}; path=/; domain=${host}`;
+      document.cookie = `googtrans=/en/${langCode}; path=/`;
+
       const gtCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
       if (gtCombo) {
         gtCombo.value = langCode;
         gtCombo.dispatchEvent(new Event('change'));
       } else {
-        const host = window.location.hostname;
-        document.cookie = `googtrans=/en/${langCode}; path=/; domain=${host}`;
-        document.cookie = `googtrans=/en/${langCode}; path=/`;
         window.location.reload();
       }
     }
@@ -123,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="font-bold text-sm uppercase tracking-tight border-b-2 border-[#141414] pb-1.5 flex items-center justify-between">
                   <span className="flex items-center gap-1.5">
                     <RefreshCw className="w-4 h-4 text-[#8A9A5B]" />
-                    Live Exchange Rate Notice
+                    Real-Time Exchange Rate Notice
                   </span>
                   <button
                     type="button"
@@ -142,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     1 USD = {selectedCurrencyObj.rateToUSD.toFixed(4)} {selectedCurrencyObj.code}
                   </div>
                   <div className="text-[10px] font-bold text-[#141414]/70">
-                    Last Synced: {syncedTimeStr || new Date().toLocaleString()}
+                    Live Rate Synced: {lastRateFetchTime}
                   </div>
                 </div>
 

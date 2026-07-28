@@ -26,6 +26,7 @@ export const DEFAULT_CURRENCIES: CurrencyInfo[] = [
 ];
 
 export let SUPPORTED_CURRENCIES: CurrencyInfo[] = [...DEFAULT_CURRENCIES];
+export let lastRateFetchTime: string = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'medium' });
 
 export interface LanguageInfo {
   code: string;
@@ -56,34 +57,22 @@ let currencyMap = new Map<string, CurrencyInfo>(
 );
 
 /**
- * Fetches real-time live exchange rates from open exchange rate API with 1-hour local caching
+ * Fetches real-time exchange rates on visitor entry and updates rate matrix
  */
 export async function fetchLiveExchangeRates(): Promise<boolean> {
   if (typeof window === 'undefined') return false;
 
-  const CACHE_KEY = 'cash_tracker_live_rates_v1';
-  const CACHE_TIME_KEY = 'cash_tracker_live_rates_time';
-  const ONE_HOUR_MS = 60 * 60 * 1000;
-
   try {
-    const cachedRatesStr = localStorage.getItem(CACHE_KEY);
-    const cachedTimeStr = localStorage.getItem(CACHE_TIME_KEY);
-    const now = Date.now();
-
-    if (cachedRatesStr && cachedTimeStr && now - parseInt(cachedTimeStr, 10) < ONE_HOUR_MS) {
-      const rates = JSON.parse(cachedRatesStr);
-      updateRatesMap(rates);
-      return true;
-    }
-
-    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    const res = await fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' });
     if (!res.ok) return false;
 
     const data = await res.json();
     if (data && data.rates) {
-      localStorage.setItem(CACHE_KEY, JSON.stringify(data.rates));
-      localStorage.setItem(CACHE_TIME_KEY, now.toString());
       updateRatesMap(data.rates);
+      lastRateFetchTime = new Date().toLocaleString('en-US', {
+        dateStyle: 'medium',
+        timeStyle: 'medium',
+      });
       return true;
     }
   } catch (err) {
@@ -115,7 +104,7 @@ export function getPdfCurrencySymbol(code: string = 'USD'): string {
 }
 
 /**
- * Converts an amount from one currency to another currency using real-time or cached exchange rates
+ * Converts an amount from one currency to another currency using real-time rates
  */
 export function convertCurrency(
   amount: number,
@@ -128,7 +117,6 @@ export function convertCurrency(
 
   if (from.code === to.code) return amount;
 
-  // Convert from origin currency to USD, then from USD to target currency
   const amountInUSD = amount / from.rateToUSD;
   const converted = amountInUSD * to.rateToUSD;
   return Math.round(converted * 100) / 100;
