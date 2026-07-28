@@ -16,16 +16,17 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
-const SITE_URL = 'https://freecashtracker.online/';
+const SITE_URL = 'https://www.freecashtracker.online/';
 const SITE_NAME = 'Free Cash Envelope Tracker';
-const SITE_TITLE = 'Free Cash Envelope Tracker — Private Cash Stuffing Budget App';
-const SITE_DESC = 'Free, private, zero-login cash envelope budgeting app. Manage digital cash stuffing, log expenses, live progress tracking, PDF export & Excel import/export. 100% browser-based privacy.';
+const SITE_TITLE = 'Free Cash Envelope Tracker — Private Digital Cash Stuffing Budget App';
+const SITE_DESC = '100% free, private, zero-login digital cash envelope budgeting app. Manage cash stuffing, log expenses, live progress tracking, PDF report export & 2-sheet Excel import/export in English, Español, Français, Deutsch.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESC,
   keywords: [
+    // English
     'free cash envelope tracker',
     'cash stuffing app',
     'digital envelope budgeting',
@@ -39,13 +40,36 @@ export const metadata: Metadata = {
     'cash envelope budget template',
     'printable cash envelope pdf',
     'personal finance budget tracker',
-    'zero login envelope budget'
+    'zero login envelope budget',
+    // Spanish
+    'sobres de efectivo digital',
+    'presupuesto por sobres gratis',
+    'plantilla de sobres de dinero',
+    'control de presupuesto sin registro',
+    'gestión de gastos por sobres',
+    // French
+    'budget enveloppes digitales',
+    'méthode enveloppes argent gratuit',
+    'gestionnaire de budget sans compte',
+    'suivi des dépenses par enveloppes',
+    // German
+    'digitales umschlag budgeting',
+    'bargeld umschlag methode kostenlos',
+    'haushaltsbuch ohne anmeldung',
+    'umschlag budget rechner'
   ],
   authors: [{ name: 'Free Cash Envelope Tracker' }],
   creator: 'Free Cash Envelope Tracker',
   publisher: 'Free Cash Envelope Tracker',
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      'en': SITE_URL,
+      'es': `${SITE_URL}?lang=es`,
+      'fr': `${SITE_URL}?lang=fr`,
+      'de': `${SITE_URL}?lang=de`,
+      'x-default': SITE_URL,
+    },
   },
   icons: {
     icon: '/icon.png',
@@ -58,6 +82,8 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESC,
     siteName: SITE_NAME,
+    locale: 'en_US',
+    alternateLocale: ['es_ES', 'fr_FR', 'de_DE'],
     images: [
       {
         url: `${SITE_URL}og-image.png`,
@@ -76,6 +102,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   verification: {
     google: 'b4HpIWI9uc6KOVQntu_E91w3SEAqZjS-BG9rV75wuHw',
@@ -104,7 +137,32 @@ export default function RootLayout({
     creator: {
       '@type': 'Organization',
       name: 'Free Cash Envelope Tracker',
+      url: SITE_URL,
     },
+  };
+
+  const jsonLdHowTo = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Budget with Digital Cash Envelopes',
+    description: 'Learn how to create digital cash envelopes, allocate funds, log transactions, and back up your budget as PDF or Excel.',
+    step: [
+      {
+        '@type': 'HowToStep',
+        name: 'Create Virtual Cash Envelopes',
+        text: 'Create digital envelopes for categories like Groceries, Rent, Dining, or Savings, and set target allocation amounts.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Log Expenses in Real-Time',
+        text: 'Record daily purchases against specific envelopes and monitor live color-coded progress bars to prevent overspending.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Export PDF or Excel Backups',
+        text: 'Download print-ready PDF statement cards or structured 2-sheet Excel files anytime to keep permanent offline backups.',
+      },
+    ],
   };
 
   const jsonLdFaq = {
@@ -170,6 +228,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdApp) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdHowTo) }}
         />
         <script
           type="application/ld+json"

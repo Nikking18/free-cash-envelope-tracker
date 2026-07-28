@@ -185,7 +185,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     // Data Loss Warning Modal
     dataLossModalTitle: 'BEFORE YOU START',
     dataLossModalDesc: 'This app stores everything only in your browser — there\'s no account, no cloud backup, and no server. If you clear your browser data, switch devices, or your browser crashes, your envelopes and expenses will be gone for good. Export a PDF or Excel copy anytime you want a backup. You\'re responsible for keeping your own copy — we can\'t recover lost data.',
-    dataLossModalBtn: '✓ GOT IT, CONTINUE',
+    dataLossModalBtn: 'GOT IT, CONTINUE',
 
     // FAQ Section
     faqBadge: 'FREQUENTLY ASKED QUESTIONS & GUIDE',
@@ -443,7 +443,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
 
     dataLossModalTitle: 'ANTES DE COMENZAR',
     dataLossModalDesc: 'Esta aplicación guarda todo exclusivamente en tu navegador. Si borras los datos de tu navegador o cambias de dispositivo, tus sobres se perderán. Exporta una copia en PDF o Excel en cualquier momento.',
-    dataLossModalBtn: '✓ ENTENDIDO, CONTINUAR',
+    dataLossModalBtn: 'ENTENDIDO, CONTINUAR',
 
     faqBadge: 'PREGUNTAS FRECUENTES Y GUÍA',
     faqTitleLine1: 'TODO LO QUE NECESITAS SABER SOBRE',
@@ -697,7 +697,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
 
     dataLossModalTitle: 'AVANT DE COMMENCER',
     dataLossModalDesc: 'Cette application conserve tout uniquement dans votre navigateur. Si vous effacez vos données de navigation, vos enveloppes seront perdues.',
-    dataLossModalBtn: '✓ COMPRIS, CONTINUER',
+    dataLossModalBtn: 'COMPRIS, CONTINUAR',
 
     faqBadge: 'FOIRE AUX QUESTIONS & GUIDE',
     faqTitleLine1: 'TOUT CE QUE VOUS DEVEZ SAVOIR SUR LE',
@@ -951,7 +951,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
 
     dataLossModalTitle: 'BEVOR SIE BEGINNEN',
     dataLossModalDesc: 'Diese App speichert alles nur in Ihrem Browser. Wenn Sie Ihren Browserverlauf löschen, gehen Ihre Daten verloren.',
-    dataLossModalBtn: '✓ VERSTANDEN, WEITER',
+    dataLossModalBtn: 'VERSTANDEN, WEITER',
 
     faqBadge: 'HÄUFIG GESTELLTE FRAGEN & LEITFADEN',
     faqTitleLine1: 'ALLES, WAS SIE WISSEN MÜSSEN ÜBER',
