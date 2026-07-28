@@ -175,7 +175,6 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowFormatInfo((prev) => !prev)}
-                  onMouseEnter={() => setShowFormatInfo(true)}
                   className="p-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button cursor-pointer flex items-center justify-center ml-1"
                   title="View accepted Excel format"
                   aria-label="Format Info"
@@ -183,6 +182,31 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                   <Info className="w-3.5 h-3.5 text-[#5C768D]" />
                 </button>
               </div>
+
+              {showFormatInfo && (
+                <div className="absolute left-0 top-full mt-2 w-72 sm:w-80 p-4 bg-[#FCFAF7] border-3 border-[#141414] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] z-50 text-xs text-[#141414] space-y-2">
+                  <div className="font-bold text-sm uppercase tracking-tight border-b-2 border-[#141414] pb-1.5 flex items-center justify-between">
+                    <span className="flex items-center gap-1.5">
+                      <FileSpreadsheet className="w-4 h-4 text-[#8A9A5B]" />
+                      {t('excelFormatNoticeTitle', language)}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setShowFormatInfo(false)}
+                      className="text-[#141414] hover:text-red-600 font-bold p-0.5 cursor-pointer"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <p className="text-xs text-[#141414]/90 font-medium leading-relaxed">
+                    {t('excelFormatNoticeDesc', language)}
+                  </p>
+                  <div className="p-2 bg-white border-2 border-[#141414] font-mono text-[11px] space-y-1">
+                    <div>• <strong>Sheet 1: Envelopes</strong> (Name, Allocated, Category)</div>
+                    <div>• <strong>Sheet 2: Expenses</strong> (Envelope Name, Amount, Note, Date)</div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Export Dropdown */}

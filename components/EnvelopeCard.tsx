@@ -4,6 +4,7 @@ import React from 'react';
 import { Envelope, CATEGORY_COLORS } from '../lib/tracker-types';
 import { formatCurrency } from '../lib/currency-utils';
 import { Plus, Edit2, Trash2, AlertCircle } from 'lucide-react';
+import { t } from '../lib/i18n';
 
 interface EnvelopeCardProps {
   envelope: Envelope;
@@ -12,6 +13,7 @@ interface EnvelopeCardProps {
   onEditEnvelope: (envelope: Envelope) => void;
   onDeleteEnvelope: (envelopeId: string) => void;
   mainCurrency?: string;
+  language?: string;
 }
 
 export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
@@ -21,6 +23,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
   onEditEnvelope,
   onDeleteEnvelope,
   mainCurrency = 'USD',
+  language = 'en',
 }) => {
   const envCurrency = envelope.currency || mainCurrency;
   const remaining = envelope.allocated - spent;
@@ -41,7 +44,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
             className="text-white text-[10px] px-2 py-1 font-bold uppercase tracking-widest inline-block border-2 border-[#141414] shrink-0"
             style={{ backgroundColor: CATEGORY_COLORS[envelope.category] || '#5C768D' }}
           >
-            {envelope.category}
+            {t(`cat${envelope.category}`, language).toUpperCase()}
           </span>
 
           <span className="font-serif font-bold text-xs sm:text-sm text-[#141414] bg-[#FCFAF7] px-2 py-0.5 border-2 border-[#141414] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] shrink-0 truncate max-w-[60%] text-right">
@@ -65,7 +68,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
           <div className="p-2.5 bg-red-100 border-2 border-[#D15F47] flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-[#D15F47] flex items-center gap-1">
               <AlertCircle className="w-4 h-4 shrink-0" />
-              Alert: Over budget
+              Alert: {t('overBudget', language)}
             </span>
             <span className="font-serif font-bold text-sm text-[#D15F47]">
               -{formatCurrency(overageAmount, envCurrency)}
@@ -74,7 +77,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
         ) : (
           <div className="p-2.5 bg-[#FCFAF7] border-2 border-[#141414] flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-[#141414]/70">
-              Remaining:
+              {t('remainingLabel', language)}
             </span>
             <span className="font-serif font-bold text-sm text-[#8A9A5B]">
               {formatCurrency(remaining, envCurrency)}
@@ -85,7 +88,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
         {/* Progress Bar */}
         <div className="space-y-1">
           <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-[#141414]/80">
-            <span>Progress</span>
+            <span>{t('progressLabel', language)}</span>
             <span>{percentUsed}%</span>
           </div>
           <div className="w-full h-8 bg-[#E4E3E0] border-4 border-[#141414]">
@@ -106,7 +109,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
           className="flex-1 px-3 py-2 bg-[#8A9A5B] text-white neo-button text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1 cursor-pointer"
         >
           <Plus className="w-3.5 h-3.5" />
-          Add Expense
+          {t('addExpenseBtn', language)}
         </button>
 
         <button

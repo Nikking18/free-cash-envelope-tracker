@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Envelope, Expense } from '../lib/tracker-types';
 import { formatCurrency, convertCurrency } from '../lib/currency-utils';
 import { Search, Filter, ArrowUpDown, Trash2, Edit2, Receipt } from 'lucide-react';
+import { t } from '../lib/i18n';
 
 interface TransactionLedgerProps {
   expenses: Expense[];
@@ -11,6 +12,7 @@ interface TransactionLedgerProps {
   onEditExpense: (expense: Expense) => void;
   onDeleteExpense: (expenseId: string) => void;
   mainCurrency?: string;
+  language?: string;
 }
 
 export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
@@ -19,6 +21,7 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
   onEditExpense,
   onDeleteExpense,
   mainCurrency = 'USD',
+  language = 'en',
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEnvelopeFilter, setSelectedEnvelopeFilter] = useState('all');
@@ -73,15 +76,15 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
         <div>
           <h2 className="font-serif font-black text-2xl text-[#141414] flex items-center gap-2 uppercase tracking-tight">
             <Receipt className="w-6 h-6 text-[#5C768D]" />
-            Recent Ledger
+            {t('recentLedger', language)}
           </h2>
           <p className="text-xs sm:text-sm text-[#141414]/70 font-bold tracking-wide mt-1">
-            Search, filter, and audit all expense logs
+            {t('ledgerSubtitle', language)}
           </p>
         </div>
 
         <div className="px-3 py-1.5 bg-[#5C768D] text-white border-2 border-[#141414] text-xs font-bold uppercase tracking-wider">
-          {filteredExpenses.length} Logs ({formatCurrency(totalFilteredAmount, mainCurrency)})
+          {filteredExpenses.length} {t('logsCount', language)} ({formatCurrency(totalFilteredAmount, mainCurrency)})
         </div>
       </div>
 
@@ -94,7 +97,7 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search note, vendor, envelope..."
+            placeholder={t('searchNotePlaceholder', language)}
             aria-label="Search ledger transactions"
             className="w-full pl-9 pr-3 py-2 bg-[#FCFAF7] neo-border text-xs font-bold focus:outline-hidden"
           />
@@ -108,7 +111,7 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
             aria-label="Filter ledger by envelope"
             className="w-full px-3 py-2 bg-[#FCFAF7] neo-border text-xs font-bold focus:outline-hidden uppercase tracking-wider"
           >
-            <option value="all">All Envelopes ({envelopes.length})</option>
+            <option value="all">{t('allEnvelopesFilter', language)} ({envelopes.length})</option>
             {envelopes.map((e) => (
               <option key={e.id} value={e.id}>
                 {e.name}
@@ -125,10 +128,10 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
             aria-label="Sort ledger transactions"
             className="w-full px-3 py-2 bg-[#FCFAF7] neo-border text-xs font-bold focus:outline-hidden uppercase tracking-wider"
           >
-            <option value="date-desc">Newest First</option>
-            <option value="date-asc">Oldest First</option>
-            <option value="amount-desc">Highest Amount</option>
-            <option value="amount-asc">Lowest Amount</option>
+            <option value="date-desc">{t('newestFirst', language)}</option>
+            <option value="date-asc">{t('oldestFirst', language)}</option>
+            <option value="amount-desc">{t('highestFirst', language)}</option>
+            <option value="amount-asc">{t('lowestFirst', language)}</option>
           </select>
         </div>
       </div>
@@ -138,11 +141,11 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
         <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
             <tr className="bg-[#141414] text-[#FCFAF7] text-[10px] font-bold uppercase tracking-widest">
-              <th className="p-3">Date</th>
-              <th className="p-3">Envelope</th>
-              <th className="p-3">Note / Vendor</th>
-              <th className="p-3 text-right">Amount</th>
-              <th className="p-3 text-center">Actions</th>
+              <th className="p-3">{t('date', language)}</th>
+              <th className="p-3">{t('envelope', language)}</th>
+              <th className="p-3">{t('noteVendor', language)}</th>
+              <th className="p-3 text-right">{t('amount', language)}</th>
+              <th className="p-3 text-center">{t('actions', language)}</th>
             </tr>
           </thead>
           <tbody className="divide-y-2 divide-[#141414] bg-white text-xs font-bold text-[#141414]">

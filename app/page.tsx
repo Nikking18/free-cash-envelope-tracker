@@ -439,10 +439,10 @@ export default function CashEnvelopeTrackerPage() {
               <div>
                 <h2 className="font-serif font-[#141414] text-2xl uppercase tracking-tight flex items-center gap-2 font-black">
                   <Wallet className="w-6 h-6 text-[#8A9A5B]" />
-                  Cash Envelopes ({data.envelopes.length})
+                  {t('cashEnvelopes', language)} ({data.envelopes.length})
                 </h2>
                 <p className="text-xs sm:text-sm text-[#141414]/70 font-bold uppercase tracking-wider">
-                  Allocate funds, log purchases, and prevent overspending
+                  {t('envelopesSubtitle', language)}
                 </p>
               </div>
 
@@ -453,7 +453,7 @@ export default function CashEnvelopeTrackerPage() {
                     onClick={() => setSelectedCategory('all')}
                     className={`px-2.5 py-1 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${selectedCategory === 'all' ? 'bg-[#141414] text-[#FCFAF7]' : 'text-[#141414] hover:bg-gray-100'}`}
                   >
-                    All
+                    {t('allCategories', language)}
                   </button>
                   {CATEGORIES.map((cat) => (
                     <button
@@ -461,7 +461,7 @@ export default function CashEnvelopeTrackerPage() {
                       onClick={() => setSelectedCategory(cat)}
                       className={`px-2.5 py-1 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${selectedCategory === cat ? 'bg-[#141414] text-[#FCFAF7]' : 'text-[#141414] hover:bg-gray-100'}`}
                     >
-                      {cat}
+                      {t(`cat${cat}`, language).toUpperCase()}
                     </button>
                   ))}
                 </div>
@@ -472,7 +472,7 @@ export default function CashEnvelopeTrackerPage() {
                     type="text"
                     value={envelopeSearch}
                     onChange={(e) => setEnvelopeSearch(e.target.value)}
-                    placeholder="Search envelopes..."
+                    placeholder={t('searchEnvelopes', language)}
                     className="pl-8 pr-2.5 py-1 bg-white neo-border text-xs font-bold text-[#141414] focus:outline-hidden w-full"
                   />
                 </div>
@@ -483,7 +483,7 @@ export default function CashEnvelopeTrackerPage() {
             {filteredEnvelopes.length === 0 ? (
               <div className="bg-white border-4 border-[#141414] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-10 text-center space-y-4">
                 <div className="font-serif font-black text-xl text-[#141414] uppercase tracking-tight">
-                  No envelopes found.
+                  {t('noEnvelopesFound', language)}
                 </div>
                 <p className="text-xs sm:text-sm text-[#141414]/80 font-bold max-w-md mx-auto">
                   {data.envelopes.length === 0
@@ -498,7 +498,7 @@ export default function CashEnvelopeTrackerPage() {
                     }}
                     className="px-4 py-2 bg-[#8A9A5B] text-white neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
-                    + Create Envelope
+                    + {t('createEnvelopeTitle', language)}
                   </button>
                 </div>
               </div>
@@ -510,6 +510,7 @@ export default function CashEnvelopeTrackerPage() {
                     envelope={env}
                     spent={envelopeSpentMap.get(env.id) || 0}
                     mainCurrency={mainCurrency}
+                    language={language}
                     onAddExpense={(envId) => {
                       setEditingExpense(null);
                       setSelectedEnvelopeForExpense(envId);
@@ -531,6 +532,7 @@ export default function CashEnvelopeTrackerPage() {
             expenses={data.expenses}
             envelopes={data.envelopes}
             mainCurrency={mainCurrency}
+            language={language}
             onEditExpense={(expToEdit) => {
               setEditingExpense(expToEdit);
               setIsExpenseModalOpen(true);
@@ -543,17 +545,17 @@ export default function CashEnvelopeTrackerPage() {
             <div className="flex items-center justify-between border-b-4 border-[#141414] pb-3">
               <h2 className="font-serif font-black text-xl sm:text-2xl text-[#141414] uppercase tracking-tight flex items-center gap-2">
                 <FileText className="w-6 h-6 text-[#8A9A5B]" />
-                Notes &amp; Budget Reminders <span className="text-xs font-sans font-normal text-[#141414]/60 lowercase">(optional)</span>
+                {t('notesRemindersTitle', language)} <span className="text-xs font-sans font-normal text-[#141414]/60 lowercase">{t('optionalLabel', language)}</span>
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-[#141414]/80 font-bold leading-relaxed">
-              Add any custom budget notes, payday goals, or instructions. Entered notes appear directly on your exported PDF. If left empty, your PDF will include blank lines with instructions for hand-writing notes.
+              {t('notesRemindersDesc', language)}
             </p>
             <textarea
               rows={3}
               value={data.notes || ''}
               onChange={(e) => saveToStorage({ ...data, notes: e.target.value })}
-              placeholder="e.g. Pay rent on the 1st. Transfer $200 to emergency savings on payday."
+              placeholder={t('notesRemindersPlaceholder', language)}
               className="w-full p-3 bg-white neo-border text-xs sm:text-sm font-medium text-[#141414] focus:outline-hidden resize-y min-h-[90px] placeholder:text-[#141414]/40"
             />
           </div>
@@ -606,6 +608,7 @@ export default function CashEnvelopeTrackerPage() {
       <DataLossWarningModal
         isOpen={isDataLossModalOpen}
         onDismiss={() => setIsDataLossModalOpen(false)}
+        language={language}
       />
 
       <PdfTemplateModal

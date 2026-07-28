@@ -2,15 +2,18 @@
 
 import React, { useEffect, useRef } from 'react';
 import { AlertTriangle, Check } from 'lucide-react';
+import { t } from '../lib/i18n';
 
 interface DataLossWarningModalProps {
   isOpen: boolean;
   onDismiss: () => void;
+  language?: string;
 }
 
 export const DataLossWarningModal: React.FC<DataLossWarningModalProps> = ({
   isOpen,
   onDismiss,
+  language = 'en',
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -46,13 +49,13 @@ export const DataLossWarningModal: React.FC<DataLossWarningModalProps> = ({
             id="data-loss-warning-title"
             className="font-serif font-black text-xl sm:text-2xl text-[#141414] uppercase tracking-tight"
           >
-            Before You Start
+            {t('dataLossModalTitle', language)}
           </h2>
         </div>
 
-        {/* Body Copy - Exact Wording */}
+        {/* Body Copy */}
         <p className="text-xs sm:text-sm text-[#141414] font-bold leading-relaxed bg-amber-50 p-4 border-2 border-[#141414]">
-          This app stores everything only in your browser &mdash; there&apos;s no account, no cloud backup, and no server. If you clear your browser data, switch devices, or your browser crashes, your envelopes and expenses will be gone for good. Export a PDF or Excel copy anytime you want a backup. You&apos;re responsible for keeping your own copy &mdash; we can&apos;t recover lost data.
+          {t('dataLossModalDesc', language)}
         </p>
 
         {/* Action Button */}
@@ -63,7 +66,7 @@ export const DataLossWarningModal: React.FC<DataLossWarningModalProps> = ({
             className="w-full py-3.5 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button text-sm font-bold uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2"
           >
             <Check className="w-4 h-4" />
-            Got it, continue
+            {t('dataLossModalBtn', language)}
           </button>
         </div>
       </div>
