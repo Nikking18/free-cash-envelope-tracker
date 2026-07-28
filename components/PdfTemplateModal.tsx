@@ -88,6 +88,31 @@ export const PdfTemplateModal: React.FC<PdfTemplateModalProps> = ({
                   {t('classicTemplateDesc', language)}
                 </p>
               </div>
+
+              {/* Cropped Mini PDF Preview Snippet: Classic Minimal */}
+              <div className="border-2 border-[#141414] bg-[#FCFAF7] p-2 rounded-none space-y-1.5 shadow-[2px_2px_0px_0px_rgba(20,20,20,1)] group-hover:border-[#8A9A5B] transition-colors">
+                <div className="bg-[#18181B] text-[#FCFAF7] p-1.5 flex items-center justify-between">
+                  <div className="text-[8px] font-black uppercase tracking-wider font-serif">
+                    {t('pdfDocTitle', language).toUpperCase()} {t('pdfDocSubtitle', language)}
+                  </div>
+                  <div className="text-[6px] opacity-70">2026</div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-1">
+                  <div className="bg-[#F4F1EA] border border-[#141414] border-t-2 border-t-[#5C768D] p-1 text-[6px]">
+                    <div className="font-bold text-[#141414] truncate">{t('pdfAllocatedCard', language)}</div>
+                    <div className="font-black text-[#141414] text-[7.5px]">$1,850</div>
+                  </div>
+                  <div className="bg-[#F4F1EA] border border-[#141414] border-t-2 border-t-[#D15F47] p-1 text-[6px]">
+                    <div className="font-bold text-[#141414] truncate">{t('pdfSpentCard', language)}</div>
+                    <div className="font-black text-[#D15F47] text-[7.5px]">$620</div>
+                  </div>
+                  <div className="bg-[#F4F1EA] border border-[#141414] border-t-2 border-t-[#8A9A5B] p-1 text-[6px]">
+                    <div className="font-bold text-[#141414] truncate">{t('pdfRemainingCard', language)}</div>
+                    <div className="font-black text-[#8A9A5B] text-[7.5px]">$1,230</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <button
@@ -120,6 +145,31 @@ export const PdfTemplateModal: React.FC<PdfTemplateModalProps> = ({
                 <p className="text-xs text-[#141414]/80 font-medium leading-snug mt-1">
                   {t('bwTemplateDesc', language)}
                 </p>
+              </div>
+
+              {/* Cropped Mini PDF Preview Snippet: Minimal B&W */}
+              <div className="border-2 border-[#141414] bg-white p-2 rounded-none space-y-1.5 shadow-[2px_2px_0px_0px_rgba(20,20,20,1)] group-hover:border-black transition-colors">
+                <div className="bg-white border border-[#141414] text-[#141414] p-1.5 flex items-center justify-between">
+                  <div className="text-[8px] font-black uppercase tracking-wider font-serif">
+                    {t('pdfDocTitle', language).toUpperCase()} <span className="font-serif italic font-normal">{t('pdfDocSubtitle', language)}</span>
+                  </div>
+                  <div className="text-[6px] text-gray-600">Pure B&amp;W</div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-1">
+                  <div className="bg-white border border-[#141414] p-1 text-[6px]">
+                    <div className="font-bold text-[#141414] truncate">{t('pdfAllocatedCard', language)}</div>
+                    <div className="font-black text-[#141414] text-[7.5px]">$1,850</div>
+                  </div>
+                  <div className="bg-white border border-[#141414] p-1 text-[6px]">
+                    <div className="font-bold text-[#141414] truncate">{t('pdfSpentCard', language)}</div>
+                    <div className="font-black text-[#141414] text-[7.5px]">$620</div>
+                  </div>
+                  <div className="bg-white border border-[#141414] p-1 text-[6px]">
+                    <div className="font-bold text-[#141414] truncate">{t('pdfRemainingCard', language)}</div>
+                    <div className="font-black text-[#141414] text-[7.5px]">$1,230</div>
+                  </div>
+                </div>
               </div>
             </div>
 
