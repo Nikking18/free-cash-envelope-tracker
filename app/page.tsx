@@ -5,6 +5,7 @@ import { Envelope, Expense, TrackerData, Category, CATEGORIES, INITIAL_STORAGE_K
 import { generatePDFSummary, PDFTemplateStyle } from '../lib/pdf-utils';
 import { exportToExcel } from '../lib/excel-utils';
 import { convertCurrency, fetchLiveExchangeRates } from '../lib/currency-utils';
+import { t } from '../lib/i18n';
 
 import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
