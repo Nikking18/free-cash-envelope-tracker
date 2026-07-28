@@ -6,12 +6,12 @@ export interface CurrencyInfo {
   rateToUSD: number; // 1 USD = X Currency
 }
 
-export const DEFAULT_CURRENCIES: CurrencyInfo[] = [
+export const INITIAL_CURRENCIES: CurrencyInfo[] = [
   { code: 'USD', symbol: '$', pdfSymbol: '$', name: 'US Dollar (USD)', rateToUSD: 1.0 },
-  { code: 'EUR', symbol: '€', pdfSymbol: '€', name: 'Euro (EUR)', rateToUSD: 0.92 },
-  { code: 'GBP', symbol: '£', pdfSymbol: '£', name: 'British Pound (GBP)', rateToUSD: 0.78 },
-  { code: 'INR', symbol: '₹', pdfSymbol: 'Rs.', name: 'Indian Rupee (INR)', rateToUSD: 83.5 },
-  { code: 'CAD', symbol: 'CA$', pdfSymbol: 'CA$', name: 'Canadian Dollar (CAD)', rateToUSD: 1.36 },
+  { code: 'EUR', symbol: '€', pdfSymbol: '€', name: 'Euro (EUR)', rateToUSD: 0.8788 },
+  { code: 'GBP', symbol: '£', pdfSymbol: '£', name: 'British Pound (GBP)', rateToUSD: 0.7519 },
+  { code: 'INR', symbol: '₹', pdfSymbol: 'Rs.', name: 'Indian Rupee (INR)', rateToUSD: 95.94 },
+  { code: 'CAD', symbol: 'CA$', pdfSymbol: 'CA$', name: 'Canadian Dollar (CAD)', rateToUSD: 1.4115 },
   { code: 'AUD', symbol: 'A$', pdfSymbol: 'A$', name: 'Australian Dollar (AUD)', rateToUSD: 1.52 },
   { code: 'JPY', symbol: '¥', pdfSymbol: '¥', name: 'Japanese Yen (JPY)', rateToUSD: 155.0 },
   { code: 'BRL', symbol: 'R$', pdfSymbol: 'R$', name: 'Brazilian Real (BRL)', rateToUSD: 5.45 },
@@ -25,8 +25,30 @@ export const DEFAULT_CURRENCIES: CurrencyInfo[] = [
   { code: 'AED', symbol: 'AED', pdfSymbol: 'AED ', name: 'UAE Dirham (AED)', rateToUSD: 3.67 },
 ];
 
-export let SUPPORTED_CURRENCIES: CurrencyInfo[] = [...DEFAULT_CURRENCIES];
-export let lastRateFetchTime: string = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'medium' });
+let currencyMap = new Map<string, CurrencyInfo>(
+  INITIAL_CURRENCIES.map((c) => [c.code, c])
+);
+
+export let lastRateFetchTime: string = new Date().toLocaleString('en-US', {
+  dateStyle: 'medium',
+  timeStyle: 'medium',
+});
+
+const listeners = new Set<() => void>();
+
+export function getSupportedCurrencies(): CurrencyInfo[] {
+  return Array.from(currencyMap.values());
+}
+
+export function getCurrencyInfo(code: string = 'USD'): CurrencyInfo {
+  return currencyMap.get(code.toUpperCase()) || {
+    code: code.toUpperCase(),
+    symbol: '$',
+    pdfSymbol: '$',
+    name: `${code.toUpperCase()} Currency`,
+    rateToUSD: 1.0,
+  };
+}
 
 export interface LanguageInfo {
   code: string;
@@ -52,12 +74,8 @@ export const SUPPORTED_LANGUAGES: LanguageInfo[] = [
   { code: 'pl', name: 'Polski', flag: '🇵🇱' },
 ];
 
-let currencyMap = new Map<string, CurrencyInfo>(
-  SUPPORTED_CURRENCIES.map((c) => [c.code, c])
-);
-
 /**
- * Fetches real-time exchange rates on visitor entry and updates rate matrix
+ * Fetches real-time exchange rates on visitor entry and updates rate matrix dynamically
  */
 export async function fetchLiveExchangeRates(): Promise<boolean> {
   if (typeof window === 'undefined') return false;
@@ -73,6 +91,7 @@ export async function fetchLiveExchangeRates(): Promise<boolean> {
         dateStyle: 'medium',
         timeStyle: 'medium',
       });
+      listeners.forEach((cb) => cb());
       return true;
     }
   } catch (err) {
@@ -82,24 +101,25 @@ export async function fetchLiveExchangeRates(): Promise<boolean> {
 }
 
 function updateRatesMap(rates: Record<string, number>) {
-  SUPPORTED_CURRENCIES = SUPPORTED_CURRENCIES.map((c) => {
+  INITIAL_CURRENCIES.forEach((c) => {
     if (rates[c.code]) {
-      return { ...c, rateToUSD: rates[c.code] };
+      currencyMap.set(c.code, { ...c, rateToUSD: rates[c.code] });
     }
-    return c;
   });
-  currencyMap = new Map<string, CurrencyInfo>(
-    SUPPORTED_CURRENCIES.map((c) => [c.code, c])
-  );
+}
+
+export function subscribeRatesChange(callback: () => void): () => void {
+  listeners.add(callback);
+  return () => listeners.delete(callback);
 }
 
 export function getCurrencySymbol(code: string = 'USD'): string {
-  const currency = currencyMap.get(code.toUpperCase());
+  const currency = getCurrencyInfo(code);
   return currency ? currency.symbol : '$';
 }
 
 export function getPdfCurrencySymbol(code: string = 'USD'): string {
-  const currency = currencyMap.get(code.toUpperCase());
+  const currency = getCurrencyInfo(code);
   return currency ? currency.pdfSymbol : `${code} `;
 }
 
@@ -112,8 +132,8 @@ export function convertCurrency(
   toCode: string = 'USD'
 ): number {
   if (isNaN(amount) || amount === 0) return 0;
-  const from = currencyMap.get(fromCode.toUpperCase()) || currencyMap.get('USD')!;
-  const to = currencyMap.get(toCode.toUpperCase()) || currencyMap.get('USD')!;
+  const from = getCurrencyInfo(fromCode);
+  const to = getCurrencyInfo(toCode);
 
   if (from.code === to.code) return amount;
 

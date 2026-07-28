@@ -2,8 +2,13 @@
 
 import React from 'react';
 import { Heart, ShieldCheck, ExternalLink, Github, Twitter, Linkedin } from 'lucide-react';
+import { t } from '../lib/i18n';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  language?: string;
+}
+
+export const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
   return (
     <footer className="mt-16 border-t-4 border-[#141414] bg-[#FCFAF7] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -11,10 +16,10 @@ export const Footer: React.FC = () => {
           {/* Brand & Mission */}
           <div className="md:col-span-6 space-y-3">
             <h3 className="font-serif font-black text-2xl uppercase tracking-tight text-[#141414]">
-              Free Cash Envelope Tracker
+              {t('brandName', language)}
             </h3>
             <p className="text-xs sm:text-sm text-[#141414]/90 font-bold leading-relaxed max-w-md">
-              A free, single-page, private web app for digital cash stuffing. Built for people who want simple, transparent envelope budgeting without ads, forced accounts, or bank integrations.
+              {t('footerTagline', language)}
             </p>
             <div className="text-xs text-[#5C768D] font-bold uppercase tracking-wider flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-[#8A9A5B]" />
@@ -88,7 +93,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Legal & Copyright Bar */}
         <div className="pt-6 border-t-2 border-[#141414] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold uppercase tracking-widest text-[#141414]/70">
           <div>
-            © {new Date().getFullYear()} Free Cash Envelope Tracker. Free and open digital budgeting.
+            © {new Date().getFullYear()} {t('footerCopyright', language)}
           </div>
           <div className="flex items-center gap-4">
             <span className="text-[11px] normal-case tracking-normal font-bold">

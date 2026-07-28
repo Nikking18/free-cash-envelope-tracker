@@ -324,7 +324,8 @@ export default function CashEnvelopeTrackerPage() {
         style,
         data.budgetPeriod || '',
         data.notes || '',
-        mainCurrency
+        mainCurrency,
+        language
       );
       recordExportTimestamp();
     } catch (err: any) {
@@ -559,11 +560,11 @@ export default function CashEnvelopeTrackerPage() {
         </section>
 
         {/* SEO FAQ & Guide Section */}
-        <FaqSection />
+        <FaqSection language={language} />
       </div>
 
       {/* Footer */}
-      <Footer />
+      <Footer language={language} />
 
       {/* Google Translate Integration */}
       <GoogleTranslateScript />

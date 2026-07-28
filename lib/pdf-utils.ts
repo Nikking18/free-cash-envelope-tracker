@@ -1,5 +1,6 @@
 import { Envelope, Expense } from './tracker-types';
 import { formatPdfCurrency, convertCurrency } from './currency-utils';
+import { t } from './i18n';
 
 export type PDFTemplateStyle = 'classic' | 'minimal-bw';
 
@@ -20,12 +21,13 @@ export async function generatePDFSummary(
   style: PDFTemplateStyle = 'classic',
   budgetPeriod: string = '',
   notes: string = '',
-  mainCurrency: string = 'USD'
+  mainCurrency: string = 'USD',
+  language: string = 'en'
 ) {
   if (style === 'minimal-bw') {
-    return generateMinimalBwPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency);
+    return generateMinimalBwPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency, language);
   }
-  return generateClassicPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency);
+  return generateClassicPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency, language);
 }
 
 // Helper to render a solid filled neobrutalist badge for envelope name in Classic template
@@ -80,7 +82,8 @@ async function generateClassicPDF(
   expenses: Expense[],
   budgetPeriod: string = '',
   notes: string = '',
-  mainCurrency: string = 'USD'
+  mainCurrency: string = 'USD',
+  language: string = 'en'
 ) {
   const { jsPDF } = await import('jspdf');
 
@@ -445,7 +448,8 @@ async function generateMinimalBwPDF(
   expenses: Expense[],
   budgetPeriod: string = '',
   notes: string = '',
-  mainCurrency: string = 'USD'
+  mainCurrency: string = 'USD',
+  language: string = 'en'
 ) {
   const { jsPDF } = await import('jspdf');
 

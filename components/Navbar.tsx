@@ -2,8 +2,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Wallet, Globe, DollarSign, Info, X, RefreshCw } from 'lucide-react';
-import { SUPPORTED_CURRENCIES, SUPPORTED_LANGUAGES, lastRateFetchTime } from '../lib/currency-utils';
-import { t, LanguageCode } from '../lib/i18n';
+import {
+  getSupportedCurrencies,
+  getCurrencyInfo,
+  SUPPORTED_LANGUAGES,
+  lastRateFetchTime,
+  subscribeRatesChange,
+} from '../lib/currency-utils';
+import { t } from '../lib/i18n';
 
 interface NavbarProps {
   onScrollToTracker: () => void;
@@ -21,7 +27,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   onChangeLanguage,
 }) => {
   const [showRateInfo, setShowRateInfo] = useState(false);
+  const [, setRateUpdateTick] = useState(0);
   const rateInfoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const unsubscribe = subscribeRatesChange(() => {
+      setRateUpdateTick((prev) => prev + 1);
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
@@ -55,8 +69,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
-  const selectedCurrencyObj = SUPPORTED_CURRENCIES.find((c) => c.code === mainCurrency) || SUPPORTED_CURRENCIES[0];
-  const langKey = (language || 'en') as LanguageCode;
+  const selectedCurrencyObj = getCurrencyInfo(mainCurrency);
+  const supportedCurrencies = getSupportedCurrencies();
 
   return (
     <header className="sticky top-0 z-40 bg-[#FCFAF7] border-b-4 border-[#141414] bg-opacity-95 backdrop-blur-xs">
@@ -68,10 +82,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <span className="font-serif font-black text-base sm:text-2xl uppercase tracking-tighter text-[#141414] block leading-none">
-              {t('brandName', langKey)}
+              {t('brandName', language)}
             </span>
             <span className="text-[10px] sm:text-xs text-[#141414]/70 font-bold uppercase tracking-widest hidden sm:block mt-1">
-              {t('brandTagline', langKey)}
+              {t('brandTagline', language)}
             </span>
           </div>
         </a>
@@ -89,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 title="Select Main Budget Currency"
                 aria-label="Select Main Budget Currency"
               >
-                {SUPPORTED_CURRENCIES.map((c) => (
+                {supportedCurrencies.map((c) => (
                   <option key={c.code} value={c.code}>
                     {c.symbol} {c.code}
                   </option>
@@ -166,8 +180,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onScrollToTracker}
             className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#8A9A5B] text-white neo-button cursor-pointer whitespace-nowrap"
           >
-            <span className="hidden md:inline">{t('navGoToTracker', langKey)}</span>
-            <span className="md:hidden">{t('navTracker', langKey)}</span>
+            <span className="hidden md:inline">{t('navGoToTracker', language)}</span>
+            <span className="md:hidden">{t('navTracker', language)}</span>
           </button>
         </div>
       </div>
