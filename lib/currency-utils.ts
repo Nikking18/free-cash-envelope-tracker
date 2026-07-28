@@ -25,6 +25,8 @@ export const INITIAL_CURRENCIES: CurrencyInfo[] = [
   { code: 'AED', symbol: 'AED', pdfSymbol: 'AED ', name: 'UAE Dirham (AED)', rateToUSD: 3.67 },
 ];
 
+export const SUPPORTED_CURRENCIES: CurrencyInfo[] = INITIAL_CURRENCIES;
+
 let currencyMap = new Map<string, CurrencyInfo>(
   INITIAL_CURRENCIES.map((c) => [c.code, c])
 );
