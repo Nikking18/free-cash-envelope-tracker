@@ -34,7 +34,12 @@ export const metadata: Metadata = {
     'private budgeting tool',
     'no login budget app',
     'excel cash envelope import',
-    'pdf budget export'
+    'pdf budget export',
+    'digital cash stuffing online',
+    'cash envelope budget template',
+    'printable cash envelope pdf',
+    'personal finance budget tracker',
+    'zero login envelope budget'
   ],
   authors: [{ name: 'Free Cash Envelope Tracker' }],
   creator: 'Free Cash Envelope Tracker',
@@ -79,7 +84,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
+  const jsonLdApp = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: SITE_NAME,
@@ -97,6 +102,45 @@ export default function RootLayout({
       '@type': 'Organization',
       name: 'Free Cash Envelope Tracker',
     },
+  };
+
+  const jsonLdFaq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Is Free Cash Envelope Tracker 100% free with no hidden fees?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! Free Cash Envelope Tracker is 100% free forever. There are no premium subscriptions, no paywalled features, no ads, and no hidden charges. All envelope management, expense logging, PDF exports, and Excel imports/exports are completely free to use.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does digital cash stuffing work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Digital cash stuffing adapts the traditional physical cash envelope budgeting system into a convenient browser app. Instead of withdrawing physical paper cash into paper envelopes, you create virtual digital envelopes (e.g. Groceries, Rent, Dining Out, Savings), assign target budget amounts, and log transactions as you spend.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is my financial budget data safe and private?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Absolutely. Your privacy is guaranteed because 100% of your budget data is stored exclusively inside your browser\'s local storage (localStorage). We do not operate remote databases, we do not require account sign-ups or email addresses, and we never link to bank credentials.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I export my cash envelope budget to PDF or Excel?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! You can export your complete budget summary anytime. We support two customizable PDF export templates: Classic Minimal and Minimal B&W. You can also export your budget into a 2-sheet Excel (.xlsx) spreadsheet or import existing Excel budget files.',
+        },
+      },
+    ],
   };
 
   return (
@@ -121,7 +165,11 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdApp) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </head>
       <body className="bg-[#FCFAF7] text-[#18181B] font-sans antialiased min-h-screen selection:bg-[#8A9A5B] selection:text-white" suppressHydrationWarning>

@@ -9,6 +9,7 @@ import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
 import { WebViewShowcase } from '../components/WebViewShowcase';
+import { FaqSection } from '../components/FaqSection';
 import { TrackerSummary } from '../components/TrackerSummary';
 import { EnvelopeCard } from '../components/EnvelopeCard';
 import { EnvelopeModal } from '../components/EnvelopeModal';
@@ -504,6 +505,9 @@ export default function CashEnvelopeTrackerPage() {
             />
           </div>
         </section>
+
+        {/* SEO FAQ & Guide Section */}
+        <FaqSection />
       </div>
 
       {/* Footer */}
