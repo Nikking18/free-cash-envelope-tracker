@@ -21,6 +21,7 @@ import { ResetModal } from '../components/ResetModal';
 import { DataLossWarningModal } from '../components/DataLossWarningModal';
 import { PdfTemplateModal } from '../components/PdfTemplateModal';
 import { Footer } from '../components/Footer';
+import { GoogleTranslateScript } from '../components/GoogleTranslateScript';
 
 import { Search, Plus, Filter, Wallet, FileText, Download } from 'lucide-react';
 
@@ -556,6 +557,9 @@ export default function CashEnvelopeTrackerPage() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Google Translate Integration */}
+      <GoogleTranslateScript />
 
       {/* Modals */}
       <EnvelopeModal

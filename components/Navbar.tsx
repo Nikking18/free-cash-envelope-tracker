@@ -3,6 +3,7 @@
 import React from 'react';
 import { Wallet, Globe, DollarSign } from 'lucide-react';
 import { SUPPORTED_CURRENCIES, SUPPORTED_LANGUAGES } from '../lib/currency-utils';
+import { t, LanguageCode } from '../lib/i18n';
 
 interface NavbarProps {
   onScrollToTracker: () => void;
@@ -19,6 +20,26 @@ export const Navbar: React.FC<NavbarProps> = ({
   language,
   onChangeLanguage,
 }) => {
+  const handleLanguageChange = (langCode: string) => {
+    onChangeLanguage(langCode);
+
+    if (typeof window !== 'undefined') {
+      const gtCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+      if (gtCombo) {
+        gtCombo.value = langCode;
+        gtCombo.dispatchEvent(new Event('change'));
+      } else {
+        // Set Google Translate cookie and reload for seamless translation
+        const host = window.location.hostname;
+        document.cookie = `googtrans=/en/${langCode}; path=/; domain=${host}`;
+        document.cookie = `googtrans=/en/${langCode}; path=/`;
+        window.location.reload();
+      }
+    }
+  };
+
+  const langKey = (language || 'en') as LanguageCode;
+
   return (
     <header className="sticky top-0 z-40 bg-[#FCFAF7] border-b-4 border-[#141414] bg-opacity-95 backdrop-blur-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
@@ -29,10 +50,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <span className="font-serif font-black text-base sm:text-2xl uppercase tracking-tighter text-[#141414] block leading-none">
-              Free Cash Envelope Tracker
+              {t('brandName', langKey)}
             </span>
             <span className="text-[10px] sm:text-xs text-[#141414]/70 font-bold uppercase tracking-widest hidden sm:block mt-1">
-              Digital Cash Stuffing &amp; Budgeting
+              {t('brandTagline', langKey)}
             </span>
           </div>
         </a>
@@ -62,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Globe className="w-3.5 h-3.5 text-[#141414]/70 absolute left-2 pointer-events-none hidden xs:block" />
             <select
               value={language}
-              onChange={(e) => onChangeLanguage(e.target.value)}
+              onChange={(e) => handleLanguageChange(e.target.value)}
               className="pl-2 xs:pl-6 pr-2 py-1.5 bg-white neo-border text-xs font-bold text-[#141414] focus:outline-hidden cursor-pointer hover:bg-gray-50"
               title="Select Language"
               aria-label="Select Language"
@@ -80,8 +101,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onScrollToTracker}
             className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#8A9A5B] text-white neo-button cursor-pointer whitespace-nowrap"
           >
-            <span className="hidden md:inline">Go to Tracker</span>
-            <span className="md:hidden">Tracker</span>
+            <span className="hidden md:inline">{t('navGoToTracker', langKey)}</span>
+            <span className="md:hidden">{t('navTracker', langKey)}</span>
           </button>
         </div>
       </div>

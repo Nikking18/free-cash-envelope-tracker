@@ -1,5 +1,5 @@
 import { Envelope, Expense } from './tracker-types';
-import { formatCurrency, convertCurrency } from './currency-utils';
+import { formatPdfCurrency, convertCurrency } from './currency-utils';
 
 export type PDFTemplateStyle = 'classic' | 'minimal-bw';
 
@@ -172,7 +172,7 @@ async function generateClassicPDF(
   doc.setTextColor(20, 20, 20);
   doc.text('TOTAL ALLOCATED', margin + 4, y + 7);
   doc.setFontSize(11);
-  doc.text(formatCurrency(totalAllocated, mainCurrency), margin + 4, y + 14);
+  doc.text(formatPdfCurrency(totalAllocated, mainCurrency), margin + 4, y + 14);
 
   // Card 2: Total Spent
   const card2X = margin + cardWidth + 4;
@@ -188,7 +188,7 @@ async function generateClassicPDF(
   doc.text('TOTAL SPENT', card2X + 4, y + 7);
   doc.setFontSize(11);
   doc.setTextColor(209, 95, 71);
-  doc.text(formatCurrency(totalSpent, mainCurrency), card2X + 4, y + 14);
+  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card2X + 4, y + 14);
 
   // Card 3: Total Remaining
   const card3X = card2X + cardWidth + 4;
@@ -205,7 +205,7 @@ async function generateClassicPDF(
   doc.text('REMAINING BALANCE', card3X + 4, y + 7);
   doc.setFontSize(11);
   doc.setTextColor(remColorRGB[0], remColorRGB[1], remColorRGB[2]);
-  doc.text(formatCurrency(totalRemaining, mainCurrency), card3X + 4, y + 14);
+  doc.text(formatPdfCurrency(totalRemaining, mainCurrency), card3X + 4, y + 14);
 
   y += cardHeight + 10; // Dynamic spacing to next section
 
@@ -274,19 +274,19 @@ async function generateClassicPDF(
     const envCurrency = env.currency || mainCurrency;
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(20, 20, 20);
-    doc.text(formatCurrency(env.allocated, envCurrency), envColX[2] + 3, y + 5.2);
+    doc.text(formatPdfCurrency(env.allocated, envCurrency), envColX[2] + 3, y + 5.2);
 
     doc.setTextColor(209, 95, 71);
-    doc.text(formatCurrency(spent, envCurrency), envColX[3] + 3, y + 5.2);
+    doc.text(formatPdfCurrency(spent, envCurrency), envColX[3] + 3, y + 5.2);
 
     if (remaining < 0) {
       doc.setTextColor(209, 95, 71);
       doc.setFont('helvetica', 'bold');
-      doc.text(`-${formatCurrency(Math.abs(remaining), envCurrency)} (OVER)`, envColX[4] + 3, y + 5.2);
+      doc.text(`-${formatPdfCurrency(Math.abs(remaining), envCurrency)} (OVER)`, envColX[4] + 3, y + 5.2);
     } else {
       doc.setTextColor(138, 154, 91);
       doc.setFont('helvetica', 'normal');
-      doc.text(formatCurrency(remaining, envCurrency), envColX[4] + 3, y + 5.2);
+      doc.text(formatPdfCurrency(remaining, envCurrency), envColX[4] + 3, y + 5.2);
     }
 
     y += 8;
@@ -379,7 +379,7 @@ async function generateClassicPDF(
 
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(209, 95, 71);
-      doc.text(formatCurrency(exp.amount, exp.currency || mainCurrency), txColX[3] + 3, y + 4.8);
+      doc.text(formatPdfCurrency(exp.amount, exp.currency || mainCurrency), txColX[3] + 3, y + 4.8);
 
       y += 7;
     });
@@ -537,7 +537,7 @@ async function generateMinimalBwPDF(
   doc.setTextColor(0, 0, 0);
   doc.text('TOTAL ALLOCATED', margin + 4, y + 6);
   doc.setFontSize(11);
-  doc.text(formatCurrency(totalAllocated, mainCurrency), margin + 4, y + 13);
+  doc.text(formatPdfCurrency(totalAllocated, mainCurrency), margin + 4, y + 13);
 
   // Card 2: Total Spent
   const card2X = margin + cardWidth + 4;
@@ -547,7 +547,7 @@ async function generateMinimalBwPDF(
   doc.setTextColor(0, 0, 0);
   doc.text('TOTAL SPENT', card2X + 4, y + 6);
   doc.setFontSize(11);
-  doc.text(formatCurrency(totalSpent, mainCurrency), card2X + 4, y + 13);
+  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card2X + 4, y + 13);
 
   // Card 3: Total Remaining
   const card3X = card2X + cardWidth + 4;
@@ -558,8 +558,8 @@ async function generateMinimalBwPDF(
   doc.text('REMAINING BALANCE', card3X + 4, y + 6);
   doc.setFontSize(11);
   const remText = totalRemaining < 0
-    ? `-${formatCurrency(Math.abs(totalRemaining), mainCurrency)} (OVER)`
-    : formatCurrency(totalRemaining, mainCurrency);
+    ? `-${formatPdfCurrency(Math.abs(totalRemaining), mainCurrency)} (OVER)`
+    : formatPdfCurrency(totalRemaining, mainCurrency);
   doc.text(remText, card3X + 4, y + 13);
 
   y += cardHeight + 10; // Dynamic spacing to next section
@@ -623,7 +623,7 @@ async function generateMinimalBwPDF(
     doc.text(`CATEGORY / ENVELOPE: ${env.name.toUpperCase()} (${env.category.toUpperCase()})`, margin + 3, y + 4.8);
 
     const envCurrency = env.currency || mainCurrency;
-    const allocText = `TOTAL BALANCE: ${formatCurrency(env.allocated, envCurrency)}`;
+    const allocText = `TOTAL BALANCE: ${formatPdfCurrency(env.allocated, envCurrency)}`;
     const allocWidth = doc.getTextWidth(allocText);
     doc.text(allocText, margin + contentWidth - 3 - allocWidth, y + 4.8);
 
@@ -711,10 +711,10 @@ async function generateMinimalBwPDF(
         doc.text(noteStr, colX[1] + 3, y + 4.5);
 
         doc.setFont('helvetica', 'bold');
-        doc.text(formatCurrency(tx.amount, tx.currency || envCurrency), colX[2] + 3, y + 4.5);
+        doc.text(formatPdfCurrency(tx.amount, tx.currency || envCurrency), colX[2] + 3, y + 4.5);
 
         // Running balance
-        doc.text(formatCurrency(tx.runningBalance, envCurrency), colX[3] + 3, y + 4.5);
+        doc.text(formatPdfCurrency(tx.runningBalance, envCurrency), colX[3] + 3, y + 4.5);
 
         y += 6.5;
       });
