@@ -110,7 +110,7 @@ function drawEnvelopeBadge(
 }
 
 // ---------------------------------------------------------------------------
-// CLASSIC MINIMAL TEMPLATE (Elegant Cash Envelope Ledger Style)
+// CLASSIC MINIMAL TEMPLATE (Color Accents, 4 Metric Cards, Envelope Breakdown, Transactions, Notes)
 // ---------------------------------------------------------------------------
 async function generateClassicPDF(
   envelopes: Envelope[],
@@ -253,7 +253,7 @@ async function generateClassicPDF(
   doc.text(t('pdfSpentCard', language), card3X + 3, y + 6);
   doc.setFontSize(9.5);
   doc.setTextColor(209, 95, 71);
-  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card3X + 3, y + 12.5);
+  doc.text(`-${formatPdfCurrency(totalSpent, mainCurrency)}`, card3X + 3, y + 12.5);
 
   // Card 4: Total Remaining
   const card4X = card3X + cardWidth + 3;
@@ -271,7 +271,7 @@ async function generateClassicPDF(
   doc.setTextColor(remColorRGB[0], remColorRGB[1], remColorRGB[2]);
   doc.text(formatPdfCurrency(totalRemaining, mainCurrency), card4X + 3, y + 12.5);
 
-  y += cardHeight + 6;
+  y += cardHeight + 5;
 
   // --- 3. ENVELOPES BREAKDOWN SECTION ---
   // Columns: Envelope Name (36), Category (28), Allocated (26), Cash Added (27), Spent (24), Available Balance (39)
@@ -279,16 +279,16 @@ async function generateClassicPDF(
 
   const drawEnvTableHeader = (startY: number) => {
     doc.setFillColor(20, 20, 20);
-    doc.rect(margin, startY, contentWidth, 6, 'F');
+    doc.rect(margin, startY, contentWidth, 5.5, 'F');
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(6.5);
     doc.setTextColor(255, 255, 255);
-    doc.text(t('pdfEnvNameHeader', language), envColX[0] + 2.5, startY + 4.2);
-    doc.text(t('pdfCategoryHeader', language), envColX[1] + 2.5, startY + 4.2);
-    doc.text(t('pdfAllocatedHeader', language), envColX[2] + 2.5, startY + 4.2);
-    doc.text(t('pdfCashAddedHeader', language), envColX[3] + 2.5, startY + 4.2);
-    doc.text(t('pdfSpentHeader', language), envColX[4] + 2.5, startY + 4.2);
-    doc.text(t('pdfRemainingHeader', language), envColX[5] + 2.5, startY + 4.2);
+    doc.text(t('pdfEnvNameHeader', language), envColX[0] + 2.5, startY + 3.8);
+    doc.text(t('pdfCategoryHeader', language), envColX[1] + 2.5, startY + 3.8);
+    doc.text(t('pdfAllocatedHeader', language), envColX[2] + 2.5, startY + 3.8);
+    doc.text(t('pdfCashAddedHeader', language), envColX[3] + 2.5, startY + 3.8);
+    doc.text(t('pdfSpentHeader', language), envColX[4] + 2.5, startY + 3.8);
+    doc.text(t('pdfRemainingHeader', language), envColX[5] + 2.5, startY + 3.8);
   };
 
   if (y + 15 > 275) { doc.addPage(); y = 12; }
@@ -297,13 +297,13 @@ async function generateClassicPDF(
   doc.setFontSize(11);
   doc.setTextColor(20, 20, 20);
   doc.text(t('pdfEnvelopesSection', language), margin, y);
-  y += 4.5;
+  y += 4;
 
   drawEnvTableHeader(y);
-  y += 6;
+  y += 5.5;
 
   envelopes.forEach((env, index) => {
-    if (y + 6.5 > 275) { doc.addPage(); y = 12; drawEnvTableHeader(y); y += 6; }
+    if (y + 5.5 > 275) { doc.addPage(); y = 12; drawEnvTableHeader(y); y += 5.5; }
 
     const spent = envelopeSpentMap.get(env.id) || 0;
     const cashAdded = envelopeCashAddedMap.get(env.id) || 0;
@@ -311,44 +311,44 @@ async function generateClassicPDF(
 
     if (index % 2 === 0) {
       doc.setFillColor(250, 248, 245);
-      doc.rect(margin, y, contentWidth, 6.5, 'F');
+      doc.rect(margin, y, contentWidth, 5.5, 'F');
     }
 
     doc.setLineWidth(0.2);
     doc.setDrawColor(180, 180, 180);
-    doc.rect(margin, y, contentWidth, 6.5, 'S');
-    envColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 6.5); });
+    doc.rect(margin, y, contentWidth, 5.5, 'S');
+    envColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
 
-    drawEnvelopeBadge(doc, env.name, env.color, envColX[0], y, 6.5, 36);
+    drawEnvelopeBadge(doc, env.name, env.color, envColX[0], y, 5.5, 36);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(100, 100, 100);
-    doc.text(t(`cat${env.category}`, language), envColX[1] + 2.5, y + 4.4);
+    doc.text(t(`cat${env.category}`, language), envColX[1] + 2.5, y + 3.8);
 
     const envCurrency = env.currency || mainCurrency;
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(20, 20, 20);
-    doc.text(formatPdfCurrency(env.allocated, envCurrency), envColX[2] + 2.5, y + 4.4);
+    doc.text(formatPdfCurrency(env.allocated, envCurrency), envColX[2] + 2.5, y + 3.8);
 
     doc.setTextColor(5, 150, 105);
-    doc.text(cashAdded > 0 ? `+${formatPdfCurrency(cashAdded, envCurrency)}` : '—', envColX[3] + 2.5, y + 4.4);
+    doc.text(cashAdded > 0 ? `+${formatPdfCurrency(cashAdded, envCurrency)}` : '—', envColX[3] + 2.5, y + 3.8);
 
     doc.setTextColor(209, 95, 71);
-    doc.text(formatPdfCurrency(spent, envCurrency), envColX[4] + 2.5, y + 4.4);
+    doc.text(spent > 0 ? `-${formatPdfCurrency(spent, envCurrency)}` : '—', envColX[4] + 2.5, y + 3.8);
 
     if (remaining < 0) {
       doc.setTextColor(209, 95, 71);
-      doc.text(`-${formatPdfCurrency(Math.abs(remaining), envCurrency)}`, envColX[5] + 2.5, y + 4.4);
+      doc.text(`-${formatPdfCurrency(Math.abs(remaining), envCurrency)}`, envColX[5] + 2.5, y + 3.8);
     } else {
       doc.setTextColor(138, 154, 91);
       doc.setFont('helvetica', 'normal');
-      doc.text(formatPdfCurrency(remaining, envCurrency), envColX[5] + 2.5, y + 4.4);
+      doc.text(formatPdfCurrency(remaining, envCurrency), envColX[5] + 2.5, y + 3.8);
     }
-    y += 6.5;
+    y += 5.5;
   });
 
-  y += 6;
+  y += 5;
 
   // --- 4. TRANSACTION HISTORY SECTION ---
   // Columns: Date (24), Envelope (36), Type (22), Note/Vendor (60), Amount (38)
@@ -356,15 +356,15 @@ async function generateClassicPDF(
 
   const drawTxTableHeader = (startY: number) => {
     doc.setFillColor(20, 20, 20);
-    doc.rect(margin, startY, contentWidth, 6, 'F');
+    doc.rect(margin, startY, contentWidth, 5.5, 'F');
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(6.5);
     doc.setTextColor(255, 255, 255);
-    doc.text(t('pdfDateLabel', language).toUpperCase(), txColX[0] + 2.5, startY + 4.2);
-    doc.text(t('pdfEnvNameHeader', language), txColX[1] + 2.5, startY + 4.2);
-    doc.text(t('pdfTypeHeader', language), txColX[2] + 2.5, startY + 4.2);
-    doc.text(t('pdfDescHeader', language), txColX[3] + 2.5, startY + 4.2);
-    doc.text(t('pdfAmountHeader', language), txColX[4] + 2.5, startY + 4.2);
+    doc.text(t('pdfDateLabel', language).toUpperCase(), txColX[0] + 2.5, startY + 3.8);
+    doc.text(t('pdfEnvNameHeader', language), txColX[1] + 2.5, startY + 3.8);
+    doc.text(t('pdfTypeHeader', language), txColX[2] + 2.5, startY + 3.8);
+    doc.text(t('pdfDescHeader', language), txColX[3] + 2.5, startY + 3.8);
+    doc.text(t('pdfAmountHeader', language), txColX[4] + 2.5, startY + 3.8);
   };
 
   if (y + 15 > 275) { doc.addPage(); y = 12; }
@@ -373,10 +373,10 @@ async function generateClassicPDF(
   doc.setFontSize(11);
   doc.setTextColor(20, 20, 20);
   doc.text(t('pdfTxSection', language), margin, y);
-  y += 4.5;
+  y += 4;
 
   drawTxTableHeader(y);
-  y += 6;
+  y += 5.5;
 
   const envObjMap = new Map<string, Envelope>();
   envelopes.forEach((e) => envObjMap.set(e.id, e));
@@ -386,45 +386,45 @@ async function generateClassicPDF(
   if (sortedExpenses.length === 0) {
     doc.setLineWidth(0.2);
     doc.setDrawColor(180, 180, 180);
-    doc.rect(margin, y, contentWidth, 6, 'S');
+    doc.rect(margin, y, contentWidth, 5.5, 'S');
     doc.setFont('helvetica', 'italic');
     doc.setFontSize(7.5);
     doc.setTextColor(120, 120, 120);
-    doc.text('—', margin + 3, y + 4.2);
-    y += 6;
+    doc.text('—', margin + 3, y + 3.8);
+    y += 5.5;
   } else {
     sortedExpenses.forEach((exp, index) => {
-      if (y + 6 > 275) { doc.addPage(); y = 12; drawTxTableHeader(y); y += 6; }
+      if (y + 5.5 > 275) { doc.addPage(); y = 12; drawTxTableHeader(y); y += 5.5; }
 
       if (index % 2 === 0) {
         doc.setFillColor(250, 248, 245);
-        doc.rect(margin, y, contentWidth, 6, 'F');
+        doc.rect(margin, y, contentWidth, 5.5, 'F');
       }
 
       doc.setLineWidth(0.2);
       doc.setDrawColor(180, 180, 180);
-      doc.rect(margin, y, contentWidth, 6, 'S');
-      txColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 6); });
+      doc.rect(margin, y, contentWidth, 5.5, 'S');
+      txColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
 
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(7.5);
       doc.setTextColor(20, 20, 20);
-      doc.text(exp.date, txColX[0] + 2.5, y + 4.2);
+      doc.text(exp.date, txColX[0] + 2.5, y + 3.8);
 
       const env = envObjMap.get(exp.envelopeId);
       const envName = env?.name || 'Unknown';
       const envColor = env?.color || '#8A9A5B';
-      drawEnvelopeBadge(doc, envName, envColor, txColX[1], y, 6, 36);
+      drawEnvelopeBadge(doc, envName, envColor, txColX[1], y, 5.5, 36);
 
       const addCash = isAddCash(exp);
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(6.5);
       if (addCash) {
         doc.setTextColor(5, 150, 105);
-        doc.text(t('pdfTypeAddCash', language), txColX[2] + 2.5, y + 4.2);
+        doc.text(t('pdfTypeAddCash', language), txColX[2] + 2.5, y + 3.8);
       } else {
         doc.setTextColor(209, 95, 71);
-        doc.text(t('pdfTypeExpense', language), txColX[2] + 2.5, y + 4.2);
+        doc.text(t('pdfTypeExpense', language), txColX[2] + 2.5, y + 3.8);
       }
 
       doc.setFont('helvetica', 'normal');
@@ -432,23 +432,23 @@ async function generateClassicPDF(
       doc.setTextColor(20, 20, 20);
       let noteDisplay = exp.note || '-';
       if (noteDisplay.length > 32) noteDisplay = noteDisplay.substring(0, 29) + '...';
-      doc.text(noteDisplay, txColX[3] + 2.5, y + 4.2);
+      doc.text(noteDisplay, txColX[3] + 2.5, y + 3.8);
 
       doc.setFont('helvetica', 'bold');
       const displayAmt = formatPdfCurrency(Math.abs(exp.amount), exp.currency || mainCurrency);
       if (addCash) {
         doc.setTextColor(5, 150, 105);
-        doc.text(`+${displayAmt}`, txColX[4] + 2.5, y + 4.2);
+        doc.text(`+${displayAmt}`, txColX[4] + 2.5, y + 3.8);
       } else {
         doc.setTextColor(209, 95, 71);
-        doc.text(displayAmt, txColX[4] + 2.5, y + 4.2);
+        doc.text(`-${displayAmt}`, txColX[4] + 2.5, y + 3.8);
       }
 
-      y += 6;
+      y += 5.5;
     });
   }
 
-  y += 6;
+  y += 5;
 
   // --- 5. NOTES & BUDGET REMINDERS SECTION ---
   const hasNotes = notes && notes.trim().length > 0;
@@ -476,7 +476,7 @@ async function generateClassicPDF(
   doc.setFontSize(11);
   doc.setTextColor(20, 20, 20);
   doc.text(notesTitleText, margin, y);
-  y += 4.5;
+  y += 4;
 
   // Subtitle / Instruction Text
   doc.setFont('helvetica', 'italic');
@@ -513,7 +513,7 @@ async function generateClassicPDF(
 }
 
 // ---------------------------------------------------------------------------
-// MINIMAL B&W TEMPLATE (Pure Black & White Household Print Friendly)
+// MINIMAL B&W TEMPLATE (Pure Black & White, 4 Cards, Envelope Breakdown Table, Transactions, Notes)
 // ---------------------------------------------------------------------------
 async function generateMinimalBwPDF(
   envelopes: Envelope[],
@@ -640,7 +640,7 @@ async function generateMinimalBwPDF(
   doc.setTextColor(0, 0, 0);
   doc.text(t('pdfSpentCard', language), card3X + 3, y + 6);
   doc.setFontSize(9.5);
-  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card3X + 3, y + 12.5);
+  doc.text(`-${formatPdfCurrency(totalSpent, mainCurrency)}`, card3X + 3, y + 12.5);
 
   // Card 4: Total Remaining
   const card4X = card3X + cardWidth + 3;
@@ -655,142 +655,170 @@ async function generateMinimalBwPDF(
     : formatPdfCurrency(totalRemaining, mainCurrency);
   doc.text(remText, card4X + 3, y + 12.5);
 
-  y += cardHeight + 6;
+  y += cardHeight + 5;
 
-  // --- 3. PER-ENVELOPE BORDERED LEDGER BOXES ---
-  if (y + 20 > 275) { doc.addPage(); y = 12; }
+  // --- 3. ENVELOPES BREAKDOWN SECTION (Minimal B&W Table) ---
+  // Columns: Envelope Name (36), Category (28), Allocated (26), Cash Added (27), Spent (24), Available Balance (39)
+  const envColX = [margin, margin + 36, margin + 64, margin + 90, margin + 117, margin + 141];
+
+  const drawBwEnvTableHeader = (startY: number) => {
+    doc.setLineWidth(0.4);
+    doc.setDrawColor(0, 0, 0);
+    doc.rect(margin, startY, contentWidth, 5.5, 'S');
+    envColX.slice(1).forEach((xPos) => { doc.line(xPos, startY, xPos, startY + 5.5); });
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(0, 0, 0);
+    doc.text(t('pdfEnvNameHeader', language), envColX[0] + 2.5, startY + 3.8);
+    doc.text(t('pdfCategoryHeader', language), envColX[1] + 2.5, startY + 3.8);
+    doc.text(t('pdfAllocatedHeader', language), envColX[2] + 2.5, startY + 3.8);
+    doc.text(t('pdfCashAddedHeader', language), envColX[3] + 2.5, startY + 3.8);
+    doc.text(t('pdfSpentHeader', language), envColX[4] + 2.5, startY + 3.8);
+    doc.text(t('pdfRemainingHeader', language), envColX[5] + 2.5, startY + 3.8);
+  };
+
+  if (y + 15 > 275) { doc.addPage(); y = 12; }
 
   doc.setFont('times', 'bold');
   doc.setFontSize(11);
   doc.setTextColor(0, 0, 0);
   doc.text(t('pdfEnvelopesSection', language), margin, y);
-  y += 4.5;
+  y += 4;
 
-  const displayEnvelopes = envelopes.length > 0 ? envelopes : [
-    { id: 'default_1', name: 'Groceries', allocated: 200, category: 'Essential' as const, color: '#000000' },
-    { id: 'default_2', name: 'Utilities', allocated: 150, category: 'Essential' as const, color: '#000000' },
-  ];
+  drawBwEnvTableHeader(y);
+  y += 5.5;
 
-  displayEnvelopes.forEach((env) => {
-    const envExpenses = expenses
-      .filter((exp) => exp.envelopeId === env.id)
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  envelopes.forEach((env) => {
+    if (y + 5.5 > 275) { doc.addPage(); y = 12; drawBwEnvTableHeader(y); y += 5.5; }
 
-    const envCashAdded = envelopeCashAddedMap.get(env.id) || 0;
-    let currentBalance = env.allocated + envCashAdded;
+    const spent = envelopeSpentMap.get(env.id) || 0;
+    const cashAdded = envelopeCashAddedMap.get(env.id) || 0;
+    const remaining = env.allocated + cashAdded - spent;
 
-    const txRows = envExpenses.map((exp) => {
-      const rawAmt = Math.abs(exp.amount);
-      if (!isAddCash(exp)) {
-        currentBalance -= rawAmt;
-      }
-      return { ...exp, runningBalance: currentBalance };
-    });
-
-    const isBlankTable = txRows.length === 0;
-    const rowCount = isBlankTable ? 2 : txRows.length;
-    const boxHeight = 6 + 5.5 + (rowCount * 5.5);
-
-    if (y + Math.min(boxHeight, 20) > 275) { doc.addPage(); y = 12; }
-
-    // Envelope Box Header Bar
-    doc.setLineWidth(0.4);
+    doc.setLineWidth(0.2);
     doc.setDrawColor(0, 0, 0);
-    doc.rect(margin, y, contentWidth, 6, 'S');
+    doc.rect(margin, y, contentWidth, 5.5, 'S');
+    envColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(7.5);
     doc.setTextColor(0, 0, 0);
-    const catLabel = t(`cat${env.category}`, language);
-    doc.text(`${t('pdfCategoryHeader', language)}: ${catLabel.toUpperCase()} | ${env.name.toUpperCase()}`, margin + 3, y + 4.2);
+    doc.text(env.name, envColX[0] + 2.5, y + 3.8);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(0, 0, 0);
+    doc.text(t(`cat${env.category}`, language), envColX[1] + 2.5, y + 3.8);
 
     const envCurrency = env.currency || mainCurrency;
-    const allocText = `${t('pdfAllocatedHeader', language)}: ${formatPdfCurrency(env.allocated, envCurrency)}`;
-    const allocWidth = doc.getTextWidth(allocText);
-    doc.text(allocText, margin + contentWidth - 3 - allocWidth, y + 4.2);
+    doc.setFont('helvetica', 'bold');
+    doc.text(formatPdfCurrency(env.allocated, envCurrency), envColX[2] + 2.5, y + 3.8);
 
-    y += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.text(cashAdded > 0 ? `+${formatPdfCurrency(cashAdded, envCurrency)}` : '—', envColX[3] + 2.5, y + 3.8);
+    doc.text(spent > 0 ? `-${formatPdfCurrency(spent, envCurrency)}` : '—', envColX[4] + 2.5, y + 3.8);
 
-    // Table Column Header Bar: Date (24), Type (22), Note/Vendor (58), Amount (30), Available Balance (46)
-    doc.setLineWidth(0.3);
+    if (remaining < 0) {
+      doc.setFont('helvetica', 'bold');
+      doc.text(`-${formatPdfCurrency(Math.abs(remaining), envCurrency)}`, envColX[5] + 2.5, y + 3.8);
+    } else {
+      doc.setFont('helvetica', 'normal');
+      doc.text(formatPdfCurrency(remaining, envCurrency), envColX[5] + 2.5, y + 3.8);
+    }
+    y += 5.5;
+  });
+
+  y += 5;
+
+  // --- 4. TRANSACTION HISTORY SECTION (Minimal B&W Table) ---
+  // Columns: Date (24), Envelope (36), Type (22), Note/Vendor (60), Amount (38)
+  const txColX = [margin, margin + 24, margin + 60, margin + 82, margin + 142];
+
+  const drawBwTxTableHeader = (startY: number) => {
+    doc.setLineWidth(0.4);
     doc.setDrawColor(0, 0, 0);
-    doc.rect(margin, y, contentWidth, 5.5, 'S');
-
-    const colX = [margin, margin + 24, margin + 46, margin + 104, margin + 134];
-    colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
-
+    doc.rect(margin, startY, contentWidth, 5.5, 'S');
+    txColX.slice(1).forEach((xPos) => { doc.line(xPos, startY, xPos, startY + 5.5); });
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(6.5);
     doc.setTextColor(0, 0, 0);
-    doc.text(t('pdfDateLabel', language).toUpperCase(), colX[0] + 2.5, y + 3.8);
-    doc.text(t('pdfDescHeader', language), colX[1] + 2.5, y + 3.8);
-    doc.text(t('pdfAmountHeader', language), colX[2] + 2.5, y + 3.8);
-    doc.text(t('pdfRemainingHeader', language), colX[3] + 2.5, y + 3.8);
+    doc.text(t('pdfDateLabel', language).toUpperCase(), txColX[0] + 2.5, startY + 3.8);
+    doc.text(t('pdfEnvNameHeader', language), txColX[1] + 2.5, startY + 3.8);
+    doc.text(t('pdfTypeHeader', language), txColX[2] + 2.5, startY + 3.8);
+    doc.text(t('pdfDescHeader', language), txColX[3] + 2.5, startY + 3.8);
+    doc.text(t('pdfAmountHeader', language), txColX[4] + 2.5, startY + 3.8);
+  };
 
+  if (y + 15 > 275) { doc.addPage(); y = 12; }
+
+  doc.setFont('times', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(0, 0, 0);
+  doc.text(t('pdfTxSection', language), margin, y);
+  y += 4;
+
+  drawBwTxTableHeader(y);
+  y += 5.5;
+
+  const envObjMap = new Map<string, Envelope>();
+  envelopes.forEach((e) => envObjMap.set(e.id, e));
+
+  const sortedExpenses = [...expenses].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  if (sortedExpenses.length === 0) {
+    doc.setLineWidth(0.2);
+    doc.setDrawColor(0, 0, 0);
+    doc.rect(margin, y, contentWidth, 5.5, 'S');
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(7.5);
+    doc.setTextColor(100, 100, 100);
+    doc.text('—', margin + 3, y + 3.8);
     y += 5.5;
+  } else {
+    sortedExpenses.forEach((exp) => {
+      if (y + 5.5 > 275) { doc.addPage(); y = 12; drawBwTxTableHeader(y); y += 5.5; }
 
-    if (isBlankTable) {
-      for (let i = 0; i < 2; i++) {
-        if (y + 5.5 > 275) { doc.addPage(); y = 12; }
-        doc.setLineWidth(0.2);
-        doc.setDrawColor(0, 0, 0);
-        doc.rect(margin, y, contentWidth, 5.5, 'S');
-        colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(7);
-        doc.setTextColor(180, 180, 180);
-        doc.text('—', colX[0] + 2.5, y + 3.8);
-        y += 5.5;
+      doc.setLineWidth(0.2);
+      doc.setDrawColor(0, 0, 0);
+      doc.rect(margin, y, contentWidth, 5.5, 'S');
+      txColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.5);
+      doc.setTextColor(0, 0, 0);
+      doc.text(exp.date, txColX[0] + 2.5, y + 3.8);
+
+      const env = envObjMap.get(exp.envelopeId);
+      const envName = env?.name || 'Unknown';
+      doc.setFont('helvetica', 'bold');
+      doc.text(envName, txColX[1] + 2.5, y + 3.8);
+
+      const addCash = isAddCash(exp);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(6.5);
+      doc.text(addCash ? t('pdfTypeAddCash', language) : t('pdfTypeExpense', language), txColX[2] + 2.5, y + 3.8);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.5);
+      let noteStr = exp.note || '-';
+      if (noteStr.length > 32) noteStr = noteStr.substring(0, 29) + '...';
+      doc.text(noteStr, txColX[3] + 2.5, y + 3.8);
+
+      doc.setFont('helvetica', 'bold');
+      const displayAmt = formatPdfCurrency(Math.abs(exp.amount), exp.currency || mainCurrency);
+      if (addCash) {
+        doc.text(`+${displayAmt}`, txColX[4] + 2.5, y + 3.8);
+      } else {
+        doc.text(`-${displayAmt}`, txColX[4] + 2.5, y + 3.8);
       }
-    } else {
-      txRows.forEach((tx) => {
-        if (y + 5.5 > 275) {
-          doc.addPage();
-          y = 12;
-          doc.setLineWidth(0.3);
-          doc.setDrawColor(0, 0, 0);
-          doc.rect(margin, y, contentWidth, 5.5, 'S');
-          colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
-          doc.setFont('helvetica', 'bold');
-          doc.setFontSize(6.5);
-          doc.setTextColor(0, 0, 0);
-          doc.text(t('pdfDateLabel', language).toUpperCase(), colX[0] + 2.5, y + 3.8);
-          doc.text(t('pdfDescHeader', language), colX[1] + 2.5, y + 3.8);
-          doc.text(t('pdfAmountHeader', language), colX[2] + 2.5, y + 3.8);
-          doc.text(t('pdfRemainingHeader', language), colX[3] + 2.5, y + 3.8);
-          y += 5.5;
-        }
 
-        doc.setLineWidth(0.2);
-        doc.setDrawColor(0, 0, 0);
-        doc.rect(margin, y, contentWidth, 5.5, 'S');
-        colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
+      y += 5.5;
+    });
+  }
 
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(7);
-        doc.setTextColor(0, 0, 0);
-        doc.text(tx.date, colX[0] + 2.5, y + 3.8);
+  y += 5;
 
-        let noteStr = tx.note || '-';
-        if (noteStr.length > 35) noteStr = noteStr.substring(0, 32) + '...';
-        doc.text(noteStr, colX[1] + 2.5, y + 3.8);
-
-        doc.setFont('helvetica', 'bold');
-        const addCash = isAddCash(tx);
-        const dispAmt = `${addCash ? '+' : ''}${formatPdfCurrency(Math.abs(tx.amount), tx.currency || envCurrency)}`;
-        doc.text(dispAmt, colX[2] + 2.5, y + 3.8);
-
-        doc.setFont('helvetica', 'normal');
-        doc.text(formatPdfCurrency(tx.runningBalance, envCurrency), colX[3] + 2.5, y + 3.8);
-
-        y += 5.5;
-      });
-    }
-
-    y += 5;
-  });
-
-  // --- 4. NOTES & BUDGET REMINDERS ---
+  // --- 5. NOTES & BUDGET REMINDERS SECTION ---
   const hasNotes = notes && notes.trim().length > 0;
 
   const notesTitleText = `${t('notesRemindersTitle', language)} ${t('optionalLabel', language)}`;
@@ -816,7 +844,7 @@ async function generateMinimalBwPDF(
   doc.setFontSize(11);
   doc.setTextColor(0, 0, 0);
   doc.text(notesTitleText, margin, y);
-  y += 4.5;
+  y += 4;
 
   // Subtitle / Instruction Text
   doc.setFont('helvetica', 'italic');

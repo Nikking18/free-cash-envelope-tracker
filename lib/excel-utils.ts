@@ -52,8 +52,8 @@ export async function downloadExcelTemplate(language: string = 'en') {
   const sampleNote1 = language === 'es' ? 'Supermercado' : language === 'fr' ? 'Supermarché' : language === 'de' ? 'Supermarkt' : 'Supermarket run';
   const sampleNote2 = language === 'es' ? 'Almuerzo con amigo' : language === 'fr' ? 'Déjeuner ami' : language === 'de' ? 'Mittagessen' : 'Lunch with friend';
   const sampleNote3 = language === 'es' ? 'Depósito de salario' : language === 'fr' ? 'Salaire déposé' : language === 'de' ? 'Gehaltseingang' : 'Salary deposit';
-  const typeExpense = language === 'es' ? 'Gasto' : language === 'fr' ? 'Dépense' : language === 'de' ? 'Ausgabe' : 'Expense';
-  const typeAddCash = language === 'es' ? 'Ingreso' : language === 'fr' ? 'Entrée' : language === 'de' ? 'Einzahlung' : 'Add Cash';
+  const typeExpense = t('pdfTypeExpense', language);
+  const typeAddCash = t('pdfTypeAddCash', language);
 
   const envelopesData = [
     { [colEnvName]: sampleGroceries, [colAllocated]: 400, [colCategory]: catEssential },
@@ -62,9 +62,9 @@ export async function downloadExcelTemplate(language: string = 'en') {
   ];
 
   const expensesData = [
-    { [colEnvName]: sampleGroceries, [colType]: typeExpense, [colAmount]: 52.30, [colNote]: sampleNote1, [colDate]: new Date().toISOString().split('T')[0] },
-    { [colEnvName]: sampleDining, [colType]: typeExpense, [colAmount]: 18.50, [colNote]: sampleNote2, [colDate]: new Date().toISOString().split('T')[0] },
-    { [colEnvName]: sampleGroceries, [colType]: typeAddCash, [colAmount]: 100, [colNote]: sampleNote3, [colDate]: new Date().toISOString().split('T')[0] },
+    { [colEnvName]: sampleGroceries, [colType]: typeExpense, [colAmount]: '-52.30', [colNote]: sampleNote1, [colDate]: new Date().toISOString().split('T')[0] },
+    { [colEnvName]: sampleDining, [colType]: typeExpense, [colAmount]: '-18.50', [colNote]: sampleNote2, [colDate]: new Date().toISOString().split('T')[0] },
+    { [colEnvName]: sampleGroceries, [colType]: typeAddCash, [colAmount]: '+100.00', [colNote]: sampleNote3, [colDate]: new Date().toISOString().split('T')[0] },
   ];
 
   const wb = XLSX.utils.book_new();
@@ -74,7 +74,7 @@ export async function downloadExcelTemplate(language: string = 'en') {
 
   // Set column widths for clean readability
   wsEnvelopes['!cols'] = [{ wch: 25 }, { wch: 18 }, { wch: 18 }];
-  wsExpenses['!cols'] = [{ wch: 25 }, { wch: 15 }, { wch: 12 }, { wch: 25 }, { wch: 15 }];
+  wsExpenses['!cols'] = [{ wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 15 }];
 
   const sheetEnvelopesName = t('excelSheetEnvelopes', language);
   const sheetExpensesName = t('excelSheetExpenses', language);
@@ -123,7 +123,7 @@ export async function exportToExcel(envelopes: Envelope[], expenses: Expense[], 
     return {
       [colEnvName]: sanitizeFormulaInjection(e.name),
       [colAllocated]: e.allocated,
-      [colCashAdded]: cashAdded,
+      [colCashAdded]: cashAdded > 0 ? `+${cashAdded.toFixed(2)}` : '0.00',
       [colCategory]: sanitizeFormulaInjection(t(`cat${e.category}`, language)),
       [colBalance]: parseFloat(balance.toFixed(2)),
     };
@@ -132,10 +132,11 @@ export async function exportToExcel(envelopes: Envelope[], expenses: Expense[], 
   const expensesExport = expenses.map(e => {
     const env = envelopeMap.get(e.envelopeId);
     const addCash = e.amount < 0 || e.type === 'addCash';
+    const amountStr = Math.abs(e.amount).toFixed(2);
     return {
       [colEnvName]: sanitizeFormulaInjection(env?.name || 'Unknown Envelope'),
       [colType]: addCash ? typeAddCashLabel : typeExpenseLabel,
-      [colAmount]: parseFloat(Math.abs(e.amount).toFixed(2)),
+      [colAmount]: addCash ? `+${amountStr}` : `-${amountStr}`,
       [colNote]: sanitizeFormulaInjection(e.note || ''),
       [colDate]: e.date,
     };
@@ -147,7 +148,7 @@ export async function exportToExcel(envelopes: Envelope[], expenses: Expense[], 
   const wsExpenses = XLSX.utils.json_to_sheet(expensesExport);
 
   wsEnvelopes['!cols'] = [{ wch: 25 }, { wch: 18 }, { wch: 18 }, { wch: 18 }, { wch: 15 }];
-  wsExpenses['!cols'] = [{ wch: 25 }, { wch: 15 }, { wch: 12 }, { wch: 25 }, { wch: 15 }];
+  wsExpenses['!cols'] = [{ wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 15 }];
 
   const sheetEnvelopesName = t('excelSheetEnvelopes', language);
   const sheetExpensesName = t('excelSheetExpenses', language);
@@ -260,6 +261,7 @@ export async function parseAndValidateExcel(file: File): Promise<{
       expensesRaw.forEach((row, idx) => {
         const rowNum = idx + 2;
         const rawEnvName = row['Envelope Name'] || row['Nombre del Sobre'] || row['Nom de l\'Enveloppe'] || row['Umschlagname'] || row['envelope name'] || row['Envelope'] || row['envelope'];
+        const rawType = row['Transaction Type'] || row['Type'] || row['Tipo'] || row['Typ'] || '';
         const rawAmount = row['Amount'] || row['Monto'] || row['Montant'] || row['Betrag'] || row['amount'];
         const rawNote = row['Note / Vendor'] || row['Nota / Proveedor'] || row['Note / Commerçant'] || row['Notiz / Händler'] || row['Note'] || row['Nota'] || row['note'] || '';
         const rawDate = row['Date'] || row['Fecha'] || row['Datum'] || row['date'];
@@ -277,16 +279,25 @@ export async function parseAndValidateExcel(file: File): Promise<{
           return;
         }
 
+        let isAddCashTx = false;
+        if (rawType && typeof rawType === 'string') {
+          const typeClean = desanitizeFormulaInjection(rawType.trim()).toLowerCase();
+          if (['add cash', 'ingreso', 'entrée', 'einzahlung', 'cash in'].includes(typeClean)) {
+            isAddCashTx = true;
+          }
+        }
+
         let amountNum = 0;
         if (typeof rawAmount === 'number') {
-          amountNum = rawAmount;
+          amountNum = Math.abs(rawAmount);
         } else if (typeof rawAmount === 'string') {
-          const cleaned = rawAmount.replace(/[\$,]/g, '').trim();
-          amountNum = parseFloat(cleaned);
+          const cleaned = rawAmount.replace(/[\$+\s,]/g, '').trim();
+          if (cleaned.startsWith('+')) isAddCashTx = true;
+          amountNum = Math.abs(parseFloat(cleaned.replace('-', '')));
         }
 
         if (isNaN(amountNum) || amountNum <= 0) {
-          errors.push(`Row ${rowNum} in Expenses sheet ("${envNameClean}"): Expense amount must be a positive number.`);
+          errors.push(`Row ${rowNum} in Expenses sheet ("${envNameClean}"): Amount must be a valid number.`);
           return;
         }
 
@@ -305,12 +316,15 @@ export async function parseAndValidateExcel(file: File): Promise<{
           }
         }
 
+        const finalAmount = isAddCashTx ? -Math.abs(amountNum) : Math.abs(amountNum);
+
         newExpenses.push({
           id: `exp_imp_${Date.now()}_${idx}`,
           envelopeId: envId,
-          amount: amountNum,
+          amount: finalAmount,
           note: desanitizeFormulaInjection(String(rawNote).trim()),
-          date: dateStr
+          date: dateStr,
+          type: isAddCashTx ? 'addCash' : 'expense'
         });
       });
     }
