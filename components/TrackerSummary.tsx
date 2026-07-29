@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Plus, Receipt, Upload, Download, RotateCcw, ChevronDown, FileSpreadsheet, FileText, Info, X, AlertTriangle, Calendar } from 'lucide-react';
+import { Plus, Receipt, Upload, Download, RotateCcw, ChevronDown, FileSpreadsheet, FileText, Info, X, Calendar } from 'lucide-react';
 import { TrackerData } from '../lib/tracker-types';
 import { downloadExcelTemplate, parseAndValidateExcel } from '../lib/excel-utils';
 import { formatCurrency } from '../lib/currency-utils';
@@ -9,6 +9,7 @@ import { t } from '../lib/i18n';
 
 interface TrackerSummaryProps {
   totalAllocated: number;
+  totalCashAdded?: number;
   totalSpent: number;
   totalRemaining: number;
   onAddEnvelope: () => void;
@@ -29,6 +30,7 @@ interface TrackerSummaryProps {
 
 export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
   totalAllocated,
+  totalCashAdded = 0,
   totalSpent,
   totalRemaining,
   onAddEnvelope,
@@ -48,18 +50,15 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
 }) => {
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [showFormatInfo, setShowFormatInfo] = useState(false);
-
   const [isImporting, setIsImporting] = useState(false);
-  const [validationErrors, setValidationErrors] = useState<string[]>([]);
-  const [pendingImportData, setPendingImportData] = useState<TrackerData | null>(null);
-  const [showConfirmReplace, setShowConfirmReplace] = useState(false);
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const exportDropdownRef = useRef<HTMLDivElement>(null);
   const formatInfoRef = useRef<HTMLDivElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const percentSpent = totalAllocated > 0 ? Math.min(Math.round((totalSpent / totalAllocated) * 100), 100) : 0;
-  const isOverBudget = totalRemaining < 0;
+  const totalEffectiveFunds = totalAllocated + totalCashAdded;
+  const isOverBudget = totalSpent > totalEffectiveFunds;
+  const percentSpent = totalEffectiveFunds > 0 ? Math.min(Math.round((totalSpent / totalEffectiveFunds) * 100), 100) : 0;
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
@@ -71,65 +70,52 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
       }
     };
     document.addEventListener('mousedown', handleOutsideClick);
-    document.addEventListener('touchstart', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-      document.removeEventListener('touchstart', handleOutsideClick);
-    };
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
   const handleImportClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-      fileInputRef.current.click();
-    }
+    fileInputRef.current?.click();
   };
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
 
-    setValidationErrors([]);
-    setPendingImportData(null);
-    setShowConfirmReplace(false);
+    const file = files[0];
     setIsImporting(true);
 
     try {
       const result = await parseAndValidateExcel(file);
-      if (!result.success || !result.data) {
-        setValidationErrors(result.errors || ['Unknown validation error']);
-      } else {
-        setPendingImportData(result.data);
-        setShowConfirmReplace(true);
+      if (result.success && result.data) {
+        onImportData(result.data);
+        alert(`Successfully imported ${result.data.envelopes.length} envelopes and ${result.data.expenses.length} expenses from Excel!`);
+      } else if (result.errors && result.errors.length > 0) {
+        alert(`Import Error:\n\n` + result.errors.join('\n'));
       }
     } catch (err: any) {
-      setValidationErrors(['Error reading file: ' + err.message]);
+      alert('Failed to import Excel file: ' + (err.message || 'Unknown error'));
     } finally {
       setIsImporting(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
     }
   };
 
   return (
-    <div className="bg-[#FCFAF7] neo-border-thick neo-shadow-lg p-5 sm:p-6 lg:p-8 space-y-6">
-      {/* Top Title & Quick Actions Header */}
-      <div className="space-y-4 border-b-4 border-[#141414] pb-5">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div id="tracker" className="bg-[#FCFAF7] border-4 border-[#141414] p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] space-y-6">
+      {/* Top Controls & Title */}
+      <div className="space-y-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-2 border-[#141414] pb-4">
           <div>
-            <h2 className="font-serif font-black text-2xl sm:text-3xl text-[#141414] flex flex-wrap items-center gap-2 uppercase tracking-tight">
-              <span>{t('budgetOverview', language)}</span>
-              {isOverBudget && (
-                <span className="text-xs px-2.5 py-1 bg-[#D15F47] text-white border-2 border-[#141414] font-sans uppercase font-bold tracking-wider shrink-0">
-                  {t('overBudget', language)}
-                </span>
-              )}
-            </h2>
-            <p className="text-xs sm:text-sm text-[#141414]/80 font-bold tracking-wide mt-1">
+            <h1 className="font-serif font-black text-2xl sm:text-3xl text-[#141414] uppercase tracking-tight flex items-center gap-2">
+              {t('budgetOverview', language)}
+            </h1>
+            <p className="text-xs sm:text-sm text-[#141414]/70 font-bold tracking-wide mt-0.5">
               {t('realTimeCalcSubtitle', language)}
             </p>
           </div>
 
-          {/* Action Toolbar */}
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
+          {/* Header Action Buttons */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={onAddEnvelope}
@@ -175,8 +161,8 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowFormatInfo((prev) => !prev)}
-                  className="p-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button cursor-pointer flex items-center justify-center ml-1"
-                  title="View accepted Excel format"
+                  className="p-2 ml-1 bg-white hover:bg-gray-100 neo-border cursor-pointer flex items-center justify-center"
+                  title="View Excel Import Format Instructions"
                   aria-label="Format Info"
                 >
                   <Info className="w-3.5 h-3.5 text-[#5C768D]" />
@@ -310,17 +296,30 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
       </div>
 
       {/* Metric Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Allocated */}
         <div className="bg-[#8A9A5B] border-4 border-[#141414] p-4 flex flex-col shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] text-[#141414]">
           <span className="text-[10px] font-bold uppercase tracking-wider mb-1">
             {t('totalAllocated', language)}
           </span>
-          <span className="text-2xl sm:text-3xl font-serif font-black">
+          <span className="text-2xl font-serif font-black truncate">
             {formatCurrency(totalAllocated, mainCurrency)}
           </span>
           <span className="text-[11px] font-bold opacity-80 mt-1">
             {t('sumAllocated', language)}
+          </span>
+        </div>
+
+        {/* Total Cash Added */}
+        <div className="bg-[#059669] border-4 border-[#141414] p-4 flex flex-col shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] text-white">
+          <span className="text-[10px] font-bold uppercase tracking-wider mb-1">
+            {t('totalCashAdded', language)}
+          </span>
+          <span className="text-2xl font-serif font-black truncate">
+            +{formatCurrency(totalCashAdded, mainCurrency)}
+          </span>
+          <span className="text-[11px] font-bold opacity-80 mt-1">
+            {t('sumCashAdded', language)}
           </span>
         </div>
 
@@ -329,7 +328,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
           <span className="text-[10px] font-bold uppercase tracking-wider mb-1">
             {t('totalSpent', language)}
           </span>
-          <span className="text-2xl sm:text-3xl font-serif font-black">
+          <span className="text-2xl font-serif font-black truncate">
             {formatCurrency(totalSpent, mainCurrency)}
           </span>
           <span className="text-[11px] font-bold opacity-80 mt-1">
@@ -342,7 +341,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
           <span className="text-[10px] font-bold uppercase tracking-wider mb-1">
             {t('totalRemaining', language)}
           </span>
-          <span className="text-2xl sm:text-3xl font-serif font-black">
+          <span className="text-2xl font-serif font-black truncate">
             {formatCurrency(totalRemaining, mainCurrency)}
           </span>
           <span className="text-[11px] font-bold opacity-80 mt-1">
@@ -355,7 +354,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
       <div className="space-y-2 pt-2">
         <div className="flex items-center justify-between text-xs font-bold text-[#141414] uppercase tracking-wider">
           <span>{t('budgetUtilization', language)}</span>
-          <span>{percentSpent}% {t('used', language)} ({formatCurrency(totalSpent, mainCurrency)} / {formatCurrency(totalAllocated, mainCurrency)})</span>
+          <span>{percentSpent}% {t('used', language)} ({formatCurrency(totalSpent, mainCurrency)} / {formatCurrency(totalEffectiveFunds, mainCurrency)})</span>
         </div>
         <div className="w-full h-8 bg-[#E4E3E0] border-4 border-[#141414]">
           <div

@@ -64,7 +64,8 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSaveTransaction = (typeOverride?: 'expense' | 'add_cash') => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     if (!envelopeId) {
       setError('Please select an envelope');
       return;
@@ -75,8 +76,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
       return;
     }
 
-    const effectiveType = typeOverride || txType;
-    const finalAmount = effectiveType === 'add_cash' ? -Math.abs(numAmount) : Math.abs(numAmount);
+    const finalAmount = txType === 'add_cash' ? -Math.abs(numAmount) : Math.abs(numAmount);
 
     onSave({
       envelopeId,
@@ -87,11 +87,6 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
       id: editingExpense ? editingExpense.id : undefined,
     });
     onClose();
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSaveTransaction();
   };
 
   const supportedCurrencies = getSupportedCurrencies();
@@ -235,32 +230,33 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
             />
           </div>
 
-          {/* Action Buttons: Cancel, + Add Cash, Record Expense */}
-          <div className="flex flex-wrap items-center justify-end gap-2 pt-4 border-t-2 border-[#141414]">
+          {/* Action Buttons: Cancel and single dynamic Submit Button */}
+          <div className="flex items-center justify-end gap-3 pt-4 border-t-2 border-[#141414]">
             <button
               type="button"
               onClick={onClose}
-              className="px-3 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
+              className="px-4 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               {t('cancelBtn', language)}
             </button>
 
             <button
-              type="button"
-              onClick={() => handleSaveTransaction('add_cash')}
-              className="px-3.5 py-2 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer"
+              type="submit"
+              className={`px-5 py-2 text-white neo-button text-xs font-bold uppercase tracking-wider cursor-pointer flex items-center gap-1.5 ${
+                txType === 'add_cash' ? 'bg-[#8A9A5B] hover:bg-[#7a8a4b]' : 'bg-[#D15F47] hover:bg-[#b84d37]'
+              }`}
             >
-              <PlusCircle className="w-3.5 h-3.5" />
-              <span>{t('addCashBtn', language)}</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleSaveTransaction('expense')}
-              className="px-3.5 py-2 bg-[#D15F47] hover:bg-[#b84d37] text-white neo-button text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer"
-            >
-              <Receipt className="w-3.5 h-3.5" />
-              <span>{t('saveExpenseBtn', language)}</span>
+              {txType === 'add_cash' ? (
+                <>
+                  <PlusCircle className="w-4 h-4" />
+                  <span>{t('addCashBtn', language)}</span>
+                </>
+              ) : (
+                <>
+                  <Receipt className="w-4 h-4" />
+                  <span>{editingExpense ? t('saveChangesBtn', language) : t('saveExpenseBtn', language)}</span>
+                </>
+              )}
             </button>
           </div>
         </form>

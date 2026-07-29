@@ -199,17 +199,22 @@ export default function CashEnvelopeTrackerPage() {
     saveToStorage({ ...data, language: newLang });
   };
 
-  // Spent calculations (converting foreign expenses to target envelope currency & main currency)
-  const envelopeSpentMap = useMemo(() => {
-    const map = new Map<string, number>();
-    data.envelopes.forEach((env) => map.set(env.id, 0));
+  // Calculation logic for spent & cash added (converting foreign expenses to target envelope currency & main currency)
+  const envelopeStatsMap = useMemo(() => {
+    const map = new Map<string, { spent: number; cashAdded: number }>();
+    data.envelopes.forEach((env) => map.set(env.id, { spent: 0, cashAdded: 0 }));
 
     data.expenses.forEach((exp) => {
-      const current = map.get(exp.envelopeId) || 0;
       const env = data.envelopes.find((e) => e.id === exp.envelopeId);
       const envCurrency = env?.currency || mainCurrency;
       const convertedAmt = convertCurrency(exp.amount, exp.currency || mainCurrency, envCurrency);
-      map.set(exp.envelopeId, current + convertedAmt);
+      const current = map.get(exp.envelopeId) || { spent: 0, cashAdded: 0 };
+
+      if (exp.amount < 0) {
+        map.set(exp.envelopeId, { ...current, cashAdded: current.cashAdded + Math.abs(convertedAmt) });
+      } else {
+        map.set(exp.envelopeId, { ...current, spent: current.spent + convertedAmt });
+      }
     });
 
     return map;
@@ -221,13 +226,25 @@ export default function CashEnvelopeTrackerPage() {
     }, 0);
   }, [data.envelopes, mainCurrency]);
 
-  const totalSpent = useMemo(() => {
+  const totalCashAdded = useMemo(() => {
     return data.expenses.reduce((acc, exp) => {
-      return acc + convertCurrency(exp.amount, exp.currency || mainCurrency, mainCurrency);
+      if (exp.amount < 0) {
+        return acc + convertCurrency(Math.abs(exp.amount), exp.currency || mainCurrency, mainCurrency);
+      }
+      return acc;
     }, 0);
   }, [data.expenses, mainCurrency]);
 
-  const totalRemaining = totalAllocated - totalSpent;
+  const totalSpent = useMemo(() => {
+    return data.expenses.reduce((acc, exp) => {
+      if (exp.amount > 0) {
+        return acc + convertCurrency(exp.amount, exp.currency || mainCurrency, mainCurrency);
+      }
+      return acc;
+    }, 0);
+  }, [data.expenses, mainCurrency]);
+
+  const totalRemaining = totalAllocated + totalCashAdded - totalSpent;
 
   // Filtered envelopes
   const filteredEnvelopes = useMemo(() => {
@@ -409,6 +426,7 @@ export default function CashEnvelopeTrackerPage() {
           {/* Tracker Overview Header */}
           <TrackerSummary
             totalAllocated={totalAllocated}
+            totalCashAdded={totalCashAdded}
             totalSpent={totalSpent}
             totalRemaining={totalRemaining}
             budgetPeriod={data.budgetPeriod || ''}
@@ -505,25 +523,29 @@ export default function CashEnvelopeTrackerPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredEnvelopes.map((env) => (
-                  <EnvelopeCard
-                    key={env.id}
-                    envelope={env}
-                    spent={envelopeSpentMap.get(env.id) || 0}
-                    mainCurrency={mainCurrency}
-                    language={language}
-                    onAddExpense={(envId) => {
-                      setEditingExpense(null);
-                      setSelectedEnvelopeForExpense(envId);
-                      setIsExpenseModalOpen(true);
-                    }}
-                    onEditEnvelope={(envToEdit) => {
-                      setEditingEnvelope(envToEdit);
-                      setIsEnvelopeModalOpen(true);
-                    }}
-                    onDeleteEnvelope={handleDeleteEnvelope}
-                  />
-                ))}
+                {filteredEnvelopes.map((env) => {
+                  const stats = envelopeStatsMap.get(env.id) || { spent: 0, cashAdded: 0 };
+                  return (
+                    <EnvelopeCard
+                      key={env.id}
+                      envelope={env}
+                      spent={stats.spent}
+                      cashAdded={stats.cashAdded}
+                      mainCurrency={mainCurrency}
+                      language={language}
+                      onAddExpense={(envId) => {
+                        setEditingExpense(null);
+                        setSelectedEnvelopeForExpense(envId);
+                        setIsExpenseModalOpen(true);
+                      }}
+                      onEditEnvelope={(envToEdit) => {
+                        setEditingEnvelope(envToEdit);
+                        setIsEnvelopeModalOpen(true);
+                      }}
+                      onDeleteEnvelope={handleDeleteEnvelope}
+                    />
+                  );
+                })}
               </div>
             )}
           </div>
