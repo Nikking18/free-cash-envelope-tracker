@@ -3,7 +3,7 @@
 import React from 'react';
 import { Envelope, CATEGORY_COLORS } from '../lib/tracker-types';
 import { formatCurrency } from '../lib/currency-utils';
-import { Plus, Edit2, Trash2, AlertCircle, PieChart } from 'lucide-react';
+import { Plus, Edit2, Trash2, AlertCircle } from 'lucide-react';
 import { t } from '../lib/i18n';
 
 interface EnvelopeCardProps {
@@ -31,28 +31,13 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
   const effectiveBudget = envelope.allocated + cashAdded;
   const remaining = effectiveBudget - spent;
   const isOverBudget = spent > effectiveBudget;
-  const percentUsed = effectiveBudget > 0 ? Math.min(Math.round((spent / effectiveBudget) * 100), 100) : 0;
   const overageAmount = spent - effectiveBudget;
 
-  // Pie chart calculation
-  const totalActivity = Math.max(effectiveBudget, spent);
-  const r = 20;
-  const circumference = 2 * Math.PI * r; // ~125.66
+  const totalCapacity = Math.max(effectiveBudget, spent);
 
-  const spentRatio = totalActivity > 0 ? Math.min(spent / totalActivity, 1) : 0;
-  const remainingRatio = totalActivity > 0 ? Math.min(Math.max(0, remaining) / totalActivity, 1) : 0;
-  const cashRatio = totalActivity > 0 ? Math.min(cashAdded / totalActivity, 1) : 0;
-
-  const spentDash = spentRatio * circumference;
-  const remainingDash = remainingRatio * circumference;
-  const cashDash = cashRatio * circumference;
-
-  let currentOffset = 0;
-  const spentOffset = currentOffset;
-  currentOffset += spentDash;
-  const remainingOffset = currentOffset;
-  currentOffset += remainingDash;
-  const cashOffset = currentOffset;
+  const spentPct = totalCapacity > 0 ? (spent / totalCapacity) * 100 : 0;
+  const availablePct = totalCapacity > 0 ? (Math.max(0, remaining) / totalCapacity) * 100 : 0;
+  const cashAddedPct = totalCapacity > 0 ? (cashAdded / totalCapacity) * 100 : 0;
 
   return (
     <div
@@ -108,99 +93,69 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
           </div>
         )}
 
-        {/* SVG Mini Pie Chart Breakdown */}
-        <div className="p-2.5 bg-[#FCFAF7] border-2 border-[#141414] flex items-center gap-3">
-          <div className="relative w-14 h-14 shrink-0 flex items-center justify-center">
-            <svg className="w-14 h-14 transform -rotate-90" viewBox="0 0 60 60">
-              <circle cx="30" cy="30" r={r} fill="none" stroke="#E4E3E0" strokeWidth="8" />
-
-              {/* Remaining / Available slice (Olive) */}
-              {remainingRatio > 0 && (
-                <circle
-                  cx="30"
-                  cy="30"
-                  r={r}
-                  fill="none"
-                  stroke="#8A9A5B"
-                  strokeWidth="8"
-                  strokeDasharray={`${remainingDash} ${circumference - remainingDash}`}
-                  strokeDashoffset={-remainingOffset}
-                />
-              )}
-
-              {/* Spent slice (Terracotta) */}
-              {spentRatio > 0 && (
-                <circle
-                  cx="30"
-                  cy="30"
-                  r={r}
-                  fill="none"
-                  stroke="#D15F47"
-                  strokeWidth="8"
-                  strokeDasharray={`${spentDash} ${circumference - spentDash}`}
-                  strokeDashoffset={-spentOffset}
-                />
-              )}
-
-              {/* Cash Added slice (Emerald) */}
-              {cashRatio > 0 && (
-                <circle
-                  cx="30"
-                  cy="30"
-                  r={r}
-                  fill="none"
-                  stroke="#059669"
-                  strokeWidth="8"
-                  strokeDasharray={`${cashDash} ${circumference - cashDash}`}
-                  strokeDashoffset={-cashOffset}
-                />
-              )}
-            </svg>
-            <PieChart className="w-3.5 h-3.5 text-[#141414]/40 absolute" />
+        {/* Real-Time Breakdown Info Box (No pie chart graphic) */}
+        <div className="p-2.5 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-[11px] font-bold uppercase">
+          <div className="flex items-center justify-between text-[#8A9A5B]">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#8A9A5B] border border-[#141414] inline-block" />
+              Available
+            </span>
+            <span>{Math.round(availablePct)}% ({formatCurrency(Math.max(0, remaining), envCurrency)})</span>
           </div>
 
-          <div className="flex-1 text-[10px] font-bold uppercase space-y-0.5">
-            <div className="flex items-center justify-between text-[#8A9A5B]">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-[#8A9A5B] border border-[#141414] inline-block" />
-                Available
-              </span>
-              <span>{Math.round(remainingRatio * 100)}%</span>
-            </div>
-
-            <div className="flex items-center justify-between text-[#D15F47]">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-[#D15F47] border border-[#141414] inline-block" />
-                Spent
-              </span>
-              <span>{Math.round(spentRatio * 100)}%</span>
-            </div>
-
-            {cashAdded > 0 && (
-              <div className="flex items-center justify-between text-[#059669]">
-                <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#059669] border border-[#141414] inline-block" />
-                  Cash Added
-                </span>
-                <span>+{formatCurrency(cashAdded, envCurrency)}</span>
-              </div>
-            )}
+          <div className="flex items-center justify-between text-[#D15F47]">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#D15F47] border border-[#141414] inline-block" />
+              Spent
+            </span>
+            <span>{Math.round(spentPct)}% ({formatCurrency(spent, envCurrency)})</span>
           </div>
+
+          {cashAdded > 0 && (
+            <div className="flex items-center justify-between text-[#059669]">
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#059669] border border-[#141414] inline-block" />
+                Cash Added
+              </span>
+              <span>+{formatCurrency(cashAdded, envCurrency)}</span>
+            </div>
+          )}
         </div>
 
-        {/* Progress Bar */}
+        {/* Multi-Colored Stacked Progress Bar */}
         <div className="space-y-1">
           <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-[#141414]/80">
             <span>{t('progressLabel', language)}</span>
-            <span>{percentUsed}%</span>
+            <span>{Math.min(Math.round(spentPct), 100)}% Spent</span>
           </div>
-          <div className="w-full h-7 bg-[#E4E3E0] border-4 border-[#141414]">
-            <div
-              className={`h-full border-r-4 border-[#141414] transition-all duration-300 ${
-                isOverBudget ? 'bg-[#D15F47]' : 'bg-[#8A9A5B]'
-              }`}
-              style={{ width: `${Math.min(percentUsed, 100)}%` }}
-            />
+
+          <div className="w-full h-7 bg-[#E4E3E0] border-4 border-[#141414] flex overflow-hidden">
+            {/* Spent Segment (Terracotta Red) */}
+            {spentPct > 0 && (
+              <div
+                className="h-full bg-[#D15F47] border-r-2 border-[#141414] transition-all duration-300"
+                style={{ width: `${Math.min(spentPct, 100)}%` }}
+                title={`Spent: ${formatCurrency(spent, envCurrency)} (${Math.round(spentPct)}%)`}
+              />
+            )}
+
+            {/* Available Segment (Olive Green) */}
+            {availablePct > 0 && (
+              <div
+                className="h-full bg-[#8A9A5B] border-r-2 border-[#141414] transition-all duration-300"
+                style={{ width: `${Math.min(availablePct, 100)}%` }}
+                title={`Available: ${formatCurrency(remaining, envCurrency)} (${Math.round(availablePct)}%)`}
+              />
+            )}
+
+            {/* Cash Added Segment (Emerald Green) */}
+            {cashAddedPct > 0 && (
+              <div
+                className="h-full bg-[#059669] transition-all duration-300"
+                style={{ width: `${Math.min(cashAddedPct, 100)}%` }}
+                title={`Cash Added: +${formatCurrency(cashAdded, envCurrency)} (${Math.round(cashAddedPct)}%)`}
+              />
+            )}
           </div>
         </div>
       </div>

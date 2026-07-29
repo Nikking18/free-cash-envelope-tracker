@@ -350,19 +350,67 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
         </div>
       </div>
 
-      {/* Overall Progress Bar */}
-      <div className="space-y-2 pt-2">
-        <div className="flex items-center justify-between text-xs font-bold text-[#141414] uppercase tracking-wider">
-          <span>{t('budgetUtilization', language)}</span>
-          <span>{percentSpent}% {t('used', language)} ({formatCurrency(totalSpent, mainCurrency)} / {formatCurrency(totalEffectiveFunds, mainCurrency)})</span>
-        </div>
-        <div className="w-full h-8 bg-[#E4E3E0] border-4 border-[#141414]">
-          <div
-            className={`h-full border-r-4 border-[#141414] transition-all duration-300 ${isOverBudget ? 'bg-[#D15F47]' : 'bg-[#8A9A5B]'}`}
-            style={{ width: `${Math.min(percentSpent, 100)}%` }}
-          />
-        </div>
-      </div>
+      {/* Overall Multi-Colored Stacked Progress Bar */}
+      {(() => {
+        const totalCapacity = Math.max(totalEffectiveFunds, totalSpent);
+        const spentPct = totalCapacity > 0 ? (totalSpent / totalCapacity) * 100 : 0;
+        const availablePct = totalCapacity > 0 ? (Math.max(0, totalRemaining) / totalCapacity) * 100 : 0;
+        const cashAddedPct = totalCapacity > 0 ? (totalCashAdded / totalCapacity) * 100 : 0;
+
+        return (
+          <div className="space-y-2 pt-2">
+            <div className="flex flex-wrap items-center justify-between text-xs font-bold text-[#141414] uppercase tracking-wider gap-2">
+              <div className="flex flex-wrap items-center gap-3">
+                <span>{t('budgetUtilization', language)}</span>
+                <span className="text-[#D15F47] flex items-center gap-1">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#D15F47] inline-block border border-[#141414]" />
+                  Spent ({Math.round(spentPct)}%)
+                </span>
+                <span className="text-[#8A9A5B] flex items-center gap-1">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#8A9A5B] inline-block border border-[#141414]" />
+                  Available ({Math.round(availablePct)}%)
+                </span>
+                {totalCashAdded > 0 && (
+                  <span className="text-[#059669] flex items-center gap-1">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#059669] inline-block border border-[#141414]" />
+                    Cash Added (+{formatCurrency(totalCashAdded, mainCurrency)})
+                  </span>
+                )}
+              </div>
+              <span>{percentSpent}% {t('used', language)} ({formatCurrency(totalSpent, mainCurrency)} / {formatCurrency(totalEffectiveFunds, mainCurrency)})</span>
+            </div>
+
+            <div className="w-full h-8 bg-[#E4E3E0] border-4 border-[#141414] flex overflow-hidden">
+              {/* Spent Segment (Terracotta Red) */}
+              {spentPct > 0 && (
+                <div
+                  className="h-full bg-[#D15F47] border-r-2 border-[#141414] transition-all duration-300"
+                  style={{ width: `${Math.min(spentPct, 100)}%` }}
+                  title={`Spent: ${formatCurrency(totalSpent, mainCurrency)} (${Math.round(spentPct)}%)`}
+                />
+              )}
+
+              {/* Available Segment (Olive Green) */}
+              {availablePct > 0 && (
+                <div
+                  className="h-full bg-[#8A9A5B] border-r-2 border-[#141414] transition-all duration-300"
+                  style={{ width: `${Math.min(availablePct, 100)}%` }}
+                  title={`Available: ${formatCurrency(totalRemaining, mainCurrency)} (${Math.round(availablePct)}%)`}
+                />
+              )}
+
+              {/* Cash Added Segment (Emerald Green) */}
+              {cashAddedPct > 0 && (
+                <div
+                  className="h-full bg-[#059669] transition-all duration-300"
+                  style={{ width: `${Math.min(cashAddedPct, 100)}%` }}
+                  title={`Cash Added: +${formatCurrency(totalCashAdded, mainCurrency)} (${Math.round(cashAddedPct)}%)`}
+                />
+              )}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 };
