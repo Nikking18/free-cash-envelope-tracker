@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { MessageSquare } from 'lucide-react';
 import { t } from '../lib/i18n';
 
 interface ContactWidgetProps {
@@ -18,10 +17,11 @@ export const ContactWidget: React.FC<ContactWidgetProps> = ({ language = 'en' })
         href={GOOGLE_FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="px-4 py-3 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-border neo-shadow-md text-xs font-bold uppercase tracking-wider flex items-center gap-2 cursor-pointer transition-transform hover:scale-105 inline-flex"
+        className="w-12 h-12 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-border neo-shadow-md text-xl font-bold flex items-center justify-center cursor-pointer transition-transform hover:scale-110"
+        title={t('contactWidgetBtn', language)}
+        aria-label="Suggestions or Contact"
       >
-        <MessageSquare className="w-4 h-4" />
-        <span>{t('contactWidgetBtn', language)}</span>
+        💡
       </a>
     </div>
   );

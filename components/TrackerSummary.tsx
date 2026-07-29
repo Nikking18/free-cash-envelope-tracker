@@ -114,12 +114,12 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
             </p>
           </div>
 
-          {/* Header Action Buttons */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          {/* Header Action Buttons Container */}
+          <div className="flex flex-wrap items-center justify-start lg:justify-end gap-2 sm:gap-2.5 py-1">
             <button
               type="button"
               onClick={onAddEnvelope}
-              className="px-3 sm:px-3.5 py-2 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer uppercase tracking-wider shrink-0"
+              className="h-9 px-3 sm:px-3.5 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer uppercase tracking-wider shrink-0"
             >
               <Plus className="w-4 h-4" />
               <span>{t('newEnvelope', language)}</span>
@@ -128,14 +128,14 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
             <button
               type="button"
               onClick={onAddExpense}
-              className="px-3 sm:px-3.5 py-2 bg-[#D15F47] hover:bg-[#b84d37] text-white neo-button text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer uppercase tracking-wider shrink-0"
+              className="h-9 px-3 sm:px-3.5 bg-[#D15F47] hover:bg-[#b84d37] text-white neo-button text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer uppercase tracking-wider shrink-0"
             >
               <Receipt className="w-4 h-4" />
               <span>{t('logExpense', language)}</span>
             </button>
 
             {/* Import Group */}
-            <div className="relative flex items-center shrink-0" ref={formatInfoRef}>
+            <div className="relative flex items-center shrink-0 h-9" ref={formatInfoRef}>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -147,12 +147,12 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 aria-label="Upload Excel budget file"
               />
 
-              <div className="flex items-center">
+              <div className="flex items-center h-9">
                 <button
                   type="button"
                   onClick={handleImportClick}
                   disabled={isImporting}
-                  className="px-3 sm:px-3.5 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold flex items-center gap-1.5 cursor-pointer uppercase tracking-wider disabled:opacity-50"
+                  className="h-9 px-3 sm:px-3.5 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold flex items-center gap-1.5 cursor-pointer uppercase tracking-wider disabled:opacity-50"
                 >
                   <Upload className="w-3.5 h-3.5 text-[#8A9A5B]" />
                   <span>{isImporting ? '...' : t('import', language)}</span>
@@ -161,7 +161,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowFormatInfo((prev) => !prev)}
-                  className="p-2 ml-1 bg-white hover:bg-gray-100 neo-border cursor-pointer flex items-center justify-center"
+                  className="h-9 w-9 ml-1 bg-white hover:bg-gray-100 neo-border cursor-pointer flex items-center justify-center shrink-0"
                   title="View Excel Import Format Instructions"
                   aria-label="Format Info"
                 >
@@ -205,11 +205,11 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
             </div>
 
             {/* Export Dropdown */}
-            <div className="relative shrink-0" ref={exportDropdownRef}>
+            <div className="relative shrink-0 h-9" ref={exportDropdownRef}>
               <button
                 type="button"
                 onClick={() => setIsExportOpen((prev) => !prev)}
-                className="px-3 sm:px-3.5 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
+                className="h-9 px-3 sm:px-3.5 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
               >
                 <Download className="w-3.5 h-3.5 text-[#5C768D]" />
                 <span>{t('export', language)}</span>
@@ -248,7 +248,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
             <button
               type="button"
               onClick={onReset}
-              className="px-2.5 sm:px-3 py-2 bg-transparent hover:bg-red-50 text-red-600 border-2 border-red-600 font-bold text-xs flex items-center gap-1 cursor-pointer transition-colors uppercase tracking-wider shrink-0"
+              className="h-9 px-3 bg-[#FCFAF7] hover:bg-red-50 text-red-600 border-2 border-red-600 shadow-[2px_2px_0px_0px_rgba(220,38,38,1)] active:translate-x-0.5 active:translate-y-0.5 font-bold text-xs flex items-center justify-center gap-1 cursor-pointer transition-all uppercase tracking-wider shrink-0"
               title="Reset All Data"
             >
               <RotateCcw className="w-3.5 h-3.5" />
