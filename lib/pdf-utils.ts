@@ -15,6 +15,41 @@ function hexToRgb(hex: string): [number, number, number] {
   return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
 }
 
+/** Detect active language from passed param, Google Translate cookie, or html lang element */
+function getEffectiveLanguage(passedLang?: string): string {
+  if (passedLang && ['en', 'es', 'fr', 'de'].includes(passedLang)) {
+    return passedLang;
+  }
+  if (typeof window !== 'undefined') {
+    try {
+      const cookies = document.cookie.split(';');
+      for (const c of cookies) {
+        const trimmed = c.trim();
+        if (trimmed.startsWith('googtrans=')) {
+          const match = trimmed.match(/\/en\/([a-z]{2})/i);
+          if (match && match[1]) {
+            const code = match[1].toLowerCase();
+            if (['en', 'es', 'fr', 'de'].includes(code)) return code;
+          }
+        }
+      }
+      const htmlLang = document.documentElement.lang;
+      if (htmlLang) {
+        const code = htmlLang.substring(0, 2).toLowerCase();
+        if (['en', 'es', 'fr', 'de'].includes(code)) return code;
+      }
+    } catch (e) {
+      console.error('Failed to detect language from cookies/DOM:', e);
+    }
+  }
+  return 'en';
+}
+
+/** Detect if an expense record is a cash addition (negative amount or type='addCash') */
+function isAddCash(exp: Expense): boolean {
+  return exp.type === 'addCash' || exp.amount < 0;
+}
+
 export async function generatePDFSummary(
   envelopes: Envelope[],
   expenses: Expense[],
@@ -24,12 +59,15 @@ export async function generatePDFSummary(
   mainCurrency: string = 'USD',
   language: string = 'en'
 ) {
+  const effectiveLang = getEffectiveLanguage(language);
+
   if (style === 'minimal-bw') {
-    return generateMinimalBwPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency, language);
+    return generateMinimalBwPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency, effectiveLang);
   }
-  return generateClassicPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency, language);
+  return generateClassicPDF(envelopes, expenses, budgetPeriod, notes, mainCurrency, effectiveLang);
 }
 
+// Helper to render a solid filled neobrutalist badge for envelope name in Classic template
 function drawEnvelopeBadge(
   doc: any,
   envName: string,
@@ -42,23 +80,23 @@ function drawEnvelopeBadge(
   const [r, g, b] = hexToRgb(envColor || '#8A9A5B');
 
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
+  doc.setFontSize(7);
 
   let displayString = envName;
-  const maxBadgeWidth = maxColWidth - 6;
+  const maxBadgeWidth = maxColWidth - 5;
 
-  if (doc.getTextWidth(displayString) + 6 > maxBadgeWidth) {
-    while (displayString.length > 3 && doc.getTextWidth(displayString + '...') + 6 > maxBadgeWidth) {
+  if (doc.getTextWidth(displayString) + 5 > maxBadgeWidth) {
+    while (displayString.length > 3 && doc.getTextWidth(displayString + '...') + 5 > maxBadgeWidth) {
       displayString = displayString.slice(0, -1);
     }
     displayString = displayString + '...';
   }
 
   const textWidth = doc.getTextWidth(displayString);
-  const badgeWidth = Math.max(textWidth + 6, 16);
-  const badgeHeight = 4.8;
+  const badgeWidth = Math.max(textWidth + 5, 14);
+  const badgeHeight = 4.2;
   const badgeY = rowY + (rowHeight - badgeHeight) / 2;
-  const badgeX = startX + 3;
+  const badgeX = startX + 2.5;
 
   doc.setFillColor(r, g, b);
   doc.setDrawColor(20, 20, 20);
@@ -66,13 +104,13 @@ function drawEnvelopeBadge(
   doc.rect(badgeX, badgeY, badgeWidth, badgeHeight, 'FD');
 
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
+  doc.setFontSize(7);
   doc.setTextColor(255, 255, 255);
-  doc.text(displayString, badgeX + badgeWidth / 2, badgeY + 3.4, { align: 'center' });
+  doc.text(displayString, badgeX + badgeWidth / 2, badgeY + 3.0, { align: 'center' });
 }
 
 // ---------------------------------------------------------------------------
-// CLASSIC MINIMAL TEMPLATE
+// CLASSIC MINIMAL TEMPLATE (Elegant Cash Envelope Ledger Style)
 // ---------------------------------------------------------------------------
 async function generateClassicPDF(
   envelopes: Envelope[],
@@ -92,86 +130,102 @@ async function generateClassicPDF(
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const margin = 15;
-  const contentWidth = pageWidth - margin * 2;
+  const contentWidth = pageWidth - margin * 2; // 180mm
 
-  let y = 15;
+  let y = 12;
 
   // --- 1. HEADER BANNER ---
-  doc.setLineWidth(1);
+  doc.setLineWidth(0.8);
   doc.setDrawColor(20, 20, 20);
   doc.setFillColor(252, 250, 247);
-  doc.rect(margin, y, contentWidth, 22, 'FD');
+  doc.rect(margin, y, contentWidth, 18, 'FD');
 
   doc.setLineWidth(0.3);
-  doc.rect(margin + 1.2, y + 1.2, contentWidth - 2.4, 19.6, 'S');
+  doc.rect(margin + 1, y + 1, contentWidth - 2, 16, 'S');
 
-  const titlePart1 = t('pdfTitle', language).toUpperCase();
+  const titlePart1 = t('pdfDocTitle', language).toUpperCase();
+  const titlePart2 = ` ${t('pdfDocSubtitle', language)}`;
   doc.setFont('times', 'bold');
-  doc.setFontSize(15);
+  doc.setFontSize(14);
   doc.setTextColor(20, 20, 20);
-  doc.text(titlePart1, margin + 6, y + 10);
+  doc.text(titlePart1, margin + 5, y + 8);
+
+  const titleWidth = doc.getTextWidth(titlePart1);
+  doc.setFont('times', 'italic');
+  doc.setFontSize(14);
+  doc.setTextColor(209, 95, 71);
+  doc.text(titlePart2, margin + 5 + titleWidth, y + 8);
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
+  doc.setFontSize(7.5);
   doc.setTextColor(100, 100, 100);
-  const todayStr = new Date().toLocaleDateString('en-US', {
+
+  const dateLocale = language === 'es' ? 'es-ES' : language === 'fr' ? 'fr-FR' : language === 'de' ? 'de-DE' : 'en-US';
+  const todayStr = new Date().toLocaleDateString(dateLocale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   });
-  const periodStr = budgetPeriod && budgetPeriod.trim().length > 0 ? budgetPeriod.trim() : '___________';
-  doc.text(`${t('pdfGeneratedOn', language)}: ${todayStr}   |   ${t('budgetPeriod', language)}: ${periodStr}`, margin + 6, y + 16.5);
+  const periodStr = budgetPeriod && budgetPeriod.trim().length > 0 ? budgetPeriod.trim() : '___________________';
+  doc.text(`${t('pdfDateLabel', language)}: ${todayStr}   |   ${t('pdfPeriodLabel', language)}: ${periodStr}`, margin + 5, y + 13.5);
 
-  y += 22 + 7;
+  y += 18 + 5;
 
-  // Calculations in Main Currency
-  const totalAllocated = envelopes.reduce((acc, e) => {
-    return acc + convertCurrency(e.allocated, e.currency || mainCurrency, mainCurrency);
-  }, 0);
+  // Calculate Totals
+  const totalAllocated = envelopes.reduce((acc, e) =>
+    acc + convertCurrency(e.allocated, e.currency || mainCurrency, mainCurrency), 0);
 
-  const envelopeStatsMap = new Map<string, { spent: number; cashAdded: number }>();
-  envelopes.forEach((e) => envelopeStatsMap.set(e.id, { spent: 0, cashAdded: 0 }));
-
-  let totalSpent = 0;
-  let totalCashAdded = 0;
+  const envelopeSpentMap = new Map<string, number>();
+  const envelopeCashAddedMap = new Map<string, number>();
+  envelopes.forEach((e) => {
+    envelopeSpentMap.set(e.id, 0);
+    envelopeCashAddedMap.set(e.id, 0);
+  });
 
   expenses.forEach((exp) => {
     const env = envelopes.find((e) => e.id === exp.envelopeId);
     const envCurr = env?.currency || mainCurrency;
-    const convertedAmt = convertCurrency(exp.amount, exp.currency || mainCurrency, envCurr);
-    const mainConverted = convertCurrency(Math.abs(exp.amount), exp.currency || mainCurrency, mainCurrency);
-    const current = envelopeStatsMap.get(exp.envelopeId) || { spent: 0, cashAdded: 0 };
+    const rawAmt = Math.abs(exp.amount);
+    const convertedAmt = convertCurrency(rawAmt, exp.currency || mainCurrency, envCurr);
 
-    if (exp.amount < 0) {
-      totalCashAdded += mainConverted;
-      envelopeStatsMap.set(exp.envelopeId, { ...current, cashAdded: current.cashAdded + Math.abs(convertedAmt) });
+    if (isAddCash(exp)) {
+      const current = envelopeCashAddedMap.get(exp.envelopeId) || 0;
+      envelopeCashAddedMap.set(exp.envelopeId, current + convertedAmt);
     } else {
-      totalSpent += convertCurrency(exp.amount, exp.currency || mainCurrency, mainCurrency);
-      envelopeStatsMap.set(exp.envelopeId, { ...current, spent: current.spent + convertedAmt });
+      const current = envelopeSpentMap.get(exp.envelopeId) || 0;
+      envelopeSpentMap.set(exp.envelopeId, current + convertedAmt);
     }
   });
 
+  const totalSpent = expenses
+    .filter(exp => !isAddCash(exp))
+    .reduce((acc, exp) => acc + convertCurrency(Math.abs(exp.amount), exp.currency || mainCurrency, mainCurrency), 0);
+
+  const totalCashAdded = expenses
+    .filter(exp => isAddCash(exp))
+    .reduce((acc, exp) => acc + convertCurrency(Math.abs(exp.amount), exp.currency || mainCurrency, mainCurrency), 0);
+
   const totalRemaining = totalAllocated + totalCashAdded - totalSpent;
 
-  // --- 2. KEY SUMMARY METRIC CARDS (4 CARDS) ---
-  const cardWidth = (contentWidth - 9) / 4;
-  const cardHeight = 17;
+  // --- 2. KEY SUMMARY METRIC CARDS (4 cards) ---
+  const cardWidth = (contentWidth - 9) / 4; // ~42.75mm
+  const cardHeight = 15;
 
-  // Card 1: Allocated
-  doc.setLineWidth(0.8);
+  // Card 1: Total Allocated
+  doc.setLineWidth(0.6);
   doc.setDrawColor(20, 20, 20);
   doc.setFillColor(244, 241, 234);
   doc.rect(margin, y, cardWidth, cardHeight, 'FD');
   doc.setFillColor(92, 118, 141);
   doc.rect(margin, y, cardWidth, 2, 'F');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(20, 20, 20);
-  doc.text(t('totalAllocated', language).toUpperCase(), margin + 3, y + 6.5);
+  doc.text(t('pdfAllocatedCard', language), margin + 3, y + 6);
   doc.setFontSize(9.5);
-  doc.text(formatPdfCurrency(totalAllocated, mainCurrency), margin + 3, y + 13.5);
+  doc.text(formatPdfCurrency(totalAllocated, mainCurrency), margin + 3, y + 12.5);
 
-  // Card 2: Cash Added
+  // Card 2: Total Cash Added
   const card2X = margin + cardWidth + 3;
   doc.setDrawColor(20, 20, 20);
   doc.setFillColor(244, 241, 234);
@@ -179,14 +233,14 @@ async function generateClassicPDF(
   doc.setFillColor(5, 150, 105);
   doc.rect(card2X, y, cardWidth, 2, 'F');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(20, 20, 20);
-  doc.text(t('labelTotalCashAdded', language).toUpperCase(), card2X + 3, y + 6.5);
+  doc.text(t('pdfCashAddedCard', language), card2X + 3, y + 6);
   doc.setFontSize(9.5);
   doc.setTextColor(5, 150, 105);
-  doc.text(`+${formatPdfCurrency(totalCashAdded, mainCurrency)}`, card2X + 3, y + 13.5);
+  doc.text(`+${formatPdfCurrency(totalCashAdded, mainCurrency)}`, card2X + 3, y + 12.5);
 
-  // Card 3: Spent
+  // Card 3: Total Spent
   const card3X = card2X + cardWidth + 3;
   doc.setDrawColor(20, 20, 20);
   doc.setFillColor(244, 241, 234);
@@ -194,14 +248,14 @@ async function generateClassicPDF(
   doc.setFillColor(209, 95, 71);
   doc.rect(card3X, y, cardWidth, 2, 'F');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(20, 20, 20);
-  doc.text(t('totalSpent', language).toUpperCase(), card3X + 3, y + 6.5);
+  doc.text(t('pdfSpentCard', language), card3X + 3, y + 6);
   doc.setFontSize(9.5);
   doc.setTextColor(209, 95, 71);
-  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card3X + 3, y + 13.5);
+  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card3X + 3, y + 12.5);
 
-  // Card 4: Remaining
+  // Card 4: Total Remaining
   const card4X = card3X + cardWidth + 3;
   doc.setDrawColor(20, 20, 20);
   doc.setFillColor(244, 241, 234);
@@ -210,131 +264,119 @@ async function generateClassicPDF(
   doc.setFillColor(remColorRGB[0], remColorRGB[1], remColorRGB[2]);
   doc.rect(card4X, y, cardWidth, 2, 'F');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(20, 20, 20);
-  doc.text(t('totalRemaining', language).toUpperCase(), card4X + 3, y + 6.5);
+  doc.text(t('pdfRemainingCard', language), card4X + 3, y + 6);
   doc.setFontSize(9.5);
   doc.setTextColor(remColorRGB[0], remColorRGB[1], remColorRGB[2]);
-  doc.text(formatPdfCurrency(totalRemaining, mainCurrency), card4X + 3, y + 13.5);
+  doc.text(formatPdfCurrency(totalRemaining, mainCurrency), card4X + 3, y + 12.5);
 
-  y += cardHeight + 10;
+  y += cardHeight + 6;
 
   // --- 3. ENVELOPES BREAKDOWN SECTION ---
-  const envColX = [margin, margin + 45, margin + 72, margin + 98, margin + 126, margin + 152];
+  // Columns: Envelope Name (36), Category (28), Allocated (26), Cash Added (27), Spent (24), Available Balance (39)
+  const envColX = [margin, margin + 36, margin + 64, margin + 90, margin + 117, margin + 141];
 
   const drawEnvTableHeader = (startY: number) => {
     doc.setFillColor(20, 20, 20);
-    doc.rect(margin, startY, contentWidth, 6.5, 'F');
+    doc.rect(margin, startY, contentWidth, 6, 'F');
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7.5);
+    doc.setFontSize(6.5);
     doc.setTextColor(255, 255, 255);
-    doc.text(t('pdfColEnvelope', language).toUpperCase(), envColX[0] + 3, startY + 4.5);
-    doc.text(t('pdfColCategory', language).toUpperCase(), envColX[1] + 3, startY + 4.5);
-    doc.text(t('pdfColAllocated', language).toUpperCase(), envColX[2] + 3, startY + 4.5);
-    doc.text(t('pdfColCashAdded', language).toUpperCase(), envColX[3] + 3, startY + 4.5);
-    doc.text(t('pdfColSpent', language).toUpperCase(), envColX[4] + 3, startY + 4.5);
-    doc.text(t('pdfColRemaining', language).toUpperCase(), envColX[5] + 3, startY + 4.5);
+    doc.text(t('pdfEnvNameHeader', language), envColX[0] + 2.5, startY + 4.2);
+    doc.text(t('pdfCategoryHeader', language), envColX[1] + 2.5, startY + 4.2);
+    doc.text(t('pdfAllocatedHeader', language), envColX[2] + 2.5, startY + 4.2);
+    doc.text(t('pdfCashAddedHeader', language), envColX[3] + 2.5, startY + 4.2);
+    doc.text(t('pdfSpentHeader', language), envColX[4] + 2.5, startY + 4.2);
+    doc.text(t('pdfRemainingHeader', language), envColX[5] + 2.5, startY + 4.2);
   };
 
-  if (y + 20 > 270) {
-    doc.addPage();
-    y = 15;
-  }
+  if (y + 15 > 275) { doc.addPage(); y = 12; }
 
   doc.setFont('times', 'bold');
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setTextColor(20, 20, 20);
-  doc.text(t('pdfEnvelopeBreakdown', language), margin, y);
-  y += 5;
+  doc.text(t('pdfEnvelopesSection', language), margin, y);
+  y += 4.5;
 
   drawEnvTableHeader(y);
-  y += 6.5;
+  y += 6;
 
   envelopes.forEach((env, index) => {
-    if (y + 8 > 270) {
-      doc.addPage();
-      y = 15;
-      drawEnvTableHeader(y);
-      y += 6.5;
-    }
+    if (y + 6.5 > 275) { doc.addPage(); y = 12; drawEnvTableHeader(y); y += 6; }
 
-    const stats = envelopeStatsMap.get(env.id) || { spent: 0, cashAdded: 0 };
-    const effectiveAlloc = env.allocated + stats.cashAdded;
-    const remaining = effectiveAlloc - stats.spent;
+    const spent = envelopeSpentMap.get(env.id) || 0;
+    const cashAdded = envelopeCashAddedMap.get(env.id) || 0;
+    const remaining = env.allocated + cashAdded - spent;
 
     if (index % 2 === 0) {
       doc.setFillColor(250, 248, 245);
-      doc.rect(margin, y, contentWidth, 8, 'F');
+      doc.rect(margin, y, contentWidth, 6.5, 'F');
     }
 
     doc.setLineWidth(0.2);
     doc.setDrawColor(180, 180, 180);
-    doc.rect(margin, y, contentWidth, 8, 'S');
-    envColX.slice(1).forEach((xPos) => {
-      doc.line(xPos, y, xPos, y + 8);
-    });
+    doc.rect(margin, y, contentWidth, 6.5, 'S');
+    envColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 6.5); });
 
-    drawEnvelopeBadge(doc, env.name, env.color, envColX[0], y, 8, 45);
+    drawEnvelopeBadge(doc, env.name, env.color, envColX[0], y, 6.5, 36);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(100, 100, 100);
-    doc.text(t(`cat${env.category}`, language), envColX[1] + 3, y + 5.2);
+    doc.text(t(`cat${env.category}`, language), envColX[1] + 2.5, y + 4.4);
 
     const envCurrency = env.currency || mainCurrency;
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(20, 20, 20);
-    doc.text(formatPdfCurrency(env.allocated, envCurrency), envColX[2] + 3, y + 5.2);
+    doc.text(formatPdfCurrency(env.allocated, envCurrency), envColX[2] + 2.5, y + 4.4);
 
     doc.setTextColor(5, 150, 105);
-    doc.text(stats.cashAdded > 0 ? `+${formatPdfCurrency(stats.cashAdded, envCurrency)}` : '—', envColX[3] + 3, y + 5.2);
+    doc.text(cashAdded > 0 ? `+${formatPdfCurrency(cashAdded, envCurrency)}` : '—', envColX[3] + 2.5, y + 4.4);
 
     doc.setTextColor(209, 95, 71);
-    doc.text(formatPdfCurrency(stats.spent, envCurrency), envColX[4] + 3, y + 5.2);
+    doc.text(formatPdfCurrency(spent, envCurrency), envColX[4] + 2.5, y + 4.4);
 
     if (remaining < 0) {
       doc.setTextColor(209, 95, 71);
-      doc.setFont('helvetica', 'bold');
-      doc.text(`-${formatPdfCurrency(Math.abs(remaining), envCurrency)}`, envColX[5] + 3, y + 5.2);
+      doc.text(`-${formatPdfCurrency(Math.abs(remaining), envCurrency)}`, envColX[5] + 2.5, y + 4.4);
     } else {
       doc.setTextColor(138, 154, 91);
       doc.setFont('helvetica', 'normal');
-      doc.text(formatPdfCurrency(remaining, envCurrency), envColX[5] + 3, y + 5.2);
+      doc.text(formatPdfCurrency(remaining, envCurrency), envColX[5] + 2.5, y + 4.4);
     }
-
-    y += 8;
+    y += 6.5;
   });
 
-  y += 10;
+  y += 6;
 
   // --- 4. TRANSACTION HISTORY SECTION ---
-  const txColX = [margin, margin + 28, margin + 70, margin + 140];
+  // Columns: Date (24), Envelope (36), Type (22), Note/Vendor (60), Amount (38)
+  const txColX = [margin, margin + 24, margin + 60, margin + 82, margin + 142];
 
   const drawTxTableHeader = (startY: number) => {
     doc.setFillColor(20, 20, 20);
-    doc.rect(margin, startY, contentWidth, 6.5, 'F');
+    doc.rect(margin, startY, contentWidth, 6, 'F');
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7.5);
+    doc.setFontSize(6.5);
     doc.setTextColor(255, 255, 255);
-    doc.text(t('excelColDate', language).toUpperCase(), txColX[0] + 3, startY + 4.5);
-    doc.text(t('pdfColEnvelope', language).toUpperCase(), txColX[1] + 3, startY + 4.5);
-    doc.text(t('excelColNote', language).toUpperCase(), txColX[2] + 3, startY + 4.5);
-    doc.text(t('excelColAmount', language).toUpperCase(), txColX[3] + 3, startY + 4.5);
+    doc.text(t('pdfDateLabel', language).toUpperCase(), txColX[0] + 2.5, startY + 4.2);
+    doc.text(t('pdfEnvNameHeader', language), txColX[1] + 2.5, startY + 4.2);
+    doc.text(t('pdfTypeHeader', language), txColX[2] + 2.5, startY + 4.2);
+    doc.text(t('pdfDescHeader', language), txColX[3] + 2.5, startY + 4.2);
+    doc.text(t('pdfAmountHeader', language), txColX[4] + 2.5, startY + 4.2);
   };
 
-  if (y + 20 > 270) {
-    doc.addPage();
-    y = 15;
-  }
+  if (y + 15 > 275) { doc.addPage(); y = 12; }
 
   doc.setFont('times', 'bold');
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setTextColor(20, 20, 20);
-  doc.text(t('pdfTransactionHistory', language), margin, y);
-  y += 5;
+  doc.text(t('pdfTxSection', language), margin, y);
+  y += 4.5;
 
   drawTxTableHeader(y);
-  y += 6.5;
+  y += 6;
 
   const envObjMap = new Map<string, Envelope>();
   envelopes.forEach((e) => envObjMap.set(e.id, e));
@@ -344,69 +386,134 @@ async function generateClassicPDF(
   if (sortedExpenses.length === 0) {
     doc.setLineWidth(0.2);
     doc.setDrawColor(180, 180, 180);
-    doc.rect(margin, y, contentWidth, 7, 'S');
+    doc.rect(margin, y, contentWidth, 6, 'S');
     doc.setFont('helvetica', 'italic');
-    doc.setFontSize(8);
+    doc.setFontSize(7.5);
     doc.setTextColor(120, 120, 120);
-    doc.text('No transaction records logged.', margin + 3, y + 4.8);
-    y += 7;
+    doc.text('—', margin + 3, y + 4.2);
+    y += 6;
   } else {
     sortedExpenses.forEach((exp, index) => {
-      if (y + 7 > 270) {
-        doc.addPage();
-        y = 15;
-        drawTxTableHeader(y);
-        y += 6.5;
-      }
+      if (y + 6 > 275) { doc.addPage(); y = 12; drawTxTableHeader(y); y += 6; }
 
       if (index % 2 === 0) {
         doc.setFillColor(250, 248, 245);
-        doc.rect(margin, y, contentWidth, 7, 'F');
+        doc.rect(margin, y, contentWidth, 6, 'F');
       }
 
       doc.setLineWidth(0.2);
       doc.setDrawColor(180, 180, 180);
-      doc.rect(margin, y, contentWidth, 7, 'S');
-      txColX.slice(1).forEach((xPos) => {
-        doc.line(xPos, y, xPos, y + 7);
-      });
+      doc.rect(margin, y, contentWidth, 6, 'S');
+      txColX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 6); });
 
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(7.5);
       doc.setTextColor(20, 20, 20);
-      doc.text(exp.date, txColX[0] + 3, y + 4.8);
+      doc.text(exp.date, txColX[0] + 2.5, y + 4.2);
 
       const env = envObjMap.get(exp.envelopeId);
       const envName = env?.name || 'Unknown';
       const envColor = env?.color || '#8A9A5B';
+      drawEnvelopeBadge(doc, envName, envColor, txColX[1], y, 6, 36);
 
-      drawEnvelopeBadge(doc, envName, envColor, txColX[1], y, 7, 42);
+      const addCash = isAddCash(exp);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(6.5);
+      if (addCash) {
+        doc.setTextColor(5, 150, 105);
+        doc.text(t('pdfTypeAddCash', language), txColX[2] + 2.5, y + 4.2);
+      } else {
+        doc.setTextColor(209, 95, 71);
+        doc.text(t('pdfTypeExpense', language), txColX[2] + 2.5, y + 4.2);
+      }
 
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(7.5);
       doc.setTextColor(20, 20, 20);
       let noteDisplay = exp.note || '-';
-      if (noteDisplay.length > 35) noteDisplay = noteDisplay.substring(0, 32) + '...';
-      doc.text(noteDisplay, txColX[2] + 3, y + 4.8);
+      if (noteDisplay.length > 32) noteDisplay = noteDisplay.substring(0, 29) + '...';
+      doc.text(noteDisplay, txColX[3] + 2.5, y + 4.2);
 
       doc.setFont('helvetica', 'bold');
-      if (exp.amount < 0) {
+      const displayAmt = formatPdfCurrency(Math.abs(exp.amount), exp.currency || mainCurrency);
+      if (addCash) {
         doc.setTextColor(5, 150, 105);
-        doc.text(`+${formatPdfCurrency(Math.abs(exp.amount), exp.currency || mainCurrency)}`, txColX[3] + 3, y + 4.8);
+        doc.text(`+${displayAmt}`, txColX[4] + 2.5, y + 4.2);
       } else {
         doc.setTextColor(209, 95, 71);
-        doc.text(formatPdfCurrency(exp.amount, exp.currency || mainCurrency), txColX[3] + 3, y + 4.8);
+        doc.text(displayAmt, txColX[4] + 2.5, y + 4.2);
       }
 
-      y += 7;
+      y += 6;
     });
+  }
+
+  y += 6;
+
+  // --- 5. NOTES & BUDGET REMINDERS SECTION ---
+  const hasNotes = notes && notes.trim().length > 0;
+
+  const notesTitleText = `${t('notesRemindersTitle', language)} ${t('optionalLabel', language)}`;
+  const subtitlePrompt = hasNotes ? t('notesRemindersDesc', language) : t('pdfHandwritingText', language);
+
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7);
+  const splitSubLines = doc.splitTextToSize(subtitlePrompt, contentWidth);
+  const subtitleHeight = splitSubLines.length * 3.5 + 2;
+
+  const splitNotesLines = hasNotes ? doc.splitTextToSize(notes.trim(), contentWidth - 8) : [];
+  const notesBoxHeight = hasNotes ? Math.max(splitNotesLines.length * 5 + 6, 24) : 24;
+
+  const totalNotesSectionHeight = 5 + subtitleHeight + notesBoxHeight;
+
+  if (y + totalNotesSectionHeight > 275) {
+    doc.addPage();
+    y = 12;
+  }
+
+  // Section Header Title
+  doc.setFont('times', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(20, 20, 20);
+  doc.text(notesTitleText, margin, y);
+  y += 4.5;
+
+  // Subtitle / Instruction Text
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7);
+  doc.setTextColor(90, 90, 90);
+  splitSubLines.forEach((subLine: string) => {
+    doc.text(subLine, margin, y);
+    y += 3.5;
+  });
+  y += 1.5;
+
+  // Render Box
+  doc.setFillColor(255, 255, 255);
+  doc.setLineWidth(0.4);
+  doc.setDrawColor(20, 20, 20);
+  doc.rect(margin, y, contentWidth, notesBoxHeight, 'FD');
+
+  if (hasNotes) {
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(20, 20, 20);
+    splitNotesLines.forEach((lineText: string, lIdx: number) => {
+      doc.text(lineText, margin + 4, y + 5 + lIdx * 5);
+    });
+  } else {
+    doc.setLineWidth(0.15);
+    doc.setDrawColor(200, 200, 200);
+    for (let lineY = y + 6; lineY < y + notesBoxHeight - 2; lineY += 6) {
+      doc.line(margin + 4, lineY, margin + contentWidth - 4, lineY);
+    }
   }
 
   doc.save(`cash_envelope_budget_${new Date().toISOString().split('T')[0]}.pdf`);
 }
 
 // ---------------------------------------------------------------------------
-// MINIMAL B&W TEMPLATE
+// MINIMAL B&W TEMPLATE (Pure Black & White Household Print Friendly)
 // ---------------------------------------------------------------------------
 async function generateMinimalBwPDF(
   envelopes: Envelope[],
@@ -426,251 +533,320 @@ async function generateMinimalBwPDF(
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const margin = 15;
-  const contentWidth = pageWidth - margin * 2;
+  const contentWidth = pageWidth - margin * 2; // 180mm
 
-  let y = 15;
+  let y = 12;
 
   doc.setFillColor(255, 255, 255);
 
   // --- 1. HEADER BANNER ---
   doc.setLineWidth(0.8);
   doc.setDrawColor(0, 0, 0);
-  doc.rect(margin, y, contentWidth, 22, 'S');
+  doc.rect(margin, y, contentWidth, 18, 'S');
 
   doc.setLineWidth(0.2);
-  doc.setDrawColor(0, 0, 0);
-  doc.rect(margin + 1.2, y + 1.2, contentWidth - 2.4, 19.6, 'S');
+  doc.rect(margin + 1, y + 1, contentWidth - 2, 16, 'S');
 
   doc.setFont('times', 'bold');
-  doc.setFontSize(15);
+  doc.setFontSize(14);
   doc.setTextColor(0, 0, 0);
-  doc.text(t('pdfTitle', language).toUpperCase(), margin + 6, y + 10);
+  const bwTitle = t('pdfDocTitle', language).toUpperCase();
+  doc.text(bwTitle, margin + 5, y + 8);
+
+  const bwTitleWidth = doc.getTextWidth(bwTitle);
+  doc.setFont('times', 'italic');
+  doc.setFontSize(14);
+  doc.text(` ${t('pdfDocSubtitle', language)}`, margin + 5 + bwTitleWidth, y + 8);
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
+  doc.setFontSize(7.5);
   doc.setTextColor(0, 0, 0);
-  const todayStr = new Date().toLocaleDateString('en-US', {
+  const dateLocale = language === 'es' ? 'es-ES' : language === 'fr' ? 'fr-FR' : language === 'de' ? 'de-DE' : 'en-US';
+  const todayStr = new Date().toLocaleDateString(dateLocale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   });
-  const periodStr = budgetPeriod && budgetPeriod.trim().length > 0 ? budgetPeriod.trim() : '___________';
-  doc.text(`${t('pdfGeneratedOn', language)}: ${todayStr}   |   ${t('budgetPeriod', language)}: ${periodStr}`, margin + 6, y + 16.5);
+  const periodStr = budgetPeriod && budgetPeriod.trim().length > 0 ? budgetPeriod.trim() : '___________________';
+  doc.text(`${t('pdfDateLabel', language)}: ${todayStr}   |   ${t('pdfPeriodLabel', language)}: ${periodStr}`, margin + 5, y + 13.5);
 
-  y += 22 + 8;
+  y += 18 + 5;
 
-  // Calculations
-  const totalAllocated = envelopes.reduce((acc, e) => {
-    return acc + convertCurrency(e.allocated, e.currency || mainCurrency, mainCurrency);
-  }, 0);
+  // Calculate Totals
+  const totalAllocated = envelopes.reduce((acc, e) =>
+    acc + convertCurrency(e.allocated, e.currency || mainCurrency, mainCurrency), 0);
 
-  const envelopeStatsMap = new Map<string, { spent: number; cashAdded: number }>();
-  envelopes.forEach((e) => envelopeStatsMap.set(e.id, { spent: 0, cashAdded: 0 }));
-
-  let totalSpent = 0;
-  let totalCashAdded = 0;
+  const envelopeSpentMap = new Map<string, number>();
+  const envelopeCashAddedMap = new Map<string, number>();
+  envelopes.forEach((e) => {
+    envelopeSpentMap.set(e.id, 0);
+    envelopeCashAddedMap.set(e.id, 0);
+  });
 
   expenses.forEach((exp) => {
     const env = envelopes.find((e) => e.id === exp.envelopeId);
     const envCurr = env?.currency || mainCurrency;
-    const convertedAmt = convertCurrency(exp.amount, exp.currency || mainCurrency, envCurr);
-    const mainConverted = convertCurrency(Math.abs(exp.amount), exp.currency || mainCurrency, mainCurrency);
-    const current = envelopeStatsMap.get(exp.envelopeId) || { spent: 0, cashAdded: 0 };
-
-    if (exp.amount < 0) {
-      totalCashAdded += mainConverted;
-      envelopeStatsMap.set(exp.envelopeId, { ...current, cashAdded: current.cashAdded + Math.abs(convertedAmt) });
+    const rawAmt = Math.abs(exp.amount);
+    const convertedAmt = convertCurrency(rawAmt, exp.currency || mainCurrency, envCurr);
+    if (isAddCash(exp)) {
+      const current = envelopeCashAddedMap.get(exp.envelopeId) || 0;
+      envelopeCashAddedMap.set(exp.envelopeId, current + convertedAmt);
     } else {
-      totalSpent += convertCurrency(exp.amount, exp.currency || mainCurrency, mainCurrency);
-      envelopeStatsMap.set(exp.envelopeId, { ...current, spent: current.spent + convertedAmt });
+      const current = envelopeSpentMap.get(exp.envelopeId) || 0;
+      envelopeSpentMap.set(exp.envelopeId, current + convertedAmt);
     }
   });
 
+  const totalSpent = expenses
+    .filter(exp => !isAddCash(exp))
+    .reduce((acc, exp) => acc + convertCurrency(Math.abs(exp.amount), exp.currency || mainCurrency, mainCurrency), 0);
+
+  const totalCashAdded = expenses
+    .filter(exp => isAddCash(exp))
+    .reduce((acc, exp) => acc + convertCurrency(Math.abs(exp.amount), exp.currency || mainCurrency, mainCurrency), 0);
+
   const totalRemaining = totalAllocated + totalCashAdded - totalSpent;
 
-  // --- 2. KEY SUMMARY METRIC CARDS (4 CARDS B&W) ---
+  // --- 2. KEY SUMMARY METRIC CARDS (4 cards, B&W) ---
   const cardWidth = (contentWidth - 9) / 4;
-  const cardHeight = 16;
+  const cardHeight = 15;
 
+  // Card 1: Total Allocated
   doc.setLineWidth(0.5);
   doc.setDrawColor(0, 0, 0);
-
-  // Card 1
   doc.rect(margin, y, cardWidth, cardHeight, 'S');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(0, 0, 0);
-  doc.text(t('totalAllocated', language).toUpperCase(), margin + 3, y + 6);
+  doc.text(t('pdfAllocatedCard', language), margin + 3, y + 6);
   doc.setFontSize(9.5);
-  doc.text(formatPdfCurrency(totalAllocated, mainCurrency), margin + 3, y + 13);
+  doc.text(formatPdfCurrency(totalAllocated, mainCurrency), margin + 3, y + 12.5);
 
-  // Card 2
+  // Card 2: Total Cash Added
   const card2X = margin + cardWidth + 3;
   doc.rect(card2X, y, cardWidth, cardHeight, 'S');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(0, 0, 0);
-  doc.text(t('labelTotalCashAdded', language).toUpperCase(), card2X + 3, y + 6);
+  doc.text(t('pdfCashAddedCard', language), card2X + 3, y + 6);
   doc.setFontSize(9.5);
-  doc.text(`+${formatPdfCurrency(totalCashAdded, mainCurrency)}`, card2X + 3, y + 13);
+  doc.text(`+${formatPdfCurrency(totalCashAdded, mainCurrency)}`, card2X + 3, y + 12.5);
 
-  // Card 3
+  // Card 3: Total Spent
   const card3X = card2X + cardWidth + 3;
   doc.rect(card3X, y, cardWidth, cardHeight, 'S');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(0, 0, 0);
-  doc.text(t('totalSpent', language).toUpperCase(), card3X + 3, y + 6);
+  doc.text(t('pdfSpentCard', language), card3X + 3, y + 6);
   doc.setFontSize(9.5);
-  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card3X + 3, y + 13);
+  doc.text(formatPdfCurrency(totalSpent, mainCurrency), card3X + 3, y + 12.5);
 
-  // Card 4
+  // Card 4: Total Remaining
   const card4X = card3X + cardWidth + 3;
   doc.rect(card4X, y, cardWidth, cardHeight, 'S');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(6);
   doc.setTextColor(0, 0, 0);
-  doc.text(t('totalRemaining', language).toUpperCase(), card4X + 3, y + 6);
+  doc.text(t('pdfRemainingCard', language), card4X + 3, y + 6);
   doc.setFontSize(9.5);
-  doc.text(formatPdfCurrency(totalRemaining, mainCurrency), card4X + 3, y + 13);
+  const remText = totalRemaining < 0
+    ? `-${formatPdfCurrency(Math.abs(totalRemaining), mainCurrency)}`
+    : formatPdfCurrency(totalRemaining, mainCurrency);
+  doc.text(remText, card4X + 3, y + 12.5);
 
-  y += cardHeight + 10;
+  y += cardHeight + 6;
 
   // --- 3. PER-ENVELOPE BORDERED LEDGER BOXES ---
-  if (y + 25 > 270) {
-    doc.addPage();
-    y = 15;
-  }
+  if (y + 20 > 275) { doc.addPage(); y = 12; }
 
   doc.setFont('times', 'bold');
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setTextColor(0, 0, 0);
-  doc.text(t('pdfEnvelopeBreakdown', language), margin, y);
-  y += 6;
+  doc.text(t('pdfEnvelopesSection', language), margin, y);
+  y += 4.5;
 
-  const displayEnvelopes = envelopes.length > 0 ? envelopes : [];
+  const displayEnvelopes = envelopes.length > 0 ? envelopes : [
+    { id: 'default_1', name: 'Groceries', allocated: 200, category: 'Essential' as const, color: '#000000' },
+    { id: 'default_2', name: 'Utilities', allocated: 150, category: 'Essential' as const, color: '#000000' },
+  ];
 
   displayEnvelopes.forEach((env) => {
     const envExpenses = expenses
       .filter((exp) => exp.envelopeId === env.id)
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-    let currentBalance = env.allocated;
+    const envCashAdded = envelopeCashAddedMap.get(env.id) || 0;
+    let currentBalance = env.allocated + envCashAdded;
+
     const txRows = envExpenses.map((exp) => {
-      if (exp.amount < 0) {
-        currentBalance += Math.abs(exp.amount);
-      } else {
-        currentBalance -= exp.amount;
+      const rawAmt = Math.abs(exp.amount);
+      if (!isAddCash(exp)) {
+        currentBalance -= rawAmt;
       }
-      return {
-        ...exp,
-        runningBalance: currentBalance,
-      };
+      return { ...exp, runningBalance: currentBalance };
     });
 
     const isBlankTable = txRows.length === 0;
     const rowCount = isBlankTable ? 2 : txRows.length;
-    const boxHeight = 7 + 6 + (rowCount * 6.5);
+    const boxHeight = 6 + 5.5 + (rowCount * 5.5);
 
-    if (y + Math.min(boxHeight, 25) > 270) {
-      doc.addPage();
-      y = 15;
-    }
+    if (y + Math.min(boxHeight, 20) > 275) { doc.addPage(); y = 12; }
 
+    // Envelope Box Header Bar
     doc.setLineWidth(0.4);
-    doc.setDrawColor(0, 0, 0);
-    doc.rect(margin, y, contentWidth, 7, 'S');
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(0, 0, 0);
-    doc.text(`${t('pdfColCategory', language).toUpperCase()}: ${t(`cat${env.category}`, language).toUpperCase()}  |  ${env.name.toUpperCase()}`, margin + 3, y + 4.8);
-
-    const envCurrency = env.currency || mainCurrency;
-    const allocText = `${t('pdfColAllocated', language).toUpperCase()}: ${formatPdfCurrency(env.allocated, envCurrency)}`;
-    const allocWidth = doc.getTextWidth(allocText);
-    doc.text(allocText, margin + contentWidth - 3 - allocWidth, y + 4.8);
-
-    y += 7;
-
-    doc.setLineWidth(0.3);
     doc.setDrawColor(0, 0, 0);
     doc.rect(margin, y, contentWidth, 6, 'S');
 
-    const colX = [margin, margin + 28, margin + 110, margin + 145];
-    colX.slice(1).forEach((xPos) => {
-      doc.line(xPos, y, xPos, y + 6);
-    });
-
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7);
+    doc.setFontSize(7.5);
     doc.setTextColor(0, 0, 0);
-    doc.text(t('excelColDate', language).toUpperCase(), colX[0] + 3, y + 4.2);
-    doc.text(t('excelColNote', language).toUpperCase(), colX[1] + 3, y + 4.2);
-    doc.text(t('excelColAmount', language).toUpperCase(), colX[2] + 3, y + 4.2);
-    doc.text(t('pdfColRemaining', language).toUpperCase(), colX[3] + 3, y + 4.2);
+    const catLabel = t(`cat${env.category}`, language);
+    doc.text(`${t('pdfCategoryHeader', language)}: ${catLabel.toUpperCase()} | ${env.name.toUpperCase()}`, margin + 3, y + 4.2);
+
+    const envCurrency = env.currency || mainCurrency;
+    const allocText = `${t('pdfAllocatedHeader', language)}: ${formatPdfCurrency(env.allocated, envCurrency)}`;
+    const allocWidth = doc.getTextWidth(allocText);
+    doc.text(allocText, margin + contentWidth - 3 - allocWidth, y + 4.2);
 
     y += 6;
 
+    // Table Column Header Bar: Date (24), Type (22), Note/Vendor (58), Amount (30), Available Balance (46)
+    doc.setLineWidth(0.3);
+    doc.setDrawColor(0, 0, 0);
+    doc.rect(margin, y, contentWidth, 5.5, 'S');
+
+    const colX = [margin, margin + 24, margin + 46, margin + 104, margin + 134];
+    colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(0, 0, 0);
+    doc.text(t('pdfDateLabel', language).toUpperCase(), colX[0] + 2.5, y + 3.8);
+    doc.text(t('pdfDescHeader', language), colX[1] + 2.5, y + 3.8);
+    doc.text(t('pdfAmountHeader', language), colX[2] + 2.5, y + 3.8);
+    doc.text(t('pdfRemainingHeader', language), colX[3] + 2.5, y + 3.8);
+
+    y += 5.5;
+
     if (isBlankTable) {
       for (let i = 0; i < 2; i++) {
-        if (y + 6.5 > 270) {
-          doc.addPage();
-          y = 15;
-        }
-
+        if (y + 5.5 > 275) { doc.addPage(); y = 12; }
         doc.setLineWidth(0.2);
         doc.setDrawColor(0, 0, 0);
-        doc.rect(margin, y, contentWidth, 6.5, 'S');
-        colX.slice(1).forEach((xPos) => {
-          doc.line(xPos, y, xPos, y + 6.5);
-        });
-
+        doc.rect(margin, y, contentWidth, 5.5, 'S');
+        colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(7);
         doc.setTextColor(180, 180, 180);
-        doc.text('—', colX[0] + 3, y + 4.5);
-
-        y += 6.5;
+        doc.text('—', colX[0] + 2.5, y + 3.8);
+        y += 5.5;
       }
     } else {
       txRows.forEach((tx) => {
-        if (y + 6.5 > 270) {
+        if (y + 5.5 > 275) {
           doc.addPage();
-          y = 15;
+          y = 12;
+          doc.setLineWidth(0.3);
+          doc.setDrawColor(0, 0, 0);
+          doc.rect(margin, y, contentWidth, 5.5, 'S');
+          colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(6.5);
+          doc.setTextColor(0, 0, 0);
+          doc.text(t('pdfDateLabel', language).toUpperCase(), colX[0] + 2.5, y + 3.8);
+          doc.text(t('pdfDescHeader', language), colX[1] + 2.5, y + 3.8);
+          doc.text(t('pdfAmountHeader', language), colX[2] + 2.5, y + 3.8);
+          doc.text(t('pdfRemainingHeader', language), colX[3] + 2.5, y + 3.8);
+          y += 5.5;
         }
 
         doc.setLineWidth(0.2);
         doc.setDrawColor(0, 0, 0);
-        doc.rect(margin, y, contentWidth, 6.5, 'S');
-        colX.slice(1).forEach((xPos) => {
-          doc.line(xPos, y, xPos, y + 6.5);
-        });
+        doc.rect(margin, y, contentWidth, 5.5, 'S');
+        colX.slice(1).forEach((xPos) => { doc.line(xPos, y, xPos, y + 5.5); });
 
         doc.setFont('helvetica', 'normal');
-        doc.setFontSize(7.5);
+        doc.setFontSize(7);
         doc.setTextColor(0, 0, 0);
-        doc.text(tx.date, colX[0] + 3, y + 4.5);
+        doc.text(tx.date, colX[0] + 2.5, y + 3.8);
 
         let noteStr = tx.note || '-';
-        if (noteStr.length > 45) noteStr = noteStr.substring(0, 42) + '...';
-        doc.text(noteStr, colX[1] + 3, y + 4.5);
+        if (noteStr.length > 35) noteStr = noteStr.substring(0, 32) + '...';
+        doc.text(noteStr, colX[1] + 2.5, y + 3.8);
 
         doc.setFont('helvetica', 'bold');
-        if (tx.amount < 0) {
-          doc.text(`+${formatPdfCurrency(Math.abs(tx.amount), tx.currency || envCurrency)}`, colX[2] + 3, y + 4.5);
-        } else {
-          doc.text(formatPdfCurrency(tx.amount, tx.currency || envCurrency), colX[2] + 3, y + 4.5);
-        }
+        const addCash = isAddCash(tx);
+        const dispAmt = `${addCash ? '+' : ''}${formatPdfCurrency(Math.abs(tx.amount), tx.currency || envCurrency)}`;
+        doc.text(dispAmt, colX[2] + 2.5, y + 3.8);
 
-        doc.text(formatPdfCurrency(tx.runningBalance, envCurrency), colX[3] + 3, y + 4.5);
+        doc.setFont('helvetica', 'normal');
+        doc.text(formatPdfCurrency(tx.runningBalance, envCurrency), colX[3] + 2.5, y + 3.8);
 
-        y += 6.5;
+        y += 5.5;
       });
     }
 
-    y += 8;
+    y += 5;
   });
+
+  // --- 4. NOTES & BUDGET REMINDERS ---
+  const hasNotes = notes && notes.trim().length > 0;
+
+  const notesTitleText = `${t('notesRemindersTitle', language)} ${t('optionalLabel', language)}`;
+  const subtitlePrompt = hasNotes ? t('notesRemindersDesc', language) : t('pdfHandwritingText', language);
+
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7);
+  const splitSubLines = doc.splitTextToSize(subtitlePrompt, contentWidth);
+  const subtitleHeight = splitSubLines.length * 3.5 + 2;
+
+  const splitNotesLines = hasNotes ? doc.splitTextToSize(notes.trim(), contentWidth - 8) : [];
+  const notesBoxHeight = hasNotes ? Math.max(splitNotesLines.length * 5 + 6, 24) : 24;
+
+  const totalNotesSectionHeight = 5 + subtitleHeight + notesBoxHeight;
+
+  if (y + totalNotesSectionHeight > 275) {
+    doc.addPage();
+    y = 12;
+  }
+
+  // Section Header Title
+  doc.setFont('times', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(0, 0, 0);
+  doc.text(notesTitleText, margin, y);
+  y += 4.5;
+
+  // Subtitle / Instruction Text
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7);
+  doc.setTextColor(80, 80, 80);
+  splitSubLines.forEach((subLine: string) => {
+    doc.text(subLine, margin, y);
+    y += 3.5;
+  });
+  y += 1.5;
+
+  // Render Box
+  doc.setLineWidth(0.4);
+  doc.setDrawColor(0, 0, 0);
+  doc.rect(margin, y, contentWidth, notesBoxHeight, 'S');
+
+  if (hasNotes) {
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(0, 0, 0);
+    splitNotesLines.forEach((lineText: string, lIdx: number) => {
+      doc.text(lineText, margin + 4, y + 5 + lIdx * 5);
+    });
+  } else {
+    doc.setLineWidth(0.15);
+    doc.setDrawColor(180, 180, 180);
+    for (let lineY = y + 6; lineY < y + notesBoxHeight - 2; lineY += 6) {
+      doc.line(margin + 4, lineY, margin + contentWidth - 4, lineY);
+    }
+  }
 
   doc.save(`cash_envelope_budget_bw_${new Date().toISOString().split('T')[0]}.pdf`);
 }

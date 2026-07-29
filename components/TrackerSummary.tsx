@@ -386,7 +386,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 <div
                   className="h-full bg-[#D15F47] border-r-2 border-[#141414] transition-all duration-300"
                   style={{ width: `${Math.min(spentPct, 100)}%` }}
-                  title={`Spent: ${formatCurrency(totalSpent, mainCurrency)} (${Math.round(spentPct)}%)`}
+                  title={`${t('labelSpent', language)}: ${formatCurrency(totalSpent, mainCurrency)} (${Math.round(spentPct)}%)`}
                 />
               )}
 
@@ -395,7 +395,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 <div
                   className="h-full bg-[#8A9A5B] border-r-2 border-[#141414] transition-all duration-300"
                   style={{ width: `${Math.min(availablePct, 100)}%` }}
-                  title={`Available: ${formatCurrency(totalRemaining, mainCurrency)} (${Math.round(availablePct)}%)`}
+                  title={`${t('labelAvailable', language)}: ${formatCurrency(totalRemaining, mainCurrency)} (${Math.round(availablePct)}%)`}
                 />
               )}
 
@@ -404,7 +404,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 <div
                   className="h-full bg-[#059669] transition-all duration-300"
                   style={{ width: `${Math.min(cashAddedPct, 100)}%` }}
-                  title={`Cash Added: +${formatCurrency(totalCashAdded, mainCurrency)} (${Math.round(cashAddedPct)}%)`}
+                  title={`${t('labelCashAdded', language)}: +${formatCurrency(totalCashAdded, mainCurrency)} (${Math.round(cashAddedPct)}%)`}
                 />
               )}
             </div>

@@ -93,7 +93,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
           </div>
         )}
 
-        {/* Real-Time Breakdown Info Box */}
+        {/* Real-Time Breakdown Info Box (No pie chart graphic) */}
         <div className="p-2.5 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-[11px] font-bold uppercase">
           <div className="flex items-center justify-between text-[#8A9A5B]">
             <span className="flex items-center gap-1.5">
@@ -135,7 +135,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
               <div
                 className="h-full bg-[#D15F47] border-r-2 border-[#141414] transition-all duration-300"
                 style={{ width: `${Math.min(spentPct, 100)}%` }}
-                title={`Spent: ${formatCurrency(spent, envCurrency)} (${Math.round(spentPct)}%)`}
+                title={`${t('labelSpent', language)}: ${formatCurrency(spent, envCurrency)} (${Math.round(spentPct)}%)`}
               />
             )}
 
@@ -144,7 +144,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
               <div
                 className="h-full bg-[#8A9A5B] border-r-2 border-[#141414] transition-all duration-300"
                 style={{ width: `${Math.min(availablePct, 100)}%` }}
-                title={`Available: ${formatCurrency(remaining, envCurrency)} (${Math.round(availablePct)}%)`}
+                title={`${t('labelAvailable', language)}: ${formatCurrency(remaining, envCurrency)} (${Math.round(availablePct)}%)`}
               />
             )}
 
@@ -153,7 +153,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
               <div
                 className="h-full bg-[#059669] transition-all duration-300"
                 style={{ width: `${Math.min(cashAddedPct, 100)}%` }}
-                title={`Cash Added: +${formatCurrency(cashAdded, envCurrency)} (${Math.round(cashAddedPct)}%)`}
+                title={`${t('labelCashAdded', language)}: +${formatCurrency(cashAdded, envCurrency)} (${Math.round(cashAddedPct)}%)`}
               />
             )}
           </div>

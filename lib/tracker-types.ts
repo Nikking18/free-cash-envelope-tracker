@@ -16,6 +16,7 @@ export interface Expense {
   note: string;
   date: string; // YYYY-MM-DD
   currency?: string;
+  type?: 'expense' | 'addCash'; // transaction type
 }
 
 export interface TrackerData {
