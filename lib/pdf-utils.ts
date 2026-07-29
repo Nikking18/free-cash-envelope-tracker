@@ -144,7 +144,7 @@ async function generateClassicPDF(
   doc.rect(margin + 1, y + 1, contentWidth - 2, 16, 'S');
 
   const titlePart1 = t('pdfDocTitle', language).toUpperCase();
-  const titlePart2 = ` ${t('pdfDocSubtitle', language)}`;
+  const titlePart2 = `${t('pdfDocSubtitle', language)}`;
   doc.setFont('times', 'bold');
   doc.setFontSize(14);
   doc.setTextColor(20, 20, 20);
@@ -154,7 +154,7 @@ async function generateClassicPDF(
   doc.setFont('times', 'italic');
   doc.setFontSize(14);
   doc.setTextColor(209, 95, 71);
-  doc.text(titlePart2, margin + 5 + titleWidth, y + 8);
+  doc.text(titlePart2, margin + 7 + titleWidth, y + 8);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
@@ -360,7 +360,7 @@ async function generateClassicPDF(
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(6.5);
     doc.setTextColor(255, 255, 255);
-    doc.text(t('pdfDateLabel', language).toUpperCase(), txColX[0] + 2.5, startY + 3.8);
+    doc.text(t('pdfDateHeader', language), txColX[0] + 2.5, startY + 3.8);
     doc.text(t('pdfEnvNameHeader', language), txColX[1] + 2.5, startY + 3.8);
     doc.text(t('pdfTypeHeader', language), txColX[2] + 2.5, startY + 3.8);
     doc.text(t('pdfDescHeader', language), txColX[3] + 2.5, startY + 3.8);
@@ -556,7 +556,7 @@ async function generateMinimalBwPDF(
   const bwTitleWidth = doc.getTextWidth(bwTitle);
   doc.setFont('times', 'italic');
   doc.setFontSize(14);
-  doc.text(` ${t('pdfDocSubtitle', language)}`, margin + 5 + bwTitleWidth, y + 8);
+  doc.text(`${t('pdfDocSubtitle', language)}`, margin + 7 + bwTitleWidth, y + 8);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
@@ -681,17 +681,22 @@ async function generateMinimalBwPDF(
       .filter((exp) => exp.envelopeId === env.id)
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-    const envCashAdded = envelopeCashAddedMap.get(env.id) || 0;
-    let currentBalance = env.allocated + envCashAdded;
+    const envCurrency = env.currency || mainCurrency;
+    let currentBalance = env.allocated;
 
     const txRows = envExpenses.map((exp) => {
       const rawAmt = Math.abs(exp.amount);
+      const convertedAmt = convertCurrency(rawAmt, exp.currency || mainCurrency, envCurrency);
       if (isAddCash(exp)) {
-        currentBalance += rawAmt;
+        currentBalance += convertedAmt;
       } else {
-        currentBalance -= rawAmt;
+        currentBalance -= convertedAmt;
       }
-      return { ...exp, runningBalance: currentBalance };
+      return {
+        ...exp,
+        convertedAmt,
+        runningBalance: currentBalance
+      };
     });
 
     const isBlankTable = txRows.length === 0;
@@ -711,7 +716,6 @@ async function generateMinimalBwPDF(
     const catLabel = t(`cat${env.category}`, language);
     doc.text(`${t('pdfCategoryHeader', language)}: ${catLabel.toUpperCase()} | ${env.name.toUpperCase()}`, margin + 3, y + 3.8);
 
-    const envCurrency = env.currency || mainCurrency;
     const allocText = `${t('pdfAllocatedHeader', language)}: ${formatPdfCurrency(env.allocated, envCurrency)}`;
     const allocWidth = doc.getTextWidth(allocText);
     doc.text(allocText, margin + contentWidth - 3 - allocWidth, y + 3.8);
@@ -729,7 +733,7 @@ async function generateMinimalBwPDF(
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(6.5);
     doc.setTextColor(0, 0, 0);
-    doc.text(t('pdfDateLabel', language).toUpperCase(), colX[0] + 2.5, y + 3.5);
+    doc.text(t('pdfDateHeader', language), colX[0] + 2.5, y + 3.5);
     doc.text(t('pdfDescHeader', language), colX[1] + 2.5, y + 3.5);
     doc.text(t('pdfAmountHeader', language), colX[2] + 2.5, y + 3.5);
     doc.text(t('pdfRemainingHeader', language), colX[3] + 2.5, y + 3.5);
@@ -761,7 +765,7 @@ async function generateMinimalBwPDF(
           doc.setFont('helvetica', 'bold');
           doc.setFontSize(6.5);
           doc.setTextColor(0, 0, 0);
-          doc.text(t('pdfDateLabel', language).toUpperCase(), colX[0] + 2.5, y + 3.5);
+          doc.text(t('pdfDateHeader', language), colX[0] + 2.5, y + 3.5);
           doc.text(t('pdfDescHeader', language), colX[1] + 2.5, y + 3.5);
           doc.text(t('pdfAmountHeader', language), colX[2] + 2.5, y + 3.5);
           doc.text(t('pdfRemainingHeader', language), colX[3] + 2.5, y + 3.5);
@@ -784,7 +788,7 @@ async function generateMinimalBwPDF(
 
         doc.setFont('helvetica', 'bold');
         const addCash = isAddCash(tx);
-        const dispAmt = formatPdfCurrency(Math.abs(tx.amount), tx.currency || envCurrency);
+        const dispAmt = formatPdfCurrency(tx.convertedAmt, tx.currency || envCurrency);
         if (addCash) {
           doc.text(`+${dispAmt}`, colX[2] + 2.5, y + 3.5);
         } else {
