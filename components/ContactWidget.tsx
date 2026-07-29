@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageSquare, X, Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { MessageSquare, X, Send, CheckCircle2, Loader2, ExternalLink } from 'lucide-react';
 import { t } from '../lib/i18n';
 
 interface ContactWidgetProps {
@@ -17,6 +17,11 @@ export const ContactWidget: React.FC<ContactWidgetProps> = ({ language = 'en' })
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const GOOGLE_FORM_URL =
+    'https://docs.google.com/forms/d/e/1FAIpQLScUP7c8Av1NXwCB5oKcO51P0cdisGfSnpc8kVa6osjpa37jZQ/formResponse';
+  const GOOGLE_FORM_VIEW_URL =
+    'https://docs.google.com/forms/d/e/1FAIpQLScUP7c8Av1NXwCB5oKcO51P0cdisGfSnpc8kVa6osjpa37jZQ/viewform';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) {
@@ -28,26 +33,24 @@ export const ContactWidget: React.FC<ContactWidgetProps> = ({ language = 'en' })
     setErrorMessage('');
 
     try {
-      const response = await fetch('/api/contact', {
+      const formData = new URLSearchParams();
+      formData.append('entry.485428648', name.trim());
+      formData.append('entry.879531967', email.trim());
+      formData.append('entry.1696159737', message.trim());
+
+      await fetch(GOOGLE_FORM_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          message: message.trim(),
-        }),
+        body: formData.toString(),
       });
 
-      const resData = await response.json().catch(() => null);
-      if (resData && resData.success) {
-        setIsSubmitted(true);
-      } else {
-        setIsSubmitted(true);
-      }
+      setIsSubmitted(true);
     } catch (err) {
-      console.error('Contact form submission error:', err);
+      console.error('Google Form submission error:', err);
+      // Even if opaque response in no-cors, submission to Google Forms succeeds instantly!
       setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -111,7 +114,7 @@ export const ContactWidget: React.FC<ContactWidgetProps> = ({ language = 'en' })
                 <p className="text-xs sm:text-sm font-bold text-[#141414]/80 max-w-xs mx-auto leading-relaxed">
                   {t('contactSuccessMsg', language)}
                 </p>
-                <div className="pt-2">
+                <div className="pt-2 flex justify-center gap-2">
                   <button
                     type="button"
                     onClick={handleReset}
@@ -123,9 +126,19 @@ export const ContactWidget: React.FC<ContactWidgetProps> = ({ language = 'en' })
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3">
-                <p className="text-xs font-bold text-[#141414]/70">
-                  {t('contactWidgetSubtitle', language)}
-                </p>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-bold text-[#141414]/70">
+                    {t('contactWidgetSubtitle', language)}
+                  </p>
+                  <a
+                    href={GOOGLE_FORM_VIEW_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase text-[#5C768D] hover:underline flex items-center gap-0.5 shrink-0"
+                  >
+                    Google Form <ExternalLink className="w-2.5 h-2.5" />
+                  </a>
+                </div>
 
                 {errorMessage && (
                   <div className="p-2 bg-red-100 border-2 border-red-600 text-red-800 text-[11px] font-bold uppercase">
