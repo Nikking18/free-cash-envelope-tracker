@@ -23,6 +23,7 @@ import { DataLossWarningModal } from '../components/DataLossWarningModal';
 import { PdfTemplateModal } from '../components/PdfTemplateModal';
 import { Footer } from '../components/Footer';
 import { GoogleTranslateScript } from '../components/GoogleTranslateScript';
+import { ContactWidget } from '../components/ContactWidget';
 
 import { Search, Plus, Filter, Wallet, FileText, Download } from 'lucide-react';
 
@@ -640,6 +641,8 @@ export default function CashEnvelopeTrackerPage() {
         onSelectTemplate={handleSelectPdfTemplate}
         language={language}
       />
+
+      <ContactWidget language={language} />
     </div>
   );
 }

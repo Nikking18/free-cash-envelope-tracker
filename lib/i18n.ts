@@ -238,6 +238,17 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     saveExpenseBtn: 'Record Expense',
     addCashBtn: '+ Add Cash to Envelope',
 
+    // Contact Widget
+    contactWidgetBtn: '💬 Suggestions or Contact',
+    contactWidgetTitle: 'Any Suggestions or Changes?',
+    contactWidgetSubtitle: 'Send your thoughts, suggestions, or feedback directly to us!',
+    contactNameLabel: 'Your Name',
+    contactEmailLabel: 'Your Email',
+    contactMessageLabel: 'Suggestions / Message',
+    contactSubmitBtn: 'Send Message',
+    contactSuccessTitle: 'Thank You!',
+    contactSuccessMsg: 'Thank you for your feedback! We will review your message and reach out within 24-48 hours.',
+
     selectPdfTemplateTitle: 'Export PDF Statement',
     selectPdfTemplateSubtitle: 'Choose a print-ready PDF statement card layout',
     classicTemplateTitle: 'Classic Minimal (Color Accent)',
@@ -503,6 +514,17 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     saveExpenseBtn: 'Guardar Gasto',
     addCashBtn: '+ Añadir Efectivo al Sobre',
 
+    // Contact Widget
+    contactWidgetBtn: '💬 ¿Sugerencias o Contacto?',
+    contactWidgetTitle: '¿Sugerencias o Cambios?',
+    contactWidgetSubtitle: '¡Envíanos tus comentarios, ideas o sugerencias directamente!',
+    contactNameLabel: 'Tu Nombre',
+    contactEmailLabel: 'Tu Correo Electrónico',
+    contactMessageLabel: 'Sugerencias / Mensaje',
+    contactSubmitBtn: 'Enviar Mensaje',
+    contactSuccessTitle: '¡Muchas Gracias!',
+    contactSuccessMsg: '¡Gracias por tus comentarios! Revisaremos tu mensaje y nos pondremos en contacto en 24-48 horas.',
+
     selectPdfTemplateTitle: 'Exportar Extracto PDF',
     selectPdfTemplateSubtitle: 'Elige un diseño de tarjeta de extracto PDF listo para imprimir',
     classicTemplateTitle: 'Clásico Minimal (Con Color)',
@@ -766,6 +788,17 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     saveExpenseBtn: 'Valider la Dépense',
     addCashBtn: '+ Ajouter de l’argent',
 
+    // Contact Widget
+    contactWidgetBtn: '💬 Suggestions ou Contact',
+    contactWidgetTitle: 'Des Suggestions ou Modifications ?',
+    contactWidgetSubtitle: 'Envoyez-nous vos idées, commentaires ou remarques directement !',
+    contactNameLabel: 'Votre Nom',
+    contactEmailLabel: 'Votre E-mail',
+    contactMessageLabel: 'Suggestions / Message',
+    contactSubmitBtn: 'Envoyer le Message',
+    contactSuccessTitle: 'Merci Beaucoup !',
+    contactSuccessMsg: 'Merci pour vos commentaires ! Nous examinerons votre message et vous contacterons sous 24 à 48 heures.',
+
     selectPdfTemplateTitle: 'Exporter le Relevé PDF',
     selectPdfTemplateSubtitle: 'Choisissez un modèle de relevé PDF prêt à imprimer',
     classicTemplateTitle: 'Classique Minimal (Couleur)',
@@ -1028,6 +1061,17 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     currencyChangeWarning: '⚠️ Warnung: Es wird nicht empfohlen, Ihre Hauptwährung zu ändern, wenn bereits Umschläge oder Ausgaben vorhanden sind. Die Gesamtsummen können aufgrund ständig wechselnder Wechselkurse ungenau werden. Verwenden Sie für beste Ergebnisse nur eine Währung.',
     saveExpenseBtn: 'Ausgabe Buchen',
     addCashBtn: '+ Bargeld Hinzufügen',
+
+    // Contact Widget
+    contactWidgetBtn: '💬 Vorschläge oder Kontakt',
+    contactWidgetTitle: 'Vorschläge oder Änderungen?',
+    contactWidgetSubtitle: 'Senden Sie uns Ihre Ideen, Feedback oder Wünsche direkt!',
+    contactNameLabel: 'Ihr Name',
+    contactEmailLabel: 'Ihre E-Mail',
+    contactMessageLabel: 'Vorschläge / Nachricht',
+    contactSubmitBtn: 'Nachricht Senden',
+    contactSuccessTitle: 'Vielen Dank!',
+    contactSuccessMsg: 'Vielen Dank für Ihr Feedback! Wir werden Ihre Nachricht prüfen und uns innerhalb von 24-48 Stunden melden.',
 
     selectPdfTemplateTitle: 'PDF-Bericht Exportieren',
     selectPdfTemplateSubtitle: 'Wählen Sie ein Layout für Ihren Ausdruck',
