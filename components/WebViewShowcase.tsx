@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Monitor, Smartphone, FileSpreadsheet, ShieldCheck } from 'lucide-react';
+import { Monitor, Smartphone, FileSpreadsheet, FileText, ShieldCheck } from 'lucide-react';
 import { t } from '../lib/i18n';
 
 interface WebViewShowcaseProps {
