@@ -28,27 +28,24 @@ export const ContactWidget: React.FC<ContactWidgetProps> = ({ language = 'en' })
     setErrorMessage('');
 
     try {
-      const formData = new FormData();
-      formData.append('name', name.trim());
-      formData.append('email', email.trim());
-      formData.append('message', message.trim());
-      formData.append('_subject', 'New Suggestion / Feedback — Free Cash Envelope Tracker');
-      formData.append('_captcha', 'false');
-
-      const response = await fetch('https://formsubmit.co/ajax/nikhilkhanpara@gmail.com', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: formData,
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+        }),
       });
 
       const resData = await response.json().catch(() => null);
-      if (resData && resData.message && resData.message.includes('Activation')) {
-        console.log('FormSubmit Activation Email Triggered:', resData.message);
+      if (resData && resData.success) {
+        setIsSubmitted(true);
+      } else {
+        setIsSubmitted(true);
       }
-
-      setIsSubmitted(true);
     } catch (err) {
       console.error('Contact form submission error:', err);
       setIsSubmitted(true);
