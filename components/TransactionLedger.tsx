@@ -173,9 +173,12 @@ export const TransactionLedger: React.FC<TransactionLedgerProps> = ({
                         <span className="text-gray-400">Deleted Envelope</span>
                       )}
                     </td>
-                    <td className="p-3 text-[#141414]/80 italic">{exp.note || '—'}</td>
-                    <td className="p-3 text-right font-serif font-black text-[#D15F47] text-base">
-                      {formatCurrency(exp.amount, exp.currency || mainCurrency)}
+                    <td className="p-3 text-[#141414]/80 italic">
+                      {exp.amount < 0 && <span className="inline-block px-1.5 py-0.5 mr-1.5 bg-emerald-100 text-emerald-800 text-[9px] font-sans font-bold uppercase tracking-wider neo-border">💵 Add Cash</span>}
+                      {exp.note || '—'}
+                    </td>
+                    <td className={`p-3 text-right font-serif font-black text-base ${exp.amount < 0 ? 'text-[#059669]' : 'text-[#D15F47]'}`}>
+                      {exp.amount < 0 ? `+${formatCurrency(Math.abs(exp.amount), exp.currency || mainCurrency)}` : formatCurrency(exp.amount, exp.currency || mainCurrency)}
                       {exp.currency && exp.currency !== mainCurrency && (
                         <div className="text-[10px] font-sans font-bold text-[#141414]/60">
                           (~{formatCurrency(convertCurrency(exp.amount, exp.currency, mainCurrency), mainCurrency)})

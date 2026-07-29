@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Envelope, Expense } from '../lib/tracker-types';
 import { getSupportedCurrencies } from '../lib/currency-utils';
-import { X, Receipt } from 'lucide-react';
+import { X, Receipt, PlusCircle, MinusCircle } from 'lucide-react';
 import { t } from '../lib/i18n';
 
 interface ExpenseModalProps {
@@ -32,6 +32,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
   const [currency, setCurrency] = useState('USD');
   const [note, setNote] = useState('');
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [txType, setTxType] = useState<'expense' | 'add_cash'>('expense');
   const [error, setError] = useState('');
 
   const [prevEditingExpense, setPrevEditingExpense] = useState<Expense | null | undefined>(undefined);
@@ -45,13 +46,15 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
 
     if (editingExpense) {
       setEnvelopeId(editingExpense.envelopeId);
-      setAmount(editingExpense.amount.toString());
+      setAmount(Math.abs(editingExpense.amount).toString());
+      setTxType(editingExpense.amount < 0 ? 'add_cash' : 'expense');
       setCurrency(editingExpense.currency || mainCurrency);
       setNote(editingExpense.note);
       setDate(editingExpense.date);
     } else {
       setEnvelopeId(selectedEnvelopeId || (envelopes.length > 0 ? envelopes[0].id : ''));
       setAmount('');
+      setTxType('expense');
       setCurrency(mainCurrency);
       setNote('');
       setDate(new Date().toISOString().split('T')[0]);
@@ -61,21 +64,23 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSaveTransaction = (typeOverride?: 'expense' | 'add_cash') => {
     if (!envelopeId) {
       setError('Please select an envelope');
       return;
     }
     const numAmount = parseFloat(amount);
     if (isNaN(numAmount) || numAmount <= 0) {
-      setError('Expense amount must be greater than 0');
+      setError('Amount must be greater than 0');
       return;
     }
 
+    const effectiveType = typeOverride || txType;
+    const finalAmount = effectiveType === 'add_cash' ? -Math.abs(numAmount) : Math.abs(numAmount);
+
     onSave({
       envelopeId,
-      amount: numAmount,
+      amount: finalAmount,
       currency,
       note: note.trim(),
       date,
@@ -84,17 +89,19 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
     onClose();
   };
 
-  const selectedEnvelopeObj = envelopes.find((e) => e.id === envelopeId);
-  const targetEnvelopeCurrency = selectedEnvelopeObj?.currency || mainCurrency;
-  const isForeignCurrency = currency !== targetEnvelopeCurrency;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSaveTransaction();
+  };
 
   const supportedCurrencies = getSupportedCurrencies();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
       <div className="bg-[#FCFAF7] neo-border-thick neo-shadow-lg w-full max-w-md p-6 space-y-4 relative">
+        {/* Header */}
         <div className="flex items-center justify-between border-b-4 border-[#141414] pb-3">
-          <div className="flex items-center gap-2 text-[#141414] font-serif font-black text-xl uppercase tracking-tight">
+          <div className="flex items-center gap-2 text-[#141414] font-serif font-black text-lg sm:text-xl uppercase tracking-tight">
             <Receipt className="w-5 h-5 text-[#D15F47]" />
             <span>{editingExpense ? t('editExpenseTitle', language) : t('logExpenseTitle', language)}</span>
           </div>
@@ -114,6 +121,40 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Transaction Type Toggle Selector */}
+          <div className="space-y-1">
+            <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
+              {t('transactionTypeLabel', language)}
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setTxType('expense')}
+                className={`py-2 px-2 text-xs font-bold neo-button flex items-center justify-center gap-1.5 cursor-pointer uppercase ${
+                  txType === 'expense'
+                    ? 'bg-[#D15F47] text-white border-2 border-[#141414]'
+                    : 'bg-white text-[#141414] hover:bg-gray-100'
+                }`}
+              >
+                <MinusCircle className="w-4 h-4" />
+                <span>{t('transactionTypeExpense', language)}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setTxType('add_cash')}
+                className={`py-2 px-2 text-xs font-bold neo-button flex items-center justify-center gap-1.5 cursor-pointer uppercase ${
+                  txType === 'add_cash'
+                    ? 'bg-[#8A9A5B] text-white border-2 border-[#141414]'
+                    : 'bg-white text-[#141414] hover:bg-gray-100'
+                }`}
+              >
+                <PlusCircle className="w-4 h-4" />
+                <span>{t('transactionTypeAddCash', language)}</span>
+              </button>
+            </div>
+          </div>
+
           {/* Target Envelope Selector */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
@@ -122,7 +163,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
             <select
               value={envelopeId}
               onChange={(e) => setEnvelopeId(e.target.value)}
-              className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden"
+              className="w-full px-3 py-2 bg-white neo-border font-bold text-sm text-[#141414] focus:outline-hidden cursor-pointer"
             >
               {envelopes.map((env) => (
                 <option key={env.id} value={env.id}>
@@ -132,7 +173,7 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
             </select>
           </div>
 
-          {/* Expense Amount & Currency */}
+          {/* Amount & Currency */}
           <div className="space-y-1">
             <label className="block text-xs font-bold uppercase text-[#141414] tracking-wider">
               {t('expenseAmountLabel', language)} &amp; {t('expenseCurrencyLabel', language)} *
@@ -194,20 +235,32 @@ export const ExpenseModal: React.FC<ExpenseModalProps> = ({
             />
           </div>
 
-          {/* Buttons */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t-2 border-[#141414]">
+          {/* Action Buttons: Cancel, + Add Cash, Record Expense */}
+          <div className="flex flex-wrap items-center justify-end gap-2 pt-4 border-t-2 border-[#141414]">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
+              className="px-3 py-2 bg-[#FCFAF7] hover:bg-[#F2EFE9] text-[#141414] neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               {t('cancelBtn', language)}
             </button>
+
             <button
-              type="submit"
-              className="px-5 py-2 bg-[#D15F47] text-white neo-button text-xs font-bold uppercase tracking-wider cursor-pointer"
+              type="button"
+              onClick={() => handleSaveTransaction('add_cash')}
+              className="px-3.5 py-2 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer"
             >
-              {editingExpense ? t('saveChangesBtn', language) : t('saveExpenseBtn', language)}
+              <PlusCircle className="w-3.5 h-3.5" />
+              <span>{t('addCashBtn', language)}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleSaveTransaction('expense')}
+              className="px-3.5 py-2 bg-[#D15F47] hover:bg-[#b84d37] text-white neo-button text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer"
+            >
+              <Receipt className="w-3.5 h-3.5" />
+              <span>{t('saveExpenseBtn', language)}</span>
             </button>
           </div>
         </form>
