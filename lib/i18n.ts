@@ -17,6 +17,23 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     exchangeRateAccuracyNotice: 'Disclaimer: Live exchange rates are fetched from open market sources for reference and may not be 100% accurate or up-to-the-minute. Please verify critical rates independently.',
     downloadSampleTemplateBtn: 'Download Sample Excel Template',
 
+    labelSpent: 'Spent',
+    labelAvailable: 'Available',
+    labelCashAdded: 'Cash Added',
+    labelTotalCashAdded: 'Total Cash Added',
+    pdfTitle: 'Envelope Budget Statement',
+    pdfGeneratedOn: 'Generated on',
+    pdfSummaryOverview: 'BUDGET SUMMARY OVERVIEW',
+    pdfEnvelopeBreakdown: 'ENVELOPE BREAKDOWN',
+    pdfTransactionHistory: 'TRANSACTION HISTORY',
+    pdfColCategory: 'Category',
+    pdfColEnvelope: 'Envelope Name',
+    pdfColAllocated: 'Allocated',
+    pdfColCashAdded: 'Cash Added',
+    pdfColSpent: 'Spent',
+    pdfColRemaining: 'Available Balance',
+    pdfColProgress: 'Status / Usage',
+
     // Excel Export Column Headers & Sheet Names
     excelColEnvName: 'Envelope Name',
     excelColAllocated: 'Allocated Amount',

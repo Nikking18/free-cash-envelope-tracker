@@ -93,12 +93,12 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
           </div>
         )}
 
-        {/* Real-Time Breakdown Info Box (No pie chart graphic) */}
+        {/* Real-Time Breakdown Info Box */}
         <div className="p-2.5 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-[11px] font-bold uppercase">
           <div className="flex items-center justify-between text-[#8A9A5B]">
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-[#8A9A5B] border border-[#141414] inline-block" />
-              Available
+              {t('labelAvailable', language)}
             </span>
             <span>{Math.round(availablePct)}% ({formatCurrency(Math.max(0, remaining), envCurrency)})</span>
           </div>
@@ -106,7 +106,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
           <div className="flex items-center justify-between text-[#D15F47]">
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-[#D15F47] border border-[#141414] inline-block" />
-              Spent
+              {t('labelSpent', language)}
             </span>
             <span>{Math.round(spentPct)}% ({formatCurrency(spent, envCurrency)})</span>
           </div>
@@ -115,7 +115,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
             <div className="flex items-center justify-between text-[#059669]">
               <span className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#059669] border border-[#141414] inline-block" />
-                Cash Added
+                {t('labelCashAdded', language)}
               </span>
               <span>+{formatCurrency(cashAdded, envCurrency)}</span>
             </div>
@@ -126,7 +126,7 @@ export const EnvelopeCard: React.FC<EnvelopeCardProps> = ({
         <div className="space-y-1">
           <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-[#141414]/80">
             <span>{t('progressLabel', language)}</span>
-            <span>{Math.min(Math.round(spentPct), 100)}% Spent</span>
+            <span>{Math.min(Math.round(spentPct), 100)}% {t('labelSpent', language)}</span>
           </div>
 
           <div className="w-full h-7 bg-[#E4E3E0] border-4 border-[#141414] flex overflow-hidden">

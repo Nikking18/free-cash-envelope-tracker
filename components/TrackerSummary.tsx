@@ -364,16 +364,16 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
                 <span>{t('budgetUtilization', language)}</span>
                 <span className="text-[#D15F47] flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#D15F47] inline-block border border-[#141414]" />
-                  Spent ({Math.round(spentPct)}%)
+                  {t('labelSpent', language)} ({Math.round(spentPct)}%)
                 </span>
                 <span className="text-[#8A9A5B] flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#8A9A5B] inline-block border border-[#141414]" />
-                  Available ({Math.round(availablePct)}%)
+                  {t('labelAvailable', language)} ({Math.round(availablePct)}%)
                 </span>
                 {totalCashAdded > 0 && (
                   <span className="text-[#059669] flex items-center gap-1">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#059669] inline-block border border-[#141414]" />
-                    Cash Added (+{formatCurrency(totalCashAdded, mainCurrency)})
+                    {t('labelCashAdded', language)} (+{formatCurrency(totalCashAdded, mainCurrency)})
                   </span>
                 )}
               </div>
