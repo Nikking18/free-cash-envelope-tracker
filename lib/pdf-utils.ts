@@ -788,7 +788,7 @@ async function generateMinimalBwPDF(
 
         doc.setFont('helvetica', 'bold');
         const addCash = isAddCash(tx);
-        const dispAmt = formatPdfCurrency(tx.convertedAmt, tx.currency || envCurrency);
+        const dispAmt = formatPdfCurrency(tx.convertedAmt, envCurrency);
         if (addCash) {
           doc.text(`+${dispAmt}`, colX[2] + 2.5, y + 3.5);
         } else {
