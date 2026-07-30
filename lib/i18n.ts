@@ -310,6 +310,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     excelColCashAdded: 'Cash Added',
     excelColBalance: 'Balance',
     excelColType: 'Transaction Type',
+    excelColCurrency: 'Currency',
     excelCurrencyNote: '* Note: All monetary amounts include currency symbols matching your envelope/main currency.',
   },
   es: {
@@ -603,6 +604,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     excelColCashAdded: 'Efectivo Añadido',
     excelColBalance: 'Saldo',
     excelColType: 'Tipo de Transacción',
+    excelColCurrency: 'Moneda',
     excelCurrencyNote: '* Nota: Todos los montos incluyen el símbolo de moneda correspondiente a tu sobre/moneda principal.',
   },
   fr: {
@@ -896,6 +898,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     excelColCashAdded: 'Argent Ajouté',
     excelColBalance: 'Solde',
     excelColType: 'Type de Transaction',
+    excelColCurrency: 'Devise',
     excelCurrencyNote: '* Remarque : Tous les montants incluent le symbole monétaire correspondant à votre enveloppe/devise principale.',
   },
   de: {
@@ -1189,6 +1192,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     excelColCashAdded: 'Bargeld Hinzugefügt',
     excelColBalance: 'Saldo',
     excelColType: 'Transaktionsart',
+    excelColCurrency: 'Währung',
     excelCurrencyNote: '* Hinweis: Alle Beträge enthalten das entsprechende Währungssymbol für Ihren Umschlag/Ihre Hauptwährung.',
   },
 };

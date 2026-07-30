@@ -354,7 +354,7 @@ export default function CashEnvelopeTrackerPage() {
 
   const handleExportExcel = async () => {
     try {
-      await exportToExcel(data.envelopes, data.expenses, language);
+      await exportToExcel(data.envelopes, data.expenses, language, mainCurrency);
       recordExportTimestamp();
     } catch (err: any) {
       alert('Failed to export Excel file: ' + err.message);

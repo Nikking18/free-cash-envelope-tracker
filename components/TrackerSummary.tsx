@@ -194,7 +194,7 @@ export const TrackerSummary: React.FC<TrackerSummaryProps> = ({
 
                   <button
                     type="button"
-                    onClick={() => downloadExcelTemplate(language)}
+                    onClick={() => downloadExcelTemplate(language, mainCurrency)}
                     className="w-full py-2 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer mt-2"
                   >
                     <Download className="w-3.5 h-3.5" />
