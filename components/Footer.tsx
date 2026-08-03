@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Heart, ShieldCheck, ExternalLink, Github, Twitter, Linkedin } from 'lucide-react';
 import { t } from '../lib/i18n';
 
@@ -96,6 +97,9 @@ export const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
             © {new Date().getFullYear()} {t('footerCopyright', language)}
           </div>
           <div className="flex items-center gap-4">
+            <Link href="/blog" className="underline hover:text-[#8A9A5B] transition-colors">
+              Blog & Budgeting Guides
+            </Link>
             <span className="text-[11px] normal-case tracking-normal font-bold">
               {t('createdWithLove', language)}
             </span>

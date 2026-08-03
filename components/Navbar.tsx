@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { Wallet, Globe, DollarSign, Info, X, RefreshCw } from 'lucide-react';
 import {
   getSupportedCurrencies,
@@ -12,19 +13,21 @@ import {
 import { t } from '../lib/i18n';
 
 interface NavbarProps {
-  onScrollToTracker: () => void;
-  mainCurrency: string;
-  onChangeMainCurrency: (currency: string) => void;
-  language: string;
-  onChangeLanguage: (lang: string) => void;
+  onScrollToTracker?: () => void;
+  mainCurrency?: string;
+  onChangeMainCurrency?: (currency: string) => void;
+  language?: string;
+  onChangeLanguage?: (lang: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  onScrollToTracker,
-  mainCurrency,
-  onChangeMainCurrency,
-  language,
-  onChangeLanguage,
+  onScrollToTracker = () => {
+    if (typeof window !== 'undefined') window.location.href = '/#tracker';
+  },
+  mainCurrency = 'USD',
+  onChangeMainCurrency = () => {},
+  language = 'en',
+  onChangeLanguage = () => {},
 }) => {
   const [showRateInfo, setShowRateInfo] = useState(false);
   const [, setRateUpdateTick] = useState(0);
@@ -182,6 +185,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </select>
           </div>
+
+          {/* Blog & Guides Link */}
+          <Link
+            href="/blog"
+            className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wider bg-white text-[#141414] neo-border hover:bg-gray-100 transition-colors cursor-pointer whitespace-nowrap"
+          >
+            Blog & Guides
+          </Link>
 
           {/* Go to Tracker Button */}
           <button
