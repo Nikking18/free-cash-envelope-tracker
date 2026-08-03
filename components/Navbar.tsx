@@ -59,9 +59,15 @@ export const Navbar: React.FC<NavbarProps> = ({
     onChangeLanguage(langCode);
 
     if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('user_language', langCode);
+      } catch (e) {}
+
       const host = window.location.hostname;
       document.cookie = `googtrans=/en/${langCode}; path=/; domain=${host}`;
       document.cookie = `googtrans=/en/${langCode}; path=/`;
+
+      window.dispatchEvent(new CustomEvent('app_language_change', { detail: langCode }));
 
       const gtCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
       if (gtCombo) {
