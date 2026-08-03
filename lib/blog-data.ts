@@ -26,63 +26,81 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Cash stuffing is taking the personal finance world by storm. Discover how dividing cash into categorized envelopes helps you curb overspending, build emergency savings, and stay in control.',
     tableOfContents: [
-      { id: 'what-is-cash-stuffing', text: '1. What is Cash Stuffing?' },
-      { id: 'how-the-envelope-system-works', text: '2. How the Cash Envelope System Works' },
-      { id: 'step-by-step-setup', text: '3. Step-by-Step Setup Guide' },
-      { id: 'digital-hybrid-method', text: '4. The Digital & Printable Hybrid Method' },
-      { id: 'common-mistakes', text: '5. 4 Mistakes to Avoid' },
+      { id: 'what-is-cash-stuffing', text: '1. What is Cash Stuffing & Why It Works' },
+      { id: 'how-the-envelope-system-works', text: '2. How the Cash Envelope System Works (The Brain Science)' },
+      { id: 'step-by-step-setup', text: '3. Step-by-Step Setup Guide (From Payday to Stuffing)' },
+      { id: 'digital-hybrid-method', text: '4. Physical Binders vs. Free Digital Cash Trackers' },
+      { id: 'common-mistakes', text: '5. 5 Deadly Cash Stuffing Mistakes to Avoid in 2026' },
     ],
     contentHtml: `
       <section id="what-is-cash-stuffing" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. What is Cash Stuffing?</h2>
-        <p class="leading-relaxed"><strong>Cash stuffing</strong> is a tactile, highly effective money management strategy where you cash out your disposable income after paying fixed bills and divide ("stuff") paper currency into physical or digital labeled envelopes. Each envelope represents a specific variable expense category such as <em>Groceries, Dining Out, Fuel, Personal Care, and Savings Goals</em>.</p>
-        <p class="leading-relaxed">By physically or digitally restricting your spending strictly to the allocated balance inside each category envelope, you establish an unbreakable visual boundary. When an envelope reaches $0.00, spending in that category completely stops until your next budget replenishment cycle.</p>
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. What is Cash Stuffing & Why It Works</h2>
+        <p class="leading-relaxed"><strong>Cash stuffing</strong>—also widely recognized as the <em>Cash Envelope Budgeting System</em>—is a tactile, highly disciplined personal finance management strategy. After receiving your paycheck and covering fixed non-negotiable bills (such as rent, utilities, and debt payments), you withdraw your remaining variable income in paper cash and distribute ("stuff") it into labeled physical or digital envelopes assigned to specific spending categories.</p>
+        <p class="leading-relaxed">Category envelopes typically include <em>Groceries, Fuel/Gas, Restaurant Dining, Beauty & Personal Care, Entertainment, and Sinking Funds</em>. By establishing strict spending limits tied directly to the balance inside each envelope, you create a visual, non-negotiable financial boundary. When an envelope is empty, spending in that category immediately halts until your next replenishment cycle.</p>
       </section>
 
       <section id="how-the-envelope-system-works" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. How the Cash Envelope System Works</h2>
-        <p class="leading-relaxed">Unlike credit cards where digital swiping feels effortless and painless, handling physical money triggers loss aversion in your brain. Behavioral economics studies repeatedly demonstrate that consumers spend up to <strong>15% to 20% less money overall</strong> when paying with physical bills rather than plastic cards or contactless digital wallets.</p>
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. How the Cash Envelope System Works (The Brain Science)</h2>
+        <p class="leading-relaxed">Why do people save thousands of dollars when switching from credit cards to cash envelopes? Behavioral economics and neuroscience provide a clear answer: <strong>the psychological pain of paying</strong>.</p>
+        <p class="leading-relaxed">When swiping plastic credit cards or tapping contactless smartphone wallets, your brain experiences zero physical loss. You receive the instant dopamine reward of the item without feeling the immediate financial drain. In contrast, physically handing over paper bills activates pain receptors in the insular cortex of your brain. Scientific studies show consumers spend up to <strong>15% to 20% less overall</strong> when paying exclusively with cash notes.</p>
         <div class="bg-[#FCFAF7] border-3 border-[#141414] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
-          <h4 class="font-bold uppercase tracking-wide text-sm text-[#8A9A5B]">Core Psychological Benefits:</h4>
-          <ul class="list-disc list-inside space-y-1.5 text-sm font-medium">
-            <li><strong>Instant Visual Feedback:</strong> You immediately see how much spending power remains for the week.</li>
-            <li><strong>Zero Overdraft Risk:</strong> Impossible to spend money you don't have, eliminating bank overdraft fees.</li>
-            <li><strong>Mindful Intentionality:</strong> Forces you to ask if a coffee or takeout meal is worth taking cash out of your budget envelope.</li>
+          <h4 class="font-bold uppercase tracking-wide text-sm text-[#8A9A5B]">Core Financial Benefits of Cash Stuffing:</h4>
+          <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+            <li><strong>Complete Overdraft Protection:</strong> It is mathematically impossible to spend money you do not have, eliminating bank overdraft fees and 24%+ credit card interest charges.</li>
+            <li><strong>Instant Visual Clarity:</strong> Opening your envelope binder instantly reveals how much money remains for the rest of the week or month.</li>
+            <li><strong>Frictionful Mindfulness:</strong> You think twice before spending $5 on coffee when you physically see cash leaving your coffee envelope.</li>
           </ul>
         </div>
       </section>
 
       <section id="step-by-step-setup" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Step-by-Step Setup Guide</h2>
-        <p class="leading-relaxed">Setting up your cash envelope system takes less than 15 minutes. Follow these 4 straightforward steps:</p>
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Step-by-Step Setup Guide (From Payday to Stuffing)</h2>
+        <p class="leading-relaxed">Ready to start cash stuffing today? Follow this 4-step actionable blueprint:</p>
         <ol class="list-decimal list-inside space-y-3 font-medium">
-          <li><strong>Calculate Your Take-Home Income:</strong> Determine your exact net income after taxes and automated fixed bill payments (like rent/mortgage and insurance).</li>
-          <li><strong>Define Variable Envelopes:</strong> List all categories where your spending fluctuates. Common categories: <em>Groceries ($400), Gas ($150), Dining Out ($120), Fun & Shopping ($100), Emergency Savings ($200)</em>.</li>
-          <li><strong>Withdraw or Assign Funds:</strong> Cash out the exact amount needed from your bank or allocate your digital balances in your tracker.</li>
-          <li><strong>Log Every Expense Immediately:</strong> Write down every single receipt or log transactions directly into your web tracker to maintain 100% accuracy.</li>
+          <li><strong>Calculate Your Take-Home Disposable Income:</strong> Start with your monthly net income after taxes. Subtract automated fixed expenses (rent, mortgage, health insurance, electricity). What remains is your variable spending pool.</li>
+          <li><strong>Establish Your Envelope Categories & Limits:</strong> Allocate exact dollar targets for each variable category. Example monthly allocation: <em>Groceries ($450), Fuel ($160), Dining Out ($120), Personal Care ($80), Emergency Sinking Fund ($200)</em>.</li>
+          <li><strong>Withdraw Cash or Assign Digital Envelopes:</strong> Visit your bank ATM to withdraw paper bills in specific denominations ($20s, $10s, $5s), or set up digital envelopes in your online budget dashboard.</li>
+          <li><strong>Stuff & Log Every Transaction:</strong> Place physical cash into your binder envelopes or assign digital starting balances. Record every single purchase receipt immediately on your envelope ledger sheet or digital tracker.</li>
         </ol>
       </section>
 
       <section id="digital-hybrid-method" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. The Digital & Printable Hybrid Method</h2>
-        <p class="leading-relaxed">While carrying physical cash is powerful, carrying large stacks of bills everywhere can feel unsafe or inconvenient for online shopping. Modern budgeters adopt a <strong>hybrid cash envelope approach</strong>:</p>
-        <ul class="list-disc list-inside space-y-2 font-medium">
-          <li>Use <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> to log transactions in real-time on your phone or computer.</li>
-          <li>Print high-contrast B&W PDF ledger sheets to insert into your physical cash binder for offline tracking.</li>
-          <li>Enjoy 100% data privacy with browser-local storage and zero bank credential linking.</li>
-        </ul>
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Physical Binders vs. Free Digital Cash Trackers (The Hybrid Method)</h2>
+        <p class="leading-relaxed">While traditional paper envelope binders are fantastic for hands-on discipline, carrying large stacks of paper money in public carries theft risks and is impractical for online bill payments. Modern budgeters adopt a <strong>hybrid cash envelope strategy</strong>:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">Tactile Binder Envelopes</strong>
+            Keep physical cash at home for variable daily expenses like Supermarket Groceries, Coffee, and Farmers Market purchases.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">Digital Cash Trackers</strong>
+            Use <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> to log purchases on your smartphone with local privacy and zero bank login required.
+          </div>
+        </div>
       </section>
 
       <section id="common-mistakes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. 4 Mistakes to Avoid</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="p-4 bg-white border-2 border-[#141414] font-medium text-sm space-y-1">
-            <strong class="block text-red-600 font-bold uppercase">❌ Borrowing Between Envelopes</strong>
-            Shuffling money from your Gas envelope to pay for Dining Out completely ruins the discipline of cash envelope budgeting.
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. 5 Deadly Cash Stuffing Mistakes to Avoid in 2026</h2>
+        <div class="space-y-3">
+          <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+            <strong class="block text-red-700 font-bold uppercase">1. Borrowing Between Envelopes ("Envelope Raiding")</strong>
+            Shuffling cash from your Gas envelope to pay for a restaurant meal completely destroys budget discipline.
           </div>
-          <div class="p-4 bg-white border-2 border-[#141414] font-medium text-sm space-y-1">
-            <strong class="block text-red-600 font-bold uppercase">❌ Forgetting Small Cash Receipts</strong>
-            Failing to log $3 coffee runs or $5 snacks leads to mysterious balance discrepancies at the end of the week.
+          <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+            <strong class="block text-red-700 font-bold uppercase">2. Forgetting Small Micro-Transactions</strong>
+            Failing to record $2 snacks or $4 coffee runs creates frustrating phantom balance errors at the end of the week.
+          </div>
+          <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+            <strong class="block text-red-700 font-bold uppercase">3. Setting Unrealistic Restrictive Limits</strong>
+            Budgeting $50/month for groceries when your family needs $300 leads to budget burnout and failure.
+          </div>
+          <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+            <strong class="block text-red-700 font-bold uppercase">4. Carrying All Cash in Public</strong>
+            Keep the bulk of your cash binder safely in a home drawer; only carry your daily spending envelope.
+          </div>
+          <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+            <strong class="block text-red-700 font-bold uppercase">5. Skipping Weekly Balance Reconciliation</strong>
+            Reconcile your physical cash bills with your digital envelope ledger every Sunday evening to stay 100% accurate.
           </div>
         </div>
       </section>
@@ -124,7 +142,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <section id="digital-envelope-apps-pros-cons" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Digital Envelope Tracking: Pros & Cons</h2>
-        <p class="leading-relaxed">Digital cash envelope applications mirror the envelope method on your phone or laptop. Money remains safely in your bank account while virtual envelopes track exactly how much you can spend per category.</p>
+        <p class="leading-relaxed">Digital envelope budgeting replicates category allocations on your smartphone or computer, allowing real-time transaction logging and instant mathematical calculations.</p>
         <div class="p-4 bg-white border-2 border-[#141414] space-y-2">
           <h4 class="font-bold text-sm text-[#8A9A5B] uppercase">Why Digital Budgeting Excels:</h4>
           <ul class="list-disc list-inside text-sm space-y-1 font-medium">
@@ -310,7 +328,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <section id="the-psychology-of-impulse-spending" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Psychology of Impulse Spending</h2>
         <p class="leading-relaxed">Frictionless digital swiping decouples the joy of purchasing from the pain of losing money. When you swipe a card or tap a phone, your brain registers zero physical loss.</p>
-        <p class="leading-relaxed">Cash envelopes restore healthy psychological friction. Handing over hard paper bills activates pain receptors in the prefrontal cortex, compelling you to pause and evaluate the purchase.</p>
+        <p class="leading-relaxed">Cash envelopes restore healthy psychological friction. Handing over hard paper bills activates pain receptors in the insular cortex of your brain, compelling you to pause and evaluate the purchase.</p>
       </section>
       <section id="7-ways-cash-envelopes-fix-it" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. 7 Ways Cash Envelopes Fix Overspending</h2>
@@ -835,6 +853,267 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
 
+// Full Native Translation Data for Blog Posts
+const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
+  'cash-stuffing-beginners-guide': {
+    es: {
+      title: 'La Guía Definitiva de Relleno de Sobres de Efectivo para Principiantes (Edición 2026)',
+      summary: 'El relleno de sobres de efectivo está revolucionando las finanzas personales. Descubre cómo dividir tu dinero en sobres categorizados te ayuda a evitar gastos excesivos, crear ahorros de emergencia y mantener el control.',
+      category: 'Guías de Presupuesto',
+      tableOfContents: [
+        { id: 'what-is-cash-stuffing', text: '1. ¿Qué es el Relleno de Sobres y Por Qué Funciona?' },
+        { id: 'how-the-envelope-system-works', text: '2. Cómo Funciona el Sistema de Sobres (La Ciencia del Cerebro)' },
+        { id: 'step-by-step-setup', text: '3. Guía Paso a Paso (Del Cobro al Relleno)' },
+        { id: 'digital-hybrid-method', text: '4. Carpetas Físicas vs. Rastradores Digitales Gratuitos' },
+        { id: 'common-mistakes', text: '5. 5 Errores Mortales al Usar Sobres de Efectivo en 2026' },
+      ],
+      contentHtml: `
+        <section id="what-is-cash-stuffing" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. ¿Qué es el Relleno de Sobres y Por Qué Funciona?</h2>
+          <p class="leading-relaxed"><strong>El relleno de sobres de efectivo</strong> (también conocido como el <em>Sistema de Presupuesto por Sobres</em>) es una estrategia táctica y altamente disciplinada para la gestión del dinero. Después de recibir tu salario y pagar los gastos fijos no negociables (como alquiler, servicios y deudas), retiras el saldo restante en dinero en efectivo y lo distribuyes ("rellenas") en sobres etiquetados asignados a categorías de gastos variables específicas.</p>
+          <p class="leading-relaxed">Las categorías típicas incluyen <em>Comestibles, Gasolina/Combustible, Comida fuera de casa, Cuidado Personal, Entretenimiento y Fondos de Amortización</em>. Al establecer límites estrictos de gasto vinculados directamente al saldo de cada sobre, creas un límite financiero no negociable. Cuando un sobre se vacía a $0.00, el gasto en esa categoría se detiene inmediatamente hasta tu próximo ciclo.</p>
+        </section>
+
+        <section id="how-the-envelope-system-works" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Cómo Funciona el Sistema de Sobres (La Ciencia del Cerebro)</h2>
+          <p class="leading-relaxed">¿Por qué las personas ahorran miles de dólares al cambiar las tarjetas de crédito por sobres de efectivo? La economía del comportamiento y la neurociencia dan una respuesta clara: <strong>el dolor psicológico de pagar</strong>.</p>
+          <p class="leading-relaxed">Al deslizar tarjetas de crédito de plástico o usar pagos sin contacto desde el teléfono, tu cerebro experimenta cero pérdida física. Recibes la recompensa de dopamina instantánea sin sentir el impacto financiero inmediato. En cambio, entregar billetes físicos activa receptores de dolor en tu cerebro. Estudios demuestran que los consumidores gastan hasta un <strong>15% a 20% menos dinero en total</strong> cuando pagan exclusivamente en efectivo.</p>
+          <div class="bg-[#FCFAF7] border-3 border-[#141414] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
+            <h4 class="font-bold uppercase tracking-wide text-sm text-[#8A9A5B]">Beneficios Financieros Clave del Relleno de Sobres:</h4>
+            <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+              <li><strong>Protección Total contra Sobregiros:</strong> Es matemáticamente imposible gastar dinero que no tienes, eliminando las tarifas por sobregiro y los intereses de tarjetas de crédito.</li>
+              <li><strong>Claridad Visual Instantánea:</strong> Al abrir tu carpeta de sobres ves inmediatamente cuánto dinero te queda para el resto de la semana.</li>
+              <li><strong>Conciencia y Atención:</strong> Piensas dos veces antes de gastar $5 en un café cuando ves físicamente el billete salir de tu sobre.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="step-by-step-setup" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Guía Paso a Paso (Del Cobro al Relleno)</h2>
+          <p class="leading-relaxed">¿Listo para comenzar hoy mismo? Sigue este plan de 4 pasos:</p>
+          <ol class="list-decimal list-inside space-y-3 font-medium">
+            <li><strong>Calcula tu Ingreso Neto Disponible:</strong> Determina tus ingresos después de impuestos y resta los pagos fijos automatizados. Lo que queda es tu fondo para gastos variables.</li>
+            <li><strong>Establece las Categorías y Límites de tus Sobres:</strong> Asigna metas en dólares para cada categoría. Ejemplo mensual: <em>Comestibles ($450), Gasolina ($160), Restaurantes ($120), Fondo de Emergencia ($200)</em>.</li>
+            <li><strong>Retira Efectivo o Asigna Sobres Digitales:</strong> Visita tu cajero automático para retirar billetes o configura tus sobres digitales en tu panel en línea.</li>
+            <li><strong>Rellena y Registra Cada Transacción:</strong> Coloca el efectivo en tus sobres o asigna saldos digitales iniciales. Registra cada compra inmediatamente.</li>
+          </ol>
+        </section>
+
+        <section id="digital-hybrid-method" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Carpetas Físicas vs. Rastradores Digitales Gratuitos (Método Híbrido)</h2>
+          <p class="leading-relaxed">Aunque las carpetas de papel tradicionales son excelentes para la disciplina táctil, llevar fajos de billetes en público conlleva riesgos de robo. Las personas modernas adoptan un <strong>enfoque híbrido de sobres de efectivo</strong>:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">Sobres Físicos en Carpeta</strong>
+              Mantén el efectivo físico en casa para gastos diarios variables como supermercado y café.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+              <strong class="block text-[#5C768D] font-bold uppercase">Rastreador Digital de Sobres</strong>
+              Usa <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> para registrar compras en tu teléfono con total privacidad.
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. 5 Errores Mortales al Usar Sobres de Efectivo en 2026</h2>
+          <div class="space-y-3">
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">1. Pedir prestado entre sobres ("Saqueo de Sobres")</strong>
+              Mover dinero de tu sobre de Gasolina para pagar una cena arruina por completo la disciplina del presupuesto.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">2. Olvidar Pequeños Gastos</strong>
+              No registrar gastos de $2 o $4 en cafés crea errores de saldo al final de la semana.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">3. Establecer Límites Irreales</strong>
+              Presupuestar $50 al mes para comida cuando tu familia necesita $300 conduce al agotamiento.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">4. Llevar Todo el Efectivo en la Calle</strong>
+              Mantén la mayor parte de tu efectivo seguro en casa; solo lleva el sobre de tu gasto diario.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">5. Omitir la Reconciliación Semanal</strong>
+              Compara tus billetes físicos con tu registro digital todos los domingos por la noche.
+            </div>
+          </div>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Le Guide Ultime du Remplissage d\'Enveloppes de Budget pour Débutants (Édition 2026)',
+      summary: 'Le remplissage d\'enveloppes de budget révolutionne les finances personnelles. Découvrez comment diviser votre argent en enveloppes catégories vous aide à éviter les dépenses excessives, créer une épargne d\'urgence et garder le contrôle.',
+      category: 'Guides Budgétaires',
+      tableOfContents: [
+        { id: 'what-is-cash-stuffing', text: '1. Qu\'est-ce que le Remplissage d\'Enveloppes et Pourquoi ça Marche ?' },
+        { id: 'how-the-envelope-system-works', text: '2. Comment Fonctionne le Système d\'Enveloppes (La Science du Cerveau)' },
+        { id: 'step-by-step-setup', text: '3. Guide Étape par Étape (Du Salaire à l\'Enveloppe)' },
+        { id: 'digital-hybrid-method', text: '4. Classeurs Physiques vs. Suivis Numériques Gratuits' },
+        { id: 'common-mistakes', text: '5. 5 Erreurs Mortelles à Éviter en 2026' },
+      ],
+      contentHtml: `
+        <section id="what-is-cash-stuffing" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Qu'est-ce que le Remplissage d'Enveloppes et Pourquoi ça Marche ?</h2>
+          <p class="leading-relaxed"><strong>Le remplissage d'enveloppes de budget</strong> (aussi connu sous le nom de <em>Système de Budget par Enveloppes</em>) est une stratégie de gestion de l'argent tactile et disciplinée. Après avoir reçu votre salaire et payé les factures fixes non négociables (loyer, électricité, dettes), vous retirez le reste de vos revenus en espèces et les répartissez dans des enveloppes étiquetées par catégorie.</p>
+          <p class="leading-relaxed">Les enveloppes typiques incluent <em>Courses, Carburant, Restaurants, Soins Personnels, Loisirs et Épargne</em>. En fixant des limites strictes liées directement au solde de chaque enveloppe, vous créez une frontière financière claire. Quand une enveloppe atteint 0,00 €, les dépenses s'arrêtent immédiatement jusqu'au prochain cycle.</p>
+        </section>
+
+        <section id="how-the-envelope-system-works" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Comment Fonctionne le Système d'Enveloppes (La Science du Cerveau)</h2>
+          <p class="leading-relaxed">Pourquoi économise-t-on des milliers d'euros en remplaçant la carte bancaire par des enveloppes de budget ? Les neurosciences fournissent une réponse claire : <strong>la douleur psychologique de payer</strong>.</p>
+          <p class="leading-relaxed">En utilisant une carte bancaire ou un paiement sans contact, votre cerveau ne ressent aucune perte physique. En revanche, donner des billets de banque active des récepteurs de douleur dans votre cerveau. Des études montrent que les consommateurs dépensent <strong>15 % à 20 % de moins au total</strong> en payant exclusivement en espèces.</p>
+          <div class="bg-[#FCFAF7] border-3 border-[#141414] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
+            <h4 class="font-bold uppercase tracking-wide text-sm text-[#8A9A5B]">Avantages Financiers Clés du Remplissage d'Enveloppes :</h4>
+            <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+              <li><strong>Protection Totale contre les Découverts :</strong> Impossible de dépenser l'argent que vous n'avez pas.</li>
+              <li><strong>Clarté Visuelle Instantanée :</strong> En ouvrant votre classeur, vous voyez immédiatement l'argent restant.</li>
+              <li><strong>Pleine Conscience :</strong> Vous réfléchissez à deux fois avant d'acheter un café inutile.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="step-by-step-setup" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Guide Étape par Étape (Du Salaire à l'Enveloppe)</h2>
+          <p class="leading-relaxed">Prêt à commencer aujourd'hui ? Suivez ces 4 étapes simples :</p>
+          <ol class="list-decimal list-inside space-y-3 font-medium">
+            <li><strong>Calculez votre Revenu Net Disponible :</strong> Prenez votre revenu mensuel après impôts et soustrayez vos factures fixes.</li>
+            <li><strong>Définissez vos Enveloppes :</strong> Fixez des montants précis. Exemple : <em>Courses (400 €), Essence (150 €), Sorties (100 €), Épargne (200 €)</em>.</li>
+            <li><strong>Retirez les Espèces ou Allouez des Enveloppes Numériques :</strong> Retirez des billets ou configurez votre tableau de bord en ligne.</li>
+            <li><strong>Remplissez et Notez Chaque Dépense :</strong> Notez immédiatement chaque ticket de caisse.</li>
+          </ol>
+        </section>
+
+        <section id="digital-hybrid-method" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Classeurs Physiques vs. Suivis Numériques Gratuits (Méthode Hybride)</h2>
+          <p class="leading-relaxed">Bien que les classeurs papier soient parfaits pour la discipline tactile, transporter de grosses sommes comporte des risques. Adoptez une <strong>approche hybride</strong> :</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">Enveloppes Classeur Physique</strong>
+              Gardez les espèces à la maison pour les dépenses courantes (supermarché, café).
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+              <strong class="block text-[#5C768D] font-bold uppercase">Suivi Numérique d'Enveloppes</strong>
+              Utilisez <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> sur votre smartphone en toute confidentialité.
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. 5 Erreurs Mortelles à Éviter en 2026</h2>
+          <div class="space-y-3">
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">1. Emprunter entre enveloppes</strong>
+              Prendre l'argent de l'Essence pour payer un restaurant détruit la discipline budgétaire.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">2. Oublier les petits achats</strong>
+              Ne pas enregistrer un café à 3 € crée des erreurs de solde frustrantes.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">3. Fixer des limites irréalistes</strong>
+              Prévoir 50 € pour les courses quand votre famille a besoin de 300 € mène à l'échec.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">4. Transporter tout l'argent sur soi</strong>
+              Gardez la majorité de vos enveloppes en sécurité à la maison.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">5. Sauter la réconciliation hebdomadaire</strong>
+              Vérifiez vos comptes chaque dimanche soir.
+            </div>
+          </div>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Der Ultimative Bargeld-Umschlag Guide für Anfänger (Ausgabe 2026)',
+      summary: 'Cash Stuffing erobert die Finanzwelt. Erfahren Sie, wie das Aufteilen von Bargeld in kategorisierte Umschläge hilft, Überausgaben zu stoppen, Notfallreserven aufzubauen und die Kontrolle zu behalten.',
+      category: 'Budget-Anleitungen',
+      tableOfContents: [
+        { id: 'what-is-cash-stuffing', text: '1. Was ist Cash Stuffing & Warum Funktioniert Es?' },
+        { id: 'how-the-envelope-system-works', text: '2. Wie Funktioniert das Umschlag-System (Die Gehirnwissenschaft)' },
+        { id: 'step-by-step-setup', text: '3. Schritt-für-Schritt Anleitung (Vom Zahltag zum Umschlag)' },
+        { id: 'digital-hybrid-method', text: '4. Physische Ordner vs. Kostenlose Digitale Tracker' },
+        { id: 'common-mistakes', text: '5. 5 Tödliche Fehler beim Cash Stuffing in 2026' },
+      ],
+      contentHtml: `
+        <section id="what-is-cash-stuffing" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Was ist Cash Stuffing & Warum Funktioniert Es?</h2>
+          <p class="leading-relaxed"><strong>Cash Stuffing</strong> (auch bekannt als das <em>Umschlag-Budgeting-System</em>) ist eine taktile und disziplinierte Methode zur Finanzverwaltung. Nachdem Sie Ihr Gehalt erhalten und feste Rechnungen (Miete, Strom, Kredite) bezahlt haben, heben Sie Ihr verbleibendes Einkommen in Bargeld ab und teilen ("stopfen") es in beschriftete Umschläge für variable Ausgaben auf.</p>
+          <p class="leading-relaxed">Typische Umschlagkategorien sind <em>Lebensmittel, Tanken, Restaurants, Körperpflege, Freizeit und Sparziele</em>. Indem Sie Ausgaben strikt auf das Guthaben im jeweiligen Umschlag beschränken, setzen Sie eine klare Grenze. Ist ein Umschlag leer, stoppen die Ausgaben in dieser Kategorie sofort bis zum nächsten Zahltag.</p>
+        </section>
+
+        <section id="how-the-envelope-system-works" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Wie Funktioniert das Umschlag-System (Die Gehirnwissenschaft)</h2>
+          <p class="leading-relaxed">Warum sparen Menschen Tausende von Euro, wenn sie von Kreditkarten auf Bargeld-Umschläge umsteigen? Die Verhaltensökonomie liefert eine klare Antwort: <strong>der psychologische Schmerz des Zahlens</strong>.</p>
+          <p class="leading-relaxed">Beim kontaktlosen Bezahlen mit Karten spürt das Gehirn keinen physischen Verlust. Beim Übergeben von echten Geldscheinen werden dagegen Schmerzzentren im Gehirn aktiviert. Studien zeigen, dass Verbraucher insgesamt <strong>15 % bis 20 % weniger Geld ausgeben</strong>, wenn sie ausschließlich bar bezahlen.</p>
+          <div class="bg-[#FCFAF7] border-3 border-[#141414] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
+            <h4 class="font-bold uppercase tracking-wide text-sm text-[#8A9A5B]">Wichtigste Finanzielle Vorteile des Umschlag-Systems:</h4>
+            <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+              <li><strong>Vollständiger Schutz vor Dispo-Gebühren:</strong> Es ist unmöglich, Geld auszugeben, das Sie nicht haben.</li>
+              <li><strong>Sofortige Visuelle Klarheit:</strong> Beim Öffnen des Ordners sehen Sie sofort das verbleibende Restbudget.</li>
+              <li><strong>Achtsamer Konsum:</strong> Sie überlegen zweimal, ob der Kaffee für 5 € wirklich sein muss.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="step-by-step-setup" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Schritt-für-Schritt Anleitung (Vom Zahltag zum Umschlag)</h2>
+          <p class="leading-relaxed">Möchten Sie heute mit Cash Stuffing starten? Folgen Sie diesem 4-Schritte-Plan:</p>
+          <ol class="list-decimal list-inside space-y-3 font-medium">
+            <li><strong>Berechnen Sie Ihr Verfügbares Nettoeinkommen:</strong> Ziehen Sie alle festen Monatsausgaben von Ihrem Nettoeinkommen ab.</li>
+            <li><strong>Legen Sie Ihre Umschlagkategorien fest:</strong> Beispiel: <em>Lebensmittel (400 €), Tanken (150 €), Restaurant (100 €), Notfallreserve (200 €)</em>.</li>
+            <li><strong>Heben Sie das Bargeld ab oder Nutzen Sie Digitale Umschläge:</strong> Teilen Sie die Geldscheine auf oder richten Sie digitale Umschläge ein.</li>
+            <li><strong>Befüllen und Jede Ausgabe Tragen:</strong> Tragen Sie jeden Beleg sofort in Ihren Tracker ein.</li>
+          </ol>
+        </section>
+
+        <section id="digital-hybrid-method" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Physische Ordner vs. Kostenlose Digitale Tracker (Die Hybride Methode)</h2>
+          <p class="leading-relaxed">Physische Ordner bieten tolle Haptik, aber viel Bargeld mit sich herumzutragen birgt Diebstahlrisiken. Moderne Budgetierer nutzen den <strong>hybriden Ansatz</strong>:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">Physische Ordner-Umschläge</strong>
+              Bewahren Sie Bargeld zu Hause für alltägliche Ausgaben wie Supermarkt und Bäcker auf.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm">
+              <strong class="block text-[#5C768D] font-bold uppercase">Digitaler Umschlag-Tracker</strong>
+              Nutzen Sie den <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> auf Ihrem Smartphone ohne Bank-Login.
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. 5 Tödliche Fehler beim Cash Stuffing in 2026</h2>
+          <div class="space-y-3">
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">1. Geld zwischen Umschlägen ausleihen</strong>
+              Geld vom Tanken-Umschlag für ein Essen auszugeben zerstört die Budget-Disziplin.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">2. Kleine Mikro-Ausgaben vergessen</strong>
+              Wenn man den 3 € Kaffee nicht einträgt, entstehen verfälschte Salden am Ende der Woche.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">3. Realitätsferne Limits setzen</strong>
+              50 € im Monat für Essen anzusetzen führt schnell zu Frustration.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">4. Das gesamte Bargeld mit sich herumtragen</strong>
+              Lassen Sie den Großteil des Bargelds sicher zu Hause im Ordner.
+            </div>
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm font-medium space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">5. Wöchentlichen Abgleich auslassen</strong>
+              Zählen Sie jeden Sonntagabend Ihr Bargeld im Vergleich zum digitalen Ledger nach.
+            </div>
+          </div>
+        </section>
+      `,
+    },
+  },
+};
+
 export function getTranslatedBlogPost(post: BlogPost, lang: string): BlogPost {
   if (!lang || lang === 'en') return post;
 
@@ -920,6 +1199,18 @@ export function getTranslatedBlogPost(post: BlogPost, lang: string): BlogPost {
   };
 
   const translatedCategory = categoryTranslations[lang]?.[post.category] || post.category;
+  const specificTranslation = BLOG_TRANSLATIONS[post.slug]?.[lang];
+
+  if (specificTranslation) {
+    return {
+      ...post,
+      title: specificTranslation.title || post.title,
+      summary: specificTranslation.summary || post.summary,
+      category: specificTranslation.category || translatedCategory,
+      tableOfContents: specificTranslation.tableOfContents || post.tableOfContents,
+      contentHtml: specificTranslation.contentHtml || post.contentHtml,
+    };
+  }
 
   return {
     ...post,
