@@ -123,11 +123,47 @@ export const BLOG_POSTS: BlogPost[] = [
       <section id="digital-envelope-apps-pros-cons" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Digital Envelope Tracking: Pros & Cons</h2>
         <p class="leading-relaxed">Digital envelope budgeting replicates category allocations on your smartphone or computer, allowing real-time transaction logging and instant mathematical calculations.</p>
+        <div class="p-4 bg-white border-2 border-[#141414] space-y-2">
+          <h4 class="font-bold text-sm text-[#8A9A5B] uppercase">Why Digital Envelope Budgeting Wins for Modern Life:</h4>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>Instant balance updates across all devices.</li>
+            <li>No risk of losing physical cash bills on public transit or stores.</li>
+            <li>One-click export to Excel and printable PDF statements.</li>
+          </ul>
+        </div>
       </section>
 
       <section id="head-to-head-comparison" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Head-to-Head Comparison Table</h2>
         <p class="leading-relaxed">Digital tools eliminate paper clutter while maintaining exact mathematical accuracy. Compare features live at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        <div class="overflow-x-auto">
+          <table class="w-full border-2 border-[#141414] text-sm">
+            <thead class="bg-[#141414] text-white">
+              <tr>
+                <th class="p-2.5 text-left font-bold uppercase">Feature</th>
+                <th class="p-2.5 text-left font-bold uppercase">Physical Cash Binder</th>
+                <th class="p-2.5 text-left font-bold uppercase">Free Cash Envelope Tracker</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#141414]">
+              <tr>
+                <td class="p-2.5 font-bold">Portability</td>
+                <td class="p-2.5">Bulky paper binder</td>
+                <td class="p-2.5">100% Mobile & Web Friendly</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-bold">Data Security</td>
+                <td class="p-2.5">At risk of fire/loss</td>
+                <td class="p-2.5">Local Storage (100% Private)</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-bold">Multi-Currency</td>
+                <td class="p-2.5">Manual exchange math</td>
+                <td class="p-2.5">Automatic Live Rates</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section id="the-hybrid-solution" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
@@ -157,18 +193,26 @@ export const BLOG_POSTS: BlogPost[] = [
       <section id="what-is-zero-based-budgeting" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. What is Zero-Based Budgeting?</h2>
         <p class="leading-relaxed"><strong>Zero-Based Budgeting (ZBB)</strong> is a financial method where your total monthly income minus your total monthly allocations (expenses, debt paydown, and savings) equals exactly <strong>$0.00</strong>.</p>
+        <p class="leading-relaxed">Instead of letting unassigned money sit aimlessly in your checking account where it gets spent on impulse purchases, zero-based budgeting assigns every single dollar a job before the month starts.</p>
       </section>
 
       <section id="the-zero-sum-equation" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The Zero-Sum Equation</h2>
         <div class="p-6 bg-[#141414] text-white font-mono text-center text-lg rounded-none border-4 border-[#141414]">
-          Income - (Envelopes + Bills + Savings + Debt) = $0.00
+          Monthly Income - (Envelope Allocations + Fixed Bills + Savings + Debt Paydown) = $0.00
         </div>
+        <p class="leading-relaxed">If you earn $3,500 per month, your total allocations must equal $3,500—leaving exactly $0 unassigned. If you have $200 left over, allocate it directly into a Sinking Fund or Emergency Fund envelope.</p>
       </section>
 
       <section id="categorizing-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Categorizing Envelopes Effectively</h2>
         <p class="leading-relaxed">Divide income into Essentials, Discretionary, Savings, and Debt paydown envelopes to ensure zero unassigned money leaks.</p>
+        <ul class="list-disc list-inside space-y-2 font-medium">
+          <li><strong>Essentials:</strong> Groceries, Fuel, Utilities, Rent/Mortgage.</li>
+          <li><strong>Discretionary:</strong> Dining Out, Clothing, Personal Care, Entertainment.</li>
+          <li><strong>Savings & Sinking Funds:</strong> Emergency Fund, Holidays, Car Repairs.</li>
+          <li><strong>Debt Reduction:</strong> Credit Card Snowball, Student Loan Avalanche.</li>
+        </ul>
       </section>
 
       <section id="tracking-with-free-tools" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
@@ -196,11 +240,16 @@ export const BLOG_POSTS: BlogPost[] = [
     contentHtml: `
       <section id="the-multi-currency-challenge" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Multi-Currency Challenge</h2>
-        <p class="leading-relaxed">Expats and international remote workers often receive income in one currency but spend in another. Standard budget tools crash or miscalculate currency symbols.</p>
+        <p class="leading-relaxed">Expats and international remote workers often receive income in one currency (e.g. USD) but spend in another (e.g. EUR, INR, or CAD). Standard budget tools crash or miscalculate currency symbols.</p>
+        <p class="leading-relaxed">Trying to track a vacation envelope in Euros alongside domestic bill envelopes in US Dollars in traditional spreadsheets requires constant manual math, leading to errors.</p>
       </section>
       <section id="how-live-conversions-work" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. How Live Exchange Rate Conversions Work</h2>
         <p class="leading-relaxed"><a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> connects to central bank APIs to auto-convert transactions while keeping original receipt amounts recorded.</p>
+        <div class="bg-[#FCFAF7] border-2 border-[#141414] p-4 font-medium text-sm space-y-2">
+          <strong class="text-[#8A9A5B] uppercase block font-bold">Supported Global Currencies:</strong>
+          <p>USD ($), EUR (€), GBP (£), INR (₹), CAD ($), AUD ($), JPY (¥), CHF (Fr), and 15+ more global currencies supported out of the box with live rate synchronization.</p>
+        </div>
       </section>
       <section id="setting-envelope-currencies" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Setting Custom Currencies per Envelope</h2>
@@ -226,11 +275,17 @@ export const BLOG_POSTS: BlogPost[] = [
     contentHtml: `
       <section id="why-bw-printables-matter" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Black & White Printables Matter</h2>
-        <p class="leading-relaxed">Color inks are expensive and bleed on paper. High-contrast Minimal B&W ledgers print cleanly on home inkjet or laser printers.</p>
+        <p class="leading-relaxed">Color inks are expensive and bleed on standard paper. High-contrast Minimal B&W ledgers print cleanly on home inkjet or laser printers without wasting ink.</p>
+        <p class="leading-relaxed">Printable ledgers provide a physical space in your cash binder to log date, merchant, transaction amount, and running balance by hand.</p>
       </section>
       <section id="anatomy-of-a-great-ledger" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Anatomy of an Effective Envelope Ledger</h2>
         <p class="leading-relaxed">Generate 1-click B&W PDF ledger sheets complete with ruled handwriting lines at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+          <li><strong>Header:</strong> Category Name, Target Allocation, and Date Period.</li>
+          <li><strong>Transaction Log:</strong> Date, Description, Expenses, Cash Added, and Running Balance.</li>
+          <li><strong>Handwriting Notes Section:</strong> Blank ruled lines for physical pen entries.</li>
+        </ul>
       </section>
     `,
   },
@@ -253,10 +308,16 @@ export const BLOG_POSTS: BlogPost[] = [
       <section id="the-psychology-of-impulse-spending" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Psychology of Impulse Spending</h2>
         <p class="leading-relaxed">Contactless card swiping removes spending friction. Handing over cash bills triggers tangible loss resistance in the brain.</p>
+        <p class="leading-relaxed">When you pay with a digital card, your brain doesn't feel money leaving your hands. Cash envelopes re-introduce healthy friction.</p>
       </section>
       <section id="7-ways-cash-envelopes-fix-it" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. 7 Ways Cash Envelopes Fix Overspending</h2>
         <p class="leading-relaxed">Hard spending ceilings, visual progress bars, and daily envelope tracking on <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> stop emotional overspending.</p>
+        <ol class="list-decimal list-inside space-y-2 text-sm font-medium">
+          <li><strong>Visual Scarcity:</strong> You physically see cash shrinking inside the envelope.</li>
+          <li><strong>No Credit Buffer:</strong> Once an envelope hits $0, spending in that category stops.</li>
+          <li><strong>Intentional friction:</strong> Forces you to ask "Is this purchase worth emptying my envelope?"</li>
+        </ol>
       </section>
     `,
   },
@@ -279,6 +340,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <section id="excel-spreadsheet-pros-cons" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Excel Budget Spreadsheet: Pros & Cons</h2>
         <p class="leading-relaxed">Spreadsheets are great on desktop, but slow on phone screens. Web trackers offer instant mobile logging.</p>
+        <p class="leading-relaxed">Opening Excel on a small mobile screen at a grocery checkout counter is frustrating and slow.</p>
       </section>
       <section id="web-tracker-pros-cons" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Web Budget Tracker: Pros & Cons</h2>
@@ -305,6 +367,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <section id="why-cash-flow-kills-small-businesses" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Cash Flow Kills Small Businesses</h2>
         <p class="leading-relaxed">Small businesses often confuse top-line revenue with true profit. Mixing tax reserves with operating funds leads to unexpected tax shortfalls.</p>
+        <p class="leading-relaxed">Without separate business cash envelopes, revenue gets consumed by everyday operating costs, leaving zero money for quarterly taxes or owner compensation.</p>
       </section>
       <section id="the-4-core-business-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 4 Core Business Envelopes</h2>
@@ -760,7 +823,6 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
 
-// Localized helper to translate blog posts into Spanish, French, or German dynamically without page reload!
 export function getTranslatedBlogPost(post: BlogPost, lang: string): BlogPost {
   if (!lang || lang === 'en') return post;
 
@@ -800,7 +862,7 @@ export function getTranslatedBlogPost(post: BlogPost, lang: string): BlogPost {
       'Money Habits': 'Habitudes Financières',
       'Tools & Comparisons': 'Outils & Comparaisons',
       'Small Business & Money': 'PME & Argent',
-      'Side Hustles & Money Making': 'Revenus Complementaires',
+      'Side Hustles & Money Making': 'Revenus Complémentaires',
       'Wealth Building': 'Création de Richesse',
       'Entrepreneurship': 'Entrepreneuriat',
       'Trending Budget Challenges': 'Défis Tendance',

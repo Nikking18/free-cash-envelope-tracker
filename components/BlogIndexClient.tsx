@@ -31,6 +31,17 @@ export const BlogIndexClient: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const gtCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+      if (gtCombo && gtCombo.value !== language) {
+        gtCombo.value = language;
+        gtCombo.dispatchEvent(new Event('change'));
+        gtCombo.dispatchEvent(new Event('input'));
+      }
+    }
+  }, [language]);
+
   const handleLanguageChange = (newLang: string) => {
     setLanguage(newLang);
   };
@@ -40,7 +51,7 @@ export const BlogIndexClient: React.FC = () => {
       <GoogleTranslateScript />
 
       <header>
-        <Navbar language={language} onChangeLanguage={handleLanguageChange} />
+        <Navbar language={language} onChangeLanguage={handleLanguageChange} hideCurrencySelector={true} />
       </header>
 
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12 w-full">

@@ -18,6 +18,7 @@ interface NavbarProps {
   onChangeMainCurrency?: (currency: string) => void;
   language?: string;
   onChangeLanguage?: (lang: string) => void;
+  hideCurrencySelector?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -28,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onChangeMainCurrency = () => {},
   language = 'en',
   onChangeLanguage = () => {},
+  hideCurrencySelector = false,
 }) => {
   const [showRateInfo, setShowRateInfo] = useState(false);
   const [, setRateUpdateTick] = useState(0);
@@ -102,77 +104,79 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Currency, Language & Quick Actions */}
         <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {/* Main Currency Selector with Live Rate Info Popover */}
-          <div className="relative flex items-center shrink-0" ref={rateInfoRef}>
-            <div className="relative flex items-center">
-              <DollarSign className="w-3.5 h-3.5 text-[#141414]/70 absolute left-2 pointer-events-none hidden xs:block" />
-              <select
-                value={mainCurrency}
-                onChange={(e) => handleCurrencySelect(e.target.value)}
-                className="pl-2 xs:pl-6 pr-2 py-1.5 bg-white neo-border text-xs font-bold text-[#141414] focus:outline-hidden cursor-pointer hover:bg-gray-50"
-                title="Select Main Budget Currency"
-                aria-label="Select Main Budget Currency"
-              >
-                {supportedCurrencies.map((c) => (
-                  <option key={c.code} value={c.code}>
-                    {c.symbol} {c.code}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setShowRateInfo((prev) => !prev)}
-              className="p-1.5 ml-1 bg-white hover:bg-gray-100 text-[#141414] neo-border cursor-pointer flex items-center justify-center"
-              title="View Live Exchange Rate & Info"
-              aria-label="View Live Exchange Rate & Info"
-            >
-              <Info className="w-3.5 h-3.5 text-[#5C768D]" />
-            </button>
-
-            {/* Exchange Rate Notice Popover */}
-            {showRateInfo && (
-              <div className="absolute right-0 top-full mt-2 w-72 sm:w-80 p-4 bg-[#FCFAF7] border-3 border-[#141414] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] z-50 text-xs text-[#141414] space-y-3">
-                <div className="font-bold text-sm uppercase tracking-tight border-b-2 border-[#141414] pb-1.5 flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <RefreshCw className="w-4 h-4 text-[#8A9A5B]" />
-                    {t('exchangeRateNoticeTitle', language)}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setShowRateInfo(false)}
-                    className="text-[#141414] hover:text-red-600 font-bold p-0.5 cursor-pointer"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-
-                <div className="p-3 bg-white border-2 border-[#141414] space-y-2">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#5C768D]">
-                    {t('selectedCurrencyLabel', language)}: <strong className="text-[#141414]">{selectedCurrencyObj.name}</strong>
-                  </div>
-                  <div className="text-sm font-serif font-black text-[#8A9A5B]">
-                    1 USD = {selectedCurrencyObj.rateToUSD.toFixed(4)} {selectedCurrencyObj.code}
-                  </div>
-                  <div className="text-[10px] font-bold text-[#141414]/70">
-                    {t('liveRateSyncedLabel', language)}: {lastRateFetchTime}
-                  </div>
-                </div>
-
-                <div className="p-2.5 bg-[#FFFBEB] border-2 border-amber-500 text-[11px] font-bold text-[#141414] leading-snug">
-                  📌 <strong className="uppercase">{t('noteWord', language)}:</strong> {t('exchangeRateNoticeDesc', language)}
-                </div>
-
-                <div className="p-2 bg-gray-100 border-2 border-gray-400 text-[11px] font-bold text-[#141414]/80 leading-snug">
-                  ℹ️ {t('exchangeRateAccuracyNotice', language)}
-                </div>
-
-                <div className="p-2.5 bg-red-50 border-2 border-red-600 text-red-700 text-[11px] font-bold leading-snug">
-                  {t('currencyChangeWarning', language)}
-                </div>
+          {!hideCurrencySelector && (
+            <div className="relative flex items-center shrink-0" ref={rateInfoRef}>
+              <div className="relative flex items-center">
+                <DollarSign className="w-3.5 h-3.5 text-[#141414]/70 absolute left-2 pointer-events-none hidden xs:block" />
+                <select
+                  value={mainCurrency}
+                  onChange={(e) => handleCurrencySelect(e.target.value)}
+                  className="pl-2 xs:pl-6 pr-2 py-1.5 bg-white neo-border text-xs font-bold text-[#141414] focus:outline-hidden cursor-pointer hover:bg-gray-50"
+                  title="Select Main Budget Currency"
+                  aria-label="Select Main Budget Currency"
+                >
+                  {supportedCurrencies.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {c.symbol} {c.code}
+                    </option>
+                  ))}
+                </select>
               </div>
-            )}
-          </div>
+
+              <button
+                type="button"
+                onClick={() => setShowRateInfo((prev) => !prev)}
+                className="p-1.5 ml-1 bg-white hover:bg-gray-100 text-[#141414] neo-border cursor-pointer flex items-center justify-center"
+                title="View Live Exchange Rate & Info"
+                aria-label="View Live Exchange Rate & Info"
+              >
+                <Info className="w-3.5 h-3.5 text-[#5C768D]" />
+              </button>
+
+              {/* Exchange Rate Notice Popover */}
+              {showRateInfo && (
+                <div className="absolute right-0 top-full mt-2 w-72 sm:w-80 p-4 bg-[#FCFAF7] border-3 border-[#141414] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] z-50 text-xs text-[#141414] space-y-3">
+                  <div className="font-bold text-sm uppercase tracking-tight border-b-2 border-[#141414] pb-1.5 flex items-center justify-between">
+                    <span className="flex items-center gap-1.5">
+                      <RefreshCw className="w-4 h-4 text-[#8A9A5B]" />
+                      {t('exchangeRateNoticeTitle', language)}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setShowRateInfo(false)}
+                      className="text-[#141414] hover:text-red-600 font-bold p-0.5 cursor-pointer"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  <div className="p-3 bg-white border-2 border-[#141414] space-y-2">
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#5C768D]">
+                      {t('selectedCurrencyLabel', language)}: <strong className="text-[#141414]">{selectedCurrencyObj.name}</strong>
+                    </div>
+                    <div className="text-sm font-serif font-black text-[#8A9A5B]">
+                      1 USD = {selectedCurrencyObj.rateToUSD.toFixed(4)} {selectedCurrencyObj.code}
+                    </div>
+                    <div className="text-[10px] font-bold text-[#141414]/70">
+                      {t('liveRateSyncedLabel', language)}: {lastRateFetchTime}
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 bg-[#FFFBEB] border-2 border-amber-500 text-[11px] font-bold text-[#141414] leading-snug">
+                    📌 <strong className="uppercase">{t('noteWord', language)}:</strong> {t('exchangeRateNoticeDesc', language)}
+                  </div>
+
+                  <div className="p-2 bg-gray-100 border-2 border-gray-400 text-[11px] font-bold text-[#141414]/80 leading-snug">
+                    ℹ️ {t('exchangeRateAccuracyNotice', language)}
+                  </div>
+
+                  <div className="p-2.5 bg-red-50 border-2 border-red-600 text-red-700 text-[11px] font-bold leading-snug">
+                    {t('currencyChangeWarning', language)}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Language Selector */}
           <div className="relative flex items-center shrink-0">
