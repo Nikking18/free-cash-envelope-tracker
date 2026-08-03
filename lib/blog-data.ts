@@ -208,47 +208,90 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'How Zero-Based Budgeting Works (And How to Master It with Cash Envelopes)',
     seoTitle: 'Zero-Based Budgeting Guide & Cash Envelope Strategy (2026)',
     metaDescription: 'Master zero-based budgeting: Assign every dollar a job. Learn step-by-step formula, envelope categories, and free tools to reach zero remaining balance.',
-    keywords: ['zero based budgeting guide', 'cash envelope allocation', 'zero sum budget template', 'free budget calculator'],
+    keywords: ['zero based budgeting guide', 'cash envelope allocation', 'zero sum budget template', 'free budget calculator', 'assign every dollar a job'],
     publishDate: '2026-08-02',
     readTime: '5 min read',
     category: 'Budgeting Strategies',
     author: 'Nikhil Khanpara',
     summary: 'Zero-based budgeting ensures Income minus Expenses equals Zero. Learn how to combine zero-based budgeting with cash envelope tracking to stop money leaks.',
     tableOfContents: [
-      { id: 'what-is-zero-based-budgeting', text: '1. What is Zero-Based Budgeting?' },
-      { id: 'the-zero-sum-equation', text: '2. The Zero-Sum Equation' },
-      { id: 'categorizing-envelopes', text: '3. Categorizing Envelopes Effectively' },
-      { id: 'tracking-with-free-tools', text: '4. Tracking Zero-Based Balances Online' },
+      { id: 'what-is-zero-based-budgeting', text: '1. What is Zero-Based Budgeting & The Golden Equation' },
+      { id: 'the-four-envelope-buckets', text: '2. The 4 Essential Envelope Buckets' },
+      { id: 'step-by-step-zero-blueprint', text: '3. Step-by-Step Blueprint: From Paycheck to Zero' },
+      { id: 'real-life-4000-example', text: '4. Real-Life Example: $4,000 Paycheck Breakdown' },
+      { id: 'automating-zero-based-tracking', text: '5. Automating Zero-Based Budgeting Online' },
     ],
     contentHtml: `
       <section id="what-is-zero-based-budgeting" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. What is Zero-Based Budgeting?</h2>
-        <p class="leading-relaxed"><strong>Zero-Based Budgeting (ZBB)</strong> is a structured personal finance strategy where your monthly net income minus your total allocations (bills, envelope expenses, debt paydown, and savings) equals exactly <strong>$0.00</strong>.</p>
-        <p class="leading-relaxed">Rather than leaving unassigned money sitting in your bank account where it gets wasted on unbudgeted purchases, zero-based budgeting ensures every single dollar is intentionally assigned a purpose before the month begins.</p>
-      </section>
-
-      <section id="the-zero-sum-equation" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The Zero-Sum Equation</h2>
-        <div class="p-6 bg-[#141414] text-white font-mono text-center text-lg border-4 border-[#141414]">
-          Monthly Net Income - (Fixed Bills + Cash Envelopes + Debt Paydown + Savings) = $0.00
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. What is Zero-Based Budgeting & The Golden Equation</h2>
+        <p class="leading-relaxed"><strong>Zero-Based Budgeting (ZBB)</strong> is a disciplined personal finance methodology where your total net monthly income minus your total allocated spending, savings goals, debt payments, and sinking funds equals <strong>exactly $0.00</strong>.</p>
+        <p class="leading-relaxed">Traditional budgeting focuses on tracking money <em>after</em> it has already been spent. Zero-based budgeting flips the script by forcing you to <strong>assign every single dollar a specific job</strong> before the month begins.</p>
+        <div class="p-5 bg-[#141414] text-white font-mono text-center text-lg border-4 border-[#8A9A5B] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          Total Net Monthly Income - (Fixed Expenses + Cash Envelopes + Savings + Debt Payoff) = $0.00
         </div>
-        <p class="leading-relaxed">If your monthly income is $4,000, your total allocations across all categories must sum to exactly $4,000. If you have $150 remaining after filling your essential envelopes, route that surplus directly into a debt payoff or sinking fund envelope.</p>
       </section>
 
-      <section id="categorizing-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Categorizing Envelopes Effectively</h2>
-        <p class="leading-relaxed">Divide income into 4 primary envelope buckets to eliminate money leaks:</p>
-        <ul class="list-disc list-inside space-y-2 font-medium">
-          <li><strong>Essentials:</strong> Rent/Mortgage, Utilities, Supermarket Groceries, Vehicle Fuel.</li>
-          <li><strong>Lifestyle & Discretionary:</strong> Restaurant Dining, Clothing, Beauty/Personal Care, Hobbies.</li>
-          <li><strong>Sinking Funds:</strong> Car Repairs, Holiday Gifts, Annual Property Taxes, Medical Copays.</li>
-          <li><strong>Financial Goals:</strong> Emergency Savings Fund, High-Yield Investments, Credit Card Debt Snowball.</li>
-        </ul>
+      <section id="the-four-envelope-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 4 Essential Envelope Buckets</h2>
+        <p class="leading-relaxed">To reach a zero-sum balance, organize all your monthly cash flow into 4 non-negotiable envelope buckets:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Fixed Obligations (Bills)</strong>
+            Rent, Mortgage, Electricity, Water, Internet, Health Insurance, and Minimum Debt Payments.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Variable Living Envelopes</strong>
+            Supermarket Groceries, Vehicle Fuel/Gas, Restaurant Meals, Coffee, Beauty & Entertainment.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">3. Sinking Fund Envelopes</strong>
+            Vehicle Repairs, Holiday Gifts, Annual Property Taxes, Medical Copays, Home Maintenance.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">4. Wealth & Debt Elimination</strong>
+            Emergency Savings Fund, Debt Snowball Extra Payments, High-Yield Savings & Investments.
+          </div>
+        </div>
       </section>
 
-      <section id="tracking-with-free-tools" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Tracking Zero-Based Balances Online</h2>
-        <p class="leading-relaxed">Calculate total allocated vs spent vs available balances live without signing up at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      <section id="step-by-step-zero-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Step-by-Step Blueprint: From Paycheck to Zero</h2>
+        <ol class="list-decimal list-inside space-y-2.5 text-sm font-medium">
+          <li><strong>Identify Exact Net Pay:</strong> Calculate your exact net take-home salary after payroll taxes.</li>
+          <li><strong>Subtract Fixed Obligations First:</strong> Deduct non-negotiable rent and utility bills.</li>
+          <li><strong>Fill Variable Cash Envelopes:</strong> Allocate target spending limits for groceries, gas, and personal care.</li>
+          <li><strong>Route Remaining Dollars to Savings or Debt:</strong> If you have $250 left unassigned, send it directly into your emergency fund or debt paydown envelope until your remaining balance is $0.00.</li>
+        </ol>
+      </section>
+
+      <section id="real-life-4000-example" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Real-Life Example: $4,000 Paycheck Breakdown</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full border-2 border-[#141414] text-sm">
+            <thead class="bg-[#141414] text-white">
+              <tr>
+                <th class="p-2.5 text-left font-bold uppercase">Category / Envelope</th>
+                <th class="p-2.5 text-right font-bold uppercase">Allocated Amount</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#141414]">
+              <tr><td class="p-2.5 font-bold">Monthly Net Income</td><td class="p-2.5 text-right text-green-700 font-bold">+$4,000.00</td></tr>
+              <tr><td class="p-2.5">Rent / Mortgage & Utilities</td><td class="p-2.5 text-right">-$1,600.00</td></tr>
+              <tr><td class="p-2.5">Supermarket Groceries Envelope</td><td class="p-2.5 text-right">-$500.00</td></tr>
+              <tr><td class="p-2.5">Vehicle Fuel Envelope</td><td class="p-2.5 text-right">-$180.00</td></tr>
+              <tr><td class="p-2.5">Dining Out & Fun Envelope</td><td class="p-2.5 text-right">-$200.00</td></tr>
+              <tr><td class="p-2.5">Car Repair Sinking Fund</td><td class="p-2.5 text-right">-$150.00</td></tr>
+              <tr><td class="p-2.5">Debt Snowball Payoff Envelope</td><td class="p-2.5 text-right">-$870.00</td></tr>
+              <tr><td class="p-2.5 font-bold bg-green-50">Emergency Savings Envelope</td><td class="p-2.5 text-right font-bold text-green-700 bg-green-50">-$500.00</td></tr>
+              <tr class="bg-[#141414] text-white"><td class="p-2.5 font-bold">REMAINING UNASSIGNED BALANCE</td><td class="p-2.5 text-right font-bold">$0.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="automating-zero-based-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Automating Zero-Based Budgeting Online</h2>
+        <p class="leading-relaxed">Track your zero-based allocations and monitor total spent vs available balances live without registering at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -1320,6 +1363,211 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="the-hybrid-solution" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Der Gewinner: Die Hybride Strategie (Digital + PDF Druck)</h2>
           <p class="leading-relaxed">Nutzen Sie den digitalen Tracker unterwegs und drucken Sie bei Bedarf PDF-Ledger für Ihren Heim-Ordner aus.</p>
+        </section>
+      `,
+    },
+  },
+  'zero-based-budgeting-method': {
+    es: {
+      title: 'Cómo Funciona el Presupuesto Base Cero (Y Cómo Dominarlo con Sobres de Efectivo)',
+      summary: 'El presupuesto base cero garantiza que los ingresos menos los gastos equivalgan a cero. Aprende a combinar el presupuesto base cero con el seguimiento por sobres de efectivo.',
+      category: 'Estrategias de Presupuesto',
+      tableOfContents: [
+        { id: 'what-is-zero-based-budgeting', text: '1. ¿Qué es el Presupuesto Base Cero y la Ecuación Dorada?' },
+        { id: 'the-four-envelope-buckets', text: '2. Los 4 Bloques Esenciales de Sobres' },
+        { id: 'step-by-step-zero-blueprint', text: '3. Plan Paso a Paso: Del Cobro al Saldo Cero' },
+        { id: 'real-life-4000-example', text: '4. Ejemplo Real: Desglose de un Sueldo de $4,000' },
+        { id: 'automating-zero-based-tracking', text: '5. Automatización del Presupuesto Base Cero en Línea' },
+      ],
+      contentHtml: `
+        <section id="what-is-zero-based-budgeting" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. ¿Qué es el Presupuesto Base Cero y la Ecuación Dorada?</h2>
+          <p class="leading-relaxed"><strong>El Presupuesto Base Cero (PBC)</strong> es una metodología en la que tus ingresos netos mensuales menos tus asignaciones totales equivalen a <strong>exactamente $0.00</strong>.</p>
+          <p class="leading-relaxed">En lugar de dejar dinero no asignado en tu cuenta bancaria, el presupuesto base cero te obliga a <strong>darle a cada dólar un trabajo específico</strong> antes de que comience el mes.</p>
+          <div class="p-5 bg-[#141414] text-white font-mono text-center text-lg border-4 border-[#8A9A5B]">
+            Ingresos Netos - (Gastos Fijos + Sobres + Ahorro + Deuda) = $0.00
+          </div>
+        </section>
+
+        <section id="the-four-envelope-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Los 4 Bloques Esenciales de Sobres</h2>
+          <p class="leading-relaxed">Organiza todo tu dinero en 4 categorías principales:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">1. Obligaciones Fijas</strong>
+              Alquiler, Hipoteca, Luz, Agua, Internet, Seguros y Deudas Mínimas.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#5C768D] font-bold uppercase">2. Sobres de Gasto Variable</strong>
+              Supermercado, Gasolina, Restaurantes, Café, Cuidado Personal y Ocio.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">3. Fondos de Amortización</strong>
+              Reparaciones del Coche, Regalos, Impuestos Anuales, Gastos Médicos.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#5C768D] font-bold uppercase">4. Riqueza y Pago de Deuda</strong>
+              Fondo de Emergencia, Bola de Nieve de Deudas e Inversiones.
+            </div>
+          </div>
+        </section>
+
+        <section id="step-by-step-zero-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Plan Paso a Paso: Del Cobro al Saldo Cero</h2>
+          <ol class="list-decimal list-inside space-y-2.5 text-sm font-medium">
+            <li><strong>Identifica tus Ingresos Netos:</strong> Calcula tu salario líquido exacto.</li>
+            <li><strong>Resta las Obligaciones Fijas:</strong> Descuenta el alquiler y servicios.</li>
+            <li><strong>Rellena los Sobres Variables:</strong> Asigna límites para comida y gasolina.</li>
+            <li><strong>Asigna los Dólares Restantes a Ahorro o Deuda:</strong> Lleva el saldo no asignado a cero.</li>
+          </ol>
+        </section>
+
+        <section id="real-life-4000-example" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Ejemplo Real: Desglose de un Sueldo de $4,000</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-2 border-[#141414] text-sm">
+              <thead class="bg-[#141414] text-white">
+                <tr>
+                  <th class="p-2.5 text-left font-bold uppercase">Categoría / Sobre</th>
+                  <th class="p-2.5 text-right font-bold uppercase">Monto Asignado</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#141414]">
+                <tr><td class="p-2.5 font-bold">Ingreso Neto Mensual</td><td class="p-2.5 text-right text-green-700 font-bold">+$4,000.00</td></tr>
+                <tr><td class="p-2.5">Alquiler / Hipoteca y Servicios</td><td class="p-2.5 text-right">-$1,600.00</td></tr>
+                <tr><td class="p-2.5">Sobre de Supermercado</td><td class="p-2.5 text-right">-$500.00</td></tr>
+                <tr><td class="p-2.5">Sobre de Gasolina</td><td class="p-2.5 text-right">-$180.00</td></tr>
+                <tr><td class="p-2.5">Sobre de Restaurantes y Ocio</td><td class="p-2.5 text-right">-$200.00</td></tr>
+                <tr><td class="p-2.5">Fondo Reparación de Coche</td><td class="p-2.5 text-right">-$150.00</td></tr>
+                <tr><td class="p-2.5">Sobre Pago de Deuda</td><td class="p-2.5 text-right">-$870.00</td></tr>
+                <tr><td class="p-2.5 font-bold bg-green-50">Sobre Fondo de Emergencia</td><td class="p-2.5 text-right font-bold text-green-700 bg-green-50">-$500.00</td></tr>
+                <tr class="bg-[#141414] text-white"><td class="p-2.5 font-bold">SALDO RESTANTE NO ASIGNADO</td><td class="p-2.5 text-right font-bold">$0.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="automating-zero-based-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Automatización del Presupuesto Base Cero en Línea</h2>
+          <p class="leading-relaxed">Rastrea tus asignaciones de saldo cero en tiempo real gratis en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Comment Fonctionne le Budget à Zéro (Et Comment le Maîtriser avec des Enveloppes)',
+      summary: 'Le budget à base zéro garantit que les revenus moins les dépenses égalent zéro. Apprenez à combiner le budget à base zéro avec le suivi par enveloppes.',
+      category: 'Stratégies Budgétaires',
+      tableOfContents: [
+        { id: 'what-is-zero-based-budgeting', text: '1. Qu\'est-ce que le Budget à Zéro & L\'Équation Dorée' },
+        { id: 'the-four-envelope-buckets', text: '2. Les 4 Catégories d\'Enveloppes Essentielles' },
+        { id: 'step-by-step-zero-blueprint', text: '3. Plan Étape par Étape : Du Salaire à Zéro' },
+        { id: 'real-life-4000-example', text: '4. Exemple Concret : Répartition d\'un Salaire de 4 000 €' },
+        { id: 'automating-zero-based-tracking', text: '5. Automatiser le Suivi à Zéro en Ligne' },
+      ],
+      contentHtml: `
+        <section id="what-is-zero-based-budgeting" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Qu'est-ce que le Budget à Zéro & L'Équation Dorée</h2>
+          <p class="leading-relaxed"><strong>Le Budget à Base Zéro (BBZ)</strong> est une méthode où votre revenu mensuel net moins vos allocations totales égale <strong>exactement 0,00 €</strong>.</p>
+          <p class="leading-relaxed">Chaque euro reçoit une mission précise avant le début du mois.</p>
+          <div class="p-5 bg-[#141414] text-white font-mono text-center text-lg border-4 border-[#8A9A5B]">
+            Revenu Net - (Charges Fixes + Enveloppes + Épargne + Dettes) = 0,00 €
+          </div>
+        </section>
+
+        <section id="the-four-envelope-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 4 Catégories d'Enveloppes Essentielles</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">1. Charges Fixes</strong>
+              Loyer, Électricité, Eau, Internet, Assurances.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#5C768D] font-bold uppercase">2. Enveloppes Variables</strong>
+              Courses, Carburant, Restaurants, Soins.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">3. Épargne Téléguidée</strong>
+              Entretien Voiture, Cadeaux, Impôts.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#5C768D] font-bold uppercase">4. Épargne & Dettes</strong>
+              Fonds d'Urgence, Remboursement de Crédits.
+            </div>
+          </div>
+        </section>
+
+        <section id="step-by-step-zero-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Plan Étape par Étape : Du Salaire à Zéro</h2>
+          <p class="leading-relaxed">Allouez chaque euro restant vers votre épargne d'urgence jusqu'à obtenir un solde nul.</p>
+        </section>
+
+        <section id="real-life-4000-example" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Exemple Concret : Répartition d'un Salaire de 4 000 €</h2>
+          <p class="leading-relaxed">Visualisez le tableau complet de répartition zéro euro sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+
+        <section id="automating-zero-based-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Automatiser le Suivi à Zéro en Ligne</h2>
+          <p class="leading-relaxed">Calculez vos budgets en temps réel sans créer de compte.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Wie das Null-Basierte Budgetieren Funktioniert (Und Wie Sie es mit Umschlägen Meistern)',
+      summary: 'Null-basiertes Budgetieren stellt sicher, dass Einnahmen minus Ausgaben gleich Null ergeben. Erfahren Sie, wie Sie es mit Bargeld-Umschlägen kombinieren.',
+      category: 'Budget-Strategien',
+      tableOfContents: [
+        { id: 'what-is-zero-based-budgeting', text: '1. Was ist Null-Basiertes Budgetieren & Die Goldene Formel' },
+        { id: 'the-four-envelope-buckets', text: '2. Die 4 Essentiellen Umschlag-Kategorien' },
+        { id: 'step-by-step-zero-blueprint', text: '3. Schritt-für-Schritt Anleitung: Vom Zahltag zu Null' },
+        { id: 'real-life-4000-example', text: '4. Praxisbeispiel: 4.000 € Einkommensaufteilung' },
+        { id: 'automating-zero-based-tracking', text: '5. Null-Basiertes Tracking Online Automatisieren' },
+      ],
+      contentHtml: `
+        <section id="what-is-zero-based-budgeting" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Was ist Null-Basiertes Budgetieren & Die Goldene Formel</h2>
+          <p class="leading-relaxed">Beim <strong>Zero-Based Budgeting (ZBB)</strong> ergibt Ihr monatliches Nettoeinkommen abzüglich aller Zuweisungen <strong>exakt 0,00 €</strong>.</p>
+          <p class="leading-relaxed">Jeder einzelne Euro erhält vor Monatsbeginn eine klare Aufgabe.</p>
+          <div class="p-5 bg-[#141414] text-white font-mono text-center text-lg border-4 border-[#8A9A5B]">
+            Nettoeinkommen - (Fixkosten + Umschläge + Sparen + Schulden) = 0,00 €
+          </div>
+        </section>
+
+        <section id="the-four-envelope-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 4 Essentiellen Umschlag-Kategorien</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">1. Feste Verpflichtungen</strong>
+              Miete, Strom, Wasser, Internet, Versicherungen.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#5C768D] font-bold uppercase">2. Variable Umschläge</strong>
+              Lebensmittel, Tanken, Restaurants, Freizeit.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#8A9A5B] font-bold uppercase">3. Sinking Funds (Rücklagen)</strong>
+              Auto-Reparatur, Geschenke, Steuern.
+            </div>
+            <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+              <strong class="block text-[#5C768D] font-bold uppercase">4. Sparziele & Schuldenabbau</strong>
+              Notfallgroschen, Tilgung, Investments.
+            </div>
+          </div>
+        </section>
+
+        <section id="step-by-step-zero-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Schritt-für-Schritt Anleitung: Vom Zahltag zu Null</h2>
+          <p class="leading-relaxed">Weisen Sie verbleibendes Geld direkt dem Notfall-Umschlag zu.</p>
+        </section>
+
+        <section id="real-life-4000-example" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Praxisbeispiel: 4.000 € Einkommensaufteilung</h2>
+          <p class="leading-relaxed">Verfolgen Sie die Null-Summen-Aufteilung auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+
+        <section id="automating-zero-based-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Null-Basiertes Tracking Online Automatisieren</h2>
+          <p class="leading-relaxed">Berechnen Sie Ihre Null-Monatssummen live im Browser.</p>
         </section>
       `,
     },
