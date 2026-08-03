@@ -66,10 +66,10 @@ export const BlogIndexClient: React.FC = () => {
               <span>{t('privacyBadge', language)}</span>
             </div>
             <h2 className="font-serif font-black text-xl sm:text-2xl text-[#141414] uppercase tracking-tight">
-              Ready to start tracking your cash envelopes right now?
+              {t('blogCtaTitle', language)}
             </h2>
             <p className="text-xs sm:text-sm text-[#141414]/80 font-medium">
-              Create custom envelopes, log expenses in real-time, and download ready-to-print B&W PDF ledgers instantly in your browser.
+              {t('blogCtaDesc', language)}
             </p>
           </div>
           <Link
@@ -77,7 +77,7 @@ export const BlogIndexClient: React.FC = () => {
             className="px-6 py-3.5 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button font-serif font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shrink-0 w-full md:w-auto"
           >
             <Wallet className="w-4 h-4" />
-            <span>{t('navGoToTracker', language)}</span>
+            <span>{t('blogCtaBtn', language)}</span>
           </Link>
         </div>
 
@@ -112,14 +112,14 @@ export const BlogIndexClient: React.FC = () => {
 
               <div className="pt-4 border-t-2 border-[#141414]/10 flex items-center justify-between">
                 <span className="text-[11px] font-bold text-[#141414]/60">
-                  By {post.author}
+                  {t('blogByAuthor', language)} {post.author}
                 </span>
 
                 <Link
                   href={`/blog/${post.slug}`}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-[#141414] uppercase tracking-wider hover:text-[#8A9A5B] transition-colors"
                 >
-                  <span>Read Guide</span>
+                  <span>{t('blogReadGuide', language)}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

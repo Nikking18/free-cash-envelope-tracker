@@ -52,7 +52,7 @@ export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post }) => {
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#141414]/70">
           <Link href="/blog" className="hover:text-[#8A9A5B] flex items-center gap-1">
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>All Guides</span>
+            <span>{t('blogAllGuides', language)}</span>
           </Link>
           <span>/</span>
           <span className="text-[#8A9A5B] truncate">{post.category}</span>
@@ -71,7 +71,7 @@ export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post }) => {
           <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-[#141414]/80">
             <div className="flex items-center gap-1.5">
               <User className="w-4 h-4 text-[#8A9A5B]" />
-              <span>{post.author}</span>
+              <span>{t('blogByAuthor', language)} {post.author}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4 text-[#D15F47]" />
@@ -88,7 +88,7 @@ export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post }) => {
         {post.tableOfContents && post.tableOfContents.length > 0 && (
           <div className="bg-white border-3 border-[#141414] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
             <h3 className="font-serif font-black text-sm uppercase tracking-wide text-[#141414] flex items-center gap-2 border-b-2 border-[#141414]/10 pb-2">
-              <span>Table of Contents</span>
+              <span>{t('blogTableOfContents', language)}</span>
             </h3>
             <ul className="space-y-1.5 text-xs font-bold text-[#141414]/90">
               {post.tableOfContents.map((item) => (
@@ -113,13 +113,13 @@ export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post }) => {
           <div className="space-y-2 max-w-xl">
             <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-bold uppercase tracking-widest text-[#8A9A5B]">
               <Shield className="w-4 h-4" />
-              <span>Start Budgeting Privately Today</span>
+              <span>{t('blogStartBudgetingPrivately', language)}</span>
             </div>
             <h3 className="font-serif font-black text-xl sm:text-2xl uppercase tracking-tight text-white">
-              Try Free Cash Envelope Tracker Now
+              {t('blogTryFreeTrackerNow', language)}
             </h3>
             <p className="text-xs sm:text-sm text-gray-300 font-medium">
-              Zero registration. Zero ads. Real-time balance calculations, multi-currency support, and 1-click printable B&W PDF ledgers.
+              {t('blogTryFreeTrackerDesc', language)}
             </p>
           </div>
           <Link
@@ -127,7 +127,7 @@ export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post }) => {
             className="px-6 py-3 bg-[#8A9A5B] hover:bg-[#7a8a4b] text-white neo-button font-serif font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shrink-0 w-full sm:w-auto"
           >
             <Wallet className="w-4 h-4" />
-            <span>{t('navGoToTracker', language)}</span>
+            <span>{t('blogCtaBtn', language)}</span>
           </Link>
         </div>
 
@@ -138,7 +138,7 @@ export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post }) => {
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#141414] hover:text-[#8A9A5B]"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to All Guides</span>
+            <span>{t('blogBackToAllGuides', language)}</span>
           </Link>
         </div>
       </main>

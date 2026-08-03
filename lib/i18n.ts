@@ -252,6 +252,21 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     contactSuccessTitle: 'Thank You!',
     contactSuccessMsg: 'Thank you for your feedback! We will review your message and reach out within 24-48 hours.',
 
+    // Blog UI
+    blogHeaderTitle: 'Master Your Cash Envelope Budget',
+    blogHeaderSubtitle: 'Actionable strategies, printable PDF guides, and zero-based budgeting tips to stop overspending and reach financial freedom.',
+    blogCtaTitle: 'Ready to start tracking your cash envelopes right now?',
+    blogCtaDesc: 'Create custom envelopes, log expenses in real-time, and download ready-to-print B&W PDF ledgers instantly in your browser.',
+    blogCtaBtn: 'Launch Tracker Free',
+    blogReadGuide: 'Read Guide',
+    blogAllGuides: 'All Guides',
+    blogTableOfContents: 'Table of Contents',
+    blogBackToAllGuides: 'Back to All Guides',
+    blogByAuthor: 'By',
+    blogStartBudgetingPrivately: 'Start Budgeting Privately Today',
+    blogTryFreeTrackerNow: 'Try Free Cash Envelope Tracker Now',
+    blogTryFreeTrackerDesc: 'Zero registration. Zero ads. Real-time balance calculations, multi-currency support, and 1-click printable B&W PDF ledgers.',
+
     selectPdfTemplateTitle: 'Export PDF Statement',
     selectPdfTemplateSubtitle: 'Choose a print-ready PDF statement card layout',
     classicTemplateTitle: 'Classic Minimal (Color Accent)',
