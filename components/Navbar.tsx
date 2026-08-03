@@ -74,8 +74,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         gtCombo.value = langCode;
         gtCombo.dispatchEvent(new Event('change'));
         gtCombo.dispatchEvent(new Event('input'));
-      } else {
-        window.location.reload();
       }
     }
   };

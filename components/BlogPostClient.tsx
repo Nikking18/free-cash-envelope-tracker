@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { BlogPost } from '../lib/blog-data';
+import { BlogPost, getTranslatedBlogPost } from '../lib/blog-data';
 import { Clock, Calendar, User, ArrowLeft, Wallet, Shield } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -13,13 +13,15 @@ interface BlogPostClientProps {
   post: BlogPost;
 }
 
-export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post }) => {
+export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post: rawPost }) => {
   const [language, setLanguage] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('user_language') || 'en';
     }
     return 'en';
   });
+
+  const post = getTranslatedBlogPost(rawPost, language);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { BLOG_POSTS } from '../lib/blog-data';
+import { BLOG_POSTS, getTranslatedBlogPost } from '../lib/blog-data';
 import { BookOpen, Clock, ArrowRight, Wallet, Shield } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -83,11 +83,13 @@ export const BlogIndexClient: React.FC = () => {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post) => (
-            <article
-              key={post.slug}
-              className="bg-white border-4 border-[#141414] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all flex flex-col justify-between p-6 space-y-4"
-            >
+          {BLOG_POSTS.map((rawPost) => {
+            const post = getTranslatedBlogPost(rawPost, language);
+            return (
+              <article
+                key={post.slug}
+                className="bg-white border-4 border-[#141414] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all flex flex-col justify-between p-6 space-y-4"
+              >
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-xs font-bold text-[#141414]/70 border-b-2 border-[#141414]/10 pb-2">
                   <span className="px-2.5 py-1 bg-[#F4F1EA] border border-[#141414] uppercase tracking-wider text-[10px] text-[#141414]">
@@ -124,7 +126,8 @@ export const BlogIndexClient: React.FC = () => {
                 </Link>
               </div>
             </article>
-          ))}
+          );
+        })}
         </div>
       </main>
 

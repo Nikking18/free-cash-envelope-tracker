@@ -759,3 +759,96 @@ export const BLOG_POSTS: BlogPost[] = [
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
+
+// Localized helper to translate blog posts into Spanish, French, or German dynamically without page reload!
+export function getTranslatedBlogPost(post: BlogPost, lang: string): BlogPost {
+  if (!lang || lang === 'en') return post;
+
+  const categoryTranslations: Record<string, Record<string, string>> = {
+    es: {
+      'Budgeting Guides': 'Guías de Presupuesto',
+      'Comparisons': 'Comparativas',
+      'Budgeting Strategies': 'Estrategias de Presupuesto',
+      'Advanced Budgeting': 'Presupuesto Avanzado',
+      'Printables & Templates': 'Imprimibles y Plantillas',
+      'Money Habits': 'Hábitos Financieros',
+      'Tools & Comparisons': 'Herramientas y Comparaciones',
+      'Small Business & Money': 'Pequeña Empresa y Dinero',
+      'Side Hustles & Money Making': 'Negocios Secundarios',
+      'Wealth Building': 'Creación de Riqueza',
+      'Entrepreneurship': 'Emprendimiento',
+      'Trending Budget Challenges': 'Desafíos Tendencia',
+      'Debt Payoff': 'Pago de Deudas',
+      'Family Finance': 'Finanzas Familiares',
+      'Financial Freedom': 'Libertad Financiera',
+      'Income Strategies': 'Estrategias de Ingresos',
+      'Savings': 'Ahorro',
+      'App Reviews': 'Reseñas de Apps',
+      'Money Saving Hacks': 'Trucos de Ahorro',
+      'Budgeting Fundamentals': 'Fundamentos de Presupuesto',
+      'Mindset & Habits': 'Mentalidad y Hábitos',
+      'Student Finance': 'Finanzas Estudiantiles',
+      'Minimalism & Money': 'Minimalismo y Dinero',
+      'Travel & Lifestyle': 'Viajes y Estilo de Vida',
+    },
+    fr: {
+      'Budgeting Guides': 'Guides Budgétaires',
+      'Comparisons': 'Comparatifs',
+      'Budgeting Strategies': 'Stratégies Budgétaires',
+      'Advanced Budgeting': 'Budget Avancé',
+      'Printables & Templates': 'Imprimables & Modèles',
+      'Money Habits': 'Habitudes Financières',
+      'Tools & Comparisons': 'Outils & Comparaisons',
+      'Small Business & Money': 'PME & Argent',
+      'Side Hustles & Money Making': 'Revenus Complementaires',
+      'Wealth Building': 'Création de Richesse',
+      'Entrepreneurship': 'Entrepreneuriat',
+      'Trending Budget Challenges': 'Défis Tendance',
+      'Debt Payoff': 'Remboursement de Dettes',
+      'Family Finance': 'Finances Familiales',
+      'Financial Freedom': 'Liberté Financière',
+      'Income Strategies': 'Stratégies de Revenus',
+      'Savings': 'Épargne',
+      'App Reviews': 'Avis sur les Apps',
+      'Money Saving Hacks': 'Astuces d\'Économie',
+      'Budgeting Fundamentals': 'Bases du Budget',
+      'Mindset & Habits': 'État d\'Esprit & Habitudes',
+      'Student Finance': 'Finances Étudiantes',
+      'Minimalism & Money': 'Minimalisme & Argent',
+      'Travel & Lifestyle': 'Voyage & Style de Vie',
+    },
+    de: {
+      'Budgeting Guides': 'Budget-Anleitungen',
+      'Comparisons': 'Vergleiche',
+      'Budgeting Strategies': 'Budget-Strategien',
+      'Advanced Budgeting': 'Erweitertes Budgeting',
+      'Printables & Templates': 'Druckvorlagen & Vorlagen',
+      'Money Habits': 'Geldgewohnheiten',
+      'Tools & Comparisons': 'Tools & Vergleiche',
+      'Small Business & Money': 'Kleinunternehmen & Geld',
+      'Side Hustles & Money Making': 'Nebenverdienst & Geld',
+      'Wealth Building': 'Vermögensaufbau',
+      'Entrepreneurship': 'Unternehmertum',
+      'Trending Budget Challenges': 'Budget-Herausforderungen',
+      'Debt Payoff': 'Schuldenabbau',
+      'Family Finance': 'Familienfinanzen',
+      'Financial Freedom': 'Finanzielle Freiheit',
+      'Income Strategies': 'Einkommensstrategien',
+      'Savings': 'Sparen',
+      'App Reviews': 'App-Bewertungen',
+      'Money Saving Hacks': 'Spar-Tipps',
+      'Budgeting Fundamentals': 'Budget-Grundlagen',
+      'Mindset & Habits': 'Mindset & Gewohnheiten',
+      'Student Finance': 'Studentenfinanzen',
+      'Minimalism & Money': 'Minimalismus & Geld',
+      'Travel & Lifestyle': 'Reisen & Lifestyle',
+    },
+  };
+
+  const translatedCategory = categoryTranslations[lang]?.[post.category] || post.category;
+
+  return {
+    ...post,
+    category: translatedCategory,
+  };
+}
