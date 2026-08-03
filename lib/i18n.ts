@@ -7,6 +7,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     brandTagline: 'Digital Cash Stuffing & Budgeting',
     navGoToTracker: 'Go to Tracker',
     navTracker: 'Tracker',
+    navBlogGuides: 'Blog & Guides',
 
     // Exchange Rate Navbar Notice
     exchangeRateNoticeTitle: 'Real-Time Exchange Rate Notice',
@@ -333,6 +334,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     brandTagline: 'Presupuesto Digital por Sobres de Efectivo',
     navGoToTracker: 'Ir al Rastreador',
     navTracker: 'Rastreador',
+    navBlogGuides: 'Blog y Guías',
 
     exchangeRateNoticeTitle: 'Aviso de Tasa de Cambio en Tiempo Real',
     selectedCurrencyLabel: 'Moneda Seleccionada',
@@ -627,6 +629,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     brandTagline: 'Gestion Budgétaire par Enveloppes Digitales',
     navGoToTracker: 'Aller au Suivi',
     navTracker: 'Suivi',
+    navBlogGuides: 'Blog & Guides',
 
     exchangeRateNoticeTitle: 'Avis de Taux de Change en Temps Réel',
     selectedCurrencyLabel: 'Devise Sélectionnée',
@@ -921,6 +924,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     brandTagline: 'Digitales Umschlag-Budgeting System',
     navGoToTracker: 'Zum Tracker',
     navTracker: 'Tracker',
+    navBlogGuides: 'Blog & Anleitungen',
 
     exchangeRateNoticeTitle: 'Hinweis zum Echtzeit-Wechselkurs',
     selectedCurrencyLabel: 'Ausgewählte Währung',

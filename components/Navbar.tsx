@@ -74,6 +74,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         gtCombo.value = langCode;
         gtCombo.dispatchEvent(new Event('change'));
         gtCombo.dispatchEvent(new Event('input'));
+      } else {
+        window.location.reload();
       }
     }
   };
@@ -85,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-40 bg-[#FCFAF7] border-b-4 border-[#141414] bg-opacity-95 backdrop-blur-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
         {/* Brand Logo & Name */}
-        <a href="#" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
           <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#8A9A5B] border-3 border-[#141414] flex items-center justify-center neo-shadow-sm group-hover:-translate-y-0.5 transition-transform">
             <Wallet className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </div>
@@ -97,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {t('brandTagline', language)}
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Currency, Language & Quick Actions */}
         <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
@@ -197,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="/blog"
             className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wider bg-white text-[#141414] neo-border hover:bg-gray-100 transition-colors cursor-pointer whitespace-nowrap"
           >
-            Blog & Guides
+            {t('navBlogGuides', language)}
           </Link>
 
           {/* Go to Tracker Button */}

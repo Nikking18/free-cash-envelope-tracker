@@ -42,13 +42,21 @@ export const BLOG_POSTS: BlogPost[] = [
       <section id="how-the-envelope-system-works" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. How the Cash Envelope System Works</h2>
         <p class="leading-relaxed">Unlike digital credit cards where swiping feels frictionless, physical cash activates pain receptors in the brain when handed over. Psychological studies repeatedly prove that consumers spend up to <strong>12% to 18% less</strong> when paying with cash instead of plastic.</p>
+        <div class="bg-[#FCFAF7] border-3 border-[#141414] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+          <h4 class="font-bold uppercase tracking-wide text-sm text-[#8A9A5B]">Key Psychological Benefits:</h4>
+          <ul class="list-disc list-inside space-y-1 text-sm font-medium">
+            <li>Instant visual clarity on remaining spending capacity.</li>
+            <li>Elimination of accidental overdraft fees and high credit card interest rates.</li>
+            <li>Built-in mindfulness for everyday purchases.</li>
+          </ul>
+        </div>
       </section>
 
       <section id="step-by-step-setup" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Step-by-Step Setup Guide</h2>
         <ol class="list-decimal list-inside space-y-3 font-medium">
           <li><strong>Calculate Net Income:</strong> Determine your exact takeaway pay after taxes and fixed bill auto-deductions.</li>
-          <li><strong>Identify Variable Envelopes:</strong> Common categories include Groceries ($400), Gas ($150), Dining Out ($100).</li>
+          <li><strong>Identify Variable Envelopes:</strong> Common categories include <em>Groceries ($400), Gas ($150), Dining Out ($100), Personal Care ($80), Emergency Savings ($200)</em>.</li>
           <li><strong>Allocate & Withdraw:</strong> Fill each envelope with the exact cash amount for your budget period.</li>
           <li><strong>Track Every Expense:</strong> Log each transaction on your envelope ledger sheet or digital tracker.</li>
         </ol>
@@ -56,7 +64,26 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <section id="digital-hybrid-method" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. The Digital & Printable Hybrid Method</h2>
-        <p class="leading-relaxed">Use <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> to log transactions in real-time on your phone or laptop and export ready-to-print B&W PDF ledger sheets to insert into your physical cash binder.</p>
+        <p class="leading-relaxed">While carrying physical cash is effective, managing paper receipts can get messy. Modern budgeters use a <strong>hybrid cash envelope system</strong>:</p>
+        <ul class="list-disc list-inside space-y-2 font-medium">
+          <li>Use <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> to log transactions in real-time on your phone or laptop.</li>
+          <li>Export ready-to-print B&W PDF ledger sheets to insert into your physical cash binder.</li>
+          <li>Enjoy 100% data privacy with local browser storage and zero account registration.</li>
+        </ul>
+      </section>
+
+      <section id="common-mistakes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. 4 Mistakes to Avoid</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-white border-2 border-[#141414] font-medium text-sm">
+            <strong class="block text-red-600 font-bold uppercase mb-1">❌ Borrowing Between Envelopes</strong>
+            Shuffling money from Gas to Dining Out defeats the discipline of cash budgeting.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] font-medium text-sm">
+            <strong class="block text-red-600 font-bold uppercase mb-1">❌ Forgetting Small Cash Receipts</strong>
+            Log $3 coffee runs immediately to prevent mysterious balance discrepancies.
+          </div>
+        </div>
       </section>
     `,
   },
@@ -74,11 +101,38 @@ export const BLOG_POSTS: BlogPost[] = [
     tableOfContents: [
       { id: 'physical-envelopes-pros-cons', text: '1. Physical Cash Envelopes: Pros & Cons' },
       { id: 'digital-envelope-apps-pros-cons', text: '2. Digital Envelope Tracking: Pros & Cons' },
+      { id: 'head-to-head-comparison', text: '3. Head-to-Head Comparison Table' },
+      { id: 'the-hybrid-solution', text: '4. The Hybrid Winner: Digital Tracking + PDF Prints' },
     ],
     contentHtml: `
       <section id="physical-envelopes-pros-cons" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Physical Cash Envelopes: Pros & Cons</h2>
-        <p class="leading-relaxed">Traditional paper envelopes create high visual discipline, but risk loss or physical damage. Digital tracking on <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> keeps data 100% safe inside browser storage while enabling instant 1-click PDF exports.</p>
+        <p class="leading-relaxed">The traditional paper envelope system created by Dave Ramsey relies on hard physical cash. You physically hand over bank notes for groceries, dining, and shopping.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-green-50 border-2 border-[#141414] text-sm">
+            <strong class="block text-green-700 font-bold uppercase mb-1">Pros:</strong>
+            High emotional friction prevents overspending; simple visual boundaries; no technological dependence.
+          </div>
+          <div class="p-4 bg-red-50 border-2 border-[#141414] text-sm">
+            <strong class="block text-red-700 font-bold uppercase mb-1">Cons:</strong>
+            Risk of physical loss or theft; inconvenient for online bill payments; paper wear and tear.
+          </div>
+        </div>
+      </section>
+
+      <section id="digital-envelope-apps-pros-cons" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Digital Envelope Tracking: Pros & Cons</h2>
+        <p class="leading-relaxed">Digital envelope budgeting replicates category allocations on your smartphone or computer, allowing real-time transaction logging and instant mathematical calculations.</p>
+      </section>
+
+      <section id="head-to-head-comparison" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Head-to-Head Comparison Table</h2>
+        <p class="leading-relaxed">Digital tools eliminate paper clutter while maintaining exact mathematical accuracy. Compare features live at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+
+      <section id="the-hybrid-solution" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. The Hybrid Winner: Digital Tracking + PDF Prints</h2>
+        <p class="leading-relaxed">Combine physical binder ledgers with real-time digital logging. Print ready-to-use B&W ledger sheets with 1 click.</p>
       </section>
     `,
   },
@@ -96,11 +150,30 @@ export const BLOG_POSTS: BlogPost[] = [
     tableOfContents: [
       { id: 'what-is-zero-based-budgeting', text: '1. What is Zero-Based Budgeting?' },
       { id: 'the-zero-sum-equation', text: '2. The Zero-Sum Equation' },
+      { id: 'categorizing-envelopes', text: '3. Categorizing Envelopes Effectively' },
+      { id: 'tracking-with-free-tools', text: '4. Tracking Zero-Based Balances Online' },
     ],
     contentHtml: `
       <section id="what-is-zero-based-budgeting" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. What is Zero-Based Budgeting?</h2>
-        <p class="leading-relaxed">Assigning every dollar a job before spending begins ensures zero unbudgeted money leaks. Track your zero-based envelope totals at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        <p class="leading-relaxed"><strong>Zero-Based Budgeting (ZBB)</strong> is a financial method where your total monthly income minus your total monthly allocations (expenses, debt paydown, and savings) equals exactly <strong>$0.00</strong>.</p>
+      </section>
+
+      <section id="the-zero-sum-equation" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The Zero-Sum Equation</h2>
+        <div class="p-6 bg-[#141414] text-white font-mono text-center text-lg rounded-none border-4 border-[#141414]">
+          Income - (Envelopes + Bills + Savings + Debt) = $0.00
+        </div>
+      </section>
+
+      <section id="categorizing-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Categorizing Envelopes Effectively</h2>
+        <p class="leading-relaxed">Divide income into Essentials, Discretionary, Savings, and Debt paydown envelopes to ensure zero unassigned money leaks.</p>
+      </section>
+
+      <section id="tracking-with-free-tools" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Tracking Zero-Based Balances Online</h2>
+        <p class="leading-relaxed">Calculate total allocated vs spent vs available balances live at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -117,11 +190,21 @@ export const BLOG_POSTS: BlogPost[] = [
     summary: 'Budgeting across different currencies like USD, EUR, GBP, INR, or CAD? Discover how real-time exchange rate conversion keeps your global cash envelopes accurate.',
     tableOfContents: [
       { id: 'the-multi-currency-challenge', text: '1. The Multi-Currency Challenge' },
+      { id: 'how-live-conversions-work', text: '2. How Live Exchange Rate Conversions Work' },
+      { id: 'setting-envelope-currencies', text: '3. Setting Custom Currencies per Envelope' },
     ],
     contentHtml: `
       <section id="the-multi-currency-challenge" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Multi-Currency Challenge</h2>
-        <p class="leading-relaxed">Manage envelopes in USD, EUR, GBP, INR, and CAD with live market rates using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        <p class="leading-relaxed">Expats and international remote workers often receive income in one currency but spend in another. Standard budget tools crash or miscalculate currency symbols.</p>
+      </section>
+      <section id="how-live-conversions-work" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. How Live Exchange Rate Conversions Work</h2>
+        <p class="leading-relaxed"><a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> connects to central bank APIs to auto-convert transactions while keeping original receipt amounts recorded.</p>
+      </section>
+      <section id="setting-envelope-currencies" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Setting Custom Currencies per Envelope</h2>
+        <p class="leading-relaxed">Set USD for rent, EUR for travel, INR for family remittances, and CAD for savings envelopes independently.</p>
       </section>
     `,
   },
@@ -138,11 +221,16 @@ export const BLOG_POSTS: BlogPost[] = [
     summary: 'Prefer tactile paper binders? Learn how to generate clean, high-contrast B&W printable envelope ledgers complete with handwriting rules and notes sections.',
     tableOfContents: [
       { id: 'why-bw-printables-matter', text: '1. Why Black & White Printables Matter' },
+      { id: 'anatomy-of-a-great-ledger', text: '2. Anatomy of an Effective Envelope Ledger' },
     ],
     contentHtml: `
       <section id="why-bw-printables-matter" class="space-y-4">
         <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Black & White Printables Matter</h2>
-        <p class="leading-relaxed">Save ink and print clean binder pages at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        <p class="leading-relaxed">Color inks are expensive and bleed on paper. High-contrast Minimal B&W ledgers print cleanly on home inkjet or laser printers.</p>
+      </section>
+      <section id="anatomy-of-a-great-ledger" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Anatomy of an Effective Envelope Ledger</h2>
+        <p class="leading-relaxed">Generate 1-click B&W PDF ledger sheets complete with ruled handwriting lines at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -157,8 +245,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Money Habits',
     author: 'Nikhil Khanpara',
     summary: 'Impulse buying is the #1 obstacle to financial independence. Discover 7 psychological triggers that cash envelopes disable to protect your hard-earned money.',
-    tableOfContents: [{ id: 'the-psychology-of-impulse-spending', text: '1. The Psychology of Impulse Spending' }],
-    contentHtml: `<section id="the-psychology-of-impulse-spending" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Psychology of Impulse Spending</h2><p class="leading-relaxed">Handing over physical cash activates loss resistance, curbing emotional impulse purchases instantly.</p></section>`,
+    tableOfContents: [
+      { id: 'the-psychology-of-impulse-spending', text: '1. The Psychology of Impulse Spending' },
+      { id: '7-ways-cash-envelopes-fix-it', text: '2. 7 Ways Cash Envelopes Fix Overspending' },
+    ],
+    contentHtml: `
+      <section id="the-psychology-of-impulse-spending" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Psychology of Impulse Spending</h2>
+        <p class="leading-relaxed">Contactless card swiping removes spending friction. Handing over cash bills triggers tangible loss resistance in the brain.</p>
+      </section>
+      <section id="7-ways-cash-envelopes-fix-it" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. 7 Ways Cash Envelopes Fix Overspending</h2>
+        <p class="leading-relaxed">Hard spending ceilings, visual progress bars, and daily envelope tracking on <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a> stop emotional overspending.</p>
+      </section>
+    `,
   },
   {
     slug: 'excel-cash-envelope-template-vs-web-app',
@@ -171,8 +271,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Tools & Comparisons',
     author: 'Nikhil Khanpara',
     summary: 'Spreadsheets are flexible, but web trackers offer mobile convenience and real-time calculations. Discover why having both gives you total financial control.',
-    tableOfContents: [{ id: 'excel-spreadsheet-pros-cons', text: '1. Excel Budget Spreadsheet: Pros & Cons' }],
-    contentHtml: `<section id="excel-spreadsheet-pros-cons" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Excel Budget Spreadsheet: Pros & Cons</h2><p class="leading-relaxed">Combine web mobile speed with Excel export backups at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'excel-spreadsheet-pros-cons', text: '1. Excel Budget Spreadsheet: Pros & Cons' },
+      { id: 'web-tracker-pros-cons', text: '2. Web Budget Tracker: Pros & Cons' },
+    ],
+    contentHtml: `
+      <section id="excel-spreadsheet-pros-cons" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Excel Budget Spreadsheet: Pros & Cons</h2>
+        <p class="leading-relaxed">Spreadsheets are great on desktop, but slow on phone screens. Web trackers offer instant mobile logging.</p>
+      </section>
+      <section id="web-tracker-pros-cons" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Web Budget Tracker: Pros & Cons</h2>
+        <p class="leading-relaxed">Enjoy instant mobile tracking plus 2-sheet Excel exports at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'small-business-cash-flow-envelope-method',
@@ -185,8 +297,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Small Business & Money',
     author: 'Nikhil Khanpara',
     summary: 'Cash flow crises kill over 80% of small businesses. Learn how applying the cash envelope method to business revenue ensures tax compliance, payroll security, and profit.',
-    tableOfContents: [{ id: 'why-cash-flow-kills-small-businesses', text: '1. Why Cash Flow Kills Small Businesses' }],
-    contentHtml: `<section id="why-cash-flow-kills-small-businesses" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Cash Flow Kills Small Businesses</h2><p class="leading-relaxed">Separate tax, profit, and operating envelopes using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'why-cash-flow-kills-small-businesses', text: '1. Why Cash Flow Kills Small Businesses' },
+      { id: 'the-4-core-business-envelopes', text: '2. The 4 Core Business Envelopes' },
+    ],
+    contentHtml: `
+      <section id="why-cash-flow-kills-small-businesses" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Cash Flow Kills Small Businesses</h2>
+        <p class="leading-relaxed">Small businesses often confuse top-line revenue with true profit. Mixing tax reserves with operating funds leads to unexpected tax shortfalls.</p>
+      </section>
+      <section id="the-4-core-business-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 4 Core Business Envelopes</h2>
+        <p class="leading-relaxed">Partition revenue into Profit, Tax Reserve, Founder Salary, and Operating Expense envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'side-hustle-money-tracking-guide',
@@ -199,8 +323,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Side Hustles & Money Making',
     author: 'Nikhil Khanpara',
     summary: 'Earning extra money from rideshare, freelancing, or e-commerce? Learn how to separate your side hustle cash flow from personal spending.',
-    tableOfContents: [{ id: 'why-side-hustlers-need-envelopes', text: '1. Why Side Hustlers Need Cash Envelopes' }],
-    contentHtml: `<section id="why-side-hustlers-need-envelopes" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Side Hustlers Need Cash Envelopes</h2><p class="leading-relaxed">Track gig receipts and export tax spreadsheets at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'why-side-hustlers-need-envelopes', text: '1. Why Side Hustlers Need Cash Envelopes' },
+      { id: 'essential-side-hustle-envelopes', text: '2. Essential Side Hustle Envelopes' },
+    ],
+    contentHtml: `
+      <section id="why-side-hustlers-need-envelopes" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Side Hustlers Need Cash Envelopes</h2>
+        <p class="leading-relaxed">Keeping side income separate protects your tax savings and gives you true clarity on net hourly profit.</p>
+      </section>
+      <section id="essential-side-hustle-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Essential Side Hustle Envelopes</h2>
+        <p class="leading-relaxed">Track materials, gig tools, and tax reserves cleanly at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'how-to-save-first-10k-fast',
@@ -213,8 +349,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Wealth Building',
     author: 'Nikhil Khanpara',
     summary: 'Reaching a 5-figure savings goal transforms your financial security. Follow this concrete blueprint to save $10,000 in 6 to 12 months using cash envelopes.',
-    tableOfContents: [{ id: 'the-10k-math-breakdown', text: '1. The $10,000 Math Breakdown' }],
-    contentHtml: `<section id="the-10k-math-breakdown" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The $10,000 Math Breakdown</h2><p class="leading-relaxed">Break $10,000 into daily allocations and track progress at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'the-10k-math-breakdown', text: '1. The $10,000 Math Breakdown' },
+      { id: 'building-the-10k-envelope-system', text: '2. Building Your $10K Envelope System' },
+    ],
+    contentHtml: `
+      <section id="the-10k-math-breakdown" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The $10,000 Math Breakdown</h2>
+        <p class="leading-relaxed">Save $833/month or $27.40/day to reach $10,000 in 12 months.</p>
+      </section>
+      <section id="building-the-10k-envelope-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Building Your $10K Envelope System</h2>
+        <p class="leading-relaxed">Track your $10,000 progress bar visually at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'micro-business-budgeting-hacks',
@@ -227,8 +375,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Entrepreneurship',
     author: 'Nikhil Khanpara',
     summary: 'Irregular income is the biggest stressor for solopreneurs. Discover 5 practical cash envelope budgeting hacks to smooth out dry spells and protect your business.',
-    tableOfContents: [{ id: '5-hacks-overview', text: '1. The 5 Solopreneur Money Hacks' }],
-    contentHtml: `<section id="5-hacks-overview" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 5 Solopreneur Money Hacks</h2><p class="leading-relaxed">Smooth erratic revenue with income buffer envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: '5-hacks-overview', text: '1. The 5 Solopreneur Money Hacks' },
+      { id: 'implementing-income-buffers', text: '2. Implementing an Income Hill-and-Valley Buffer' },
+    ],
+    contentHtml: `
+      <section id="5-hacks-overview" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 5 Solopreneur Money Hacks</h2>
+        <p class="leading-relaxed">Pay yourself a steady salary and maintain hill-and-valley buffer envelopes.</p>
+      </section>
+      <section id="implementing-income-buffers" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Implementing an Income Hill-and-Valley Buffer</h2>
+        <p class="leading-relaxed">Smooth irregular invoice payments using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'passive-income-and-cash-allocation',
@@ -241,8 +401,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Wealth Building',
     author: 'Nikhil Khanpara',
     summary: 'Generating passive revenue is step one; allocating it strategically creates permanent wealth. Learn how to direct passive cash flow into debt snowballs and investment envelopes.',
-    tableOfContents: [{ id: 'the-passive-income-trap', text: '1. The Passive Income Trap' }],
-    contentHtml: `<section id="the-passive-income-trap" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Passive Income Trap</h2><p class="leading-relaxed">Route passive dividends straight into debt payoff envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'the-passive-income-trap', text: '1. The Passive Income Trap' },
+      { id: 'allocating-passive-cash-flow', text: '2. Allocating Passive Cash Flow Step-by-Step' },
+    ],
+    contentHtml: `
+      <section id="the-passive-income-trap" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Passive Income Trap</h2>
+        <p class="leading-relaxed">Prevent lifestyle creep by locking passive earnings into dedicated debt avalanche and investment envelopes.</p>
+      </section>
+      <section id="allocating-passive-cash-flow" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Allocating Passive Cash Flow Step-by-Step</h2>
+        <p class="leading-relaxed">Track passive revenue allocations at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'cash-stuffing-challenges-2026',
@@ -255,8 +427,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Trending Budget Challenges',
     author: 'Nikhil Khanpara',
     summary: 'Viral money challenges on TikTok and YouTube inspire millions to save. We break down the math of the 100-Envelope Challenge ($5,050) vs the 52-Week Challenge ($1,378).',
-    tableOfContents: [{ id: '100-envelope-challenge-explained', text: '1. The 100-Envelope Challenge ($5,050 Savings)' }],
-    contentHtml: `<section id="100-envelope-challenge-explained" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 100-Envelope Challenge ($5,050 Savings)</h2><p class="leading-relaxed">Track viral money challenges digitally at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: '100-envelope-challenge-explained', text: '1. The 100-Envelope Challenge ($5,050 Savings)' },
+      { id: '52-week-challenge-explained', text: '2. The 52-Week Challenge ($1,378 Savings)' },
+    ],
+    contentHtml: `
+      <section id="100-envelope-challenge-explained" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 100-Envelope Challenge ($5,050 Savings)</h2>
+        <p class="leading-relaxed">Save $5,050 in 100 steps by stuffing numbered envelopes.</p>
+      </section>
+      <section id="52-week-challenge-explained" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 52-Week Challenge ($1,378 Savings)</h2>
+        <p class="leading-relaxed">Track both money challenges digitally at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'debt-snowball-vs-avalanche-method',
@@ -269,8 +453,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Debt Payoff',
     author: 'Nikhil Khanpara',
     summary: 'Struggling with credit card debt or loans? Discover whether psychological quick wins (Snowball) or interest optimization (Avalanche) will get you debt-free faster.',
-    tableOfContents: [{ id: 'snowball-vs-avalanche', text: '1. Debt Snowball vs. Debt Avalanche' }],
-    contentHtml: `<section id="snowball-vs-avalanche" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Debt Snowball vs. Debt Avalanche</h2><p class="leading-relaxed">Log debt payoff envelopes and celebrate every eliminated balance at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'snowball-vs-avalanche', text: '1. Debt Snowball vs. Debt Avalanche' },
+      { id: 'how-envelopes-accelerate-payoff', text: '2. How Cash Envelopes Accelerate Debt Payoff' },
+    ],
+    contentHtml: `
+      <section id="snowball-vs-avalanche" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Debt Snowball vs. Debt Avalanche</h2>
+        <p class="leading-relaxed">The Debt Snowball targets smallest balances first for psychological momentum, while the Debt Avalanche targets highest interest rates to save money.</p>
+      </section>
+      <section id="how-envelopes-accelerate-payoff" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. How Cash Envelopes Accelerate Debt Payoff</h2>
+        <p class="leading-relaxed">Assign extra savings straight into a Debt Elimination envelope at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'budgeting-for-couples-and-families',
@@ -283,8 +479,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Family Finance',
     author: 'Nikhil Khanpara',
     summary: 'Money disagreement is a leading cause of relationship stress. Learn how joint household envelopes plus separate personal fun money envelopes create financial harmony.',
-    tableOfContents: [{ id: 'couples-budget-alignment', text: '1. Aligning Household Finances as a Couple' }],
-    contentHtml: `<section id="couples-budget-alignment" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Aligning Household Finances as a Couple</h2><p class="leading-relaxed">Set up shared digital cash envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'couples-budget-alignment', text: '1. Aligning Household Finances as a Couple' },
+      { id: 'the-three-envelope-system', text: '2. The 3-Bucket System for Couples' },
+    ],
+    contentHtml: `
+      <section id="couples-budget-alignment" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Aligning Household Finances as a Couple</h2>
+        <p class="leading-relaxed">Combine joint household bills while maintaining guilt-free personal spending allowances.</p>
+      </section>
+      <section id="the-three-envelope-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 3-Bucket System for Couples</h2>
+        <p class="leading-relaxed">Manage joint groceries, utilities, and date night envelopes together at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'paycheck-to-paycheck-escape-plan',
@@ -297,8 +505,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Financial Freedom',
     author: 'Nikhil Khanpara',
     summary: 'Living paycheck to paycheck causes constant financial panic. Discover how building a 30-day cash buffer breaks the cycle once and for all.',
-    tableOfContents: [{ id: 'breaking-the-cycle', text: '1. Breaking the Paycheck Cycle' }],
-    contentHtml: `<section id="breaking-the-cycle" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Breaking the Paycheck Cycle</h2><p class="leading-relaxed">Build a 30-day cash buffer envelope using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'breaking-the-cycle', text: '1. Breaking the Paycheck Cycle' },
+      { id: 'building-a-one-month-buffer', text: '2. Building a 1-Month Cash Buffer' },
+    ],
+    contentHtml: `
+      <section id="breaking-the-cycle" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Breaking the Paycheck Cycle</h2>
+        <p class="leading-relaxed">The secret to escaping paycheck panic is spending last month’s income rather than relying on next week’s paycheck.</p>
+      </section>
+      <section id="building-a-one-month-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Building a 1-Month Cash Buffer</h2>
+        <p class="leading-relaxed">Track your 1-month buffer envelope using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'how-to-budget-with-irregular-income',
@@ -311,8 +531,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Income Strategies',
     author: 'Nikhil Khanpara',
     summary: 'Variable paychecks make traditional rigid budgets fail. Learn how baseline envelopes and hill-valley reserves stabilize your household finances.',
-    tableOfContents: [{ id: 'baseline-budgeting', text: '1. Setting Your Baseline Envelope Amounts' }],
-    contentHtml: `<section id="baseline-budgeting" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Setting Your Baseline Envelope Amounts</h2><p class="leading-relaxed">Organize variable income cash envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'baseline-budgeting', text: '1. Setting Your Baseline Envelope Amounts' },
+      { id: 'managing-high-income-months', text: '2. Managing High-Income Months' },
+    ],
+    contentHtml: `
+      <section id="baseline-budgeting" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Setting Your Baseline Envelope Amounts</h2>
+        <p class="leading-relaxed">Calculate your lowest historical monthly income and set your baseline essentials to match that minimum figure.</p>
+      </section>
+      <section id="managing-high-income-months" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Managing High-Income Months</h2>
+        <p class="leading-relaxed">Deposit high commission surplus straight into buffer envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'emergency-fund-101-guide',
@@ -325,8 +557,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Savings',
     author: 'Nikhil Khanpara',
     summary: 'An emergency fund prevents unexpected medical or vehicle bills from becoming high-interest credit card debt. Calculate your exact target emergency envelope amount.',
-    tableOfContents: [{ id: 'emergency-fund-calculator', text: '1. Emergency Fund Calculation' }],
-    contentHtml: `<section id="emergency-fund-calculator" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Emergency Fund Calculation</h2><p class="leading-relaxed">Track emergency savings envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'emergency-fund-calculator', text: '1. Emergency Fund Calculation' },
+      { id: 'where-to-keep-emergency-cash', text: '2. Where to Store Emergency Cash' },
+    ],
+    contentHtml: `
+      <section id="emergency-fund-calculator" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Emergency Fund Calculation</h2>
+        <p class="leading-relaxed">Multiply core monthly expenses by 3 to 6 months to determine your total safety cushion.</p>
+      </section>
+      <section id="where-to-keep-emergency-cash" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Where to Store Emergency Cash</h2>
+        <p class="leading-relaxed">Track emergency fund envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'best-free-budgeting-apps-no-bank-link',
@@ -339,8 +583,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'App Reviews',
     author: 'Nikhil Khanpara',
     summary: 'Protecting your financial data is paramount. Explore top privacy-first budget tools that require zero bank credentials or email registration.',
-    tableOfContents: [{ id: 'privacy-first-apps', text: '1. Top Privacy-First Budgeting Tools' }],
-    contentHtml: `<section id="privacy-first-apps" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Top Privacy-First Budgeting Tools</h2><p class="leading-relaxed">Start budgeting instantly with zero login at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'privacy-first-apps', text: '1. Top Privacy-First Budgeting Tools' },
+      { id: 'why-no-bank-sync-matters', text: '2. Why No-Bank-Sync Protects You' },
+    ],
+    contentHtml: `
+      <section id="privacy-first-apps" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Top Privacy-First Budgeting Tools</h2>
+        <p class="leading-relaxed">Connecting bank credentials to 3rd-party apps creates security risks. Manual local browser tracking gives you 100% data ownership.</p>
+      </section>
+      <section id="why-no-bank-sync-matters" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Why No-Bank-Sync Protects You</h2>
+        <p class="leading-relaxed">Start budgeting instantly with zero login at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'grocery-budgeting-hacks-inflation',
@@ -353,8 +609,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Money Saving Hacks',
     author: 'Nikhil Khanpara',
     summary: 'Grocery prices are rising fast. Learn how enforcing a strict cash-only grocery envelope caps supermarket spending and eliminates food waste.',
-    tableOfContents: [{ id: 'grocery-hacks', text: '1. 10 Grocery Envelope Hacks' }],
-    contentHtml: `<section id="grocery-hacks" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. 10 Grocery Envelope Hacks</h2><p class="leading-relaxed">Enforce your grocery cash envelope at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'grocery-hacks', text: '1. 10 Grocery Envelope Hacks' },
+      { id: 'enforcing-grocery-limits', text: '2. Enforcing Grocery Envelope Limits' },
+    ],
+    contentHtml: `
+      <section id="grocery-hacks" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. 10 Grocery Envelope Hacks</h2>
+        <p class="leading-relaxed">Shop with a strict cash envelope, leave cards at home, plan meals around store sales, and log every receipt.</p>
+      </section>
+      <section id="enforcing-grocery-limits" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Enforcing Grocery Envelope Limits</h2>
+        <p class="leading-relaxed">Monitor your grocery envelope progress bar live at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'sinking-funds-explained',
@@ -367,8 +635,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Budgeting Fundamentals',
     author: 'Nikhil Khanpara',
     summary: 'Annual insurance bills, holiday shopping, and vehicle maintenance shouldn’t crash your monthly budget. Learn how sinking funds smooth out non-monthly expenses.',
-    tableOfContents: [{ id: 'sinking-funds-101', text: '1. Sinking Funds 101' }],
-    contentHtml: `<section id="sinking-funds-101" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Sinking Funds 101</h2><p class="leading-relaxed">Build vehicle repair and holiday sinking fund envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'sinking-funds-101', text: '1. Sinking Funds 101' },
+      { id: 'top-5-sinking-fund-categories', text: '2. Top 5 Sinking Fund Envelope Categories' },
+    ],
+    contentHtml: `
+      <section id="sinking-funds-101" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Sinking Funds 101</h2>
+        <p class="leading-relaxed">A sinking fund is money set aside incrementally each month to pay for a specific future expense like car insurance ($1,200/year = $100/month).</p>
+      </section>
+      <section id="top-5-sinking-fund-categories" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Top 5 Sinking Fund Envelope Categories</h2>
+        <p class="leading-relaxed">Set up vehicle repair, property tax, and holiday sinking fund envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'financial-mindset-and-money-habits',
@@ -381,8 +661,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Mindset & Habits',
     author: 'Nikhil Khanpara',
     summary: 'Financial success is 80% behavior and 20% head knowledge. Learn how visual cash envelope discipline builds confidence and eliminates financial stress.',
-    tableOfContents: [{ id: 'rewiring-money-habits', text: '1. Rewiring Money Habits' }],
-    contentHtml: `<section id="rewiring-money-habits" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Rewiring Money Habits</h2><p class="leading-relaxed">Build lifelong financial discipline at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'rewiring-money-habits', text: '1. Rewiring Money Habits' },
+      { id: 'building-financial-confidence', text: '2. Building Financial Confidence' },
+    ],
+    contentHtml: `
+      <section id="rewiring-money-habits" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Rewiring Money Habits</h2>
+        <p class="leading-relaxed">Visual boundaries eliminate scarcity mindsets and create intentional spending habits.</p>
+      </section>
+      <section id="building-financial-confidence" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Building Financial Confidence</h2>
+        <p class="leading-relaxed">Build lifelong financial peace using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'college-student-budgeting-guide',
@@ -395,8 +687,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Student Finance',
     author: 'Nikhil Khanpara',
     summary: 'Managing money in college for the first time? Cash envelopes give students clear spending boundaries for textbooks, coffee, and social outings.',
-    tableOfContents: [{ id: 'student-budget-101', text: '1. College Student Budget 101' }],
-    contentHtml: `<section id="student-budget-101" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. College Student Budget 101</h2><p class="leading-relaxed">Track student cash envelopes for free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'student-budget-101', text: '1. College Student Budget 101' },
+      { id: 'student-envelope-categories', text: '2. Top Student Cash Envelopes' },
+    ],
+    contentHtml: `
+      <section id="student-budget-101" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. College Student Budget 101</h2>
+        <p class="leading-relaxed">Prevent campus credit card debt by keeping campus spending constrained to cash envelopes.</p>
+      </section>
+      <section id="student-envelope-categories" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Top Student Cash Envelopes</h2>
+        <p class="leading-relaxed">Track textbook, coffee, and social envelopes for free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'minimalist-budgeting-method',
@@ -409,8 +713,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Minimalism & Money',
     author: 'Nikhil Khanpara',
     summary: 'Complex 50-category budgets lead to burnout. Minimalist budgeting focuses on 3 to 5 essential cash envelopes for ultimate financial peace.',
-    tableOfContents: [{ id: 'minimalist-rules', text: '1. The 3 Rules of Minimalist Budgeting' }],
-    contentHtml: `<section id="minimalist-rules" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 3 Rules of Minimalist Budgeting</h2><p class="leading-relaxed">Keep budgeting simple with minimalist envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'minimalist-rules', text: '1. The 3 Rules of Minimalist Budgeting' },
+      { id: 'uncluttering-your-finances', text: '2. Uncluttering Your Financial Life' },
+    ],
+    contentHtml: `
+      <section id="minimalist-rules" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 3 Rules of Minimalist Budgeting</h2>
+        <p class="leading-relaxed">Focus on 3 main categories: Essentials, Savings, and Everything Else.</p>
+      </section>
+      <section id="uncluttering-your-finances" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Uncluttering Your Financial Life</h2>
+        <p class="leading-relaxed">Keep budgeting uncluttered at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
   {
     slug: 'holiday-and-vacation-cash-envelope-planner',
@@ -423,8 +739,20 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Travel & Lifestyle',
     author: 'Nikhil Khanpara',
     summary: 'Traveling on cash means enjoying your trip debt-free. Learn how to calculate daily vacation spending envelopes for food, activities, and souvenirs.',
-    tableOfContents: [{ id: 'vacation-cash-planning', text: '1. Vacation Cash Planning' }],
-    contentHtml: `<section id="vacation-cash-planning" class="space-y-4"><h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Vacation Cash Planning</h2><p class="leading-relaxed">Plan debt-free vacation envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p></section>`,
+    tableOfContents: [
+      { id: 'vacation-cash-planning', text: '1. Vacation Cash Planning' },
+      { id: 'avoiding-post-vacation-debt', text: '2. Avoiding Post-Vacation Credit Debt' },
+    ],
+    contentHtml: `
+      <section id="vacation-cash-planning" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Vacation Cash Planning</h2>
+        <p class="leading-relaxed">Divide travel costs into Flight, Accommodation, Food, and Souvenir cash envelopes before departure.</p>
+      </section>
+      <section id="avoiding-post-vacation-debt" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Avoiding Post-Vacation Credit Debt</h2>
+        <p class="leading-relaxed">Plan debt-free vacation envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+      </section>
+    `,
   },
 ];
 
