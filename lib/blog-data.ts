@@ -1771,17 +1771,53 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Traveling on cash means enjoying your trip debt-free. Learn how to calculate daily vacation spending envelopes for food, activities, and souvenirs.',
     tableOfContents: [
-      { id: 'vacation-cash-planning', text: '1. Vacation Cash Planning' },
-      { id: 'avoiding-post-vacation-debt', text: '2. Avoiding Post-Vacation Credit Debt' },
+      { id: 'post-vacation-credit-hangover', text: '1. The Post-Vacation Credit Card Hangover' },
+      { id: 'calculating-all-inclusive-travel-costs', text: '2. Step 1: Calculating All-Inclusive Travel Costs' },
+      { id: 'daily-vacation-cash-envelopes', text: '3. Building Daily Vacation Cash Envelopes' },
+      { id: 'holiday-gift-sinking-envelope-strategy', text: '4. The Christmas & Holiday Gift Cash Strategy' },
+      { id: 'managing-travel-envelopes-online', text: '5. Managing Travel Envelopes Online Free' },
     ],
     contentHtml: `
-      <section id="vacation-cash-planning" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Vacation Cash Planning</h2>
-        <p class="leading-relaxed">Divide travel costs into Flight, Accommodation, Food, and Souvenir cash envelopes before departure.</p>
+      <section id="post-vacation-credit-hangover" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Post-Vacation Credit Card Hangover</h2>
+        <p class="leading-relaxed">Vacations and holidays are meant for relaxation and joy. Yet millions of travelers return home from vacation to face a **Post-Vacation Credit Card Hangover**—monthly statements packed with high-interest credit card debt from flights, restaurants, resort fees, and impulse purchases.</p>
+        <p class="leading-relaxed">Paying for a 7-day vacation over 12 to 24 months with 24% interest ruins the memories of the trip. By saving for travel using a **Cash Envelope Vacation Planner**, you enjoy your vacation guilt-free and return home with $0 debt!</p>
       </section>
-      <section id="avoiding-post-vacation-debt" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Avoiding Post-Vacation Credit Debt</h2>
-        <p class="leading-relaxed">Plan debt-free vacation envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="calculating-all-inclusive-travel-costs" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Step 1: Calculating All-Inclusive Travel Costs</h2>
+        <p class="leading-relaxed">Before booking flights, calculate the true all-inclusive cost of your trip by breaking it down into 6 core travel categories:</p>
+        <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+          <li><strong>Transportation:</strong> Flights, rental car, gas, tolls, parking, and airport shuttles.</li>
+          <li><strong>Lodging & Resort Fees:</strong> Hotels, Airbnb, city tourist taxes, and resort amenities.</li>
+          <li><strong>Dining & Drinks:</strong> Daily meals, snacks, coffee runs, and evening drinks.</li>
+          <li><strong>Activities & Excursions:</strong> Museum tickets, tour guides, boat rentals, and theme park passes.</li>
+          <li><strong>Souvenirs & Gifts:</strong> Mementos for family, local crafts, and duty-free shopping.</li>
+          <li><strong>Buffer & Emergency Transit:</strong> Rideshare backups, unexpected luggage fees, or tip cash.</li>
+        </ul>
+      </section>
+
+      <section id="daily-vacation-cash-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Building Daily Vacation Cash Envelopes</h2>
+        <p class="leading-relaxed">Instead of carrying one giant wad of cash on vacation, create **Daily Cash Envelopes** for each day of your trip (e.g., "Day 1 - Monday", "Day 2 - Tuesday"):</p>
+        <div class="p-4 bg-[#FCFAF7] border-3 border-[#141414] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2 text-sm font-medium">
+          <strong class="block text-[#8A9A5B] font-bold uppercase">The Daily Cash Envelope Hack:</strong>
+          <p class="text-xs text-[#141414]/80">Stuff $150 cash into each daily envelope. Each morning, take ONLY that day's envelope out of the hotel safe. When the cash is spent, you are done spending for the day! Unspent cash rolls over into a bonus souvenir envelope.</p>
+        </div>
+      </section>
+
+      <section id="holiday-gift-sinking-envelope-strategy" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. The Christmas & Holiday Gift Cash Strategy</h2>
+        <p class="leading-relaxed">Christmas happens every year on December 25th, yet December spending shocks millions of families into January credit card debt. Build a **Holiday Sinking Envelope** starting in January:</p>
+        <div class="p-4 bg-white border-2 border-[#141414] text-center font-mono font-bold text-sm">
+          Target Holiday Budget ($1,200) ÷ 12 Months = $100 / Month Sinking Envelope
+        </div>
+        <p class="leading-relaxed text-xs font-medium text-[#141414]/80">Come November, you have $1,200 cash ready to buy gifts, groceries, and decorations stress-free!</p>
+      </section>
+
+      <section id="managing-travel-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Managing Travel Envelopes Online Free</h2>
+        <p class="leading-relaxed">Set vacation sinking goals, track daily envelope balances, and export clean 2-sheet Excel accounting logs free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -4948,6 +4984,122 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="managing-minimalist-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Minimalistische Umschläge Online Kostenlos Verwalten</h2>
           <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'holiday-and-vacation-cash-envelope-planner': {
+    es: {
+      title: 'Cómo Ahorrar para Vacaciones y Fiestas Solo en Efectivo (Sin Deudas)',
+      summary: 'Viajar con efectivo significa disfrutar de tu viaje sin deudas. Aprende a calcular sobres diarios para comida, actividades y regalos.',
+      category: 'Viajes y Estilo de Vida',
+      tableOfContents: [
+        { id: 'post-vacation-credit-hangover', text: '1. La Resaca Financiera Post-Vacaciones' },
+        { id: 'calculating-all-inclusive-travel-costs', text: '2. Paso 1: Calcular los Costos Totales de Viaje' },
+        { id: 'daily-vacation-cash-envelopes', text: '3. Construir Sobres Diarios de Vacaciones' },
+        { id: 'holiday-gift-sinking-envelope-strategy', text: '4. Estrategia de Sobres de Ahorro para Navidad' },
+        { id: 'managing-travel-envelopes-online', text: '5. Gestión de Sobres de Viaje en Línea Gratis' },
+      ],
+      contentHtml: `
+        <section id="post-vacation-credit-hangover" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Resaca Financiera Post-Vacaciones</h2>
+          <p class="leading-relaxed">Evita regresar a casa con facturas de tarjeta de crédito con intereses elevados.</p>
+        </section>
+
+        <section id="calculating-all-inclusive-travel-costs" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Paso 1: Calcular los Costos Totales de Viaje</h2>
+          <p class="leading-relaxed">Calcula transporte, alojamiento, comidas, actividades y recuerdos.</p>
+        </section>
+
+        <section id="daily-vacation-cash-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Construir Sobres Diarios de Vacaciones</h2>
+          <p class="leading-relaxed">Usa un sobre en efectivo por cada día de viaje para controlar el gasto.</p>
+        </section>
+
+        <section id="holiday-gift-sinking-envelope-strategy" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Estrategia de Sobres de Ahorro para Navidad</h2>
+          <p class="leading-relaxed">Ahorra mes a mes desde enero para las compras navideñas.</p>
+        </section>
+
+        <section id="managing-travel-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gestión de Sobres de Viaje en Línea Gratis</h2>
+          <p class="leading-relaxed">Organiza tus viajes sin deudas en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Comment Épargner pour les Vacances et Fêtes en Cash (Sans Dette)',
+      summary: 'Voyager en argent liquide permet de profiter pleinement sans dettes. Apprenez à calculer vos enveloppes journalières.',
+      category: 'Voyages et Style de Vie',
+      tableOfContents: [
+        { id: 'post-vacation-credit-hangover', text: '1. La Gueule de Bois Financière Post-Vacances' },
+        { id: 'calculating-all-inclusive-travel-costs', text: '2. Étape 1 : Calculer le Coût Total du Voyage' },
+        { id: 'daily-vacation-cash-envelopes', text: '3. Créer des Enveloppes Journalières de Vacances' },
+        { id: 'holiday-gift-sinking-envelope-strategy', text: '4. Stratégie d\'Enveloppe d\'Épargne pour Noël' },
+        { id: 'managing-travel-envelopes-online', text: '5. Gérer ses Enveloppes Vacances en Ligne Gratuitement' },
+      ],
+      contentHtml: `
+        <section id="post-vacation-credit-hangover" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Gueule de Bois Financière Post-Vacances</h2>
+          <p class="leading-relaxed">Ne gâchez pas vos souvenirs de vacances avec des dettes de carte bancaire.</p>
+        </section>
+
+        <section id="calculating-all-inclusive-travel-costs" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Étape 1 : Calculer le Coût Total du Voyage</h2>
+          <p class="leading-relaxed">Anticipez les transports, le logement, les repas et les excursions.</p>
+        </section>
+
+        <section id="daily-vacation-cash-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Créer des Enveloppes Journalières de Vacances</h2>
+          <p class="leading-relaxed">Utilisez une enveloppe de cash par jour de voyage.</p>
+        </section>
+
+        <section id="holiday-gift-sinking-envelope-strategy" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Stratégie d'Enveloppe d'Épargne pour Noël</h2>
+          <p class="leading-relaxed">Préparez le budget des fêtes dès le mois de janvier.</p>
+        </section>
+
+        <section id="managing-travel-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gérer ses Enveloppes Vacances en Ligne Gratuitement</h2>
+          <p class="leading-relaxed">Planifiez vos voyages sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Sparen für Urlaub & Feiertage Nur mit Bargeld (Ohne Schulden)',
+      summary: 'Reisen mit Bargeld bedeutet Ihren Urlaub schuldenfrei zu genießen. Erfahren Sie, wie Sie Tages-Umschläge für Essen und Ausflüge anlegen.',
+      category: 'Reisen & Lifestyle',
+      tableOfContents: [
+        { id: 'post-vacation-credit-hangover', text: '1. Der Urlaubs-Kreditkarten-Kater' },
+        { id: 'calculating-all-inclusive-travel-costs', text: '2. Schritt 1: Gesamte Reisekosten Berechnen' },
+        { id: 'daily-vacation-cash-envelopes', text: '3. Tages-Umschläge für den Urlaub Erstellen' },
+        { id: 'holiday-gift-sinking-envelope-strategy', text: '4. Spar-Umschlag-Strategie für Weihnachtsgeschenke' },
+        { id: 'managing-travel-envelopes-online', text: '5. Reise-Umschläge Online Kostenlos Verwalten' },
+      ],
+      contentHtml: `
+        <section id="post-vacation-credit-hangover" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Der Urlaubs-Kreditkarten-Kater</h2>
+          <p class="leading-relaxed">Vermeiden Sie teure Kreditkartenabrechnungen nach der Heimkehr.</p>
+        </section>
+
+        <section id="calculating-all-inclusive-travel-costs" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Schritt 1: Gesamte Reisekosten Berechnen</h2>
+          <p class="leading-relaxed">Planen Sie Anreise, Unterkunft, Verpflegung und Souvenirs ein.</p>
+        </section>
+
+        <section id="daily-vacation-cash-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Tages-Umschläge für den Urlaub Erstellen</h2>
+          <p class="leading-relaxed">Nutzen Sie einen separaten Bar-Umschlag für jeden Urlaubstag.</p>
+        </section>
+
+        <section id="holiday-gift-sinking-envelope-strategy" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Spar-Umschlag-Strategie für Weihnachtsgeschenke</h2>
+          <p class="leading-relaxed">Sparen Sie ab Januar monatlich für Weihnachtsgeschenke an.</p>
+        </section>
+
+        <section id="managing-travel-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Reise-Umschläge Online Kostenlos Verwalten</h2>
+          <p class="leading-relaxed">Planen Sie Urlaube auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
