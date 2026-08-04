@@ -585,24 +585,70 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Cash flow crises kill over 80% of small businesses. Learn how applying the cash envelope method to business revenue ensures tax compliance, payroll security, and profit.',
     tableOfContents: [
-      { id: 'why-cash-flow-kills-small-businesses', text: '1. Why Cash Flow Kills Small Businesses' },
-      { id: 'the-4-core-business-envelopes', text: '2. The 4 Core Business Envelopes' },
+      { id: 'why-cash-flow-kills-small-businesses', text: '1. Why Cash Flow Crises Kill 82% of Small Businesses' },
+      { id: 'profit-first-envelope-system', text: '2. The Profit-First Envelope System' },
+      { id: 'the-4-core-business-envelopes', text: '3. The 4 Core Business Cash Envelopes' },
+      { id: 'allocating-client-invoices', text: '4. Step-by-Step Blueprint: Allocating Client Revenue' },
+      { id: 'managing-business-envelopes-online', text: '5. Managing Business Cash Envelopes Online' },
     ],
     contentHtml: `
       <section id="why-cash-flow-kills-small-businesses" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Cash Flow Kills Small Businesses</h2>
-        <p class="leading-relaxed">Small businesses often mistake revenue for profit. Mixing client income with quarterly tax reserves and operating capital leads to devastating tax bills and payroll shortfalls.</p>
-        <p class="leading-relaxed">By partitioning incoming client payments into dedicated business cash envelopes, business owners guarantee profitability from day one.</p>
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Cash Flow Crises Kill 82% of Small Businesses</h2>
+        <p class="leading-relaxed">According to small business administration studies, over <strong>82% of small business failures are directly caused by poor cash flow management</strong> rather than a lack of revenue or sales volume.</p>
+        <p class="leading-relaxed">Many small business owners mistake top-line invoice revenue for spending money. Mixing client payments with quarterly sales tax reserves and operating capital leads to devastating surprise tax bills, depleted cash reserves, and payroll shortfalls.</p>
       </section>
+
+      <section id="profit-first-envelope-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The Profit-First Envelope System</h2>
+        <p class="leading-relaxed">Inspired by the famous <em>Profit First</em> accounting methodology, applying cash envelope budgeting to small business revenue flips traditional accounting on its head:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-red-50 border-2 border-red-600 text-sm space-y-1">
+            <strong class="block text-red-700 font-bold uppercase">Traditional Business Accounting:</strong>
+            Sales - Operating Expenses = Leftover Profit (Often $0 or Negative)
+          </div>
+          <div class="p-4 bg-green-50 border-2 border-green-700 text-sm space-y-1">
+            <strong class="block text-green-700 font-bold uppercase">Envelope Business Accounting:</strong>
+            Sales - (Tax Envelope + Owner Pay + Profit Envelope) = Allowed OpEx Ceiling
+          </div>
+        </div>
+      </section>
+
       <section id="the-4-core-business-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 4 Core Business Envelopes</h2>
-        <p class="leading-relaxed">Partition business revenue into 4 essential envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>:</p>
-        <ul class="list-disc list-inside space-y-2 text-sm font-medium">
-          <li><strong>Tax Reserve Envelope (25% - 30%):</strong> Protected capital reserved strictly for quarterly sales/income taxes.</li>
-          <li><strong>Owner Compensation (30% - 40%):</strong> Dedicated salary payments for the business founder.</li>
-          <li><strong>Profit Envelope (5% - 10%):</strong> Unallocated profit reserve for business growth or dividends.</li>
-          <li><strong>Operating Expenses (OpEx):</strong> Software subscriptions, inventory, and marketing.</li>
-        </ul>
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. The 4 Core Business Cash Envelopes</h2>
+        <p class="leading-relaxed">To guarantee tax compliance and profitability, partition every incoming client invoice or cash sale into 4 non-negotiable business envelopes:</p>
+        <div class="space-y-3">
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Quarterly Tax Reserve Envelope (25% - 30%)</strong>
+            Protected capital reserved strictly for quarterly sales tax, VAT, and corporate income taxes.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Owner Compensation & Payroll Envelope (30% - 40%)</strong>
+            Guaranteed salary payments for the business founder and key employee payroll.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">3. Business Profit Reserve Envelope (5% - 10%)</strong>
+            Unallocated cash reserve accumulated for quarterly dividend payouts or emergency reserves.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">4. Operating Expenses Envelope (OpEx)</strong>
+            Software subscriptions, marketing, inventory, office supplies, and web hosting.
+          </div>
+        </div>
+      </section>
+
+      <section id="allocating-client-invoices" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Step-by-Step Blueprint: Allocating Client Revenue</h2>
+        <ol class="list-decimal list-inside space-y-2.5 text-sm font-medium">
+          <li><strong>Deposit Customer Payments:</strong> Collect customer payments in your primary business checking account.</li>
+          <li><strong>Perform Bi-Weekly Allocation Runs:</strong> On the 1st and 15th of every month, total all new deposits.</li>
+          <li><strong>Distribute Percentages to Envelopes:</strong> Route 30% to Tax, 40% to Owner Pay, 10% to Profit, and 20% to OpEx.</li>
+          <li><strong>Cap Operating Expenses Strictly:</strong> Pay business vendor bills strictly out of the OpEx envelope balance.</li>
+        </ol>
+      </section>
+
+      <section id="managing-business-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Managing Business Cash Envelopes Online</h2>
+        <p class="leading-relaxed">Track your business cash envelopes, monitor tax reserves, and export formatted 2-sheet Excel accounting files live for free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -2211,6 +2257,137 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="the-ultimate-hybrid-winner" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Der Gewinner: Web-App + 1-Klick Excel Export</h2>
           <p class="leading-relaxed">Nutzen Sie den mobilen Tracker und exportieren Sie Tabellen per Klick.</p>
+        </section>
+      `,
+    },
+  },
+  'small-business-cash-flow-envelope-method': {
+    es: {
+      title: 'Gestión del Flujo de Caja para Pequeñas Empresas: Cómo el Método de Sobres Mantiene la Rentabilidad',
+      summary: 'Las crisis de flujo de caja destruyen a más del 80% de las pequeñas empresas. Aprende cómo aplicar el método de sobres de efectivo a los ingresos para garantizar impuestos, nóminas y beneficios.',
+      category: 'Pequeña Empresa y Dinero',
+      tableOfContents: [
+        { id: 'why-cash-flow-kills-small-businesses', text: '1. Por Qué las Crisis de Flujo de Caja Destruyen al 82% de las Pymes' },
+        { id: 'profit-first-envelope-system', text: '2. El Sistema de Sobres de Beneficios Primero' },
+        { id: 'the-4-core-business-envelopes', text: '3. Los 4 Sobres Principales para Empresas' },
+        { id: 'allocating-client-invoices', text: '4. Plan Paso a Paso: Asignación de Ingresos de Clientes' },
+        { id: 'managing-business-envelopes-online', text: '5. Gestión de Sobres de Empresa en Línea' },
+      ],
+      contentHtml: `
+        <section id="why-cash-flow-kills-small-businesses" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Por Qué las Crisis de Flujo de Caja Destruyen al 82% de las Pymes</h2>
+          <p class="leading-relaxed">Estudios empresariales muestran que más del <strong>82% de los fracasos de pequeñas empresas son causados por una mala gestión del flujo de caja</strong>.</p>
+          <p class="leading-relaxed">Mezclar cobros de clientes con reservas de impuestos produce sorpresas fiscales y falta de liquidez.</p>
+        </section>
+
+        <section id="profit-first-envelope-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. El Sistema de Sobres de Beneficios Primero</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-red-50 border-2 border-red-600 text-sm space-y-1">
+              <strong class="block text-red-700 font-bold uppercase">Contabilidad Tradicional:</strong>
+              Ventas - Gastos de Operación = Beneficio Restante
+            </div>
+            <div class="p-4 bg-green-50 border-2 border-green-700 text-sm space-y-1">
+              <strong class="block text-green-700 font-bold uppercase">Contabilidad con Sobres:</strong>
+              Ventas - (Impuestos + Sueldo Propietario + Beneficio) = Límite para Gastos
+            </div>
+          </div>
+        </section>
+
+        <section id="the-4-core-business-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Los 4 Sobres Principales para Empresas</h2>
+          <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+            <li><strong>Sobre de Reserva de Impuestos (25% - 30%):</strong> Fondos protegidos para impuestos trimestrales.</li>
+            <li><strong>Sobre de Sueldo de Propietario (30% - 40%):</strong> Salarios garantizados para los fundadores.</li>
+            <li><strong>Sobre de Beneficios (5% - 10%):</strong> Reservas de acumulado para dividendos.</li>
+            <li><strong>Sobre de Gastos de Operación (OpEx):</strong> Suscripciones, marketing y compras.</li>
+          </ul>
+        </section>
+
+        <section id="allocating-client-invoices" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Plan Paso a Paso: Asignación de Ingresos de Clientes</h2>
+          <p class="leading-relaxed">Divide cada factura cobrada en porcentajes directos a tus 4 sobres.</p>
+        </section>
+
+        <section id="managing-business-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gestión de Sobres de Empresa en Línea</h2>
+          <p class="leading-relaxed">Gestiona tus sobres de empresa gratis en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Gestion de la Trésorerie des PME : Comment la Méthode des Enveloppes Assure la Rentabilité',
+      summary: 'Les crises de trésorerie tuent plus de 80 % des petites entreprises. Découvrez comment séparer vos revenus en enveloppes impôts, salaires et bénéfices.',
+      category: 'PME & Argent',
+      tableOfContents: [
+        { id: 'why-cash-flow-kills-small-businesses', text: '1. Pourquoi les Crises de Trésorerie Tuent 82 % des PME' },
+        { id: 'profit-first-envelope-system', text: '2. Le Système d\'Enveloppes Profit First' },
+        { id: 'the-4-core-business-envelopes', text: '3. Les 4 Enveloppes Entreprise Principales' },
+        { id: 'allocating-client-invoices', text: '4. Plan Étape par Étape : Allouer le Chiffre d\'Affaires' },
+        { id: 'managing-business-envelopes-online', text: '5. Gérer les Enveloppes Entreprise en Ligne' },
+      ],
+      contentHtml: `
+        <section id="why-cash-flow-kills-small-businesses" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Pourquoi les Crises de Trésorerie Tuent 82 % des PME</h2>
+          <p class="leading-relaxed">La mauvaise gestion de trésorerie est la première cause de faillite des petites entreprises.</p>
+        </section>
+
+        <section id="profit-first-envelope-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Le Système d'Enveloppes Profit First</h2>
+          <p class="leading-relaxed">Déduisez le bénéfice et les impôts avant d'allouer le budget de fonctionnement.</p>
+        </section>
+
+        <section id="the-4-core-business-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Les 4 Enveloppes Entreprise Principales</h2>
+          <p class="leading-relaxed">Impôts (30%), Salaire Dirigeant (40%), Bénéfice (10%) et Charges d'Exploitation (20%).</p>
+        </section>
+
+        <section id="allocating-client-invoices" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Plan Étape par Étape : Allouer le Chiffre d'Affaires</h2>
+          <p class="leading-relaxed">Répartissez immédiatement chaque facture encaissée.</p>
+        </section>
+
+        <section id="managing-business-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gérer les Enveloppes Entreprise en Ligne</h2>
+          <p class="leading-relaxed">Suivez votre trésorerie sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Cashflow-Management für Kleinunternehmen: Wie die Umschlag-Methode Betriebe Profitabel Hält',
+      summary: 'Cashflow-Krisen ruinieren über 80 % der Kleinunternehmen. Erfahren Sie, wie das Umschlag-System Steuern, Gehälter und Gewinne sichert.',
+      category: 'Kleinunternehmen & Geld',
+      tableOfContents: [
+        { id: 'why-cash-flow-kills-small-businesses', text: '1. Warum Cashflow-Krisen 82 % der Firmen Zerstören' },
+        { id: 'profit-first-envelope-system', text: '2. Das Profit-First Umschlag-System' },
+        { id: 'the-4-core-business-envelopes', text: '3. Die 4 Kern-Umschläge für Unternehmen' },
+        { id: 'allocating-client-invoices', text: '4. Schritt-für-Schritt Anleitung: Einnahmen Aufteilen' },
+        { id: 'managing-business-envelopes-online', text: '5. Business-Umschläge Online Verwalten' },
+      ],
+      contentHtml: `
+        <section id="why-cash-flow-kills-small-businesses" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Warum Cashflow-Krisen 82 % der Firmen Zerstören</h2>
+          <p class="leading-relaxed">Mangelnde Cashflow-Disziplin führt zu unerwarteten Steuernachzahlungen und Engpässen.</p>
+        </section>
+
+        <section id="profit-first-envelope-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Das Profit-First Umschlag-System</h2>
+          <p class="leading-relaxed">Einnahmen minus (Steuern + Inhabergehalt + Gewinn) = Erlaubtes Betriebskosten-Limit.</p>
+        </section>
+
+        <section id="the-4-core-business-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Die 4 Kern-Umschläge für Unternehmen</h2>
+          <p class="leading-relaxed">Steuer-Rücklage (30%), Inhaber-Gehalt (40%), Gewinn-Reserve (10%) und Betriebsausgaben (20%).</p>
+        </section>
+
+        <section id="allocating-client-invoices" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Schritt-für-Schritt Anleitung: Einnahmen Aufteilen</h2>
+          <p class="leading-relaxed">Verteilen Sie Kunden-Zahlungen sofort per Prozentsatz auf Ihre Umschläge.</p>
+        </section>
+
+        <section id="managing-business-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Business-Umschläge Online Verwalten</h2>
+          <p class="leading-relaxed">Verwalten Sie Ihre Firmen-Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
