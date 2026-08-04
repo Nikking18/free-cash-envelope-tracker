@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { BlogPost, getTranslatedBlogPost } from '../lib/blog-data';
+import { BLOG_POSTS, BlogPost, getTranslatedBlogPost } from '../lib/blog-data';
 import { Clock, Calendar, User, ArrowLeft, Wallet, Shield } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -143,6 +143,43 @@ export const BlogPostClient: React.FC<BlogPostClientProps> = ({ post: rawPost })
             <span>{t('blogCtaBtn', language)}</span>
           </Link>
         </div>
+
+        {/* Recommended Masterclasses / Internal Links */}
+        <section className="pt-8 border-t-4 border-[#141414] space-y-6">
+          <h2 className="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">
+            Recommended Financial Guides & Masterclasses
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {BLOG_POSTS.filter((p) => p.slug !== rawPost.slug)
+              .slice(0, 3)
+              .map((rawRel) => {
+                const rel = getTranslatedBlogPost(rawRel, language);
+                return (
+                  <Link
+                    key={rel.slug}
+                    href={`/blog/${rel.slug}`}
+                    className="group bg-white border-3 border-[#141414] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(138,154,91,1)] transition-all flex flex-col justify-between"
+                  >
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-[#8A9A5B] px-2 py-0.5 inline-block">
+                        {rel.category}
+                      </span>
+                      <h3 className="font-serif font-black text-base text-[#141414] group-hover:text-[#8A9A5B] line-clamp-2 uppercase tracking-tight">
+                        {rel.title}
+                      </h3>
+                      <p className="text-xs text-[#141414]/70 line-clamp-3 leading-relaxed">
+                        {rel.summary}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-[#141414]/10 flex items-center justify-between text-[11px] font-bold text-[#8A9A5B]">
+                      <span>Read Guide</span>
+                      <span>→</span>
+                    </div>
+                  </Link>
+                );
+              })}
+          </div>
+        </section>
 
         {/* Related Navigation */}
         <div className="pt-6 border-t-2 border-[#141414]/10 flex items-center justify-between">
