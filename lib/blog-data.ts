@@ -1190,17 +1190,51 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Living paycheck to paycheck causes constant financial panic. Discover how building a 30-day cash buffer breaks the cycle once and for all.',
     tableOfContents: [
-      { id: 'breaking-the-cycle', text: '1. Breaking the Paycheck Cycle' },
-      { id: 'building-a-one-month-buffer', text: '2. Building a 1-Month Cash Buffer' },
+      { id: 'paycheck-to-paycheck-trap', text: '1. The Paycheck-to-Paycheck Trap (Why 64% of Earners Struggle)' },
+      { id: 'phase-1-audit-and-freeze', text: '2. Phase 1: The 30-Day Expense Audit & Tactical Freeze' },
+      { id: 'phase-2-building-the-1-month-buffer', text: '3. Phase 2: Building the $1,000 Starter Buffer Envelope' },
+      { id: 'phase-3-zero-based-envelope-stuffing', text: '4. Phase 3: Transitioning to Zero-Based Cash Stuffing' },
+      { id: 'executing-escape-plan-online', text: '5. Executing Your 30-Day Escape Plan Online Free' },
     ],
     contentHtml: `
-      <section id="breaking-the-cycle" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Breaking the Paycheck Cycle</h2>
-        <p class="leading-relaxed">The secret to escaping paycheck panic is spending last month’s income rather than relying on next week’s paycheck.</p>
+      <section id="paycheck-to-paycheck-trap" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Paycheck-to-Paycheck Trap (Why 64% of Earners Struggle)</h2>
+        <p class="leading-relaxed">Over 64% of American households live paycheck to paycheck. The core cause is not always low income—it is **timing vulnerability**. When you rely on next Friday's paycheck to pay this Friday's electric bill or grocery tab, a single unexpected car repair or medical copay triggers overdraft fees and high-interest debt.</p>
+        <p class="leading-relaxed">To break the cycle permanently, you must flip your cash timing: **you must live on last month's income rather than next week's paycheck**.</p>
       </section>
-      <section id="building-a-one-month-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Building a 1-Month Cash Buffer</h2>
-        <p class="leading-relaxed">Track your 1-month buffer envelope using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="phase-1-audit-and-freeze" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Phase 1: The 30-Day Expense Audit & Tactical Freeze</h2>
+        <p class="leading-relaxed">Days 1 through 10 focus on halting financial bleed and uncovering hidden cash leaks:</p>
+        <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+          <li><strong>Audit 90 Days of Bank Statements:</strong> Highlight every recurring subscription, dining out charge, and micro-transaction.</li>
+          <li><strong>Cancel Non-Essential Subscriptions:</strong> Pause streaming services, unused gym memberships, and meal kits for 30 days.</li>
+          <li><strong>Execute a 7-Day Pantry Challenge:</strong> Eat exclusively from existing pantry and freezer groceries to save $150–$300 immediately.</li>
+        </ul>
+      </section>
+
+      <section id="phase-2-building-the-1-month-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Phase 2: Building the $1,000 Starter Buffer Envelope</h2>
+        <p class="leading-relaxed">Days 11 through 20 are dedicated to accumulating a minimum <strong>$1,000 Starter Buffer Envelope</strong> before making major debt payments:</p>
+        <div class="p-4 bg-[#FCFAF7] border-3 border-[#141414] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2 text-sm font-medium">
+          <strong class="block text-[#8A9A5B] font-bold uppercase">Why a $1,000 Buffer Shield Changes Everything:</strong>
+          <p class="text-xs text-[#141414]/80">Without a $1,000 buffer, an unexpected flat tire forces you back onto a credit card. With a $1,000 buffer envelope, an emergency is no longer a financial disaster—it is simply a minor inconvenience paid in cash.</p>
+        </div>
+      </section>
+
+      <section id="phase-3-zero-based-envelope-stuffing" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Phase 3: Transitioning to Zero-Based Cash Stuffing</h2>
+        <p class="leading-relaxed">Days 21 through 30 mark the transition to zero-based cash envelope allocation:</p>
+        <ol class="list-decimal list-inside space-y-2.5 text-sm font-medium">
+          <li><strong>Assign Every Dollar a Job:</strong> Income minus Expenses (Bills + Envelopes + Savings) = <strong>$0.00</strong>.</li>
+          <li><strong>Stuff Variable Category Envelopes:</strong> Allocate physical cash or digital envelope balances for Groceries, Fuel, Dining, and Personal Care.</li>
+          <li><strong>Lock Fixed Expenses:</strong> Automate rent and utility payments directly from your checking account buffer.</li>
+        </ol>
+      </section>
+
+      <section id="executing-escape-plan-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Executing Your 30-Day Escape Plan Online Free</h2>
+        <p class="leading-relaxed">Track your 30-day expense freeze, monitor your $1,000 buffer envelope, and export 2-sheet Excel accounting logs free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -3557,6 +3591,122 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="managing-couples-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gemeinsame Haushalts-Umschläge Online Kostenlos Verwalten</h2>
           <p class="leading-relaxed">Verwalten Sie Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'paycheck-to-paycheck-escape-plan': {
+    es: {
+      title: 'Cómo Dejar de Vivir al Día en 30 Días (Plan Paso a Paso)',
+      summary: 'Vivir de cheque en cheque causa pánico financiero constante. Descubre cómo construir un colchón de 30 días rompe el ciclo para siempre.',
+      category: 'Libertad Financiera',
+      tableOfContents: [
+        { id: 'paycheck-to-paycheck-trap', text: '1. La Trampa de Vivir al Día' },
+        { id: 'phase-1-audit-and-freeze', text: '2. Fase 1: Auditoría de 30 Días y Congelación Táctica' },
+        { id: 'phase-2-building-the-1-month-buffer', text: '3. Fase 2: Construcción del Colchón de $1,000' },
+        { id: 'phase-3-zero-based-envelope-stuffing', text: '4. Fase 3: Transición al Sistema de Sobres en Cero' },
+        { id: 'executing-escape-plan-online', text: '5. Ejecuta tu Plan de Escape en Línea Gratis' },
+      ],
+      contentHtml: `
+        <section id="paycheck-to-paycheck-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Trampa de Vivir al Día</h2>
+          <p class="leading-relaxed">Aprende a vivir con los ingresos del mes pasado en lugar del próximo cheque.</p>
+        </section>
+
+        <section id="phase-1-audit-and-freeze" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Fase 1: Auditoría de 30 Días y Congelación Táctica</h2>
+          <p class="leading-relaxed">Elimina suscripciones innecesarias y realiza un reto de despensa de 7 días.</p>
+        </section>
+
+        <section id="phase-2-building-the-1-month-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Fase 2: Construcción del Colchón de $1,000</h2>
+          <p class="leading-relaxed">Acumula un sobre de amortiguación de $1,000 para emergencias.</p>
+        </section>
+
+        <section id="phase-3-zero-based-envelope-stuffing" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Fase 3: Transición al Sistema de Sobres en Cero</h2>
+          <p class="leading-relaxed">Asigna cada dólar a un propósito específico antes de gastar.</p>
+        </section>
+
+        <section id="executing-escape-plan-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Ejecuta tu Plan de Escape en Línea Gratis</h2>
+          <p class="leading-relaxed">Supervisa tu plan de escape en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Comment Arrêter de Vivre au Jour le Jour en 30 Jours (Plan Étape par Étape)',
+      summary: 'Vivre d\'une paie à l\'autre provoque une panique constante. Découvrez comment construire une réserve de 30 jours pour briser le cercle vicieux.',
+      category: 'Indépendance Financière',
+      tableOfContents: [
+        { id: 'paycheck-to-paycheck-trap', text: '1. Le Piège de la Paie à la Paie' },
+        { id: 'phase-1-audit-and-freeze', text: '2. Phase 1 : Audit sur 30 Jours & Gel des Dépenses' },
+        { id: 'phase-2-building-the-1-month-buffer', text: '3. Phase 2 : Créer le Tampon de Départ de 1 000 €' },
+        { id: 'phase-3-zero-based-envelope-stuffing', text: '4. Phase 3 : Passer à la Remplissage d\'Enveloppes à Zéro' },
+        { id: 'executing-escape-plan-online', text: '5. Exécuter votre Plan d\'Échappée en Ligne Gratuitement' },
+      ],
+      contentHtml: `
+        <section id="paycheck-to-paycheck-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Le Piège de la Paie à la Paie</h2>
+          <p class="leading-relaxed">Apprenez à vivre sur le revenu du mois dernier.</p>
+        </section>
+
+        <section id="phase-1-audit-and-freeze" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Phase 1 : Audit sur 30 Jours & Gel des Dépenses</h2>
+          <p class="leading-relaxed">Stoppez les fuites d'argent inutiles.</p>
+        </section>
+
+        <section id="phase-2-building-the-1-month-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Phase 2 : Créer le Tampon de Départ de 1 000 €</h2>
+          <p class="leading-relaxed">Constituez une réserve de sécurité d'urgence.</p>
+        </section>
+
+        <section id="phase-3-zero-based-envelope-stuffing" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Phase 3 : Passer à la Remplissage d'Enveloppes à Zéro</h2>
+          <p class="leading-relaxed">Donnez un rôle précis à chaque euro.</p>
+        </section>
+
+        <section id="executing-escape-plan-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Exécuter votre Plan d'Échappée en Ligne Gratuitement</h2>
+          <p class="leading-relaxed">Suivez votre plan sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'In 30 Tagen Nicht Mehr von Gehalt zu Gehalt Leben (Schritt-für-Schritt Anleitung)',
+      summary: 'Von Gehaltsscheck zu Gehaltsscheck zu leben erzeugt ständige Finanzpanik. Erfahren Sie, wie ein 30-Tage-Puffer den Teufelskreis durchbricht.',
+      category: 'Finanzielle Freiheit',
+      tableOfContents: [
+        { id: 'paycheck-to-paycheck-trap', text: '1. Die Gehalt-zu-Gehalt Falle' },
+        { id: 'phase-1-audit-and-freeze', text: '2. Phase 1: 30-Tage Ausgaben-Audit & Stop' },
+        { id: 'phase-2-building-the-1-month-buffer', text: '3. Phase 2: Aufbau des 1.000 € Starter-Puffers' },
+        { id: 'phase-3-zero-based-envelope-stuffing', text: '4. Phase 3: Umstellung auf Null-Basierte Umschläge' },
+        { id: 'executing-escape-plan-online', text: '5. Ihren 30-Tage Rettungsplan Online Kostenlos Umsetzen' },
+      ],
+      contentHtml: `
+        <section id="paycheck-to-paycheck-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Die Gehalt-zu-Gehalt Falle</h2>
+          <p class="leading-relaxed">Lernen Sie, vom Einkommen des letzten Monats zu leben.</p>
+        </section>
+
+        <section id="phase-1-audit-and-freeze" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Phase 1: 30-Tage Ausgaben-Audit & Stop</h2>
+          <p class="leading-relaxed">Stoppen Sie unnötige Abos und Spontankäufe.</p>
+        </section>
+
+        <section id="phase-2-building-the-1-month-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Phase 2: Aufbau des 1.000 € Starter-Puffers</h2>
+          <p class="leading-relaxed">Bauen Sie einen Notfall-Umschlag von 1.000 € auf.</p>
+        </section>
+
+        <section id="phase-3-zero-based-envelope-stuffing" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Phase 3: Umstellung auf Null-Basierte Umschläge</h2>
+          <p class="leading-relaxed">Weisen Sie jedem Euro einen festen Zweck zu.</p>
+        </section>
+
+        <section id="executing-escape-plan-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Ihren 30-Tage Rettungsplan Online Kostenlos Umsetzen</h2>
+          <p class="leading-relaxed">Verfolgen Sie Ihren Plan auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
