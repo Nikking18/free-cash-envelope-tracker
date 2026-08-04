@@ -1250,17 +1250,50 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Variable paychecks make traditional rigid budgets fail. Learn how baseline envelopes and hill-valley reserves stabilize your household finances.',
     tableOfContents: [
-      { id: 'baseline-budgeting', text: '1. Setting Your Baseline Envelope Amounts' },
-      { id: 'managing-high-income-months', text: '2. Managing High-Income Months' },
+      { id: 'irregular-income-rollercoaster', text: '1. The Irregular Income Rollercoaster' },
+      { id: 'calculating-baseline-budget', text: '2. Step 1: Calculating Your Non-Negotiable Baseline Budget' },
+      { id: 'hill-valley-buffer-envelope', text: '3. Step 2: The Hill & Valley Buffer Envelope' },
+      { id: 'high-income-waterfall-rules', text: '4. Step 3: High-Income Month Priority Waterfall Rules' },
+      { id: 'managing-variable-envelopes-online', text: '5. Managing Irregular Cash Envelopes Online Free' },
     ],
     contentHtml: `
-      <section id="baseline-budgeting" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Setting Your Baseline Envelope Amounts</h2>
-        <p class="leading-relaxed">Calculate your lowest historical monthly income and set your baseline essentials to match that minimum figure.</p>
+      <section id="irregular-income-rollercoaster" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Irregular Income Rollercoaster</h2>
+        <p class="leading-relaxed">Real estate agents, commission salespeople, freelancers, and hourly workers face a unique financial challenge: **unpredictable income**. One month you might earn $8,500, followed by two months earning only $2,200.</p>
+        <p class="leading-relaxed">Traditional rigid monthly budgets fail for irregular income earners because they assume a fixed paycheck. When a low-earning month strikes, fixed expenses spark panic. The key to financial peace is building a **Baseline Envelope System with a Hill & Valley Buffer**.</p>
       </section>
-      <section id="managing-high-income-months" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Managing High-Income Months</h2>
-        <p class="leading-relaxed">Deposit high commission surplus straight into buffer envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="calculating-baseline-budget" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Step 1: Calculating Your Non-Negotiable Baseline Budget</h2>
+        <p class="leading-relaxed">Look back over the past 12 months and identify your **lowest earning month** (e.g., $2,500). Your non-negotiable baseline budget must fit entirely within this minimum earnings threshold:</p>
+        <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+          <li><strong>Four Walls Protection:</strong> Housing/Mortgage, Basic Groceries, Utilities, and Transportation.</li>
+          <li><strong>Minimum Debt Obligations:</strong> Statutory minimum payments on all loans and credit cards.</li>
+          <li><strong>Essential Insurance & Tax Reserves:</strong> Set aside 25% for quarterly taxes if self-employed.</li>
+        </ul>
+      </section>
+
+      <section id="hill-valley-buffer-envelope" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Step 2: The Hill & Valley Buffer Envelope</h2>
+        <p class="leading-relaxed">The <strong>Hill & Valley Buffer Envelope</strong> acts as a shock absorber. During high-earning months ("Hills"), surplus cash is saved directly into your Hill & Valley Buffer rather than spent on luxury items.</p>
+        <p class="leading-relaxed">When a low-earning month ("Valley") hits, you draw cash from your Hill & Valley Buffer envelope to top off your baseline household budget to 100%. This ensures your family receives a smooth, steady salary every single month regardless of sales commissions.</p>
+      </section>
+
+      <section id="high-income-waterfall-rules" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Step 3: High-Income Month Priority Waterfall Rules</h2>
+        <p class="leading-relaxed">When a big commission check lands, route surplus funds down the **Priority Waterfall** in strict sequential order:</p>
+        <ol class="list-decimal list-inside space-y-2.5 text-sm font-medium">
+          <li><strong>Tax Envelope (25% - 30%):</strong> Immediately lock away self-employment tax obligations.</li>
+          <li><strong>Fund Next Month's Baseline (100%):</strong> Pre-fund all baseline envelopes for the upcoming month.</li>
+          <li><strong>Fill Hill & Valley Buffer:</strong> Top off your buffer envelope to 2 to 3 months of baseline expenses.</li>
+          <li><strong>Debt Avalanche / Snowball (Extra Principal):</strong> Direct 50% of remaining surplus to debt elimination.</li>
+          <li><strong>Fun & Lifestyle Upgrades (50%):</strong> Enjoy the remainder guilt-free!</li>
+        </ol>
+      </section>
+
+      <section id="managing-variable-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Managing Irregular Cash Envelopes Online Free</h2>
+        <p class="leading-relaxed">Track your Hill & Valley Buffer, set variable commission envelopes, and export clean 2-sheet Excel accounting logs free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -3707,6 +3740,122 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="executing-escape-plan-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Ihren 30-Tage Rettungsplan Online Kostenlos Umsetzen</h2>
           <p class="leading-relaxed">Verfolgen Sie Ihren Plan auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'how-to-budget-with-irregular-income': {
+    es: {
+      title: 'Cómo Presupuestar con Ingresos Irregulares: Comisiones, Freelance y Pagos por Hora',
+      summary: 'Los cheques variables hacen fracasar los presupuestos rígidos tradicionales. Aprende cómo los sobres base y la reserva de amortiguación estabilizan las finanzas.',
+      category: 'Estrategias de Ingresos',
+      tableOfContents: [
+        { id: 'irregular-income-rollercoaster', text: '1. La Montaña Rusa de los Ingresos Irregulares' },
+        { id: 'calculating-baseline-budget', text: '2. Paso 1: Cálculo del Presupuesto Base Obligatorio' },
+        { id: 'hill-valley-buffer-envelope', text: '3. Paso 2: El Sobre de Amortiguación para Altas y Bajas' },
+        { id: 'high-income-waterfall-rules', text: '4. Paso 3: Reglas en Cascada para Meses de Altos Ingresos' },
+        { id: 'managing-variable-envelopes-online', text: '5. Gestión de Sobres Irregulares en Línea Gratis' },
+      ],
+      contentHtml: `
+        <section id="irregular-income-rollercoaster" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Montaña Rusa de los Ingresos Irregulares</h2>
+          <p class="leading-relaxed">Los ingresos impredecibles requieren un presupuesto base flexible.</p>
+        </section>
+
+        <section id="calculating-baseline-budget" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Paso 1: Cálculo del Presupuesto Base Obligatorio</h2>
+          <p class="leading-relaxed">Calcula tu mes de menores ingresos para definir tus gastos esenciales.</p>
+        </section>
+
+        <section id="hill-valley-buffer-envelope" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Paso 2: El Sobre de Amortiguación para Altas y Bajas</h2>
+          <p class="leading-relaxed">Guarda excedentes en meses altos para cubrir los meses bajos.</p>
+        </section>
+
+        <section id="high-income-waterfall-rules" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Paso 3: Reglas en Cascada para Meses de Altos Ingresos</h2>
+          <p class="leading-relaxed">Distribuye comisiones altas en orden de prioridad financiera.</p>
+        </section>
+
+        <section id="managing-variable-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gestión de Sobres Irregulares en Línea Gratis</h2>
+          <p class="leading-relaxed">Administra tus sobres variables en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Comment Gérer son Budget avec des Revenus Irréguliers : Commissions & Freelance',
+      summary: 'Les revenus variables font échouer les budgets rigides. Découvrez comment les enveloppes de base et la réserve tampon stabilisent votre foyer.',
+      category: 'Stratégies de Revenus',
+      tableOfContents: [
+        { id: 'irregular-income-rollercoaster', text: '1. Les Montagnes Russes des Revenus Irréguliers' },
+        { id: 'calculating-baseline-budget', text: '2. Étape 1 : Calculer son Budget Vital de Base' },
+        { id: 'hill-valley-buffer-envelope', text: '3. Étape 2 : L\'Enveloppe Tampon Hauts & Bas' },
+        { id: 'high-income-waterfall-rules', text: '4. Étape 3 : Règles en Cascade pour Mois à Forts Revenus' },
+        { id: 'managing-variable-envelopes-online', text: '5. Gérer ses Enveloppes Irrégulières en Ligne Gratuitement' },
+      ],
+      contentHtml: `
+        <section id="irregular-income-rollercoaster" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Les Montagnes Russes des Revenus Irréguliers</h2>
+          <p class="leading-relaxed">Les revenus imprévisibles nécessitent un système d'enveloppes tampon.</p>
+        </section>
+
+        <section id="calculating-baseline-budget" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Étape 1 : Calculer son Budget Vital de Base</h2>
+          <p class="leading-relaxed">Basez vos factures vitales sur votre plus petit mois d'encaissement.</p>
+        </section>
+
+        <section id="hill-valley-buffer-envelope" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Étape 2 : L'Enveloppe Tampon Hauts & Bas</h2>
+          <p class="leading-relaxed">Économisez les surplus des bons mois pour lisser les périodes creuses.</p>
+        </section>
+
+        <section id="high-income-waterfall-rules" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Étape 3 : Règles en Cascade pour Mois à Forts Revenus</h2>
+          <p class="leading-relaxed">Répartissez intelligemment les grosses commissions.</p>
+        </section>
+
+        <section id="managing-variable-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gérer ses Enveloppes Irrégulières en Ligne Gratuitement</h2>
+          <p class="leading-relaxed">Gérez vos revenus variables sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Budgetierung bei Unregelmäßigem Einkommen: Provisionen, Freelance & Stundenlohn',
+      summary: 'Schwankendes Einkommen bringt starre Budgets zum Scheitern. Erfahren Sie, wie Basis-Umschläge und ein Puffer-Umschlag Ihre Finanzen stabilisieren.',
+      category: 'Einkommens-Strategien',
+      tableOfContents: [
+        { id: 'irregular-income-rollercoaster', text: '1. Die Achterbahn Unregelmäßiger Einnahmen' },
+        { id: 'calculating-baseline-budget', text: '2. Schritt 1: Das Unverzichtbare Basis-Budget Berechnen' },
+        { id: 'hill-valley-buffer-envelope', text: '3. Schritt 2: Der Umschlag-Puffer für Gute & Schlechte Zeiten' },
+        { id: 'high-income-waterfall-rules', text: '4. Schritt 3: Wasserfall-Regeln für Umsatzstarke Monate' },
+        { id: 'managing-variable-envelopes-online', text: '5. Variable Umschläge Online Kostenlos Verwalten' },
+      ],
+      contentHtml: `
+        <section id="irregular-income-rollercoaster" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Die Achterbahn Unregelmäßiger Einnahmen</h2>
+          <p class="leading-relaxed">Unvorhersehbares Einkommen erfordert ein flexibles Puffersystem.</p>
+        </section>
+
+        <section id="calculating-baseline-budget" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Schritt 1: Das Unverzichtbare Basis-Budget Berechnen</h2>
+          <p class="leading-relaxed">Richten Sie Ihre Fixkosten nach dem schwächsten Monat aus.</p>
+        </section>
+
+        <section id="hill-valley-buffer-envelope" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Schritt 2: Der Umschlag-Puffer für Gute & Schlechte Zeiten</h2>
+          <p class="leading-relaxed">Gleichen Sie schwache Monate mit Überschüssen aus starken Monaten aus.</p>
+        </section>
+
+        <section id="high-income-waterfall-rules" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Schritt 3: Wasserfall-Regeln für Umsatzstarke Monate</h2>
+          <p class="leading-relaxed">Verteilen Sie große Provisionsschecks nach klaren Prioritäten.</p>
+        </section>
+
+        <section id="managing-variable-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Variable Umschläge Online Kostenlos Verwalten</h2>
+          <p class="leading-relaxed">Tracken Sie Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
