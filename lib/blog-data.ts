@@ -911,17 +911,56 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Generating passive revenue is step one; allocating it strategically creates permanent wealth. Learn how to direct passive cash flow into debt snowballs and investment envelopes.',
     tableOfContents: [
-      { id: 'the-passive-income-trap', text: '1. The Passive Income Trap' },
-      { id: 'allocating-passive-cash-flow', text: '2. Allocating Passive Cash Flow Step-by-Step' },
+      { id: 'passive-income-lifestyle-trap', text: '1. The Passive Income Lifestyle Trap' },
+      { id: '3-passive-allocation-buckets', text: '2. The 3 High-Impact Passive Cash Allocation Buckets' },
+      { id: 'routing-passive-cash-blueprint', text: '3. Step-by-Step Blueprint: Routing Dividends & Royalties' },
+      { id: 'accelerating-fire-movement', text: '4. Accelerating FIRE (Financial Independence) with Envelopes' },
+      { id: 'tracking-passive-cash-online', text: '5. Tracking Passive Cash Flow & Debt Elimination Free' },
     ],
     contentHtml: `
-      <section id="the-passive-income-trap" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Passive Income Trap</h2>
-        <p class="leading-relaxed">Without strict cash allocation rules, passive income often gets consumed by subtle lifestyle inflation instead of building lasting wealth.</p>
+      <section id="passive-income-lifestyle-trap" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Passive Income Lifestyle Trap</h2>
+        <p class="leading-relaxed">Earning passive revenue from digital courses, affiliate marketing, dividend stocks, or rental properties is the dream of modern wealth building. However, <strong>without strict allocation rules, passive income gets consumed by lifestyle inflation</strong>.</p>
+        <p class="leading-relaxed">When extra dividend checks or $500 monthly course royalties land in your primary spending account without purpose, they get absorbed by restaurant dining, impulse shopping, and luxury upgrades. To build permanent freedom, passive cash flow must be sequestered immediately into dedicated financial envelopes.</p>
       </section>
-      <section id="allocating-passive-cash-flow" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Allocating Passive Cash Flow Step-by-Step</h2>
-        <p class="leading-relaxed">Route passive cash flow directly into debt snowball and high-yield investment envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="3-passive-allocation-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 3 High-Impact Passive Cash Allocation Buckets</h2>
+        <p class="leading-relaxed">To maximize the wealth-compounding power of every passive dollar, partition incoming royalty and dividend payouts into 3 non-negotiable envelopes:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Debt Avalanche / Snowball (50%)</strong>
+            Accelerate debt elimination by making direct extra principal payments on high-interest loans.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Compound Wealth Re-Investment (35%)</strong>
+            Reinvest passive profits into high-yield index funds, dividend stocks, or growth assets.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">3. Stream Asset Maintenance (15%)</strong>
+            Reinvest into software, hosting, marketing ads, or updates that maintain your passive asset.
+          </div>
+        </div>
+      </section>
+
+      <section id="routing-passive-cash-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Step-by-Step Blueprint: Routing Dividends & Royalties</h2>
+        <ol class="list-decimal list-inside space-y-2.5 text-sm font-medium">
+          <li><strong>Receive Passive Payout:</strong> Collect monthly digital product payouts or quarterly stock dividends.</li>
+          <li><strong>Separate Tax Obligation First:</strong> Set aside 25% into your Tax Reserve Envelope if payouts are un-taxed.</li>
+          <li><strong>Apply 50% to Debt Principal:</strong> Send 50% of net passive earnings directly to your smallest debt or highest interest card.</li>
+          <li><strong>Reinvest the Remaining 50%:</strong> Direct remaining funds into compound investment envelopes to build additional streams.</li>
+        </ol>
+      </section>
+
+      <section id="accelerating-fire-movement" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Accelerating FIRE (Financial Independence) with Envelopes</h2>
+        <p class="leading-relaxed">The <strong>FIRE (Financial Independence, Retire Early)</strong> movement relies on maximizing your savings rate. Using zero-based cash envelopes to route 100% of secondary passive income into debt paydown and investment assets drastically shortens your timeline to full retirement freedom.</p>
+      </section>
+
+      <section id="tracking-passive-cash-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Tracking Passive Cash Flow & Debt Elimination Free</h2>
+        <p class="leading-relaxed">Track passive income streams, monitor debt elimination progress, and export clean 2-sheet Excel accounting logs for free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -2914,6 +2953,126 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="hacks-4-5-saas-purge-online-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Hacks #4 & #5: SaaS-Abo Ausmisten & Kostenlos Online-Tracken</h2>
           <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'passive-income-and-cash-allocation': {
+    es: {
+      title: 'Cómo Asignar Fuentes de Ingresos Pasivos para la Eliminación de Deudas y la Libertad Financiera',
+      summary: 'Generar ingresos pasivos es el primer paso; asignarlos estratégicamente crea riqueza permanente. Aprende a dirigir el flujo de caja pasivo hacia sobres de deuda e inversión.',
+      category: 'Creación de Riqueza',
+      tableOfContents: [
+        { id: 'passive-income-lifestyle-trap', text: '1. La Trampa del Estilo de Vida del Ingreso Pasivo' },
+        { id: '3-passive-allocation-buckets', text: '2. Los 3 Bloques de Asignación de Alto Impacto' },
+        { id: 'routing-passive-cash-blueprint', text: '3. Plan Paso a Paso: Asignación de Dividendos y Regalías' },
+        { id: 'accelerating-fire-movement', text: '4. Aceleración del Movimiento FIRE con Sobres' },
+        { id: 'tracking-passive-cash-online', text: '5. Seguimiento del Flujo Pasivo y Eliminación de Deuda Gratis' },
+      ],
+      contentHtml: `
+        <section id="passive-income-lifestyle-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Trampa del Estilo de Vida del Ingreso Pasivo</h2>
+          <p class="leading-relaxed">Sin reglas de asignación estrictas, los ingresos pasivos son absorbidos por la inflación del estilo de vida.</p>
+        </section>
+
+        <section id="3-passive-allocation-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Los 3 Bloques de Asignación de Alto Impacto</h2>
+          <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+            <li><strong>Bola de Nieve / Avalancha de Deuda (50%):</strong> Acelera el pago de capital.</li>
+            <li><strong>Reinversión de Riqueza Compuesta (35%):</strong> En fondos indexados o activos de crecimiento.</li>
+            <li><strong>Mantenimiento de Activos (15%):</strong> Para mantener la fuente de ingresos activa.</li>
+          </ul>
+        </section>
+
+        <section id="routing-passive-cash-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Plan Paso a Paso: Asignación de Dividendos y Regalías</h2>
+          <p class="leading-relaxed">Separa la reserva de impuestos primero y luego aplica el 50% al pago de deudas.</p>
+        </section>
+
+        <section id="accelerating-fire-movement" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Aceleración del Movimiento FIRE con Sobres</h2>
+          <p class="leading-relaxed">Maximiza tu tasa de ahorro dirigiendo ingresos pasivos a inversiones.</p>
+        </section>
+
+        <section id="tracking-passive-cash-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Seguimiento del Flujo Pasivo y Eliminación de Deuda Gratis</h2>
+          <p class="leading-relaxed">Rastrea tus ingresos pasivos gratis en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Comment Allouer les Revenus Passifs pour Rembourser ses Dettes & Atteindre l\'Indépendance',
+      summary: 'Générer des revenus passifs est la première étape ; les allouer stratégiquement crée une richesse permanente. Découvrez comment orienter vos revenus passifs.',
+      category: 'Création de Richesse',
+      tableOfContents: [
+        { id: 'passive-income-lifestyle-trap', text: '1. Le Piège du Mode de Vie des Revenus Passifs' },
+        { id: '3-passive-allocation-buckets', text: '2. Les 3 Catégories d\'Allocation Passive à Fort Impact' },
+        { id: 'routing-passive-cash-blueprint', text: '3. Plan Étape par Étape : Allouer Dividendes & Redevances' },
+        { id: 'accelerating-fire-movement', text: '4. Accélérer le Mouvement FIRE avec des Enveloppes' },
+        { id: 'tracking-passive-cash-online', text: '5. Suivre la Trésorerie Passive & le Désendettement Gratuitement' },
+      ],
+      contentHtml: `
+        <section id="passive-income-lifestyle-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Le Piège du Mode de Vie des Revenus Passifs</h2>
+          <p class="leading-relaxed">Sans règles d'allocation, les revenus passifs sont rapidement dépensés.</p>
+        </section>
+
+        <section id="3-passive-allocation-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 3 Catégories d'Allocation Passive à Fort Impact</h2>
+          <p class="leading-relaxed">Désendettement (50%), Réinvestissement Compilé (35%) et Entretien d'Actifs (15%).</p>
+        </section>
+
+        <section id="routing-passive-cash-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Plan Étape par Étape : Allouer Dividendes & Redevances</h2>
+          <p class="leading-relaxed">Prélevez la réserve fiscale avant de désendetter votre foyer.</p>
+        </section>
+
+        <section id="accelerating-fire-movement" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Accélérer le Mouvement FIRE avec des Enveloppes</h2>
+          <p class="leading-relaxed">Accélérez votre indépendance financière.</p>
+        </section>
+
+        <section id="tracking-passive-cash-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Suivre la Trésorerie Passive & le Désendettement Gratuitement</h2>
+          <p class="leading-relaxed">Suivez vos flux passifs sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Passives Einkommen Richtig Aufteilen für Schuldenabbau & Finanzielle Freiheit',
+      summary: 'Passives Einkommen zu generieren ist Schritt eins; es strategisch zuzuweisen schafft dauerhaften Wohlstand. Erfahren Sie, wie Sie passive Einnahmen nutzen.',
+      category: 'Vermögensaufbau',
+      tableOfContents: [
+        { id: 'passive-income-lifestyle-trap', text: '1. Die Lifestyle-Falle bei Passivem Einkommen' },
+        { id: '3-passive-allocation-buckets', text: '2. Die 3 High-Impact Zuweisungs-Töpfe' },
+        { id: 'routing-passive-cash-blueprint', text: '3. Schritt-für-Schritt Anleitung: Dividenden & Lizenzgebühren' },
+        { id: 'accelerating-fire-movement', text: '4. Die FIRE-Bewegung mit Umschlägen Beschleunigen' },
+        { id: 'tracking-passive-cash-online', text: '5. Passiven Cashflow & Schuldenabbau Online Tracken' },
+      ],
+      contentHtml: `
+        <section id="passive-income-lifestyle-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Die Lifestyle-Falle bei Passivem Einkommen</h2>
+          <p class="leading-relaxed">Ohne Umschlag-Regeln wird passives Einkommen oft versickern.</p>
+        </section>
+
+        <section id="3-passive-allocation-buckets" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 3 High-Impact Zuweisungs-Töpfe</h2>
+          <p class="leading-relaxed">Schulden-Tilgung (50%), Re-Investment (35%) und Asset-Wartung (15%).</p>
+        </section>
+
+        <section id="routing-passive-cash-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Schritt-für-Schritt Anleitung: Dividenden & Lizenzgebühren</h2>
+          <p class="leading-relaxed">Steuer-Reserve zuerst sichern, danach tilgen.</p>
+        </section>
+
+        <section id="accelerating-fire-movement" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Die FIRE-Bewegung mit Umschlägen Beschleunigen</h2>
+          <p class="leading-relaxed">Verkürzen Sie Ihre Zeit bis zur finanziellen Freiheit.</p>
+        </section>
+
+        <section id="tracking-passive-cash-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Passiven Cashflow & Schuldenabbau Online Tracken</h2>
+          <p class="leading-relaxed">Tracken Sie Einnahmen auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
