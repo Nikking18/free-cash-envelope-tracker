@@ -431,34 +431,73 @@ export const BLOG_POSTS: BlogPost[] = [
     title: '7 Proven Ways Cash Envelopes Stop Impulse Spending Immediately',
     seoTitle: '7 Ways Cash Envelope Budgeting Stops Impulse Spending (2026)',
     metaDescription: 'Eliminate emotional impulse buying. Discover how physical cash envelopes and real-time tracking rewire your brain for instant savings.',
-    keywords: ['stop impulse spending tips', 'psychology of cash budgeting', 'overspending solution', 'money management habits'],
+    keywords: ['stop impulse spending tips', 'psychology of cash budgeting', 'overspending solution', 'money management habits', 'curb impulse buying'],
     publishDate: '2026-08-03',
     readTime: '5 min read',
     category: 'Money Habits',
     author: 'Nikhil Khanpara',
     summary: 'Impulse buying is the #1 obstacle to financial independence. Discover 7 psychological triggers that cash envelopes disable to protect your hard-earned money.',
     tableOfContents: [
-      { id: 'the-psychology-of-impulse-spending', text: '1. The Psychology of Impulse Spending' },
-      { id: '7-ways-cash-envelopes-fix-it', text: '2. 7 Ways Cash Envelopes Fix Overspending' },
+      { id: 'psychology-of-impulse-buying', text: '1. The Psychology Behind Impulse Buying' },
+      { id: '7-ways-cash-envelopes-fix-it', text: '2. The 7 Psychological Triggers Cash Envelopes Disable' },
+      { id: 'physical-pain-vs-frictionless-swiping', text: '3. Physical Pain of Paying vs Frictionless Swiping' },
+      { id: '24-hour-cooling-rule', text: '4. The 24-Hour Cooling Off Rule for Impulse Buys' },
+      { id: 'enforcing-limits-free-tracker', text: '5. Enforcing Strict Cash Envelope Limits Free' },
     ],
     contentHtml: `
-      <section id="the-psychology-of-impulse-spending" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Psychology of Impulse Spending</h2>
-        <p class="leading-relaxed">Frictionless digital swiping decouples the joy of purchasing from the pain of losing money. When you swipe a card or tap a phone, your brain registers zero physical loss.</p>
-        <p class="leading-relaxed">Cash envelopes restore healthy psychological friction. Handing over hard paper bills activates pain receptors in the insular cortex of your brain, compelling you to pause and evaluate the purchase.</p>
+      <section id="psychology-of-impulse-buying" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Psychology Behind Impulse Buying</h2>
+        <p class="leading-relaxed">Impulse spending is driven by quick dopamine spikes in the brain's reward center. E-commerce One-Click buy buttons and contactless card taps remove all physical friction, tricking your brain into treating spending as an emotionless event.</p>
+        <p class="leading-relaxed">By introducing intentional physical or digital cash boundaries, cash envelopes compel you to pause and evaluate whether a purchase aligns with your true long-term financial priorities.</p>
       </section>
+
       <section id="7-ways-cash-envelopes-fix-it" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. 7 Ways Cash Envelopes Fix Overspending</h2>
-        <p class="leading-relaxed">Enforce strict spending ceilings and monitor visual progress bars live at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>:</p>
-        <ol class="list-decimal list-inside space-y-2 text-sm font-medium">
-          <li><strong>Hard Category Caps:</strong> When the envelope reaches $0, category spending halts.</li>
-          <li><strong>Elimination of Credit Cards:</strong> Removes high 24%+ interest rate credit traps.</li>
-          <li><strong>Visual Progress Bars:</strong> Shows exact percentage of money remaining.</li>
-          <li><strong>Intentional Shopping Lists:</strong> Prevents unplanned supermarket impulse buys.</li>
-          <li><strong>Guilt-Free Personal Allowances:</strong> Separate fun money envelopes allow guilt-free spending.</li>
-          <li><strong>Immediate Receipt Tracking:</strong> Keeps financial truth visible daily.</li>
-          <li><strong>Mindful Consumption:</strong> Builds lifelong wealth creation habits.</li>
-        </ol>
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 7 Psychological Triggers Cash Envelopes Disable</h2>
+        <div class="space-y-3">
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Hard Category Caps</strong>
+            When an envelope balance reaches $0.00, spending in that category immediately stops without negotiation.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Eradicating Credit Card Traps</strong>
+            Removes high 24%+ interest rate credit cards that disguise true purchase costs.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">3. Visual Progress Bars & Color Signals</strong>
+            Live percentage bars change from green to yellow to red, warning your brain before you overspend.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">4. Intentional Shopping Lists</strong>
+            Forces you to shop strictly for listed items matching cash envelope funds in hand.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">5. Guilt-Free Personal Allowances</strong>
+            Dedicated "Fun Money" envelopes permit enjoyable personal purchases without threatening bill money.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">6. Immediate Receipt Auditing</strong>
+            Logging purchase receipts immediately keeps financial reality visible every single day.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">7. Building Wealth Mindsets</strong>
+            Shifts your focus from short-term retail gratification to long-term financial freedom.
+          </div>
+        </div>
+      </section>
+
+      <section id="physical-pain-vs-frictionless-swiping" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Physical Pain of Paying vs Frictionless Swiping</h2>
+        <p class="leading-relaxed">Scientific studies show consumers spend <strong>up to 20% less overall</strong> when paying with cash notes because handing over paper bills stimulates pain receptors in the insular cortex of the brain.</p>
+      </section>
+
+      <section id="24-hour-cooling-rule" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. The 24-Hour Cooling Off Rule for Impulse Buys</h2>
+        <p class="leading-relaxed">Whenever you feel an urge to buy an unbudgeted non-essential item over $30, place the purchase item on a 24-hour waiting list. Over 70% of impulse buying urges disappear completely within 24 hours.</p>
+      </section>
+
+      <section id="enforcing-limits-free-tracker" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Enforcing Strict Cash Envelope Limits Free</h2>
+        <p class="leading-relaxed">Enforce strict spending ceilings and monitor visual progress bars live for free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -1149,7 +1188,7 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
       category: 'Budget-Anleitungen',
       tableOfContents: [
         { id: 'what-is-cash-stuffing', text: '1. Was ist Cash Stuffing & Warum Funktioniert Es?' },
-        { id: 'how-the-envelope-system-works', text: '2. Wie Funktioniert das Umschlag-System (Die GehirNWissenschaft)' },
+        { id: 'how-the-envelope-system-works', text: '2. Wie Funktioniert das Umschlag-System (Die Gehirnwissenschaft)' },
         { id: 'step-by-step-setup', text: '3. Schritt-für-Schritt Anleitung (Vom Zahltag zum Umschlag)' },
         { id: 'digital-hybrid-method', text: '4. Physische Ordner vs. Kostenlose Digitale Tracker' },
         { id: 'common-mistakes', text: '5. 5 Tödliche Fehler beim Cash Stuffing in 2026' },
@@ -1338,7 +1377,7 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
             </div>
             <div class="p-4 bg-red-50 border-2 border-[#141414] text-sm space-y-1">
               <strong class="block text-red-700 font-bold uppercase">Inconvénients :</strong>
-              Risque de perte et vol ; peu pratique pour les achats en ligne.
+              Risque de perte et vol ; peu practical pour les achats en ligne.
             </div>
           </div>
         </section>
@@ -1877,6 +1916,130 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="generating-free-pdf-ledgers" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Kostenlose PDF-Ledger Generieren per Klick</h2>
           <p class="leading-relaxed">Erstellen Sie Vorlagen völlig kostenlos ohne Registrierung.</p>
+        </section>
+      `,
+    },
+  },
+  'stop-impulse-spending-cash-envelopes': {
+    es: {
+      title: '7 Formas Comprobadas en que los Sobres de Efectivo Detienen las Compras Impulsivas de Inmediato',
+      summary: 'Elimina las compras emocionales impulsivas. Descubre cómo los sobres de efectivo físicos y el seguimiento en tiempo real reprograman tu cerebro para el ahorro instantáneo.',
+      category: 'Hábitos Financieros',
+      tableOfContents: [
+        { id: 'psychology-of-impulse-buying', text: '1. La Psicología Detrás de las Compras Impulsivas' },
+        { id: '7-ways-cash-envelopes-fix-it', text: '2. Los 7 Disparadores Psicológicos que los Sobres Desactivan' },
+        { id: 'physical-pain-vs-frictionless-swiping', text: '3. El Dolor Físico de Pagar vs. Pagar sin Fricción' },
+        { id: '24-hour-cooling-rule', text: '4. La Regla de Enfriamiento de 24 Horas' },
+        { id: 'enforcing-limits-free-tracker', text: '5. Aplicación Estricta de Límites de Sobres Gratis' },
+      ],
+      contentHtml: `
+        <section id="psychology-of-impulse-buying" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Psicología Detrás de las Compras Impulsivas</h2>
+          <p class="leading-relaxed">Las compras impulsivas son impulsadas por picos de dopamina. Al introducir límites de efectivo, los sobres te obligan a pausar y evaluar si la compra vale la pena.</p>
+        </section>
+
+        <section id="7-ways-cash-envelopes-fix-it" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Los 7 Disparadores Psicológicos que los Sobres Desactivan</h2>
+          <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+            <li><strong>Límites Estrictos por Categoría:</strong> El gasto se detiene cuando el sobre llega a $0.00.</li>
+            <li><strong>Eliminación de Trampas de Tarjetas:</strong> Evita intereses bancarios superiores al 24%.</li>
+            <li><strong>Barras de Progreso Visuales:</strong> Cambian de verde a amarillo a rojo para advertirte.</li>
+            <li><strong>Listas de Compras Intencionadas:</strong> Compras estrictamente lo planeado.</li>
+            <li><strong>Asignaciones sin Culpa:</strong> Sobres de dinero para diversión personal.</li>
+            <li><strong>Auditoría Inmediata de Recibos:</strong> Registro diario de cada gasto.</li>
+            <li><strong>Construcción de Mentalidad de Riqueza:</strong> Enfoque en la libertad financiera a largo plazo.</li>
+          </ul>
+        </section>
+
+        <section id="physical-pain-vs-frictionless-swiping" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. El Dolor Físico de Pagar vs. Pagar sin Fricción</h2>
+          <p class="leading-relaxed">Entregar billetes de papel activa receptores de dolor en el cerebro, reduciendo el gasto total hasta en un 20%.</p>
+        </section>
+
+        <section id="24-hour-cooling-rule" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. La Regla de Enfriamiento de 24 Horas</h2>
+          <p class="leading-relaxed">Espera 24 horas antes de realizar compras no esenciales superiores a $30.</p>
+        </section>
+
+        <section id="enforcing-limits-free-tracker" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Aplicación Estricta de Límites de Sobres Gratis</h2>
+          <p class="leading-relaxed">Monitorea tus barras de progreso en vivo gratis en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: '7 Façons Éprouvées Dont les Enveloppes Stoppent Immédiatement les Achats Impulsifs',
+      summary: 'Éliminez les achats impulsifs émotionnels. Découvrez comment les enveloppes physiques et le suivi en temps réel réentraînent votre cerveau pour économiser.',
+      category: 'Habitudes Financières',
+      tableOfContents: [
+        { id: 'psychology-of-impulse-buying', text: '1. La Psychologie des Achats Impulsifs' },
+        { id: '7-ways-cash-envelopes-fix-it', text: '2. Les 7 Déclencheurs Déconnectés par les Enveloppes' },
+        { id: 'physical-pain-vs-frictionless-swiping', text: '3. La Douleur de Payer vs le Paiement Sans Contact' },
+        { id: '24-hour-cooling-rule', text: '4. La Règle de Réflexion de 24 Heures' },
+        { id: 'enforcing-limits-free-tracker', text: '5. Appliquer des Limites Stricte Gratuitement' },
+      ],
+      contentHtml: `
+        <section id="psychology-of-impulse-buying" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Psychologie des Achats Impulsifs</h2>
+          <p class="leading-relaxed">L'utilisation d'enveloppes de budget réintroduit une friction salutaire avant chaque achat.</p>
+        </section>
+
+        <section id="7-ways-cash-envelopes-fix-it" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 7 Déclencheurs Déconnectés par les Enveloppes</h2>
+          <p class="leading-relaxed">Plafonds stricts par catégorie, élimination du crédit, jauges de progression visuelles et listes d'achats intentionnelles.</p>
+        </section>
+
+        <section id="physical-pain-vs-frictionless-swiping" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. La Douleur de Payer vs le Paiement Sans Contact</h2>
+          <p class="leading-relaxed">Donner des billets physiques réduit les dépenses de 15 % à 20 % au total.</p>
+        </section>
+
+        <section id="24-hour-cooling-rule" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. La Règle de Réflexion de 24 Heures</h2>
+          <p class="leading-relaxed">Attendez 24 heures avant d'acheter un objet coup de cœur.</p>
+        </section>
+
+        <section id="enforcing-limits-free-tracker" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Appliquer des Limites Stricte Gratuitement</h2>
+          <p class="leading-relaxed">Suivez vos jauges visuelles gratuitement sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: '7 Erprobte Wege, Wie Bargeld-Umschläge Spontankäufe Sofort Stoppen',
+      summary: 'Eliminieren Sie emotionale Spontankäufe. Erfahren Sie, wie Bargeld-Umschläge und Echtzeit-Tracking Ihr Gehirn auf Sparen umprogrammieren.',
+      category: 'Geldgewohnheiten',
+      tableOfContents: [
+        { id: 'psychology-of-impulse-buying', text: '1. Die Psychologie Hinter Spontankäufen' },
+        { id: '7-ways-cash-envelopes-fix-it', text: '2. Die 7 Psychologischen Auslöser, Die Deaktiviert Werden' },
+        { id: 'physical-pain-vs-frictionless-swiping', text: '3. Physischer Schmerz des Zahlens vs. Kontaktlos' },
+        { id: '24-hour-cooling-rule', text: '4. Die 24-Stunden Abkühl-Regel' },
+        { id: 'enforcing-limits-free-tracker', text: '5. Strikte Umschlag-Limits Kostenlos Durchsetzen' },
+      ],
+      contentHtml: `
+        <section id="psychology-of-impulse-buying" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Die Psychologie Hinter Spontankäufen</h2>
+          <p class="leading-relaxed">Bargeld-Umschläge schaffen bewusste Unterbrechungen vor jedem Kauf.</p>
+        </section>
+
+        <section id="7-ways-cash-envelopes-fix-it" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 7 Psychologischen Auslöser, Die Deaktiviert Werden</h2>
+          <p class="leading-relaxed">Strikte Kategorie-Limits, Vermeidung von Kreditkarten-Zinsen, visuelle Fortschrittsbalken und Einkaufslisten.</p>
+        </section>
+
+        <section id="physical-pain-vs-frictionless-swiping" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Physischer Schmerz des Zahlens vs. Kontaktlos</h2>
+          <p class="leading-relaxed">Barzahlung senkt die Ausgaben um bis zu 20 % im Vergleich zu Plastikkarten.</p>
+        </section>
+
+        <section id="24-hour-cooling-rule" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Die 24-Stunden Abkühl-Regel</h2>
+          <p class="leading-relaxed">Warten Sie 24 Stunden vor jedem ungeplanten Kauf über 30 €.</p>
+        </section>
+
+        <section id="enforcing-limits-free-tracker" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Strikte Umschlag-Limits Kostenlos Durchsetzen</h2>
+          <p class="leading-relaxed">Überwachen Sie Ihre Budgets auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
