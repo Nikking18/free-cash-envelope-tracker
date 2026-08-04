@@ -1642,58 +1642,55 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Managing money in college for the first time? Cash envelopes give students clear spending boundaries for textbooks, coffee, and social outings.',
     tableOfContents: [
-      { id: 'college-financial-reality', text: '1. The College Financial Reality (First Time Solo)' },
-      { id: 'top-5-student-envelopes', text: '2. Top 5 Essential Cash Envelopes for Students' },
-      { id: 'budgeting-part-time-wages-and-aid', text: '3. Budgeting Part-Time Wages, Work-Study & Aid' },
-      { id: 'avoiding-campus-credit-traps', text: '4. Avoiding Credit Card Traps & High-Interest Debt' },
-      { id: 'tracking-student-envelopes-online', text: '5. Managing College Envelopes Online Free' },
+      { id: 'college-money-reality-check', text: '1. The College Money Reality Check' },
+      { id: 'four-essential-student-envelopes', text: '2. The 4 Essential College Cash Envelopes' },
+      { id: 'budgeting-financial-aid-lump-sums', text: '3. How to Budget Financial Aid & Work-Study Income' },
+      { id: 'avoiding-campus-credit-card-traps', text: '4. Avoiding the Campus Credit Card Debt Trap' },
+      { id: 'managing-student-envelopes-online', text: '5. Managing Student Envelopes Online Free' },
     ],
     contentHtml: `
-      <section id="college-financial-reality" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The College Financial Reality (First Time Solo)</h2>
-        <p class="leading-relaxed">For many young adults, entering college is the first time managing personal living expenses completely independently. Between campus meal plans, expensive textbooks, late-night food deliveries, and weekend social outings, money can disappear fast.</p>
-        <p class="leading-relaxed">Using physical or digital cash envelopes creates clear boundaries that keep students grounded, preventing the panic of running out of money before finals week.</p>
+      <section id="college-money-reality-check" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The College Money Reality Check</h2>
+        <p class="leading-relaxed">For many college students, campus life is their very first experience managing money independently. Between food delivery apps, late-night coffee runs, textbook fees, and weekend social outings, small daily purchases rapidly drain student bank accounts.</p>
+        <p class="leading-relaxed">Traditional complex budgets fail students because they are too time-consuming to maintain during exam weeks. The **Cash Envelope Method** provides instant, visual spending guardrails that fit seamlessly into a busy academic schedule.</p>
       </section>
 
-      <section id="top-5-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Top 5 Essential Cash Envelopes for Students</h2>
+      <section id="four-essential-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 4 Essential College Cash Envelopes</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
-            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Textbooks & Course Materials</strong>
-            Rent or buy digital or physical textbooks at the start of each semester.
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Textbooks & Course Supplies</strong>
+            Lab access codes, digital textbook rentals, printer paper, and stationery.
           </div>
           <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
-            <strong class="block text-[#5C768D] font-bold uppercase">2. Dining Out & Late-Night Snacks</strong>
-            Off-campus meals, coffee runs, and late-night pizza deliveries.
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Off-Campus Dining & Coffee</strong>
+            Late-night study coffee, campus food trucks, and weekend dining out.
           </div>
           <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
             <strong class="block text-[#8A9A5B] font-bold uppercase">3. Weekend Social & Events</strong>
-            Concerts, sporting events, movies, and Greek life or club dues.
+            Concert tickets, Greek life events, intramural fees, and movie nights.
           </div>
           <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
-            <strong class="block text-[#5C768D] font-bold uppercase">4. Personal Care & Laundry</strong>
-            Toiletries, haircuts, laundry coins/card reloads, and dorm supplies.
+            <strong class="block text-[#5C768D] font-bold uppercase">4. Laundry & Personal Essentials</strong>
+            Quarters for laundry machines, toiletries, haircuts, and dorm supplies.
           </div>
         </div>
       </section>
 
-      <section id="budgeting-part-time-wages-and-aid" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Budgeting Part-Time Wages, Work-Study & Aid</h2>
-        <p class="leading-relaxed">When receiving a financial aid refund check or work-study paycheck, immediately divide the money into semester-long cash envelopes:</p>
-        <ul class="list-disc list-inside space-y-2 text-sm font-medium">
-          <li><strong>Divide by 16 Weeks:</strong> Divide your lump-sum refund check by the 16 weeks of the academic semester. Stuff that exact weekly amount into your envelopes every Monday.</li>
-          <li><strong>Prioritize Non-Negotiable Bills:</strong> Rent, campus parking passes, and phone bills must be paid before any social spending occurs.</li>
-        </ul>
+      <section id="budgeting-financial-aid-lump-sums" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. How to Budget Financial Aid & Work-Study Income</h2>
+        <p class="leading-relaxed">Financial aid refund checks arrive in one large lump sum at the start of the semester (e.g., $3,000 for 4 months). Spending this refund prematurely during syllabus week is a common trap.</p>
+        <p class="leading-relaxed font-medium">Divide your semester refund by the total number of weeks in the term (typically 16 weeks) to calculate your **Weekly Allowance Limit**. Stuff only 1 week's worth of cash into your active envelopes, leaving the rest safely in your bank account.</p>
       </section>
 
-      <section id="avoiding-campus-credit-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Avoiding Credit Card Traps & High-Interest Debt</h2>
-        <p class="leading-relaxed">Credit card companies target college campuses with free t-shirts and rewards incentives. Swiping credit cards for casual campus coffee or takeout leads to high-interest student credit card debt that takes years to pay off post-graduation.</p>
-        <p class="leading-relaxed">By committing to cash envelope stuffing, students build lifelong money discipline and graduate debt-free from consumer debt!</p>
+      <section id="avoiding-campus-credit-card-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Avoiding the Campus Credit Card Debt Trap</h2>
+        <p class="leading-relaxed">Credit card companies target college campuses with free T-shirts and sign-up promos. Charging food deliveries and campus shopping onto high-interest credit cards creates post-graduation debt hangovers before your career even starts.</p>
+        <p class="leading-relaxed">By enforcing cash-only envelopes for discretionary spending, you build lifelong discipline and graduate 100% credit-card-debt-free.</p>
       </section>
 
-      <section id="tracking-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Managing College Envelopes Online Free</h2>
+      <section id="managing-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Managing Student Envelopes Online Free</h2>
         <p class="leading-relaxed">Track student cash envelopes, set weekly caps, and export clean 2-sheet Excel accounting logs free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
@@ -4688,113 +4685,113 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
   'college-student-budgeting-guide': {
     es: {
       title: 'Guía de Presupuesto para Estudiantes Universitarios: Método de Sobres de Efectivo',
-      summary: 'Gestión sencilla de dinero para universitarios. Aprende a administrar sobres de libros, comida y ocio sin endeudarte.',
+      summary: '¿Gestionas tu dinero en la universidad por primera vez? Los sobres de efectivo fijan límites claros para libros, café y salidas.',
       category: 'Finanzas Estudiantiles',
       tableOfContents: [
-        { id: 'college-financial-reality', text: '1. La Realidad Financiera Universitaria' },
-        { id: 'top-5-student-envelopes', text: '2. Los 5 Sobres de Efectivo Esenciales' },
-        { id: 'budgeting-part-time-wages-and-aid', text: '3. Presupuestar Becas, Salarios y Ayudas' },
-        { id: 'avoiding-campus-credit-traps', text: '4. Evitar Trampas de Tarjetas de Crédito' },
-        { id: 'tracking-student-envelopes-online', text: '5. Gestión de Sobres Estudiantiles en Línea Gratis' },
+        { id: 'college-money-reality-check', text: '1. La Realidad Financiera en la Universidad' },
+        { id: 'four-essential-student-envelopes', text: '2. Los 4 Sobres de Efectivo Estudiantiles Esenciales' },
+        { id: 'budgeting-financial-aid-lump-sums', text: '3. Cómo Presupuestar Becas e Ingresos de Trabajos' },
+        { id: 'avoiding-campus-credit-card-traps', text: '4. Evitar la Trampa de las Tarjetas de Crédito en el Campus' },
+        { id: 'managing-student-envelopes-online', text: '5. Gestión de Sobres Estudiantiles en Línea Gratis' },
       ],
       contentHtml: `
-        <section id="college-financial-reality" class="space-y-4">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Realidad Financiera Universitaria</h2>
-          <p class="leading-relaxed">Administra tus gastos independientes en el campus sin pánico.</p>
+        <section id="college-money-reality-check" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Realidad Financiera en la Universidad</h2>
+          <p class="leading-relaxed">Gestiona tu dinero de forma independiente por primera vez sin caer en deudas.</p>
         </section>
 
-        <section id="top-5-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Los 5 Sobres de Efectivo Esenciales</h2>
-          <p class="leading-relaxed">Crea sobres para libros, comida fuera, ocio del fin de semana y lavandería.</p>
+        <section id="four-essential-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Los 4 Sobres de Efectivo Estudiantiles Esenciales</h2>
+          <p class="leading-relaxed">Crea sobres para libros, café/comida fuera, ocio del fin de semana y lavandería.</p>
         </section>
 
-        <section id="budgeting-part-time-wages-and-aid" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Presupuestar Becas, Salarios y Ayudas</h2>
-          <p class="leading-relaxed">Divide los cheques de beca entre las 16 semanas del semestre.</p>
+        <section id="budgeting-financial-aid-lump-sums" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Cómo Presupuestar Becas e Ingresos de Trabajos</h2>
+          <p class="leading-relaxed">Divide tu beca semestral entre el número de semanas para fijar tu presupuesto semanal.</p>
         </section>
 
-        <section id="avoiding-campus-credit-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Evitar Trampas de Tarjetas de Crédito</h2>
-          <p class="leading-relaxed">Evita las deudas universitarias gastando exclusivamente dinero en efectivo.</p>
+        <section id="avoiding-campus-credit-card-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Evitar la Trampa de las Tarjetas de Crédito en el Campus</h2>
+          <p class="leading-relaxed">Evita graduarte con deudas de tarjetas de crédito comprando solo en efectivo.</p>
         </section>
 
-        <section id="tracking-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <section id="managing-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gestión de Sobres Estudiantiles en Línea Gratis</h2>
-          <p class="leading-relaxed">Administra tus sobres de estudiante en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+          <p class="leading-relaxed">Controla tus sobres de estudiante en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
     fr: {
-      title: 'Guide Budget pour Étudiants : Gérer son Argent avec les Enveloppes',
-      summary: 'Une gestion financière simple pour les étudiants. Apprenez à gérer les enveloppes livres, sorties et café sans vous endetter.',
+      title: 'Guide Budget Étudiant : Gérer son Argent avec les Enveloppes Budget',
+      summary: 'Première expérience de gestion de budget à la fac ? Les enveloppes fixeront des limites claires pour vos livres, cafés et sorties.',
       category: 'Finance Étudiante',
       tableOfContents: [
-        { id: 'college-financial-reality', text: '1. La Réalité Financière des Étudiants' },
-        { id: 'top-5-student-envelopes', text: '2. Les 5 Enveloppes Essentielles pour Étudiants' },
-        { id: 'budgeting-part-time-wages-and-aid', text: '3. Gérer Bourses, Jobs Étudiants et Aides' },
-        { id: 'avoiding-campus-credit-traps', text: '4. Éviter les Pièges des Cartes de Crédit' },
-        { id: 'tracking-student-envelopes-online', text: '5. Gérer ses Enveloppes Étudiantes en Ligne Gratuitement' },
+        { id: 'college-money-reality-check', text: '1. La Réalité Financière des Étudiants' },
+        { id: 'four-essential-student-envelopes', text: '2. Les 4 Enveloppes Étudiantes Essentielles' },
+        { id: 'budgeting-financial-aid-lump-sums', text: '3. Gérer ses Bourses et Jobs Étudiants' },
+        { id: 'avoiding-campus-credit-card-traps', text: '4. Éviter le Piège des Cartes de Crédit sur le Campus' },
+        { id: 'managing-student-envelopes-online', text: '5. Gérer ses Enveloppes Étudiantes en Ligne Gratuitement' },
       ],
       contentHtml: `
-        <section id="college-financial-reality" class="space-y-4">
+        <section id="college-money-reality-check" class="space-y-4">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Réalité Financière des Étudiants</h2>
-          <p class="leading-relaxed">Prenez en main votre premier budget indépendant sur le campus.</p>
+          <p class="leading-relaxed">Apprenez à gérer votre budget en autonomie sans vous endetter.</p>
         </section>
 
-        <section id="top-5-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 5 Enveloppes Essentielles pour Étudiants</h2>
-          <p class="leading-relaxed">Répartissez vos dépenses entre manuels, sorties, café et laverie.</p>
+        <section id="four-essential-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 4 Enveloppes Étudiantes Essentielles</h2>
+          <p class="leading-relaxed">Créez des enveloppes pour les manuels, le café, les sorties et la lessive.</p>
         </section>
 
-        <section id="budgeting-part-time-wages-and-aid" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Gérer Bourses, Jobs Étudiants et Aides</h2>
-          <p class="leading-relaxed">Divisez votre versement de bourse sur les 16 semaines du semestre.</p>
+        <section id="budgeting-financial-aid-lump-sums" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Gérer ses Bourses et Jobs Étudiants</h2>
+          <p class="leading-relaxed">Divisez le montant de votre bourse par le nombre de semaines du semestre.</p>
         </section>
 
-        <section id="avoiding-campus-credit-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Éviter les Pièges des Cartes de Crédit</h2>
-          <p class="leading-relaxed">Fuyez les découverts en utilisant uniquement l'argent disponible.</p>
+        <section id="avoiding-campus-credit-card-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Éviter le Piège des Cartes de Crédit sur le Campus</h2>
+          <p class="leading-relaxed">Diplômez-vous sans dettes de carte de crédit grâce aux enveloppes cash.</p>
         </section>
 
-        <section id="tracking-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <section id="managing-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gérer ses Enveloppes Étudiantes en Ligne Gratuitement</h2>
-          <p class="leading-relaxed">Suivez vos enveloppes sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+          <p class="leading-relaxed">Suivez vos dépenses sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
     de: {
-      title: 'Studenten-Budget-Guide: Geld Verwalten mit der Umschlag-Methode',
-      summary: 'Einfaches Geldmanagement für Studenten. Verwalten Sie Umschläge für Bücher, Mensa und Freizeit ohne Schulden.',
+      title: 'Studenten-Budget-Guide: Geld Verwalten mit Bargeld-Umschlägen',
+      summary: 'Erstmals eigenes Geld im Studium verwalten? Bargeld-Umschläge setzen klare Grenzen für Lehrbücher, Kaffee und Partys.',
       category: 'Studenten-Finanzen',
       tableOfContents: [
-        { id: 'college-financial-reality', text: '1. Die Finanzielle Realität im Studium' },
-        { id: 'top-5-student-envelopes', text: '2. Die 5 Wichtigsten Studenten-Umschläge' },
-        { id: 'budgeting-part-time-wages-and-aid', text: '3. Nebenjobs, BAföG & Stipendien Budgetieren' },
-        { id: 'avoiding-campus-credit-traps', text: '4. Kreditkarten-Fallen auf dem Campus Vermeiden' },
-        { id: 'tracking-student-envelopes-online', text: '5. Studenten-Umschläge Online Kostenlos Verwalten' },
+        { id: 'college-money-reality-check', text: '1. Der Finanz-Realitätscheck im Studium' },
+        { id: 'four-essential-student-envelopes', text: '2. Die 4 Wichtigsten Studenten-Umschläge' },
+        { id: 'budgeting-financial-aid-lump-sums', text: '3. BAföG & Nebenjob-Einkommen Einteilen' },
+        { id: 'avoiding-campus-credit-card-traps', text: '4. Kreditkarten-Fallen auf dem Campus Vermeiden' },
+        { id: 'managing-student-envelopes-online', text: '5. Studenten-Umschläge Online Kostenlos Verwalten' },
       ],
       contentHtml: `
-        <section id="college-financial-reality" class="space-y-4">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Die Finanzielle Realität im Studium</h2>
-          <p class="leading-relaxed">Meistern Sie Ihre ersten eigenen Ausgaben im Studium ohne finanziellen Stress.</p>
+        <section id="college-money-reality-check" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Der Finanz-Realitätscheck im Studium</h2>
+          <p class="leading-relaxed">Meistern Sie das erste eigene Geld ohne Schulden aufzubauen.</p>
         </section>
 
-        <section id="top-5-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 5 Wichtigsten Studenten-Umschläge</h2>
-          <p class="leading-relaxed">Legen Sie Umschläge für Lehrbücher, Cafeteria, Party und Wäsche an.</p>
+        <section id="four-essential-student-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 4 Wichtigsten Studenten-Umschläge</h2>
+          <p class="leading-relaxed">Erstellen Sie Umschläge für Bücher, Mensa/Kaffee, Freizeit und Wäsche.</p>
         </section>
 
-        <section id="budgeting-part-time-wages-and-aid" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Nebenjobs, BAföG & Stipendien Budgetieren</h2>
-          <p class="leading-relaxed">Teilen Sie Einmalzahlungen durch die 16 Wochen des Semesters.</p>
+        <section id="budgeting-financial-aid-lump-sums" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. BAföG & Nebenjob-Einkommen Einteilen</h2>
+          <p class="leading-relaxed">Teilen Sie Semester-Auszahlungen auf die Wochen des Semesters auf.</p>
         </section>
 
-        <section id="avoiding-campus-credit-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <section id="avoiding-campus-credit-card-traps" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Kreditkarten-Fallen auf dem Campus Vermeiden</h2>
-          <p class="leading-relaxed">Vermeiden Sie Studentenschulden durch Bargeld-Grenzen.</p>
+          <p class="leading-relaxed">Beenden Sie Ihr Studium schuldenfrei mit der Umschlagmethode.</p>
         </section>
 
-        <section id="tracking-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <section id="managing-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Studenten-Umschläge Online Kostenlos Verwalten</h2>
           <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
