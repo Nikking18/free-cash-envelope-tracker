@@ -9,7 +9,6 @@ export const KofiOverlay: React.FC = () => {
     const drawWidget = () => {
       if (typeof window !== 'undefined' && (window as any).kofiWidgetOverlay) {
         try {
-          // Remove duplicate widget if already present
           const existingOverlay = document.getElementById('kofi-widget-overlay-container');
           if (existingOverlay) {
             existingOverlay.remove();
@@ -26,27 +25,29 @@ export const KofiOverlay: React.FC = () => {
       }
     };
 
-    if (typeof window !== 'undefined' && (window as any).kofiWidgetOverlay) {
-      drawWidget();
-      return;
-    }
+    // Defer widget script loading to prevent main-thread TBT penalty on page load
+    const timer = setTimeout(() => {
+      if (typeof window !== 'undefined' && (window as any).kofiWidgetOverlay) {
+        drawWidget();
+        return;
+      }
 
-    let script = document.getElementById(scriptId) as HTMLScriptElement;
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
-      script.async = true;
-      script.onload = drawWidget;
-      document.body.appendChild(script);
-    } else {
-      script.addEventListener('load', drawWidget);
-    }
+      let script = document.getElementById(scriptId) as HTMLScriptElement;
+      if (!script) {
+        script = document.createElement('script');
+        script.id = scriptId;
+        script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
+        script.async = true;
+        script.defer = true;
+        script.onload = drawWidget;
+        document.body.appendChild(script);
+      } else {
+        script.addEventListener('load', drawWidget);
+      }
+    }, 3000);
 
     return () => {
-      if (script) {
-        script.removeEventListener('load', drawWidget);
-      }
+      clearTimeout(timer);
     };
   }, []);
 

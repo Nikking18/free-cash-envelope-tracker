@@ -26,13 +26,21 @@ export const GoogleTranslateScript: React.FC = () => {
       }
     };
 
-    if (!document.getElementById('google-translate-script')) {
-      const script = document.createElement('script');
-      script.id = 'google-translate-script';
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
-    }
+    // Defer Google Translate script loading to avoid main-thread render blocking
+    const timer = setTimeout(() => {
+      if (!document.getElementById('google-translate-script')) {
+        const script = document.createElement('script');
+        script.id = 'google-translate-script';
+        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+    }, 2500);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
