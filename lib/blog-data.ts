@@ -664,17 +664,69 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Earning extra money from rideshare, freelancing, or e-commerce? Learn how to separate your side hustle cash flow from personal spending.',
     tableOfContents: [
-      { id: 'why-side-hustlers-need-envelopes', text: '1. Why Side Hustlers Need Cash Envelopes' },
-      { id: 'essential-side-hustle-envelopes', text: '2. Essential Side Hustle Envelopes' },
+      { id: 'side-hustle-tax-nightmare', text: '1. The Side Hustler\'s Tax & Cash Flow Nightmare' },
+      { id: 'the-4-essential-hustle-envelopes', text: '2. The 4 Essential Side Hustle Cash Envelopes' },
+      { id: 'gig-worker-case-studies', text: '3. Real-World Case Studies: Rideshare, E-Commerce & Freelance' },
+      { id: 'payout-to-tax-proof-blueprint', text: '4. Step-by-Step Blueprint: From Gig Payout to Tax Allocation' },
+      { id: 'tracking-side-hustle-online', text: '5. Tracking Side Hustle Cash Flow Online Free' },
     ],
     contentHtml: `
-      <section id="why-side-hustlers-need-envelopes" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Why Side Hustlers Need Cash Envelopes</h2>
-        <p class="leading-relaxed">Mixing gig economy income with personal checking accounts creates accounting chaos during tax season. Keeping side hustle revenue in separate envelopes protects tax reserves and reveals your true net hourly wage.</p>
+      <section id="side-hustle-tax-nightmare" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Side Hustler's Tax & Cash Flow Nightmare</h2>
+        <p class="leading-relaxed">Earning extra income through gig economy apps, freelance client work, or digital product sales is empowering. However, <strong>mixing side hustle income with personal checking accounts creates tax season panic</strong>.</p>
+        <p class="leading-relaxed">Unlike W-2 employment where taxes are withheld automatically from every paycheck, 1099 freelancers and side hustlers receive gross payouts. Failing to set aside 25% to 30% of every payment into a dedicated tax envelope leads to painful tax penalties and surprise bills.</p>
       </section>
-      <section id="essential-side-hustle-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Essential Side Hustle Envelopes</h2>
-        <p class="leading-relaxed">Track materials, gig equipment, and 30% tax reserves cleanly at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="the-4-essential-hustle-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 4 Essential Side Hustle Cash Envelopes</h2>
+        <p class="leading-relaxed">Keep your side gig financial records clean and organized by dividing gross gig income into 4 dedicated category envelopes:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. 1099 Tax Reserve Envelope (30%)</strong>
+            Protected funds set aside immediately for federal, state, and self-employment taxes.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Materials & Supplies Envelope</strong>
+            Raw materials, craft supplies, software subscriptions, domain names, and packaging costs.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">3. Equipment & Vehicle Maintenance</strong>
+            Fuel, oil changes, tire replacement, camera gear, and laptop hardware repairs.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">4. Net Profit Take-Home Envelope</strong>
+            True spendable profit that you transfer into your personal checking account.
+          </div>
+        </div>
+      </section>
+
+      <section id="gig-worker-case-studies" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Real-World Case Studies: Rideshare, E-Commerce & Freelance</h2>
+        <div class="space-y-3">
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">Uber / Lyft Driver Example</strong>
+            Weekly Payout: $600. Allocation: Tax Envelope ($180), Gas & Car Wear Sinking Fund ($120), Personal Net Income ($300).
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">Etsy Crafter Example</strong>
+            Monthly Revenue: $1,200. Allocation: Tax Envelope ($360), Inventory Supplies ($400), Shipping/Fees ($140), Net Profit ($300).
+          </div>
+        </div>
+      </section>
+
+      <section id="payout-to-tax-proof-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Step-by-Step Blueprint: From Gig Payout to Tax Allocation</h2>
+        <ol class="list-decimal list-inside space-y-2.5 text-sm font-medium">
+          <li><strong>Receive Gross Gig Payout:</strong> Receive direct deposits or cash payments into your side hustle account.</li>
+          <li><strong>Calculate Tax Allocation First:</strong> Multiply gross payout by 30% and move that exact amount into your Tax Envelope.</li>
+          <li><strong>Deduct Gig Expenses & Mileage:</strong> Record business mileage and purchase receipts directly in your envelope ledger.</li>
+          <li><strong>Pay Yourself the Net Remainder:</strong> Transfer only true remaining profit to your personal household budget.</li>
+        </ol>
+      </section>
+
+      <section id="tracking-side-hustle-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Tracking Side Hustle Cash Flow Online Free</h2>
+        <p class="leading-relaxed">Keep your side hustle finances tax-proof and export clean 2-sheet Excel accounting logs for free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -1221,7 +1273,7 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         </section>
 
         <section id="step-by-step-setup" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Guide Étape par Étape (Du Salaire à l'Enveloppe)</h2>
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Guide Étape par Étape (Du Salaire à l\'Enveloppe)</h2>
           <p class="leading-relaxed">Prêt à commencer aujourd'hui ? Suivez ces 4 étapes simples :</p>
           <ol class="list-decimal list-inside space-y-3 font-medium">
             <li><strong>Calculez votre Revenu Net Disponible :</strong> Prenez votre revenu mensuel après impôts et soustrayez vos factures fixes.</li>
@@ -2060,7 +2112,7 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
     },
     fr: {
       title: '7 Façons Éprouvées Dont les Enveloppes Stoppent Immédiatement les Achats Impulsifs',
-      summary: 'Éliminez les achats impulsifs émotionnels. Découvrez comment les enveloppes physiques et le suivi en temps réel réentraînent votre cerveau pour économiser.',
+      summary: 'Éliminez les achats impulsifs émotionnels. Découvrez comment les enveloppes physiques et le suivi en temps réel réentraînement votre cerveau pour économiser.',
       category: 'Habitudes Financières',
       tableOfContents: [
         { id: 'psychology-of-impulse-buying', text: '1. La Psychologie des Achats Impulsifs' },
@@ -2388,6 +2440,127 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="managing-business-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Business-Umschläge Online Verwalten</h2>
           <p class="leading-relaxed">Verwalten Sie Ihre Firmen-Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'side-hustle-money-tracking-guide': {
+    es: {
+      title: 'Cómo Rastrear Ingresos y Gastos de Negocios Secundarios Usando Sobres de Efectivo (2026)',
+      summary: '¿Ganas dinero extra con viajes en apps, trabajo freelance o e-commerce? Aprende a separar el flujo de efectivo de tus proyectos secundarios de tus gastos personales.',
+      category: 'Negocios Secundarios',
+      tableOfContents: [
+        { id: 'side-hustle-tax-nightmare', text: '1. La Pesadilla Fiscal de los Proyectos Secundarios' },
+        { id: 'the-4-essential-hustle-envelopes', text: '2. Los 4 Sobres Esenciales para Negocios Secundarios' },
+        { id: 'gig-worker-case-studies', text: '3. Casos Reales: Conductores, Creadores y Freelancers' },
+        { id: 'payout-to-tax-proof-blueprint', text: '4. Plan Paso a Paso: Del Cobro a la Reserva de Impuestos' },
+        { id: 'tracking-side-hustle-online', text: '5. Rastrear Ingresos Secundarios en Línea Gratis' },
+      ],
+      contentHtml: `
+        <section id="side-hustle-tax-nightmare" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Pesadilla Fiscal de los Proyectos Secundarios</h2>
+          <p class="leading-relaxed">Mezclar ingresos de la economía gig con tu cuenta personal genera problemas durante la temporada de impuestos.</p>
+        </section>
+
+        <section id="the-4-essential-hustle-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Los 4 Sobres Esenciales para Negocios Secundarios</h2>
+          <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+            <li><strong>Sobre Reserva de Impuestos 1099 (30%):</strong> Fondos reservados inmediatamente para impuestos.</li>
+            <li><strong>Sobre de Materiales y Suministros:</strong> Materias primas y suscripciones.</li>
+            <li><strong>Mantenimiento de Equipos y Vehículos:</strong> Gasolina y reparaciones.</li>
+            <li><strong>Sobre de Ganancia Neta:</strong> Beneficio real para transferir a tu cuenta personal.</li>
+          </ul>
+        </section>
+
+        <section id="gig-worker-case-studies" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Casos Reales: Conductores, Creadores y Freelancers</h2>
+          <p class="leading-relaxed">Asigna porcentajes fijos según cada tipo de trabajo gig.</p>
+        </section>
+
+        <section id="payout-to-tax-proof-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Plan Paso a Paso: Del Cobro a la Reserva de Impuestos</h2>
+          <p class="leading-relaxed">Mueve el 30% a impuestos antes de gastar en cualquier otra cosa.</p>
+        </section>
+
+        <section id="tracking-side-hustle-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Rastrear Ingresos Secundarios en Línea Gratis</h2>
+          <p class="leading-relaxed">Exporta registros en Excel libres de errores en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Comment Suivre les Revenus & Dépenses des Projets Annexes avec des Enveloppes (2026)',
+      summary: 'Vous gagnez de l\'argent extra avec le VTC, le freelance ou l\'e-commerce ? Apprenez à séparer vos revenus complémentaires de vos dépenses personnelles.',
+      category: 'Revenus Complémentaires',
+      tableOfContents: [
+        { id: 'side-hustle-tax-nightmare', text: '1. Le Cauchemar Fiscal des Activités Annexes' },
+        { id: 'the-4-essential-hustle-envelopes', text: '2. Les 4 Enveloppes Essentielles pour Activités Annexes' },
+        { id: 'gig-worker-case-studies', text: '3. Études de Cas : Chauffeurs, Vendeurs Etsy & Freelances' },
+        { id: 'payout-to-tax-proof-blueprint', text: '4. Plan Étape par Étape : Du Paiement aux Impôts' },
+        { id: 'tracking-side-hustle-online', text: '5. Suivre ses Revenus Complémentaires en Ligne' },
+      ],
+      contentHtml: `
+        <section id="side-hustle-tax-nightmare" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Le Cauchemar Fiscal des Activités Annexes</h2>
+          <p class="leading-relaxed">Mélanger les revenus de freelance et le compte personnel cause des surprises fiscales.</p>
+        </section>
+
+        <section id="the-4-essential-hustle-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 4 Enveloppes Essentielles pour Activités Annexes</h2>
+          <p class="leading-relaxed">Réserve Impôts (30%), Fournitures, Entretien Équipement et Bénéfice Net.</p>
+        </section>
+
+        <section id="gig-worker-case-studies" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Études de Cas : Chauffeurs, Vendeurs Etsy & Freelances</h2>
+          <p class="leading-relaxed">Découvrez des cas d'usage réels adaptés aux travailleurs indépendants.</p>
+        </section>
+
+        <section id="payout-to-tax-proof-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Plan Étape par Étape : Du Paiement aux Impôts</h2>
+          <p class="leading-relaxed">Séparez l'argent des impôts dès réception.</p>
+        </section>
+
+        <section id="tracking-side-hustle-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Suivre ses Revenus Complémentaires en Ligne</h2>
+          <p class="leading-relaxed">Gérez vos revenus annexes sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Nebeneinkünfte & Ausgaben Verwalten mit Bargeld-Umschlägen (2026)',
+      summary: 'Verdienen Sie Geld mit Gig-Apps, Freelancing oder E-Commerce? Erfahren Sie, wie Sie Nebeneinnahmen sauber von privaten Ausgaben trennen.',
+      category: 'Nebenverdienst & Geld',
+      tableOfContents: [
+        { id: 'side-hustle-tax-nightmare', text: '1. Der Steuer-Albtraum bei Nebenjobs' },
+        { id: 'the-4-essential-hustle-envelopes', text: '2. Die 4 Wichtigsten Umschläge für Nebenjobs' },
+        { id: 'gig-worker-case-studies', text: '3. Praxisbeispiele: Kurriere, Etsy-Verkäufer & Texter' },
+        { id: 'payout-to-tax-proof-blueprint', text: '4. Schritt-für-Schritt Anleitung: Von Auszahlung zu Steuer' },
+        { id: 'tracking-side-hustle-online', text: '5. Nebenjobs Online Kostenlos Verwalten' },
+      ],
+      contentHtml: `
+        <section id="side-hustle-tax-nightmare" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Der Steuer-Albtraum bei Nebenjobs</h2>
+          <p class="leading-relaxed">Fehlende Rücklagen für die Steuer führen oft zu Nachzahlungen.</p>
+        </section>
+
+        <section id="the-4-essential-hustle-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 4 Wichtigsten Umschläge für Nebenjobs</h2>
+          <p class="leading-relaxed">Steuer-Reserve (30%), Material & Software, Geräte-Wartung und Nettogewinn.</p>
+        </section>
+
+        <section id="gig-worker-case-studies" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Praxisbeispiele: Kurriere, Etsy-Verkäufer & Texter</h2>
+          <p class="leading-relaxed">Erfahren Sie, wie Gig-Worker ihre Finanzen strukturieren.</p>
+        </section>
+
+        <section id="payout-to-tax-proof-blueprint" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Schritt-für-Schritt Anleitung: Von Auszahlung zu Steuer</h2>
+          <p class="leading-relaxed">Zwacken Sie 30 % jeder Auszahlung sofort ab.</p>
+        </section>
+
+        <section id="tracking-side-hustle-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Nebenjobs Online Kostenlos Verwalten</h2>
+          <p class="leading-relaxed">Verwalten Sie Ihre Einnahmen auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
