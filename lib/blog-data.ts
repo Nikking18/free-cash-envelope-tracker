@@ -842,17 +842,60 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Irregular income is the biggest stressor for solopreneurs. Discover 5 practical cash envelope budgeting hacks to smooth out dry spells and protect your business.',
     tableOfContents: [
-      { id: '5-hacks-overview', text: '1. The 5 Solopreneur Money Hacks' },
-      { id: 'implementing-income-buffers', text: '2. Implementing an Income Hill-and-Valley Buffer' },
+      { id: 'solopreneur-income-rollercoaster', text: '1. The Solopreneur Income Rollercoaster' },
+      { id: 'hack-1-hill-valley-buffer', text: '2. Hack #1: The Hill-and-Valley Income Buffer Envelope' },
+      { id: 'hack-2-predictable-founder-salary', text: '3. Hack #2: Pay Yourself a Predictable Founder Salary' },
+      { id: 'hack-3-tax-opex-envelopes', text: '4. Hack #3: Separate Tax (30%) & OpEx Envelopes' },
+      { id: 'hacks-4-5-saas-purge-online-tracking', text: '5. Hacks #4 & #5: SaaS Audit & Free Online Cash Flow Tracking' },
     ],
     contentHtml: `
-      <section id="5-hacks-overview" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 5 Solopreneur Money Hacks</h2>
-        <p class="leading-relaxed">Pay yourself a predictable baseline salary, maintain quarterly tax envelopes, and cap software subscription costs.</p>
+      <section id="solopreneur-income-rollercoaster" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Solopreneur Income Rollercoaster</h2>
+        <p class="leading-relaxed">Freelancers, solo agency founders, and e-commerce creators experience unpredictable monthly cash flow. One month brings a <strong>$12,000 revenue surge</strong>, followed by a dry <strong>$2,500 valley month</strong>.</p>
+        <p class="leading-relaxed">Traditional personal finance rules assume steady bi-weekly salaries. When solopreneurs treat high-revenue months as disposable spending money, they inevitably face severe cash flow crises during dry spells.</p>
       </section>
-      <section id="implementing-income-buffers" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Implementing an Income Hill-and-Valley Buffer</h2>
-        <p class="leading-relaxed">Smooth irregular client invoice payments using <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="hack-1-hill-valley-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Hack #1: The Hill-and-Valley Income Buffer Envelope</h2>
+        <p class="leading-relaxed">The secret to surviving fluctuating freelance revenue is building an <strong>Income Hill-and-Valley Buffer Envelope</strong>:</p>
+        <div class="p-4 bg-white border-2 border-[#141414] space-y-2 text-sm font-medium">
+          <strong class="block text-[#8A9A5B] font-bold uppercase">How the Buffer Envelope Works:</strong>
+          Calculate your baseline monthly household living cost (e.g., $4,000). During $10,000+ "hill" revenue months, pay yourself only your $4,000 baseline salary and deposit the remaining $6,000 directly into your Buffer Envelope. During dry $2,000 "valley" months, draw $2,000 from your Buffer Envelope to maintain a steady paycheck.
+        </div>
+      </section>
+
+      <section id="hack-2-predictable-founder-salary" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Hack #2: Pay Yourself a Predictable Founder Salary</h2>
+        <p class="leading-relaxed">Stop raiding your business checking account whenever personal bills arrive. Establish a formal personal paycheck transfer schedule (e.g., on the 1st and 15th of every month) from your business envelope account to your personal household budget.</p>
+      </section>
+
+      <section id="hack-3-tax-opex-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Hack #3: Separate Tax (30%) & OpEx Envelopes</h2>
+        <p class="leading-relaxed">Protect your business from quarterly tax penalties and operating shortfalls by dividing every client invoice into two protected envelopes:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1099 Tax Reserve Envelope (30%)</strong>
+            Instantly route 30% of every incoming client invoice into a dedicated tax envelope before touching a dollar.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">Operating Expenses Envelope (OpEx)</strong>
+            Cover web hosting, software tools, advertising, and contractors strictly out of your OpEx ceiling.
+          </div>
+        </div>
+      </section>
+
+      <section id="hacks-4-5-saas-purge-online-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Hacks #4 & #5: SaaS Audit & Free Online Cash Flow Tracking</h2>
+        <div class="space-y-3">
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">Hack #4: Bi-Annual SaaS Subscription Purge</strong>
+            Solopreneurs waste thousands on forgotten AI tools, software subscriptions, and domain renewals. Audit and cancel non-essential software every 6 months.
+          </div>
+          <div class="p-4 bg-white border-2 border-[#141414] text-sm space-y-1">
+            <strong class="block text-[#5C768D] font-bold uppercase">Hack #5: Real-Time Cash Envelope Tracking Free</strong>
+            Manage your solopreneur envelopes, monitor tax reserves, and export clean 2-sheet Excel accounting logs free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.
+          </div>
+        </div>
       </section>
     `,
   },
@@ -2755,6 +2798,122 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
         <section id="tracking-10k-progress-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Fortschrittsbalken für 10.000 € Online Nutzen</h2>
           <p class="leading-relaxed">Verfolgen Sie Ihre Spar-Fortschritte live auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'micro-business-budgeting-hacks': {
+    es: {
+      title: '5 Trucos Financieros que Todo Emprendedor Solitario y Freelancer Debe Conocer',
+      summary: 'Los ingresos irregulares son el mayor problema de los emprendedores en solitario. Descubre 5 trucos prácticos de sobres de efectivo para estabilizar tu negocio.',
+      category: 'Emprendimiento',
+      tableOfContents: [
+        { id: 'solopreneur-income-rollercoaster', text: '1. La Montaña Rusa de Ingresos del Emprendedor' },
+        { id: 'hack-1-hill-valley-buffer', text: '2. Truco #1: El Sobre de Amortiguación para Valles y Cumbres' },
+        { id: 'hack-2-predictable-founder-salary', text: '3. Truco #2: Págate un Sueldo de Fundador Predecible' },
+        { id: 'hack-3-tax-opex-envelopes', text: '4. Truco #3: Sobres Separados para Impuestos (30%) y Operaciones' },
+        { id: 'hacks-4-5-saas-purge-online-tracking', text: '5. Trucos #4 y #5: Limpieza de SaaS y Registro en Línea Gratis' },
+      ],
+      contentHtml: `
+        <section id="solopreneur-income-rollercoaster" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Montaña Rusa de Ingresos del Emprendedor</h2>
+          <p class="leading-relaxed">Los emprendedores independientes sufren meses de altos ingresos seguidos de meses bajos.</p>
+        </section>
+
+        <section id="hack-1-hill-valley-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Truco #1: El Sobre de Amortiguación para Valles y Cumbres</h2>
+          <p class="leading-relaxed">En meses de altos ingresos guarda el remanente en tu sobre de reserva para cubrir meses bajos.</p>
+        </section>
+
+        <section id="hack-2-predictable-founder-salary" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Truco #2: Págate un Sueldo de Fundador Predecible</h2>
+          <p class="leading-relaxed">Establece transferencias fijas a tu cuenta personal los días 1 y 15 de cada mes.</p>
+        </section>
+
+        <section id="hack-3-tax-opex-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Truco #3: Sobres Separados para Impuestos (30%) y Operaciones</h2>
+          <p class="leading-relaxed">Separa el 30% de cada factura cobrada en tu sobre de impuestos.</p>
+        </section>
+
+        <section id="hacks-4-5-saas-purge-online-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Trucos #4 y #5: Limpieza de SaaS y Registro en Línea Gratis</h2>
+          <p class="leading-relaxed">Gestiona tus sobres de empresa gratis en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: '5 Astuces Financières que Tout Solopreneur & Freelance Doit Connaître',
+      summary: 'Les revenus irréguliers sont le principal facteur de stress des solopreneurs. Découvrez 5 astuces pratiques pour stabiliser votre trésorerie.',
+      category: 'Entrepreneuriat',
+      tableOfContents: [
+        { id: 'solopreneur-income-rollercoaster', text: '1. Les Montagnes Russes des Revenus du Solopreneur' },
+        { id: 'hack-1-hill-valley-buffer', text: '2. Astuce n°1 : L\'Enveloppe Tampon Hauts et Bas' },
+        { id: 'hack-2-predictable-founder-salary', text: '3. Astuce n°2 : Verser un Salaire Fixe de Dirigeant' },
+        { id: 'hack-3-tax-opex-envelopes', text: '4. Astuce n°3 : Séparer les Enveloppes Impôts (30%) & Dépenses' },
+        { id: 'hacks-4-5-saas-purge-online-tracking', text: '5. Astuces n°4 & 5 : Audit des Abonnements SaaS & Suivi Gratuit' },
+      ],
+      contentHtml: `
+        <section id="solopreneur-income-rollercoaster" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Les Montagnes Russes des Revenus du Solopreneur</h2>
+          <p class="leading-relaxed">Les variations de revenus nécessitent une gestion de trésorerie adaptée.</p>
+        </section>
+
+        <section id="hack-1-hill-valley-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Astuce n°1 : L'Enveloppe Tampon Hauts et Bas</h2>
+          <p class="leading-relaxed">Constituez une enveloppe tampon pendant les mois à forte activité pour lisser les périodes creuses.</p>
+        </section>
+
+        <section id="hack-2-predictable-founder-salary" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Astuce n°2 : Verser un Salaire Fixe de Dirigeant</h2>
+          <p class="leading-relaxed">Fixez une rémunération régulière deux fois par mois.</p>
+        </section>
+
+        <section id="hack-3-tax-opex-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Astuce n°3 : Séparer les Enveloppes Impôts (30%) & Dépenses</h2>
+          <p class="leading-relaxed">Isolez immédiatement les charges fiscales sur chaque facture encaissée.</p>
+        </section>
+
+        <section id="hacks-4-5-saas-purge-online-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Astuces n°4 & 5 : Audit des Abonnements SaaS & Suivi Gratuit</h2>
+          <p class="leading-relaxed">Gérez vos enveloppes solopreneur sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: '5 Finanz-Hacks, Die Jeder Solopreneur & Freelancer Kennen Muss',
+      summary: 'Unregelmäßiges Einkommen ist der größte Stressfaktor für Einzelunternehmer. Erfahren Sie 5 praktische Umschlag-Hacks zur Einkommens-Stabilisierung.',
+      category: 'Unternehmertum',
+      tableOfContents: [
+        { id: 'solopreneur-income-rollercoaster', text: '1. Die Achterbahn der Solopreneur-Einnahmen' },
+        { id: 'hack-1-hill-valley-buffer', text: '2. Hack #1: Der Puffer-Umschlag für Gute & Schlechte Monate' },
+        { id: 'hack-2-predictable-founder-salary', text: '3. Hack #2: Ein Planbares Gründer-Gehalt Zahlenn' },
+        { id: 'hack-3-tax-opex-envelopes', text: '4. Hack #3: Getrennte Steuer- (30%) & Betriebskosten-Umschläge' },
+        { id: 'hacks-4-5-saas-purge-online-tracking', text: '5. Hacks #4 & #5: SaaS-Abo Ausmisten & Kostenlos Online-Tracken' },
+      ],
+      contentHtml: `
+        <section id="solopreneur-income-rollercoaster" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Die Achterbahn der Solopreneur-Einnahmen</h2>
+          <p class="leading-relaxed">Unvorhersehbare Umsätze erfordern ein intelligentes Umschlag-Puffersystem.</p>
+        </section>
+
+        <section id="hack-1-hill-valley-buffer" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Hack #1: Der Puffer-Umschlag für Gute & Schlechte Monate</h2>
+          <p class="leading-relaxed">Sparen Sie Überschüsse in umsatzstarken Monaten im Puffer-Umschlag für schwache Monate.</p>
+        </section>
+
+        <section id="hack-2-predictable-founder-salary" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Hack #2: Ein Planbares Gründer-Gehalt Zahlen</h2>
+          <p class="leading-relaxed">Zahlen Sie sich monatlich ein festes Gehalt aus.</p>
+        </section>
+
+        <section id="hack-3-tax-opex-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Hack #3: Getrennte Steuer- (30%) & Betriebskosten-Umschläge</h2>
+          <p class="leading-relaxed">Trennen Sie 30 % jeder Rechnung sofort für die Steuer ab.</p>
+        </section>
+
+        <section id="hacks-4-5-saas-purge-online-tracking" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Hacks #4 & #5: SaaS-Abo Ausmisten & Kostenlos Online-Tracken</h2>
+          <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
     },
