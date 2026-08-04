@@ -1707,17 +1707,55 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Complex 50-category budgets lead to burnout. Minimalist budgeting focuses on 3 to 5 essential cash envelopes for ultimate financial peace.',
     tableOfContents: [
-      { id: 'minimalist-rules', text: '1. The 3 Rules of Minimalist Budgeting' },
-      { id: 'uncluttering-your-finances', text: '2. Uncluttering Your Financial Life' },
+      { id: 'overcomplicated-budget-trap', text: '1. The Over-Complicated Budget Trap' },
+      { id: 'three-rules-of-minimalist-budgeting', text: '2. The 3 Rules of Minimalist Budgeting' },
+      { id: 'three-envelope-minimalist-system', text: '3. The 3-Envelope Minimalist Cash System' },
+      { id: 'decluttering-subscriptions-and-impulse-spending', text: '4. Decluttering Subscriptions & Financial Noise' },
+      { id: 'managing-minimalist-envelopes-online', text: '5. Managing Minimalist Envelopes Online Free' },
     ],
     contentHtml: `
-      <section id="minimalist-rules" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The 3 Rules of Minimalist Budgeting</h2>
-        <p class="leading-relaxed">Focus on 3 main categories: Essentials, Savings, and Everything Else.</p>
+      <section id="overcomplicated-budget-trap" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. The Over-Complicated Budget Trap</h2>
+        <p class="leading-relaxed">Many people start budgeting by creating hyper-detailed spreadsheets with 40 or 50 micro-categories—distinguishing between "dry cleaning," "pet treats," "hair cuts," and "coffee shops."</p>
+        <p class="leading-relaxed">Within two weeks, the administrative friction of categorizing every single $3 receipt leads to decision fatigue and total budget abandonment. **Cluttered budgets cause financial burnout**. Minimalism simplifies your financial management down to what actually matters.</p>
       </section>
-      <section id="uncluttering-your-finances" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Uncluttering Your Financial Life</h2>
-        <p class="leading-relaxed">Keep budgeting uncluttered at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="three-rules-of-minimalist-budgeting" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 3 Rules of Minimalist Budgeting</h2>
+        <ul class="list-disc list-inside space-y-2.5 text-sm font-medium">
+          <li><strong>Rule 1 - Cap Categories at 5 or Fewer:</strong> Group all variable expenses into broad, friction-free envelopes.</li>
+          <li><strong>Rule 2 - Automate Fixed Overhead First:</strong> Pay mortgage/rent, utilities, and debt minimums automatically from your main checking account.</li>
+          <li><strong>Rule 3 - Spend Cash Guilt-Free:</strong> Once your fixed bills are covered and savings are stuffed, spend your remaining cash envelopes without tracking individual receipts.</li>
+        </ul>
+      </section>
+
+      <section id="three-envelope-minimalist-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. The 3-Envelope Minimalist Cash System</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-2 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Needs Envelope (50%)</strong>
+            Groceries, fuel, health prescriptions, and essential household consumables.
+          </div>
+          <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-2 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Freedom Envelope (20%)</strong>
+            Emergency reserves, debt avalanche principal, and long-term investments.
+          </div>
+          <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-2 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">3. Life Envelope (30%)</strong>
+            Dining out, hobbies, entertainment, clothing, and guilt-free personal spending.
+          </div>
+        </div>
+      </section>
+
+      <section id="decluttering-subscriptions-and-impulse-spending" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Decluttering Subscriptions & Financial Noise</h2>
+        <p class="leading-relaxed">Minimalist budgeting extends beyond cash envelopes into your overall lifestyle. Audit your bank statements and cancel recurring streaming services, unused gym memberships, and meal delivery apps that you don't actively enjoy.</p>
+        <p class="leading-relaxed font-medium">Fewer financial commitments mean fewer bills to manage, lower monthly overhead, and vastly greater mental clarity.</p>
+      </section>
+
+      <section id="managing-minimalist-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Managing Minimalist Envelopes Online Free</h2>
+        <p class="leading-relaxed">Keep your budgeting uncluttered, monitor simple 3-envelope balances, and export clean 2-sheet Excel accounting logs free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -4793,6 +4831,122 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
 
         <section id="managing-student-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Studenten-Umschläge Online Kostenlos Verwalten</h2>
+          <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'minimalist-budgeting-method': {
+    es: {
+      title: 'Presupuesto Minimalista 101: Cómo Menos Gastos Significan Más Libertad',
+      summary: 'Los presupuestos complejos de 50 categorías causan agotamiento. El presupuesto minimalista se centra en 3 a 5 sobres esenciales para una paz financiera total.',
+      category: 'Minimalismo y Dinero',
+      tableOfContents: [
+        { id: 'overcomplicated-budget-trap', text: '1. La Trampa del Presupuesto Sobrecargado' },
+        { id: 'three-rules-of-minimalist-budgeting', text: '2. Las 3 Reglas del Presupuesto Minimalista' },
+        { id: 'three-envelope-minimalist-system', text: '3. El Sistema Minimalista de 3 Sobres de Efectivo' },
+        { id: 'decluttering-subscriptions-and-impulse-spending', text: '4. Eliminar Suscripciones y Compras Impulsivas' },
+        { id: 'managing-minimalist-envelopes-online', text: '5. Gestión de Sobres Minimalistas en Línea Gratis' },
+      ],
+      contentHtml: `
+        <section id="overcomplicated-budget-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. La Trampa del Presupuesto Sobrecargado</h2>
+          <p class="leading-relaxed">Simplifica tus finanzas evitando hojas de cálculo con 50 categorías complejas.</p>
+        </section>
+
+        <section id="three-rules-of-minimalist-budgeting" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Las 3 Reglas del Presupuesto Minimalista</h2>
+          <p class="leading-relaxed">Limita tus categorías a 5 o menos y automatiza las facturas fijas.</p>
+        </section>
+
+        <section id="three-envelope-minimalist-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. El Sistema Minimalista de 3 Sobres de Efectivo</h2>
+          <p class="leading-relaxed">Divide tu dinero en: Necesidades (50%), Libertad/Ahorro (20%) y Vida/Ocio (30%).</p>
+        </section>
+
+        <section id="decluttering-subscriptions-and-impulse-spending" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Eliminar Suscripciones y Compras Impulsivas</h2>
+          <p class="leading-relaxed">Cancela suscripciones innecesarias para reducir tu gasto fijo mensual.</p>
+        </section>
+
+        <section id="managing-minimalist-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gestión de Sobres Minimalistas en Línea Gratis</h2>
+          <p class="leading-relaxed">Mantén un presupuesto sencillo en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Budget Minimaliste 101 : Moins de Dépenses pour Plus de Liberté',
+      summary: 'Les budgets complexes à 50 catégories mènent à l\'épuisement. Le budget minimaliste se concentre sur 3 à 5 enveloppes essentielles pour une sérénité totale.',
+      category: 'Minimalisme et Argent',
+      tableOfContents: [
+        { id: 'overcomplicated-budget-trap', text: '1. Le Piège du Budget Trop Complexe' },
+        { id: 'three-rules-of-minimalist-budgeting', text: '2. Les 3 Règles du Budget Minimaliste' },
+        { id: 'three-envelope-minimalist-system', text: '3. Le Système Minimaliste à 3 Enveloppes' },
+        { id: 'decluttering-subscriptions-and-impulse-spending', text: '4. Éliminer les Abonnements et le Bruit Financier' },
+        { id: 'managing-minimalist-envelopes-online', text: '5. Gérer ses Enveloppes Minimalistes en Ligne Gratuitement' },
+      ],
+      contentHtml: `
+        <section id="overcomplicated-budget-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Le Piège du Budget Trop Complexe</h2>
+          <p class="leading-relaxed">Simplifiez votre gestion financière en éliminant les micro-catégories inutiles.</p>
+        </section>
+
+        <section id="three-rules-of-minimalist-budgeting" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 3 Règles du Budget Minimaliste</h2>
+          <p class="leading-relaxed">Limitez votre budget à 5 enveloppes maximum et automatisez les factures fixes.</p>
+        </section>
+
+        <section id="three-envelope-minimalist-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Le Système Minimaliste à 3 Enveloppes</h2>
+          <p class="leading-relaxed">Répartissez votre argent : Besoins (50 %), Liberté (20 %) et Vie (30 %).</p>
+        </section>
+
+        <section id="decluttering-subscriptions-and-impulse-spending" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Éliminer les Abonnements et le Bruit Financier</h2>
+          <p class="leading-relaxed">Résiliez les services de streaming inutiles pour alléger vos charges fixes.</p>
+        </section>
+
+        <section id="managing-minimalist-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gérer ses Enveloppes Minimalistes en Ligne Gratuitement</h2>
+          <p class="leading-relaxed">Pilotez votre budget épuré sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Minimalistisches Budgeting 101: Weniger Ausgaben = Mehr Freiheit',
+      summary: 'Komplexe Budgets mit 50 Kategorien führen zu Burnout. Minimalistisches Budgeting setzt auf 3 bis 5 Umschläge für maximale Klarheit.',
+      category: 'Minimalismus & Geld',
+      tableOfContents: [
+        { id: 'overcomplicated-budget-trap', text: '1. Die Falle Überkomplizierter Budgets' },
+        { id: 'three-rules-of-minimalist-budgeting', text: '2. Die 3 Regeln des Minimalistischen Budgetierens' },
+        { id: 'three-envelope-minimalist-system', text: '3. Das Minimalistische 3-Umschlag-System' },
+        { id: 'decluttering-subscriptions-and-impulse-spending', text: '4. Abonnements & Unnötige Ausgaben Ausmisten' },
+        { id: 'managing-minimalist-envelopes-online', text: '5. Minimalistische Umschläge Online Kostenlos Verwalten' },
+      ],
+      contentHtml: `
+        <section id="overcomplicated-budget-trap" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Die Falle Überkomplizierter Budgets</h2>
+          <p class="leading-relaxed">Vermeiden Sie Burnout durch zu viele Mikrokategorien.</p>
+        </section>
+
+        <section id="three-rules-of-minimalist-budgeting" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 3 Regeln des Minimalistischen Budgetierens</h2>
+          <p class="leading-relaxed">Beschränken Sie sich auf maximal 5 Umschläge und automatisieren Sie Fixkosten.</p>
+        </section>
+
+        <section id="three-envelope-minimalist-system" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Das Minimalistische 3-Umschlag-System</h2>
+          <p class="leading-relaxed">Gliedern Sie Ihr Geld in Notwendiges (50%), Freiheit (20%) und Leben (30%).</p>
+        </section>
+
+        <section id="decluttering-subscriptions-and-impulse-spending" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Abonnements & Unnötige Ausgaben Ausmisten</h2>
+          <p class="leading-relaxed">Kündigen Sie ungenutzte Abos für maximale finanzielle Freiheit.</p>
+        </section>
+
+        <section id="managing-minimalist-envelopes-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Minimalistische Umschläge Online Kostenlos Verwalten</h2>
           <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
