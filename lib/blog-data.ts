@@ -1516,17 +1516,61 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Nikhil Khanpara',
     summary: 'Annual insurance bills, holiday shopping, and vehicle maintenance shouldn’t crash your monthly budget. Learn how sinking funds smooth out non-monthly expenses.',
     tableOfContents: [
-      { id: 'sinking-funds-101', text: '1. Sinking Funds 101' },
-      { id: 'top-5-sinking-fund-categories', text: '2. Top 5 Sinking Fund Envelope Categories' },
+      { id: 'sinking-fund-vs-emergency-fund', text: '1. Sinking Funds vs. Emergency Funds: The Vital Difference' },
+      { id: 'top-5-essential-sinking-fund-envelopes', text: '2. The 5 Most Essential Sinking Fund Envelopes' },
+      { id: 'calculating-monthly-sinking-contributions', text: '3. Calculating Your Monthly Sinking Fund Formula' },
+      { id: 'physical-vs-digital-sinking-envelopes', text: '4. Physical Cash Envelopes vs. Digital Sinking Funds' },
+      { id: 'managing-sinking-funds-online', text: '5. Managing Sinking Funds Online Free' },
     ],
     contentHtml: `
-      <section id="sinking-funds-101" class="space-y-4">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Sinking Funds 101</h2>
-        <p class="leading-relaxed">A sinking fund is money set aside incrementally each month to pay for a specific future expense like car insurance ($1,200/year = $100/month).</p>
+      <section id="sinking-fund-vs-emergency-fund" class="space-y-4">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Sinking Funds vs. Emergency Funds: The Vital Difference</h2>
+        <p class="leading-relaxed">A **Sinking Fund** is money set aside incrementally each month to pay for a **known, expected future expense**. An Emergency Fund, by contrast, covers completely unexpected shocks like sudden job losses or medical emergencies.</p>
+        <p class="leading-relaxed">Car insurance renewals, Christmas gifts, semi-annual HOA fees, and annual vehicle registrations are NOT unexpected emergencies. They are predictable expenses. When you fail to save for them monthly, they crash your monthly budget and force you into debt.</p>
       </section>
-      <section id="top-5-sinking-fund-categories" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
-        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Top 5 Sinking Fund Envelope Categories</h2>
-        <p class="leading-relaxed">Set up vehicle repair, property tax, and holiday sinking fund envelopes at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+
+      <section id="top-5-essential-sinking-fund-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. The 5 Most Essential Sinking Fund Envelopes</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">1. Vehicle Maintenance & Repairs</strong>
+            Tires, oil changes, brake pads, and annual vehicle inspection fees.
+          </div>
+          <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">2. Annual Insurance Premiums</strong>
+            Auto, home, health, or life insurance paid semi-annually or annually for lump-sum discounts.
+          </div>
+          <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#8A9A5B] font-bold uppercase">3. Holiday & Birthday Gifts</strong>
+            Christmas, birthdays, anniversaries, and wedding gifts throughout the year.
+          </div>
+          <div class="p-4 bg-[#FCFAF7] border-2 border-[#141414] space-y-1 text-sm">
+            <strong class="block text-[#5C768D] font-bold uppercase">4. Home Maintenance & Appliances</strong>
+            AC servicing, roof maintenance, lawn equipment, or appliance replacements.
+          </div>
+        </div>
+      </section>
+
+      <section id="calculating-monthly-sinking-contributions" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Calculating Your Monthly Sinking Fund Formula</h2>
+        <p class="leading-relaxed">To calculate your exact monthly sinking fund contribution, use this simple 3-step formula:</p>
+        <div class="p-4 bg-white border-3 border-[#141414] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center font-mono font-bold text-sm">
+          Monthly Contribution = Total Expected Cost ÷ Number of Months Remaining
+        </div>
+        <p class="leading-relaxed text-xs font-medium text-[#141414]/80">Example: Your car insurance is $1,200 due in 12 months. Save $100/month ($1,200 ÷ 12) into your Car Insurance Sinking Envelope. When the bill arrives, pay it in full cash without stress!</p>
+      </section>
+
+      <section id="physical-vs-digital-sinking-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Physical Cash Envelopes vs. Digital Sinking Funds</h2>
+        <ul class="list-disc list-inside space-y-2 text-sm font-medium">
+          <li><strong>Physical Sinking Envelopes:</strong> Perfect for smaller short-term goals like birthdays, hair appointments, or weekly grocery roll-overs stored safely at home.</li>
+          <li><strong>Digital Sinking Envelopes:</strong> Essential for large long-term sinking funds (like $1,200 car insurance or $2,500 property taxes) stored in high-interest savings accounts (HYSA).</li>
+        </ul>
+      </section>
+
+      <section id="managing-sinking-funds-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+        <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Managing Sinking Funds Online Free</h2>
+        <p class="leading-relaxed">Track sinking fund envelope balances, monitor progress bars, and export clean 2-sheet Excel accounting logs free at <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
       </section>
     `,
   },
@@ -4332,6 +4376,122 @@ const BLOG_TRANSLATIONS: Record<string, Record<string, Partial<BlogPost>>> = {
 
         <section id="slashing-grocery-bills-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
           <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Lebensmittelkosten Online Kostenlos Senken</h2>
+          <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+  },
+  'sinking-funds-explained': {
+    es: {
+      title: '¿Qué Son los Fondos de Amortización? (Y Cómo Construir Sobres de Fondos)',
+      summary: 'Las facturas anuales de seguro o los regalos navideños no deberían arruinar tu presupuesto mensual. Descubre cómo los fondos de amortización suavizan los gastos periódicos.',
+      category: 'Fundamentos de Presupuesto',
+      tableOfContents: [
+        { id: 'sinking-fund-vs-emergency-fund', text: '1. Fondos de Amortización vs. Fondo de Emergencia' },
+        { id: 'top-5-essential-sinking-fund-envelopes', text: '2. Los 5 Sobres de Amortización Esenciales' },
+        { id: 'calculating-monthly-sinking-contributions', text: '3. Fórmula para Calcular tus Aportes Mensuales' },
+        { id: 'physical-vs-digital-sinking-envelopes', text: '4. Sobres de Efectivo Físicos vs. Digitales' },
+        { id: 'managing-sinking-funds-online', text: '5. Gestión de Fondos de Amortización en Línea Gratis' },
+      ],
+      contentHtml: `
+        <section id="sinking-fund-vs-emergency-fund" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Fondos de Amortización vs. Fondo de Emergencia</h2>
+          <p class="leading-relaxed">Ahorra mes a mes para gastos futuros conocidos como seguros o navidad.</p>
+        </section>
+
+        <section id="top-5-essential-sinking-fund-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Los 5 Sobres de Amortización Esenciales</h2>
+          <p class="leading-relaxed">Crea sobres para vehículos, impuestos, regalos y mantenimiento del hogar.</p>
+        </section>
+
+        <section id="calculating-monthly-sinking-contributions" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Fórmula para Calcular tus Aportes Mensuales</h2>
+          <p class="leading-relaxed">Aporte Mensual = Costo Total Esperado ÷ Meses Restantes.</p>
+        </section>
+
+        <section id="physical-vs-digital-sinking-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Sobres de Efectivo Físicos vs. Digitales</h2>
+          <p class="leading-relaxed">Combina pequeños sobres físicos con cuentas de ahorro para montos grandes.</p>
+        </section>
+
+        <section id="managing-sinking-funds-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gestión de Fondos de Amortización en Línea Gratis</h2>
+          <p class="leading-relaxed">Administra tus fondos de amortización en <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    fr: {
+      title: 'Que Sont les Fonds d\'Amortissement ? (Et Comment Créer ses Enveloppes)',
+      summary: 'Les assurances annuelles et les cadeaux de Noël ne doivent plus ruiner votre budget mensuel. Découvrez comment lisser vos dépenses non mensuelles.',
+      category: 'Bases du Budget',
+      tableOfContents: [
+        { id: 'sinking-fund-vs-emergency-fund', text: '1. Fonds d\'Amortissement vs. Fonds d\'Urgence' },
+        { id: 'top-5-essential-sinking-fund-envelopes', text: '2. Les 5 Enveloppes d\'Amortissement Essentielles' },
+        { id: 'calculating-monthly-sinking-contributions', text: '3. Formule de Calcul des Cotisations Mensuelles' },
+        { id: 'physical-vs-digital-sinking-envelopes', text: '4. Enveloppes Physiques vs. Digitales' },
+        { id: 'managing-sinking-funds-online', text: '5. Gérer ses Fonds d\'Amortissement en Ligne Gratuitement' },
+      ],
+      contentHtml: `
+        <section id="sinking-fund-vs-emergency-fund" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Fonds d'Amortissement vs. Fonds d'Urgence</h2>
+          <p class="leading-relaxed">Mettez de côté chaque mois pour anticiper les factures prévisibles.</p>
+        </section>
+
+        <section id="top-5-essential-sinking-fund-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Les 5 Enveloppes d'Amortissement Essentielles</h2>
+          <p class="leading-relaxed">Préparez le contrôle technique, les impôts et les cadeaux de Noël.</p>
+        </section>
+
+        <section id="calculating-monthly-sinking-contributions" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Formule de Calcul des Cotisations Mensuelles</h2>
+          <p class="leading-relaxed">Cotisation Mensuelle = Coût Total ÷ Nombre de Mois Restants.</p>
+        </section>
+
+        <section id="physical-vs-digital-sinking-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Enveloppes Physiques vs. Digitales</h2>
+          <p class="leading-relaxed">Adaptez le support d'épargne en fonction de l'échéance du projet.</p>
+        </section>
+
+        <section id="managing-sinking-funds-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Gérer ses Fonds d'Amortissement en Ligne Gratuitement</h2>
+          <p class="leading-relaxed">Pilotez vos enveloppes projet sur <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
+        </section>
+      `,
+    },
+    de: {
+      title: 'Was Sind Zweckgebundene Töpfe (Sinking Funds)? (Und Wie Sie Sie Aufbauen)',
+      summary: 'Jährliche Versicherungen und Weihnachtsgeschenke sollten Ihr Monatsbudget nicht sprengen. Erfahren Sie, wie Sie unregelmäßige Ausgaben glätten.',
+      category: 'Budget-Grundlagen',
+      tableOfContents: [
+        { id: 'sinking-fund-vs-emergency-fund', text: '1. Zweck-Töpfe vs. Notfallgroschen' },
+        { id: 'top-5-essential-sinking-fund-envelopes', text: '2. Die 5 Wichtigsten Zweck-Umschläge' },
+        { id: 'calculating-monthly-sinking-contributions', text: '3. Formel für Monatliche Sparraten' },
+        { id: 'physical-vs-digital-sinking-envelopes', text: '4. Physische vs. Digitale Zweck-Umschläge' },
+        { id: 'managing-sinking-funds-online', text: '5. Zweck-Umschläge Online Kostenlos Verwalten' },
+      ],
+      contentHtml: `
+        <section id="sinking-fund-vs-emergency-fund" class="space-y-4">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">1. Zweck-Töpfe vs. Notfallgroschen</h2>
+          <p class="leading-relaxed">Sparen Sie monatlich für vorhersehbare Ausgaben wie Versicherungen oder Geschenke.</p>
+        </section>
+
+        <section id="top-5-essential-sinking-fund-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">2. Die 5 Wichtigsten Zweck-Umschläge</h2>
+          <p class="leading-relaxed">Legen Sie Umschläge für KFZ-Reparaturen, Steuern und Geschenke an.</p>
+        </section>
+
+        <section id="calculating-monthly-sinking-contributions" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">3. Formel für Monatliche Sparraten</h2>
+          <p class="leading-relaxed">Monatliche Rate = Gesamtkosten ÷ Verbleibende Monate.</p>
+        </section>
+
+        <section id="physical-vs-digital-sinking-envelopes" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">4. Physische vs. Digitale Zweck-Umschläge</h2>
+          <p class="leading-relaxed">Kombinieren Sie kleine Bar-Umschläge mit Sparkonten für große Beträge.</p>
+        </section>
+
+        <section id="managing-sinking-funds-online" class="space-y-4 pt-4 border-t-2 border-[#141414]/10">
+          <h2 class="font-serif font-black text-2xl text-[#141414] uppercase tracking-tight">5. Zweck-Umschläge Online Kostenlos Verwalten</h2>
           <p class="leading-relaxed">Verwalten Sie Ihre Umschläge auf <a href="https://www.freecashtracker.online" class="underline text-[#8A9A5B] font-bold">Free Cash Envelope Tracker</a>.</p>
         </section>
       `,
